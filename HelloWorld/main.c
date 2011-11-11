@@ -5,6 +5,7 @@
  */
 
 #include  <msp430fg4619.h>
+#include <stdio.h>
  
 void main(void)
 {
@@ -12,11 +13,13 @@ void main(void)
  
   WDTCTL = WDTPW | WDTHOLD;                 // Stop WDT
   P5DIR |= BIT1;                            // P5.1 as output
-  P1OUT |= BIT1;							// P5.1 set high
+  P5OUT |= BIT1;                            // P5.1 set high
 
   while(1)
   {
-    P5OUT ^= BIT1;							// Toggle P5.1
+  	printf("hello\n");                      // Print statement
+  	fflush(stdout);                         // Flush buffer
+    P5OUT ^= BIT1;                          // Toggle P5.1
     for(i=50000;i>0;i--);                   // Delay
   }
 }
