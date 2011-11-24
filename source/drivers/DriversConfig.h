@@ -9,6 +9,10 @@
 #ifndef DRIVERSCONFIG_H
 #define DRIVERSCONFIG_H
 
+#include "SimpleDefinitions.h"
+#include "InputTypes.h"
+#include "OutputTypes.h"
+
 //////////////////////////////////
 
 extern const char HardwareConstant;

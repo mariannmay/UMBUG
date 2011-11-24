@@ -12,6 +12,5 @@
 void system_initialize(void)
 {
 	// TODO
-	printf("%s",TheSystemIsDown);
 }
 

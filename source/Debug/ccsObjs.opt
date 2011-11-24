@@ -1,1 +1,1 @@
-"./application/ApplicationConfig.obj" "./application/Application.obj" "./drivers/DriversConfig.obj" "./drivers/Drivers.obj" "./main.obj" "./system/SystemConfig.obj" "./system/System.obj" -l"libc.a" "../lnk_msp430fg4619.cmd" 
+"./application/ApplicationConfig.obj" "./application/Application.obj" "./drivers/DriversConfig.obj" "./drivers/Drivers.obj" "./drivers/devices/Multiplexer.obj" "./main.obj" "./system/SystemConfig.obj" "./system/System.obj" "./test application/TestApplication.obj" -l"libc.a" "../lnk_msp430fg4619.cmd" 

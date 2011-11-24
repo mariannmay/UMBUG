@@ -7,6 +7,7 @@
 //////////////////////////////////////////////////////////////////
 
 #include "Application.h"
+#include "TestApplication.h"
 
 //////////////////////////////////////////////////////////////////
 
@@ -14,10 +15,18 @@ void main(void)
 {
 	drivers_initialize();
 	system_initialize();
-	application_initialize();
 	
-	while(1)
-	{
-		application_main();
-	}
+	#if DebugMode
+		test_application_initialize();
+		while(true)
+		{
+			test_application_main();
+		}
+	#else
+		application_initialize();
+		while(true)
+		{
+			application_main();
+		}
+	#endif
 }

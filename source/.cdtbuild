@@ -28,7 +28,10 @@
 <listOptionValue builtIn="false" value="&quot;${CCS_INSTALL_ROOT}/msp430/include&quot;"/>
 <listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/include&quot;"/>
 <listOptionValue builtIn="false" value="&quot;C:\Users\Kane\Project-Cheesecake\source\application&quot;"/>
+<listOptionValue builtIn="false" value="&quot;C:\Users\Kane\Project-Cheesecake\source\test application&quot;"/>
+<listOptionValue builtIn="false" value="&quot;C:\Users\Kane\Project-Cheesecake\source&quot;"/>
 <listOptionValue builtIn="false" value="&quot;C:\Users\Kane\Project-Cheesecake\source\drivers&quot;"/>
+<listOptionValue builtIn="false" value="&quot;C:\Users\Kane\Project-Cheesecake\source\drivers\devices&quot;"/>
 <listOptionValue builtIn="false" value="&quot;C:\Users\Kane\Project-Cheesecake\source\system&quot;"/>
 </option>
 </tool>
@@ -44,7 +47,10 @@
 <option id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.SEARCH_PATH.78226984" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.SEARCH_PATH" valueType="stringList">
 <listOptionValue builtIn="false" value="&quot;${CCS_INSTALL_ROOT}/msp430/include&quot;"/>
 <listOptionValue builtIn="false" value="&quot;C:\Users\Kane\Project-Cheesecake\source\application&quot;"/>
+<listOptionValue builtIn="false" value="&quot;C:\Users\Kane\Project-Cheesecake\source\test application&quot;"/>
+<listOptionValue builtIn="false" value="&quot;C:\Users\Kane\Project-Cheesecake\source&quot;"/>
 <listOptionValue builtIn="false" value="&quot;C:\Users\Kane\Project-Cheesecake\source\drivers&quot;"/>
+<listOptionValue builtIn="false" value="&quot;C:\Users\Kane\Project-Cheesecake\source\drivers\devices&quot;"/>
 <listOptionValue builtIn="false" value="&quot;C:\Users\Kane\Project-Cheesecake\source\system&quot;"/>
 <listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/lib&quot;"/>
 <listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/include&quot;"/>

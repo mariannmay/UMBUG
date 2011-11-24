@@ -1,20 +1,22 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    System config header                                      //
+//    TestApplication source                                    //
 //    last edited by: Kane Anderson                             //
 //    date: November 22, 2011                                   //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#ifndef SYSTEMCONFIG_H
-#define SYSTEMCONFIG_H
-
-#include "SimpleDefinitions.h"
+#include "TestApplication.h"
 
 //////////////////////////////////
 
-#define DebugMode 1
+void test_application_initialize(void)
+{
+	// TODO
+}
 
-extern const char* TheSystemIsDown;
+void test_application_main(void)
+{
+	// TODO
+}
 
-#endif

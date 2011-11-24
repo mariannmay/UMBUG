@@ -18,7 +18,6 @@ void application_initialize(void)
 void application_main(void)
 {
 	// TODO
-	printf("the answer to life, the unverse and everything is %d \n", AnswerToLifeTheUniverseAndEverything);
 }
 
 //////////////////////////////////

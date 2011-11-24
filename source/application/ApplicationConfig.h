@@ -9,6 +9,8 @@
 #ifndef APPLICATIONCONFIG_H
 #define APPLICATIONCONFIG_H
 
+#include "SimpleDefinitions.h"
+
 //////////////////////////////////
 
 extern const int AnswerToLifeTheUniverseAndEverything;

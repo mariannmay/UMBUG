@@ -1,20 +1,19 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    System config header                                      //
+//    Multiplexer source                                        //
 //    last edited by: Kane Anderson                             //
-//    date: November 22, 2011                                   //
+//    date: November 23, 2011                                   //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#ifndef SYSTEMCONFIG_H
-#define SYSTEMCONFIG_H
+#include "Multiplexer.h"
 
-#include "SimpleDefinitions.h"
+///////////////////////////////////////////////
 
-//////////////////////////////////
+// functions //////////////////////////////////
 
-#define DebugMode 1
+void mux_initialize(void)
+{
+	// TODO
+}
 
-extern const char* TheSystemIsDown;
-
-#endif

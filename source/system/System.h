@@ -11,11 +11,13 @@
 
 //////////////////////////////////
 
-#include "stdlib.h"
-#include "stdio.h"
+#if DebugMode
+	#include "stdlib.h"
+	#include "stdio.h"
+	#include "assert.h"
+#endif
 
 #include "Drivers.h"
-
 #include "SystemConfig.h"
 
 //////////////////////////////////

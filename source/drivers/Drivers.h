@@ -13,10 +13,8 @@
 
 #include "DriversConfig.h"
 
-// here we should put all includes
-// ex.
-// #include <SDCardDriver.h>
-// #include <Magnetometer.h>
+// here we should put all devices
+#include "Multiplexer.h"
 
 //////////////////////////////////////////////////////////////////
 void drivers_initialize(void);
