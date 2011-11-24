@@ -1,17 +1,16 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    System source                                             //
+//    Drivers config header                                     //
 //    last edited by: Kane Anderson                             //
 //    date: November 22, 2011                                   //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "System.h"
+#ifndef DRIVERSCONFIG_H
+#define DRIVERSCONFIG_H
 
-//////////////////////////////////////////////////////////////////
-void system_initialize(void)
-{
-	// TODO
-	printf("%s",TheSystemIsDown);
-}
+//////////////////////////////////
 
+extern const char HardwareConstant;
+
+#endif

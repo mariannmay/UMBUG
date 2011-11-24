@@ -1,17 +1,13 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    System source                                             //
+//    Application config values                                 //
 //    last edited by: Kane Anderson                             //
 //    date: November 22, 2011                                   //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "System.h"
+#include "ApplicationConfig.h"
 
-//////////////////////////////////////////////////////////////////
-void system_initialize(void)
-{
-	// TODO
-	printf("%s",TheSystemIsDown);
-}
+//////////////////////////////////
 
+const int AnswerToLifeTheUniverseAndEverything = 42;

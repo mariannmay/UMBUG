@@ -1,1 +1,1 @@
-"../system/System.c" 
+"../system/System.c" "../system/SystemConfig.c" 

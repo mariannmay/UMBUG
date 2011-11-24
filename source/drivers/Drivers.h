@@ -11,6 +11,8 @@
 
 #include <msp430fg4619.h>
 
+#include "DriversConfig.h"
+
 // here we should put all includes
 // ex.
 // #include <SDCardDriver.h>

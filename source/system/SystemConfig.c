@@ -1,17 +1,13 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    System source                                             //
+//    System config values                                      //
 //    last edited by: Kane Anderson                             //
 //    date: November 22, 2011                                   //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "System.h"
+#include "SystemConfig.h"
 
-//////////////////////////////////////////////////////////////////
-void system_initialize(void)
-{
-	// TODO
-	printf("%s",TheSystemIsDown);
-}
+//////////////////////////////////
 
+const char* TheSystemIsDown = "The system is down!\n";

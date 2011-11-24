@@ -1,17 +1,16 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    System source                                             //
+//    System config header                                      //
 //    last edited by: Kane Anderson                             //
 //    date: November 22, 2011                                   //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "System.h"
+#ifndef SYSTEMCONFIG_H
+#define SYSTEMCONFIG_H
 
-//////////////////////////////////////////////////////////////////
-void system_initialize(void)
-{
-	// TODO
-	printf("%s",TheSystemIsDown);
-}
+//////////////////////////////////
 
+extern const char* TheSystemIsDown;
+
+#endif

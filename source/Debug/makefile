@@ -9,9 +9,12 @@ SPACE := $(EMPTY) $(EMPTY)
 
 ORDERED_OBJS += \
 $(GEN_CMDS_QUOTED) \
+"./application/ApplicationConfig.obj" \
 "./application/Application.obj" \
+"./drivers/DriversConfig.obj" \
 "./drivers/Drivers.obj" \
 "./main.obj" \
+"./system/SystemConfig.obj" \
 "./system/System.obj" \
 -l"libc.a" \
 "../lnk_msp430fg4619.cmd" \
@@ -122,8 +125,8 @@ Project-Cheesecake.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(MSP430_EXECUTABLE_OUTPUTS__QTD) "Project-Cheesecake.out"
-	-$(RM) ".\system\System.obj" ".\main.obj" ".\drivers\Drivers.obj" ".\application\Application.obj" 
-	-$(RM) ".\system\System.pp" ".\main.pp" ".\drivers\Drivers.pp" ".\application\Application.pp" 
+	-$(RM) ".\system\System.obj" ".\system\SystemConfig.obj" ".\main.obj" ".\drivers\Drivers.obj" ".\drivers\DriversConfig.obj" ".\application\Application.obj" ".\application\ApplicationConfig.obj" 
+	-$(RM) ".\system\System.pp" ".\system\SystemConfig.pp" ".\main.pp" ".\drivers\Drivers.pp" ".\drivers\DriversConfig.pp" ".\application\Application.pp" ".\application\ApplicationConfig.pp" 
 	-@echo ' '
 
 .PHONY: all clean dependents

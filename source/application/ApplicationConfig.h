@@ -1,17 +1,16 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    System source                                             //
+//    Application config header                                 //
 //    last edited by: Kane Anderson                             //
 //    date: November 22, 2011                                   //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "System.h"
+#ifndef APPLICATIONCONFIG_H
+#define APPLICATIONCONFIG_H
 
-//////////////////////////////////////////////////////////////////
-void system_initialize(void)
-{
-	// TODO
-	printf("%s",TheSystemIsDown);
-}
+//////////////////////////////////
 
+extern const int AnswerToLifeTheUniverseAndEverything;
+
+#endif

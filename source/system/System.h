@@ -16,6 +16,8 @@
 
 #include "Drivers.h"
 
+#include "SystemConfig.h"
+
 //////////////////////////////////
 
 void system_initialize(void);

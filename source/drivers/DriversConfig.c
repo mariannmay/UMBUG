@@ -1,17 +1,13 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    System source                                             //
+//    Drivers config values                                     //
 //    last edited by: Kane Anderson                             //
 //    date: November 22, 2011                                   //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "System.h"
+#include "DriversConfig.h"
 
-//////////////////////////////////////////////////////////////////
-void system_initialize(void)
-{
-	// TODO
-	printf("%s",TheSystemIsDown);
-}
+//////////////////////////////////
 
+const char HardwareConstant = 0xF2;

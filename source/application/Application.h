@@ -13,6 +13,8 @@
 
 #include "System.h"
 
+#include "ApplicationConfig.h"
+
 //////////////////////////////////
 
 void application_initialize(void);
