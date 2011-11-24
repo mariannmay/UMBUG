@@ -1,0 +1,1 @@
+"./application/Application.obj" "./drivers/Drivers.obj" "./main.obj" "./system/System.obj" -l"libc.a" "../lnk_msp430fg4619.cmd" 
