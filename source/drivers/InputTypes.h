@@ -9,7 +9,7 @@
 #ifndef INPUTTYPES_H
 #define INPUTTYPES_H
 
-#include "SimpleDefinitions.h"
+#include "../SimpleDefinitions.h"
 
 ///////////////////////////////////////////////
 

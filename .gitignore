@@ -1,0 +1,8 @@
+*.swo
+*.swp
+*~
+*.mk
+*.pp
+*.obj
+*makefile
+*.launch

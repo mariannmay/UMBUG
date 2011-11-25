@@ -14,7 +14,7 @@
 #include "DriversConfig.h"
 
 // here we should put all devices
-#include "Multiplexer.h"
+#include "../drivers/devices/Multiplexer.h"
 
 //////////////////////////////////////////////////////////////////
 void drivers_initialize(void);

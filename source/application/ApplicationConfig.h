@@ -9,7 +9,7 @@
 #ifndef APPLICATIONCONFIG_H
 #define APPLICATIONCONFIG_H
 
-#include "SimpleDefinitions.h"
+#include "../SimpleDefinitions.h"
 
 //////////////////////////////////
 
