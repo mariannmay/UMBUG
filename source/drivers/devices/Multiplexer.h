@@ -22,7 +22,7 @@ typedef struct
 	DigitalInput in1;
 	DigitalOutput out;
 }
-MUX_2_to_1;
+MUX_2_1;
 
 typedef struct
 {
@@ -34,7 +34,7 @@ typedef struct
 	DigitalInput in3;
 	DigitalOutput out;
 }
-MUX_4_to_1;
+MUX_4_1;
 
 typedef struct
 {
@@ -51,7 +51,7 @@ typedef struct
 	DigitalInput in7;
 	DigitalOutput out;
 }
-MUX_8_to_1;
+MUX_8_1;
 
 typedef struct
 {
@@ -60,11 +60,14 @@ typedef struct
 	DigitalOutput out0;
 	DigitalOutput out1;
 }
-MUX_1_to_2;
+MUX_1_2;
 
 // functions //////////////////////////////////
 
 void mux_initialize(void);
-// void setMuxSelectLines(M
+void mux_2_1_Setup(MUX_2_1* mux, bool S0);
+void mux_4_1_Setup(MUX_4_1* mux, bool S0, bool S1);
+void mux_8_1_Setup(MUX_8_1* mux, bool S0, bool S1, bool S2);
+void mux_1_2_Setup(MUX_1_2* mux, bool S0);
 
 #endif
