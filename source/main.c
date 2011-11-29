@@ -6,8 +6,8 @@
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "Application.h"
-#include "TestApplication.h"
+#include "application/Application.h"
+#include "test application/TestApplication.h"
 
 //////////////////////////////////////////////////////////////////
 

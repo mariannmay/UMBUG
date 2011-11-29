@@ -9,7 +9,7 @@
 #ifndef SYSTEMCONFIG_H
 #define SYSTEMCONFIG_H
 
-#include "SimpleDefinitions.h"
+#include "../SimpleDefinitions.h"
 
 //////////////////////////////////
 

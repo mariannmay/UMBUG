@@ -9,7 +9,7 @@
 #ifndef OUTPUTTYPES_H
 #define OUTPUTTYPES_H
 
-#include "SimpleDefinitions.h"
+#include "../SimpleDefinitions.h"
 
 ///////////////////////////////////////////////
 

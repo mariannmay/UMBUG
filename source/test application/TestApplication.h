@@ -11,9 +11,9 @@
 
 //////////////////////////////////
 
-#include "System.h"
+#include "../system/System.h"
 
-#include "ApplicationConfig.h"
+#include "../application/ApplicationConfig.h"
 
 //////////////////////////////////
 
