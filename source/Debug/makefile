@@ -11,6 +11,8 @@ ORDERED_OBJS += \
 $(GEN_CMDS_QUOTED) \
 "./application/ApplicationConfig.obj" \
 "./application/Application.obj" \
+"./application/COM/COM.obj" \
+"./application/STR/STR.obj" \
 "./drivers/DriversConfig.obj" \
 "./drivers/Drivers.obj" \
 "./drivers/devices/Multiplexer.obj" \
@@ -33,6 +35,8 @@ RMDIR := RMDIR /S/Q
 -include system/subdir.mk
 -include drivers/devices/subdir.mk
 -include drivers/subdir.mk
+-include application/STR/subdir.mk
+-include application/COM/subdir.mk
 -include application/subdir.mk
 -include objects.mk
 
@@ -122,15 +126,15 @@ all: Project-Cheesecake.out
 Project-Cheesecake.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Linker'
-	"D:/Program Files/MSP430/ccsv4/tools/compiler/msp430/bin/cl430" -vmspx -g --define=__MSP430FG4619__ --diag_warning=225 --printf_support=minimal -z -m"Project-Cheesecake.map" --stack_size=0x200 --heap_size=0x200 --use_hw_mpy=16 --warn_sections -i"D:/Program Files/MSP430/ccsv4/msp430/include" -i"C:/Users/Kane/Project-Cheesecake/source/application" -i"C:/Users/Kane/Project-Cheesecake/source/test application" -i"C:/Users/Kane/Project-Cheesecake/source" -i"C:/Users/Kane/Project-Cheesecake/source/drivers" -i"C:/Users/Kane/Project-Cheesecake/source/drivers/devices" -i"C:/Users/Kane/Project-Cheesecake/source/system" -i"D:/Program Files/MSP430/ccsv4/tools/compiler/msp430/lib" -i"D:/Program Files/MSP430/ccsv4/tools/compiler/msp430/include" --reread_libs --rom_model -o "Project-Cheesecake.out" $(ORDERED_OBJS)
+	"C:/Program Files (x86)/Texas Instruments/ccsv4/tools/compiler/msp430/bin/cl430" -vmspx -g --define=__MSP430FG4619__ --diag_warning=225 --printf_support=minimal -z -m"Project-Cheesecake.map" --stack_size=0x200 --heap_size=0x200 --use_hw_mpy=16 --warn_sections -i"C:/Program Files (x86)/Texas Instruments/ccsv4/msp430/include" -i"C:/Users/Kane/Project-Cheesecake/source/application" -i"C:/Users/Kane/Project-Cheesecake/source/test application" -i"C:/Users/Kane/Project-Cheesecake/source" -i"C:/Users/Kane/Project-Cheesecake/source/drivers" -i"C:/Users/Kane/Project-Cheesecake/source/drivers/devices" -i"C:/Users/Kane/Project-Cheesecake/source/system" -i"C:/Program Files (x86)/Texas Instruments/ccsv4/tools/compiler/msp430/lib" -i"C:/Program Files (x86)/Texas Instruments/ccsv4/tools/compiler/msp430/include" --reread_libs --rom_model -o "Project-Cheesecake.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(MSP430_EXECUTABLE_OUTPUTS__QTD) "Project-Cheesecake.out"
-	-$(RM) ".\test application\TestApplication.obj" ".\system\System.obj" ".\system\SystemConfig.obj" ".\main.obj" ".\drivers\devices\Multiplexer.obj" ".\drivers\Drivers.obj" ".\drivers\DriversConfig.obj" ".\application\Application.obj" ".\application\ApplicationConfig.obj" 
-	-$(RM) ".\test application\TestApplication.pp" ".\system\System.pp" ".\system\SystemConfig.pp" ".\main.pp" ".\drivers\devices\Multiplexer.pp" ".\drivers\Drivers.pp" ".\drivers\DriversConfig.pp" ".\application\Application.pp" ".\application\ApplicationConfig.pp" 
+	-$(RM) ".\test application\TestApplication.obj" ".\system\System.obj" ".\system\SystemConfig.obj" ".\main.obj" ".\drivers\devices\Multiplexer.obj" ".\drivers\Drivers.obj" ".\drivers\DriversConfig.obj" ".\application\STR\STR.obj" ".\application\COM\COM.obj" ".\application\Application.obj" ".\application\ApplicationConfig.obj" 
+	-$(RM) ".\test application\TestApplication.pp" ".\system\System.pp" ".\system\SystemConfig.pp" ".\main.pp" ".\drivers\devices\Multiplexer.pp" ".\drivers\Drivers.pp" ".\drivers\DriversConfig.pp" ".\application\STR\STR.pp" ".\application\COM\COM.pp" ".\application\Application.pp" ".\application\ApplicationConfig.pp" 
 	-@echo ' '
 
 .PHONY: all clean dependents

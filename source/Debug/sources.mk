@@ -93,5 +93,7 @@ system \
 . \
 drivers/devices \
 drivers \
+application/STR \
+application/COM \
 application \
 

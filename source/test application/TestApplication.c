@@ -13,12 +13,12 @@
 void test_application_initialize(void)
 {
 	// TODO
-	application_initialize();
+	
 }
 
 void test_application_main(void)
 {
 	// TODO
-	application_main();
+	
 }
 
