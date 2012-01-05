@@ -1,21 +1,21 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    Watchdog source                                        	//
+//    SPIDevice source                                        	//
 //    last edited by: Kane Anderson                             //
 //    date: January 4, 2012                                     //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "Watchdog.h"
+#include "SPIDevice.h"
 
 // functions //////////////////////////////////
 
-void watchdog_initialize(void)
+void SPI_initialize(SPIDevice* device)
 {
 	// TODO
 }
 
-void kickTheDog(Watchdog* watchdog)
+void transmit(SPIDevice* recipient, char* message)
 {
 	// TODO
 }

@@ -1,22 +1,23 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    Watchdog source                                        	//
+//    SDCard header                                        		//
 //    last edited by: Kane Anderson                             //
 //    date: January 4, 2012                                     //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "Watchdog.h"
+#ifndef SDCARD_H
+#define SDCARD_H
 
-// functions //////////////////////////////////
+#include <msp430fg4619.h>
+#include "../DriversConfig.h"
+#include "SPIDevice.h"
 
-void watchdog_initialize(void)
-{
-	// TODO
-}
+// same thing //////////////////////////////////
+typedef SPIDevice SDCard;
 
-void kickTheDog(Watchdog* watchdog)
-{
-	// TODO
-}
+// extended functionality
+void readSDCard(SDCard* card, UI8 address);
+void writeByte(SDCard* card, UI8 byteAddress);
 
+#endif
