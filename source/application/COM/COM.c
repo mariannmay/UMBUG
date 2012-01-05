@@ -13,6 +13,10 @@ void doSomething(void)
 	// TODO
 }
 
+
+/*
+ * note: this stuff does not compile
+
 //wraps information in AX25 protocol
 //info char[] should be max length of 256
 char[] packetize(char[] info)
@@ -68,3 +72,5 @@ char[] generateFCS(char[] info)
 	return FCS;
 	
 }
+
+*/
