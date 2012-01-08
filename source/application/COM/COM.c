@@ -2,7 +2,7 @@
 //                                                              //
 //    COM source                                                //
 //    last edited by: Craig Nemeth                              //
-//    date: January 2, 2012                                     //
+//    date: January 8, 2012                                     //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -14,14 +14,13 @@ void doSomething(void)
 }
 
 
-/*
- * note: this stuff does not compile
 
-//wraps information in AX25 protocol
+
+//wraps information in AX25 protocol and stores it in a packet
 //info char[] should be max length of 256
-char[] packetize(char[] info)
+void packetize(char info[], char packet[])
 {
-	char packet[info.size + 20]; //information packet, max size is 276 bytes with protocol and maximum info
+	//static char packet[info.size + 20]; //information packet, max size is 276 bytes with protocol and maximum info
 	
 	packet[0] = 0x7E;//start flag
 	//destination VE4UM_1
@@ -45,32 +44,28 @@ char[] packetize(char[] info)
 	//PID protocol identifier
 	packet[16] = 0xF0; //no L3 protocol
 	//information insertion
-	for(uint i = 0; i<info.size; i++)
+	unsigned int i;
+	for(i = 0; i<sizeof(info); i++)
 	{
 		packet[17+i] = info[i];
 	}
 	//FCS generation
-	char FCS = generateFCS(info);
+	//generateFCS(info, packet);  i dont know why this method call gives an error so this method doesnt yet insert an FCS
 	
-	//FCS insertion
-	packet[17 + info.size] = FCS[0]; //1st half of fcs
-	packet[18 + info.size] = FCS[1]; //2nd half of fcs
 	//end flag
-	packet[19 + info.size] = 0x7E;
+	packet[19 + sizeof(info)] = 0x7E;
 	//packet is complete
 	
-	return packet;
 }
 
-char[] generateFCS(char[] info)
+void generateFCS(char info[], char packet[])
 {
-	char FCS[2];
+	//generate the fcs
+	//temporarily 0x00
 	
-	FCS[0] = 0x00;//default until FCS formula written
-	FCS[1] = 0x00;
-	
-	return FCS;
-	
+	//FCS insertion
+	packet[17 + sizeof(info)] = 0x00; //1st half of fcs
+	packet[18 + sizeof(info)] = 0x00; //2nd half of fcs	
 }
 
-*/
+

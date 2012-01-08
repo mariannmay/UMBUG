@@ -9,7 +9,7 @@
 #ifndef STR_H
 #define STR_H
 
-#include "System.h"
+#include "../../system/System.h"
 
 void deployAntennas(void);
 
