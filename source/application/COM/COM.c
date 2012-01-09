@@ -14,10 +14,11 @@ void doSomething(void)
 }
 
 
-
-
+///// packetize //////////////////////////////////////////////////
 //wraps information in AX25 protocol and stores it in a packet
-//info char[] should be max length of 256
+//char info[] should be max length of 256
+//char packet[] should be length of info + 20
+//////////////////////////////////////////////////////////////////
 void packetize(char info[], char packet[])
 {
 	//static char packet[info.size + 20]; //information packet, max size is 276 bytes with protocol and maximum info
@@ -50,19 +51,19 @@ void packetize(char info[], char packet[])
 		packet[17+i] = info[i];
 	}
 	//FCS generation
-	//generateFCS(info, packet);  i dont know why this method call gives an error so this method doesnt yet insert an FCS
+	//generateFCS(info, packet);  //i dont know why this method call gives an error so this method doesnt yet insert an FCS
 	
 	//end flag
 	packet[19 + sizeof(info)] = 0x7E;
 	//packet is complete
 	
 }
-
+//void generateFCS(int num)
 void generateFCS(char info[], char packet[])
 {
 	//generate the fcs
 	//temporarily 0x00
-	
+
 	//FCS insertion
 	packet[17 + sizeof(info)] = 0x00; //1st half of fcs
 	packet[18 + sizeof(info)] = 0x00; //2nd half of fcs	

@@ -2,7 +2,7 @@
 //                                                              //
 //    COM header                                                //
 //    last edited by: Craig Nemeth                              //
-//    date: January 2, 2012                                     //
+//    date: January 8, 2012                                     //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
