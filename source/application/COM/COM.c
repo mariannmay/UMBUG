@@ -2,7 +2,7 @@
 //                                                              //
 //    COM source                                                //
 //    last edited by: Craig Nemeth                              //
-//    date: January 8, 2012                                     //
+//    date: January 10, 2012                                     //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -51,15 +51,18 @@ void packetize(char info[], char packet[])
 		packet[17+i] = info[i];
 	}
 	//FCS generation
-	//generateFCS(info, packet);  //i dont know why this method call gives an error so this method doesnt yet insert an FCS
+	generateFCS(info, packet);  
 	
 	//end flag
 	packet[19 + sizeof(info)] = 0x7E;
 	//packet is complete
 	
 }
-//void generateFCS(int num)
-void generateFCS(char info[], char packet[])
+
+/////generateFCS////////////////////////////////////////////////////////
+//generates and inserts the FCS into the packet
+////////////////////////////////////////////////////////////////////////
+void generateFCS(char *info, char *packet)
 {
 	//generate the fcs
 	//temporarily 0x00

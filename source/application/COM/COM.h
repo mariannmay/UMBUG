@@ -2,7 +2,7 @@
 //                                                              //
 //    COM header                                                //
 //    last edited by: Craig Nemeth                              //
-//    date: January 8, 2012                                     //
+//    date: January 10, 2012                                     //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -13,5 +13,6 @@
 
 void doSomething(void);
 void packetize(char info[], char packet[]);
+void generateFCS(char *info, char *packet);
 
 #endif
