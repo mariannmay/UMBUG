@@ -21,7 +21,7 @@ void test_application_main(void)
 	// TODO
 	
 	//testing COM////////////////////////////////////////////////
-	char information[] = {0x01,0x0F,0x01};
+	//char information[] = {0x01,0x0F,0x01};
 	char pack[23];
 	//COM.packetize(information, pack); //I'm trying to call my COM method
 	//I tried including the COM folder into TestApplication.h so I could use the

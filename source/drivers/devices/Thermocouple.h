@@ -1,13 +1,13 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    Counter header                                        	//
+//    Thermocouple header                                     	//
 //    last edited by: Kane Anderson                             //
 //    date: January 10, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#ifndef COUNTER_H
-#define COUNTER_H
+#ifndef THERMOCOUPLE_H
+#define THERMOCOUPLE_H
 
 #include <msp430fg4619.h>
 #include "../DriversConfig.h"
@@ -17,18 +17,13 @@
 // structure //////////////////////////////////
 typedef struct
 {
-	DigitalInput enable;
-	DigitalOutput count0;
-	DigitalOutput count1;
-	DigitalOutput count2;
-	DigitalOutput count3;
+	AnalogInput voltageInput;
 }
-Counter;
+Thermocouple;
 
 // functions //////////////////////////////////
 
-void counter_initialize(void);
-void counter_startCount(Counter* counter);
-void counter_resetCount(Counter* counter);
+void thermocouple_initialize(void);
+word thermocouple_read(Thermocouple* thermocouple);
 
 #endif

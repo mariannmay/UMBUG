@@ -1,27 +1,23 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    Counter source                                            //
+//    Thermocouple source                                       //
 //    last edited by: Kane Anderson                             //
 //    date: January 10, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "Counter.h"
+#include "Thermocouple.h"
 
 // functions //////////////////////////////////
 
-void counter_initialize(void)
+void thermocouple_initialize(void)
 {
 	// TODO
 }
 
-void counter_startCount(Counter* counter)
+word thermocouple_read(Thermocouple* thermocouple)
 {
 	// TODO
-}
-
-void counter_resetCount(Counter* counter)
-{
-	// TODO
+	return 0x0000;
 }
 
