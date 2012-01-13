@@ -21,17 +21,13 @@ void test_application_main(void)
 	// TODO
 	
 	//testing COM////////////////////////////////////////////////
-	char information[] = {0x01,0x0F,0x01};
+	char testInfo[] = {'a','b','c'};
 	char pack[23];
-	//COM.packetize(information, pack); //I'm trying to call my COM method
-	//I tried including the COM folder into TestApplication.h so I could use the
-	//method I wrote in the COMS folder
-	int i;
-	for(i =0; i<sizeof(pack); i++)
-	{
-		//heres where I want to test each byte but I forget how you said to do it
-		//I'll ask next meeting about the syntax
-	}
+	char dest[] = {'V','E','4','U','M','_','1'};
+	packetize(testInfo, pack, dest); //stuffing info into an AX.25 packet for VE4UM_1
+	
+	//heres where I want to test each byte
+	//assert(pack[17] == 'a');
 	/////////////////////////////////////////////////////////////
 }
 

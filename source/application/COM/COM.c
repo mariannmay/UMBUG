@@ -2,37 +2,38 @@
 //                                                              //
 //    COM source                                                //
 //    last edited by: Craig Nemeth                              //
-//    date: January 10, 2012                                     //
+//    date: January 12, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
 #include "COM.h"
 
-void doSomething(void)
-{
-	// TODO
-}
 
-
-///// packetize //////////////////////////////////////////////////
+///// packetize /////////////////////////////////////////////////////
 //wraps information in AX25 protocol and stores it in a packet
+//
+//Parameters:
+//
 //char info[] should be max length of 256
 //char packet[] should be length of info + 20
-//////////////////////////////////////////////////////////////////
-void packetize(char info[], char packet[])
+//char dest[] should be the destination callsign of length 7
+//
+//////////////////////////////////////////////////////////////////////
+void packetize(char info[], char packet[], char dest[])
 {
-	//static char packet[info.size + 20]; //information packet, max size is 276 bytes with protocol and maximum info
+	//information packet, max size is 276 bytes with protocol and maximum info
+	
+	unsigned int i;//counter
 	
 	packet[0] = 0x7E;//start flag
-	//destination VE4UM_1
-	packet[1] = 0x56;
-	packet[2] = 0x45;
-	packet[3] = 0x34;
-	packet[4] = 0x55;
-	packet[5] = 0x4D;
-	packet[6] = 0x20;
-	packet[7] = 0x31;
-	//source VE4SCH1
+	
+	//destination insertion
+	for(i =0; i<7; i++)
+	{
+		packet[i+1] = dest[i];
+	}
+	
+	//source temporarily = VE4SCH1
 	packet[8] = 0x56;
 	packet[9] = 0x45;
 	packet[10] = 0x34;
@@ -40,17 +41,20 @@ void packetize(char info[], char packet[])
 	packet[12] = 0x43;
 	packet[13] = 0x48;
 	packet[14] = 0x31;
+	
 	//control
 	packet[15] = 0x00;
+	
 	//PID protocol identifier
 	packet[16] = 0xF0; //no L3 protocol
+	
 	//information insertion
-	unsigned int i;
 	for(i = 0; i<sizeof(info); i++)
 	{
 		packet[17+i] = info[i];
 	}
-	//FCS generation
+	
+	//FCS generation and insertion
 	generateFCS(info, packet);  
 	
 	//end flag
@@ -72,4 +76,42 @@ void generateFCS(char *info, char *packet)
 	packet[18 + sizeof(info)] = 0x00; //2nd half of fcs	
 }
 
+/// depacketize //////////////////////////////////////////////////////////
+//unpacks and checks packets recieved from the COMs subsystem
+//
+//parameters:
+//
+//char data[] the array in which the recieved data will be stored
+//			  data array should be size of packet-20
+//char packet[] the packet retrieved by COMs
+//
+//returns true if info, false if a command
+//
+////////////////////////////////////////////////////////////////////////
+bool depacketize(char data[], char packet[])
+{
+	bool type;//the type of packet. info or command. true or false.
+	
+	//check and correct errors with FCS
+	errorCorrection(packet);
+	
+	//TODO
+	//check and set variable type
+	
+	//take the data
+	extractData(data,packet);
+	
+	return(type);
+}
 
+void errorCorrection(char packet[])
+{
+	//TODO
+	//extract FCS, check and fix packet
+}
+
+void extractData(char data[], char packet[])
+{
+	//TODO
+	//copy data from packet[] to data[]
+}
