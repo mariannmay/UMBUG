@@ -1,26 +1,31 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    Counter source                                            //
+//    DFlipFlop source                                        	//
 //    last edited by: Kane Anderson                             //
-//    date: January 10, 2012                                    //
+//    date: January 12, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "Counter.h"
+#include "DFlipFlop.h"
 
 // functions //////////////////////////////////
 
-void counter_initialize(void)
+void DFF_initialize(DFlipFlop* dff)
 {
 	// TODO
 }
 
-void counter_startCount(Counter* counter)
+void DFF_set(DFlipFlop* dff)
 {
 	// TODO
 }
 
-void counter_resetCount(Counter* counter)
+void DFF_reset(DFlipFlop* dff)
+{
+	// TODO
+}
+
+void DFF_toggle(DFlipFlop* dff)
 {
 	// TODO
 }

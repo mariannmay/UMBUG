@@ -1,13 +1,13 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    Counter header                                        	//
+//    DFlipFlop header                                        	//
 //    last edited by: Kane Anderson                             //
-//    date: January 10, 2012                                    //
+//    date: January 12, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#ifndef COUNTER_H
-#define COUNTER_H
+#ifndef DFLIPFLOP_H
+#define DFLIPFLOP_H
 
 #include <msp430fg4619.h>
 #include "../DriversConfig.h"
@@ -17,18 +17,20 @@
 // structure //////////////////////////////////
 typedef struct
 {
-	DigitalInput enable;
-	DigitalOutput count0;
-	DigitalOutput count1;
-	DigitalOutput count2;
-	DigitalOutput count3;
+	DigitalInput D;
+	DigitalInput Set;
+	DigitalInput Reset;
+	
+	DigitalOutput Q;
+	DigitalOutput notQ;
 }
-Counter;
+DFlipFlop;
 
 // functions //////////////////////////////////
 
-void counter_initialize(void);
-void counter_startCount(Counter* counter);
-void counter_resetCount(Counter* counter);
+void DFF_initialize(DFlipFlop* dff);
+void DFF_set(DFlipFlop* dff);
+void DFF_reset(DFlipFlop* dff);
+void DFF_toggle(DFlipFlop* dff);
 
 #endif

@@ -1,13 +1,13 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    Counter header                                        	//
+//    Spectrometer header                                      	//
 //    last edited by: Kane Anderson                             //
-//    date: January 10, 2012                                    //
+//    date: January 12, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#ifndef COUNTER_H
-#define COUNTER_H
+#ifndef SPECTROMETER_H
+#define SPECTROMETER_H
 
 #include <msp430fg4619.h>
 #include "../DriversConfig.h"
@@ -17,18 +17,24 @@
 // structure //////////////////////////////////
 typedef struct
 {
-	DigitalInput enable;
-	DigitalOutput count0;
-	DigitalOutput count1;
-	DigitalOutput count2;
-	DigitalOutput count3;
+	// just guessing 8 bytes... not sure
+	volatile Byte byte[8];
 }
-Counter;
+SpectrometryData;
+
+typedef struct
+{
+	DigitalInput something;
+	DigitalOutput somethingElse;
+	
+	SpectrometryData data;
+}
+Spectrometer;
+
 
 // functions //////////////////////////////////
 
-void counter_initialize(void);
-void counter_startCount(Counter* counter);
-void counter_resetCount(Counter* counter);
+void spectrometer_initialize(Spectrometer* spectrometer);
+SpectrometryData readSpectrometer(Spectrometer* spectrometer);
 
 #endif
