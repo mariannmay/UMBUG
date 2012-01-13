@@ -59,6 +59,10 @@ void packetize(char info[], char packet[], char dest[])
 	
 	//end flag
 	packet[19 + sizeof(info)] = 0x7E;
+
+	//do bit stuffing on assembled packet	
+	bitStuffing(packet); 
+	 
 	//packet is complete
 	
 }
@@ -75,6 +79,27 @@ void generateFCS(char *info, char *packet)
 	packet[17 + sizeof(info)] = 0x00; //1st half of fcs
 	packet[18 + sizeof(info)] = 0x00; //2nd half of fcs	
 }
+
+/// bitStuffing //////////////////////////////////////////////////////////////////////
+/*
+ * BIT STUFFING IN AX.25
+ * 
+ * In order to assure that the flag bit sequence mentioned above doesn't appear 
+ * accidentally anywhere else in a frame, the sending station shall monitor the
+ * bit sequence for a group of five or more contiguous one bits. Any time five
+ * contiguous one bits are sent the sending station shall insert a zero bit 
+ * after the fifth one bit. During frame reception, any time five contiguous one 
+ * bits are received, a zero bit immediately following five one bits shall be discarded
+ */
+ //
+ //parameters: char *packet is the assembled AX.25 packet
+ //
+ //////////////////////////////////////////////////////////////////////////////////////
+ void bitStuffing(char *packet)
+ {
+ 	//TODO 
+ 	//also I found that this should probably be placed on the COMs seperate processor
+ }
 
 /// depacketize //////////////////////////////////////////////////////////
 //unpacks and checks packets recieved from the COMs subsystem
@@ -98,8 +123,11 @@ bool depacketize(char data[], char packet[])
 	//TODO
 	//check and set variable type
 	
-	//take the data
-	extractData(data,packet);
+	int i;
+	for(i=0; i<sizeof(data); i++)
+	{
+		data[i] = packet[17+i];
+	}
 	
 	return(type);
 }
@@ -110,8 +138,3 @@ void errorCorrection(char packet[])
 	//extract FCS, check and fix packet
 }
 
-void extractData(char data[], char packet[])
-{
-	//TODO
-	//copy data from packet[] to data[]
-}
