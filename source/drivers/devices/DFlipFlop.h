@@ -1,13 +1,13 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    Thermocouple header                                     	//
+//    DFlipFlop header                                        	//
 //    last edited by: Kane Anderson                             //
-//    date: January 10, 2012                                    //
+//    date: January 12, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#ifndef THERMOCOUPLE_H
-#define THERMOCOUPLE_H
+#ifndef DFLIPFLOP_H
+#define DFLIPFLOP_H
 
 #include <msp430fg4619.h>
 #include "../DriversConfig.h"
@@ -17,13 +17,20 @@
 // structure //////////////////////////////////
 typedef struct
 {
-	AnalogInput voltageInput;
+	DigitalInput D;
+	DigitalInput Set;
+	DigitalInput Reset;
+	
+	DigitalOutput Q;
+	DigitalOutput notQ;
 }
-Thermocouple;
+DFlipFlop;
 
 // functions //////////////////////////////////
 
-void thermocouple_initialize(void);
-Word thermocouple_read(Thermocouple* thermocouple);
+void DFF_initialize(DFlipFlop* dff);
+void DFF_set(DFlipFlop* dff);
+void DFF_reset(DFlipFlop* dff);
+void DFF_toggle(DFlipFlop* dff);
 
 #endif

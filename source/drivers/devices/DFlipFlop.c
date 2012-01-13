@@ -1,23 +1,32 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    Thermocouple source                                       //
+//    DFlipFlop source                                        	//
 //    last edited by: Kane Anderson                             //
-//    date: January 10, 2012                                    //
+//    date: January 12, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "Thermocouple.h"
+#include "DFlipFlop.h"
 
 // functions //////////////////////////////////
 
-void thermocouple_initialize(void)
+void DFF_initialize(DFlipFlop* dff)
 {
 	// TODO
 }
 
-Word thermocouple_read(Thermocouple* thermocouple)
+void DFF_set(DFlipFlop* dff)
 {
 	// TODO
-	return 0x0000;
+}
+
+void DFF_reset(DFlipFlop* dff)
+{
+	// TODO
+}
+
+void DFF_toggle(DFlipFlop* dff)
+{
+	// TODO
 }
 

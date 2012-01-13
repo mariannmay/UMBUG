@@ -1,13 +1,13 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    Thermocouple header                                     	//
+//    Spectrometer header                                      	//
 //    last edited by: Kane Anderson                             //
-//    date: January 10, 2012                                    //
+//    date: January 12, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#ifndef THERMOCOUPLE_H
-#define THERMOCOUPLE_H
+#ifndef SPECTROMETER_H
+#define SPECTROMETER_H
 
 #include <msp430fg4619.h>
 #include "../DriversConfig.h"
@@ -17,13 +17,24 @@
 // structure //////////////////////////////////
 typedef struct
 {
-	AnalogInput voltageInput;
+	// just guessing 8 bytes... not sure
+	volatile Byte byte[8];
 }
-Thermocouple;
+SpectrometryData;
+
+typedef struct
+{
+	DigitalInput something;
+	DigitalOutput somethingElse;
+	
+	SpectrometryData data;
+}
+Spectrometer;
+
 
 // functions //////////////////////////////////
 
-void thermocouple_initialize(void);
-Word thermocouple_read(Thermocouple* thermocouple);
+void spectrometer_initialize(Spectrometer* spectrometer);
+SpectrometryData readSpectrometer(Spectrometer* spectrometer);
 
 #endif
