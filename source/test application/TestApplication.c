@@ -23,9 +23,12 @@ void test_application_main(void)
 	//testing COM////////////////////////////////////////////////
 	char testInfo[] = {'a','b','c'};
 
-	char pack[23];
+	Packet P;
+	//malloc here?
+	P.size = 23;
+	
 	char dest[] = {'V','E','4','U','M','_','1'};
-	packetize(testInfo, pack, dest); //stuffing info into an AX.25 packet for VE4UM_1
+	packetize(testInfo, &P, dest); //stuffing info into an AX.25 packet for VE4UM_1
 	
 	//heres where I want to test each byte
 	//assert(pack[17] == 'a');

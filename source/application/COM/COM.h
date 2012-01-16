@@ -11,24 +11,32 @@
 
 #include "../../system/System.h"
 
-//Structure///////////////////////////////////////////
+//Structures///////////////////////////////////////////
 typedef struct
 {
-	char *packet;
+	char *index;
 	unsigned int size;
 }
-Packet;
+Packet; //This is an AX.25 packet
+
+typedef struct
+{
+	unsigned int type;//type of information being sent. Defines layout of char[] index
+	char *index;//info
+	unsigned int size;//size
+}
+Info; //This is a chunk of information to be stuffed into a packet
 
 
 //Functions///////////////////////////////////////////
 
 //sending packets/////////////////////////////////////
-void packetize(char info[], char packet[], char dest[]);
-void generateFCS(char *info, char *packet);
-void bitStuffing(char *packet);
+void packetize(char *info, Packet *packet, char dest[]);
+void generateFCS(char *info, Packet *packet);
+void bitStuffing(Packet *packet);
 //recieving packets///////////////////////////////////
-bool depacketize(char data[], char packet[]);
-void errorCorrection(char packet[]);
+bool depacketize(char data[], Packet *packet);
+void errorCorrection(Packet *packet);
 
 
 #endif
