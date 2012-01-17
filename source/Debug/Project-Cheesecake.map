@@ -1,7 +1,7 @@
 ******************************************************************************
        MSP430 Evaluation Linker PC v3.3.1                      
 ******************************************************************************
->> Linked Mon Jan 16 17:35:39 2012
+>> Linked Mon Jan 16 18:53:32 2012
 
 OUTPUT FILE NAME:   <Project-Cheesecake.out>
 ENTRY POINT SYMBOL: "_c_int00"  address: 00002100

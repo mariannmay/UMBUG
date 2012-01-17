@@ -15,6 +15,14 @@
 
 #include "ApplicationConfig.h"
 
+#if CDH_PROCESSOR_COMPILE
+#include "CDHApplication.h"
+#endif
+
+#if COM_PROCESSOR_COMPILE
+#include "COMApplication.h"
+#endif
+
 //////////////////////////////////
 
 void application_initialize(void);

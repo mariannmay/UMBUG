@@ -31,6 +31,16 @@ void application_main(void)
     P5OUT ^= BIT1;                          // Toggle P5.1
     for(i=10000;i>0;i--);                   // Delay
   }
+  
+  #if CDH_PROCESSOR_COMPILE
+  	CDH_application_main(void);
+  #endif
+  
+  #if COM_PROCESSOR_COMPILE
+  	COM_application_main(void);
+  #endif
 }
 
 //////////////////////////////////
+
+
