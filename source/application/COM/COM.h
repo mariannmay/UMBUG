@@ -30,7 +30,7 @@ typedef struct
 	//TODO
 	unsigned int size;//size
 }
-Data; //This is a chunk of information to be stuffed into a packet
+Data; //This is a chunk of information to be stuffed into, or taken out of, a packet
 
 
 
