@@ -1,7 +1,7 @@
 ******************************************************************************
        MSP430 Evaluation Linker PC v3.3.1                      
 ******************************************************************************
->> Linked Mon Jan 16 18:53:32 2012
+>> Linked Tue Jan 17 12:33:21 2012
 
 OUTPUT FILE NAME:   <Project-Cheesecake.out>
 ENTRY POINT SYMBOL: "_c_int00"  address: 00002100
@@ -84,7 +84,7 @@ section   page    origin      length       input sections
                   000022e6    00000034     COM.obj (.text:generateFCS)
                   0000231a    00000012     main.obj (.text:main)
                   0000232c    00000012     rts430x.lib : memcpy.obj (.text:memcpy)
-                  0000233e    0000000a     COM.obj (.text:bitStuffing)
+                  0000233e    0000000a     Encoder.obj (.text:bitStuffing)
                   00002348    00000004     rts430x.lib : pre_init.obj (.text:_system_pre_init)
                   0000234c    00000004                 : exit.obj (.text:abort)
                   00002350    00000002                 : _lock.obj (.text:_nop)

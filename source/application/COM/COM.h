@@ -2,7 +2,7 @@
 //                                                              //
 //    COM header                                                //
 //    last edited by: Craig Nemeth                              //
-//    date: January 16, 2012                                    //
+//    date: January 17, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -39,7 +39,6 @@ Data; //This is a chunk of information to be stuffed into, or taken out of, a pa
 //sending packets/////////////////////////////////////
 void packetize(Data *data, Packet *packet, char dest[]);
 void generateFCS(Data *data, Packet *packet);
-void bitStuffing(Packet *packet);
 //recieving packets///////////////////////////////////
 void depacketize(Data *data, Packet *packet);
 void errorCorrection(Packet *packet);

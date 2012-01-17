@@ -2,7 +2,7 @@
 //                                                              //
 //    TestApplication source                                    //
 //    last edited by: Craig Nemeth                              //
-//    date: January 10, 2012                                    //
+//    date: January 17, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -20,7 +20,7 @@ void test_application_main(void)
 {
 	// TODO
 	
-	//testing COM////////////////////////////////////////////////////////
+	//testing COMs done in CDH processor////////////////////////////////////////////////////////
 	Data D;
 	//malloc required?
 	D.size = 3;
