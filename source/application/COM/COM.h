@@ -2,7 +2,7 @@
 //                                                              //
 //    COM header                                                //
 //    last edited by: Craig Nemeth                              //
-//    date: January 12, 2012                                    //
+//    date: January 16, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -21,21 +21,27 @@ Packet; //This is an AX.25 packet
 
 typedef struct
 {
-	unsigned int type;//type of information being sent. Defines layout of char[] index
-	char *index;//info
+	bool type;// info==true, command==false
+	char *index;//contents
+	//if info data
+	//The first byte of the info array will contain the layout key for the array
+	//This will differentiate the different types of info packets
+	//if command data
+	//TODO
 	unsigned int size;//size
 }
-Info; //This is a chunk of information to be stuffed into a packet
+Data; //This is a chunk of information to be stuffed into a packet
+
 
 
 //Functions///////////////////////////////////////////
 
 //sending packets/////////////////////////////////////
-void packetize(char *info, Packet *packet, char dest[]);
-void generateFCS(char *info, Packet *packet);
+void packetize(Data *data, Packet *packet, char dest[]);
+void generateFCS(Data *data, Packet *packet);
 void bitStuffing(Packet *packet);
 //recieving packets///////////////////////////////////
-bool depacketize(char data[], Packet *packet);
+void depacketize(Data *data, Packet *packet);
 void errorCorrection(Packet *packet);
 
 

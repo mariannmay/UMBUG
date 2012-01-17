@@ -2,7 +2,7 @@
 //                                                              //
 //    COM source                                                //
 //    last edited by: Craig Nemeth                              //
-//    date: January 12, 2012                                    //
+//    date: January 16, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -14,12 +14,13 @@
 //
 //Parameters:
 //
-//char info[] should be max length of 256
-//char packet[] should be length of info + 20
+//Data *data should have index max length of 256 and should be
+//information. unless we're sending commands to ground
+//Packet *packet should should have length of *data->size + 20
 //char dest[] should be the destination callsign of length 7
 //
 //////////////////////////////////////////////////////////////////////
-void packetize(char info[], Packet *packet, char dest[])
+void packetize(Data *data, Packet *packet, char dest[])
 {
 	//information packet, max size is 276 bytes with protocol and maximum info
 	
@@ -49,16 +50,16 @@ void packetize(char info[], Packet *packet, char dest[])
 	packet->index[16] = 0xF0; //no L3 protocol
 	
 	//information insertion
-	for(i = 0; i<sizeof(info); i++)
+	for(i = 0; i<data->size; i++)
 	{
-		packet->index[17+i] = info[i];
+		packet->index[17+i] = data->index[i];
 	}
 	
 	//FCS generation and insertion
-	generateFCS(info, packet);  
+	generateFCS(data, packet);  
 	
 	//end flag
-	packet->index[19 + sizeof(info)] = 0x7E;
+	packet->index[19 + data->size] = 0x7E;
 
 	//do bit stuffing on assembled packet	
 	bitStuffing(packet); 
@@ -70,14 +71,14 @@ void packetize(char info[], Packet *packet, char dest[])
 /////generateFCS////////////////////////////////////////////////////////
 //generates and inserts the FCS into the packet
 ////////////////////////////////////////////////////////////////////////
-void generateFCS(char *info, Packet *packet)
+void generateFCS(Data *data, Packet *packet)
 {
 	//generate the fcs
 	//temporarily 0x00
 
 	//FCS insertion
-	packet->index[17 + sizeof(info)] = 0x00; //1st half of fcs
-	packet->index[18 + sizeof(info)] = 0x00; //2nd half of fcs	
+	packet->index[17 + data->size] = 0x00; //1st half of fcs
+	packet->index[18 + data->size] = 0x00; //2nd half of fcs	
 }
 
 /// bitStuffing //////////////////////////////////////////////////////////////////////
@@ -106,30 +107,26 @@ void generateFCS(char *info, Packet *packet)
 //
 //parameters:
 //
-//char data[] the array in which the recieved data will be stored
-//			  data array should be size of packet-20
-//char packet[] the packet retrieved by COMs
-//
-//returns true if info, false if a command
+//Data *data is structure in which the recieved data will be stored
+//			  data->index array should be size of packet->size-20
+//Packet *packet is the structure holding the packet retrieved by COMs
 //
 ////////////////////////////////////////////////////////////////////////
-bool depacketize(char data[], Packet *packet)
+void depacketize(Data *data, Packet *packet)
 {
-	bool type;//the type of packet. info or command. true or false.
 	
 	//check and correct errors with FCS
 	errorCorrection(packet);
 	
 	//TODO
-	//check and set variable type
+	//check info or command and set boolean variable data->type= true or false;
 	
 	int i;
-	for(i=0; i<sizeof(data); i++)
+	for(i=0; i<data->size; i++)
 	{
-		data[i] = packet->index[17+i];
+		data->index[i] = packet->index[17+i];
 	}
 	
-	return(type);
 }
 
 void errorCorrection(Packet *packet)

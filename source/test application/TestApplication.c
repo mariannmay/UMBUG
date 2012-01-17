@@ -20,18 +20,24 @@ void test_application_main(void)
 {
 	// TODO
 	
-	//testing COM////////////////////////////////////////////////
-	char testInfo[] = {'a','b','c'};
+	//testing COM////////////////////////////////////////////////////////
+	Data D;
+	//malloc required?
+	D.size = 3;
+	D.type = true;
+	D.index[0] = 'a';
+	D.index[1] = 'b';
+	D.index[2] = 'c';
 
 	Packet P;
 	//malloc here?
-	P.size = 23;
+	P.size = D.size+20;
 	
 	char dest[] = {'V','E','4','U','M','_','1'};
-	packetize(testInfo, &P, dest); //stuffing info into an AX.25 packet for VE4UM_1
+	packetize(&D, &P, dest); //stuffing info into an AX.25 packet for VE4UM_1
 	
 	//heres where I want to test each byte
 	//assert(pack[17] == 'a');
-	/////////////////////////////////////////////////////////////
+	//end of testing COM///////////////////////////////////////////////////
 }
 
