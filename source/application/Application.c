@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
 //    Application source                                        //
-//    last edited by:  Craig Nemeth                             //
+//    last edited by:  Kane Anderson                            //
 //    date: January 17, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
@@ -17,7 +17,21 @@ void application_initialize(void)
 
 void application_main(void)
 {
-	// TODO
+	// note:
+	// CDH_PROCESSOR_COMPILE and COM_PROCESSOR_COMPILE
+	// are #defined in ApplicationConfig.h
+	
+	#if CDH_PROCESSOR_COMPILE
+		// the application which will run
+		// on the CDH processor
+		CDH_application_main();
+	#endif
+
+	#if COM_PROCESSOR_COMPILE
+		// the application which will run
+		// on the COM processor
+		COM_application_main();
+	#endif
 }
 
 //////////////////////////////////

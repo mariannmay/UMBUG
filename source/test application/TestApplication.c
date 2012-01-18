@@ -39,5 +39,9 @@ void test_application_main(void)
 	//heres where I want to test each byte
 	//assert(pack[17] == 'a');
 	//end of testing COM///////////////////////////////////////////////////
+	
+	// make sure assert works
+	assert(5 == 42);
 }
+
 

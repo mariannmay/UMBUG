@@ -1,10 +1,10 @@
 ******************************************************************************
                   MSP430 Linker PC v3.3.3                      
 ******************************************************************************
->> Linked Tue Jan 17 21:49:06 2012
+>> Linked Tue Jan 17 22:06:46 2012
 
 OUTPUT FILE NAME:   <Project-Cheesecake.out>
-ENTRY POINT SYMBOL: "_c_int00"  address: 00002100
+ENTRY POINT SYMBOL: "_c_int00"  address: 00002184
 
 
 MEMORY CONFIGURATION
@@ -16,8 +16,8 @@ MEMORY CONFIGURATION
   PERIPHERALS_16BIT     00000100   00000100  00000000  00000100  RWIX
   INFOB                 00001000   00000080  00000000  00000080  RWIX
   INFOA                 00001080   00000080  00000000  00000080  RWIX
-  RAM                   00001100   00001000  00000234  00000dcc  RWIX
-  FLASH                 00002100   0000dec0  000002c4  0000dbfc  RWIX
+  RAM                   00001100   00001000  000007a2  0000085e  RWIX
+  FLASH                 00002100   0000dec0  00001368  0000cb58  RWIX
   INT00                 0000ffc0   00000002  00000000  00000002  RWIX
   INT01                 0000ffc2   00000002  00000000  00000002  RWIX
   INT02                 0000ffc4   00000002  00000000  00000002  RWIX
@@ -60,50 +60,123 @@ section   page    origin      length       input sections
 --------  ----  ----------  ----------   ----------------
 .pinit     0    00002100    00000000     UNINITIALIZED
 
-.bss       0    00001100    00000034     UNINITIALIZED
-                  00001100    00000022     System.obj (.bss)
-                  00001122    00000008     rts430x.lib : _lock.obj (.bss)
-                  0000112a    00000008                 : boot.obj (.bss)
-                  00001132    00000002     SystemConfig.obj (.bss)
+.bss       0    00001100    00000282     UNINITIALIZED
+                  00001100    0000011a     rts430x.lib : defs.obj (.bss)
+                  0000121a    000000a2                 : lowlev.obj (.bss)
+                  000012bc    00000088                 : trgdrv.obj (.bss)
+                  00001344    00000022     System.obj (.bss)
+                  00001366    00000008     rts430x.lib : _lock.obj (.bss)
+                  0000136e    00000008                 : boot.obj (.bss)
+                  00001376    00000008                 : memory.obj (.bss)
+                  0000137e    00000002     SystemConfig.obj (.bss)
+                  00001380    00000002     rts430x.lib : fopen.obj (.bss)
+
+.sysmem    0    00001384    00000200     UNINITIALIZED
+                  00001384    00000004     rts430x.lib : memory.obj (.sysmem)
+                  00001388    000001fc     --HOLE--
+
+.cio       0    00001584    00000120     UNINITIALIZED
+                  00001584    00000120     rts430x.lib : trgmsg.obj (.cio)
 
 .stack     0    00001f00    00000200     UNINITIALIZED
                   00001f00    00000002     rts430x.lib : boot.obj (.stack)
                   00001f02    000001fe     --HOLE--
 
+.cinit     0    00002100    00000084     
+                  00002100    00000042     rts430x.lib : lowlev.obj (.cinit)
+                  00002142    0000002e                 : defs.obj (.cinit)
+                  00002170    00000006     SystemConfig.obj (.cinit)
+                  00002176    00000006     rts430x.lib : fopen.obj (.cinit)
+                  0000217c    00000006                 : memory.obj (.cinit)
+                  00002182    00000002     --HOLE-- [fill = 0]
+
 .text:_isr 
-*          0    00002100    0000002a     
-                  00002100    0000002a     rts430x.lib : boot.obj (.text:_isr:_c_int00_noexit)
+*          0    00002184    00000038     
+                  00002184    00000038     rts430x.lib : boot.obj (.text:_isr:_c_int00_noargs)
 
-.cinit     0    0000212a    00000008     
-                  0000212a    00000006     SystemConfig.obj (.cinit)
-                  00002130    00000002     --HOLE-- [fill = 0]
+.text      0    000021bc    0000121a     
+                  000021bc    0000010e     rts430x.lib : _printfi_min.obj (.text:_setfield)
+                  000022ca    0000010c     COM.obj (.text:packetize)
+                  000023d6    000000d6     rts430x.lib : fputs.obj (.text:fputs)
+                  000024ac    000000c0                 : _printfi_min.obj (.text:_printfi_minimal)
+                  0000256c    000000ba                 : setvbuf.obj (.text:setvbuf)
+                  00002626    000000a6                 : memory.obj (.text:malloc)
+                  000026cc    00000086                 : trgdrv.obj (.text:HOSTlseek)
+                  00002752    00000082                 : fputc.obj (.text:fputc)
+                  000027d4    00000080                 : memory.obj (.text:free)
+                  00002854    0000007a                 : _io_perm.obj (.text:_wrt_ok)
+                  000028ce    0000006c     TestApplication.obj (.text:test_application_main)
+                  0000293a    0000006a     rts430x.lib : trgdrv.obj (.text:HOSTrename)
+                  000029a4    00000064                 : _printfi_min.obj (.text:_ltostr)
+                  00002a08    00000062                 : trgdrv.obj (.text:HOSTopen)
+                  00002a6a    00000062                 : fflush.obj (.text:_doflush)
+                  00002acc    00000060                 : fclose.obj (.text:fclose)
+                  00002b2c    0000005e                 : trgdrv.obj (.text:HOSTwrite)
+                  00002b8a    0000005e                 : fseek.obj (.text:fseek)
+                  00002be8    0000005c                 : trgdrv.obj (.text:HOSTread)
+                  00002c44    00000058                 : div32u.obj (.text)
+                  00002c9c    00000056                 : _printfi_min.obj (.text:_pproc_diouxp)
+                  00002cf2    00000052                 : lowlev.obj (.text:getdevice)
+                  00002d44    00000050                 : lowlev.obj (.text:lseek)
+                  00002d94    0000004a                 : lowlev.obj (.text:close)
+                  00002dde    00000046                 : autoinit.obj (.text:_auto_init)
+                  00002e24    00000044                 : trgdrv.obj (.text:HOSTclose)
+                  00002e68    00000044                 : _printfi_min.obj (.text:_getarg_diouxp)
+                  00002eac    00000044                 : fflush.obj (.text:fflush)
+                  00002ef0    00000044                 : lowlev.obj (.text:write)
+                  00002f34    00000042                 : trgdrv.obj (.text:HOSTunlink)
+                  00002f76    00000040                 : _printfi_min.obj (.text:_pproc_str)
+                  00002fb6    0000003e                 : lsl32.obj (.text:l_lsl_const)
+                  00002ff4    0000003e                 : lsr32.obj (.text:l_lsr_const)
+                  00003032    0000003a                 : fopen.obj (.text:_cleanup)
+                  0000306c    0000003a                 : memory.obj (.text:minit)
+                  000030a6    00000038                 : strncpy.obj (.text:strncpy)
+                  000030de    00000036                 : fprintf.obj (.text:fprintf)
+                  00003114    00000034                 : _printfi_min.obj (.text:_div)
+                  00003148    00000034     COM.obj (.text:generateFCS)
+                  0000317c    00000030     rts430x.lib : lowlev.obj (.text:finddevice)
+                  000031ac    0000002e                 : exit.obj (.text:exit)
+                  000031da    0000002e                 : trgmsg.obj (.text:writemsg)
+                  00003208    0000002c                 : trgmsg.obj (.text:readmsg)
+                  00003234    0000002a                 : lowlev.obj (.text:unlink)
+                  0000325e    00000028                 : assert.obj (.text:_abort_msg)
+                  00003286    00000028                 : memccpy.obj (.text:memccpy)
+                  000032ae    0000001c     System.obj (.text:system_initialize)
+                  000032ca    00000018     rts430x.lib : strchr.obj (.text:strchr)
+                  000032e2    00000018                 : strcmp.obj (.text:strcmp)
+                  000032fa    00000016                 : div16u.obj (.text)
+                  00003310    00000016                 : mult16_hw.obj (.text)
+                  00003326    00000016                 : strcpy.obj (.text:strcpy)
+                  0000333c    00000014                 : memchr.obj (.text:memchr)
+                  00003350    00000014                 : memset.obj (.text:memset)
+                  00003364    00000012     main.obj (.text:main)
+                  00003376    00000012     rts430x.lib : memcpy.obj (.text:memcpy)
+                  00003388    00000012                 : strlen.obj (.text:strlen)
+                  0000339a    0000000a     Encoder.obj (.text:bitStuffing)
+                  000033a4    0000000a     RealTimeClock.obj (.text:realTimeClock_initialize)
+                  000033ae    0000000a     Watchdog.obj (.text:watchdog_initialize)
+                  000033b8    00000006     rts430x.lib : fprintf.obj (.text:_outc)
+                  000033be    00000004                 : fprintf.obj (.text:_outs)
+                  000033c2    00000004                 : pre_init.obj (.text:_system_pre_init)
+                  000033c6    00000004                 : exit.obj (.text:abort)
+                  000033ca    00000004                 : remove.obj (.text:remove)
+                  000033ce    00000002                 : _lock.obj (.text:_nop)
+                  000033d0    00000002     Application.obj (.text:application_initialize)
+                  000033d2    00000002     Drivers.obj (.text:drivers_initialize)
+                  000033d4    00000002     TestApplication.obj (.text:test_application_initialize)
 
-.text      0    00002132    0000026c     
-                  00002132    0000010c     COM.obj (.text:packetize)
-                  0000223e    00000062     TestApplication.obj (.text:test_application_main)
-                  000022a0    00000046     rts430x.lib : autoinit.obj (.text:_auto_init)
-                  000022e6    00000034     COM.obj (.text:generateFCS)
-                  0000231a    0000001c     System.obj (.text:system_initialize)
-                  00002336    00000016     rts430x.lib : mult16_hw.obj (.text)
-                  0000234c    00000012     main.obj (.text:main)
-                  0000235e    00000012     rts430x.lib : memcpy.obj (.text:memcpy)
-                  00002370    0000000a     Encoder.obj (.text:bitStuffing)
-                  0000237a    0000000a     RealTimeClock.obj (.text:realTimeClock_initialize)
-                  00002384    0000000a     Watchdog.obj (.text:watchdog_initialize)
-                  0000238e    00000004     rts430x.lib : pre_init.obj (.text:_system_pre_init)
-                  00002392    00000004                 : exit.obj (.text:abort)
-                  00002396    00000002                 : _lock.obj (.text:_nop)
-                  00002398    00000002     Application.obj (.text:application_initialize)
-                  0000239a    00000002     Drivers.obj (.text:drivers_initialize)
-                  0000239c    00000002     TestApplication.obj (.text:test_application_initialize)
-
-.const     0    0000239e    00000026     
-                  0000239e    00000016     SystemConfig.obj (.const:.string)
-                  000023b4    00000007     TestApplication.obj (.const:$P$T0$1)
-                  000023bb    00000001     --HOLE-- [fill = 0]
-                  000023bc    00000004     SystemConfig.obj (.const)
-                  000023c0    00000002     ApplicationConfig.obj (.const)
-                  000023c2    00000002     DriversConfig.obj (.const)
+.const     0    000033d6    00000092     
+                  000033d6    00000052     TestApplication.obj (.const:.string)
+                  00003428    00000016     SystemConfig.obj (.const:.string)
+                  0000343e    00000014     rts430x.lib : _printfi_min.obj (.const:.string)
+                  00003452    00000007     TestApplication.obj (.const:$P$T0$1)
+                  00003459    00000001     --HOLE-- [fill = 0]
+                  0000345a    00000004     SystemConfig.obj (.const)
+                  0000345e    00000003     rts430x.lib : assert.obj (.const:.string)
+                  00003461    00000001     --HOLE-- [fill = 0]
+                  00003462    00000002                 : fputs.obj (.const:.string)
+                  00003464    00000002     ApplicationConfig.obj (.const)
+                  00003466    00000002     DriversConfig.obj (.const)
 
 .reset     0    0000fffe    00000002     
                   0000fffe    00000002     rts430x.lib : boot.obj (.reset)
@@ -152,12 +225,13 @@ ffffffff   .text
 0000014e   ADC12MEM7
 00000150   ADC12MEM8
 00000152   ADC12MEM9
-000023c0   AnswerToLifeTheUniverseAndEverything
+00003464   AnswerToLifeTheUniverseAndEverything
 00000046   BTCNT1
 00000046   BTCNT12
 00000047   BTCNT2
 00000040   BTCTL
-00002392   C$$EXIT
+000033c6   C$$EXIT
+00003204   C$$IO$$
 00000059   CACTL1
 0000005a   CACTL2
 0000005b   CAPD
@@ -191,7 +265,14 @@ ffffffff   .text
 0000012c   FCTL3
 00000053   FLL_CTL0
 00000054   FLL_CTL1
-000023c2   HardwareConstant
+00002e24   HOSTclose
+000026cc   HOSTlseek
+00002a08   HOSTopen
+00002be8   HOSTread
+0000293a   HOSTrename
+00002f34   HOSTunlink
+00002b2c   HOSTwrite
+00003466   HardwareConstant
 00000000   IE1
 00000001   IE2
 00000002   IFG1
@@ -221,6 +302,36 @@ ffffffff   .text
 00000097   LCDM7
 00000098   LCDM8
 00000099   LCDM9
+00002fee   L_LSL_1
+00002fca   L_LSL_10
+00002fc6   L_LSL_11
+00002fc2   L_LSL_12
+00002fbe   L_LSL_13
+00002fba   L_LSL_14
+00002fb6   L_LSL_15
+00002fea   L_LSL_2
+00002fe6   L_LSL_3
+00002fe2   L_LSL_4
+00002fde   L_LSL_5
+00002fda   L_LSL_6
+00002fd6   L_LSL_7
+00002fd2   L_LSL_8
+00002fce   L_LSL_9
+0000302c   L_LSR_1
+00003008   L_LSR_10
+00003004   L_LSR_11
+00003000   L_LSR_12
+00002ffc   L_LSR_13
+00002ff8   L_LSR_14
+00002ff4   L_LSR_15
+00003028   L_LSR_2
+00003024   L_LSR_3
+00003020   L_LSR_4
+0000301c   L_LSR_5
+00003018   L_LSR_6
+00003014   L_LSR_7
+00003010   L_LSR_8
+0000300c   L_LSR_9
 00000134   MAC
 00000136   MACS
 00000005   ME2
@@ -334,7 +445,7 @@ ffffffff   .text
 00000180   TBCTL
 0000011e   TBIV
 00000190   TBR
-00001132   TheSystemIsDown
+0000137e   TheSystemIsDown
 0000007c   U1BR0
 0000007d   U1BR1
 00000078   U1CTL
@@ -365,50 +476,92 @@ ffffffff   .text
 0000006d   UCB0STAT
 0000006f   UCB0TXBUF
 00000120   WDTCTL
-000023bc   WatchdogKickTimeInterval
+0000345a   WatchdogKickTimeInterval
+00001584   _CIOBUF_
 00002100   __STACK_END
 00000200   __STACK_SIZE
+00000200   __SYSMEM_SIZE
 00000001   __TI_args_main
 00000001   __TI_auto_init
 00000001   __TI_exit
 ffffffff   __binit__
 00001100   __bss__
 ffffffff   __c_args__
-0000212a   __cinit__
-00001134   __end__
+00002100   __cinit__
+000032fa   __divu
+00002c44   __divul
+00001382   __end__
 ffffffff   __etext__
-00002336   __mpyi_hw
+00003310   __mpyi_hw
 ffffffff   __pinit__
+000032fa   __remu
+00002c44   __remul
 ffffffff   __text__
-000022a0   _auto_init
-00002100   _c_int00
-00002100   _c_int00_noexit
-0000112a   _cleanup_ptr
-0000112e   _dtors_ptr
-00001122   _lock
-00002396   _nop
+0000325e   _abort_msg
+00002dde   _auto_init
+00002184   _c_int00
+00002184   _c_int00_noargs
+00003032   _cleanup
+0000136e   _cleanup_ptr
+00002a6a   _doflush
+00001372   _dtors_ptr
+00001218   _ft_end
+00001100   _ftable
+00001366   _lock
+000033ce   _nop
+000024ac   _printfi_minimal
 0000fffe   _reset_vector
 00001f00   _stack
-0000238e   _system_pre_init
-00001126   _unlock
-00002392   abort
-00002398   application_initialize
+00001384   _sys_memory
+000033c2   _system_pre_init
+00001178   _tmpnams
+0000136a   _unlock
+00002854   _wrt_ok
+000033c6   abort
+000033d0   application_initialize
 ffffffff   binit
-00002370   bitStuffing
-0000212a   cinit
-0000239a   drivers_initialize
-00001134   end
+0000339a   bitStuffing
+00002100   cinit
+00002d94   close
+000033d2   drivers_initialize
+00001382   end
 ffffffff   etext
-000022e6   generateFCS
-0000234c   main
-0000235e   memcpy
-00002132   packetize
+000031ac   exit
+00002acc   fclose
+00002eac   fflush
+000030de   fprintf
+00002752   fputc
+000023d6   fputs
+000027d4   free
+00002b8a   fseek
+00003148   generateFCS
+00002d44   lseek
+00003364   main
+00002626   malloc
+00003286   memccpy
+0000333c   memchr
+00003376   memcpy
+00003350   memset
+0000306c   minit
+000022ca   packetize
 ffffffff   pinit
-0000237a   realTimeClock_initialize
-0000231a   system_initialize
-0000239c   test_application_initialize
-0000223e   test_application_main
-00002384   watchdog_initialize
+00002752   putc
+00003208   readmsg
+000033a4   realTimeClock_initialize
+000033ca   remove
+0000256c   setvbuf
+000032ca   strchr
+000032e2   strcmp
+00003326   strcpy
+00003388   strlen
+000030a6   strncpy
+000032ae   system_initialize
+000033d4   test_application_initialize
+000028ce   test_application_main
+00003234   unlink
+000033ae   watchdog_initialize
+00002ef0   write
+000031da   writemsg
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -665,42 +818,122 @@ address    name
 000001ee   DMA2DAL
 000001f2   DMA2SZ
 00000200   __STACK_SIZE
+00000200   __SYSMEM_SIZE
 00001100   .bss
 00001100   __bss__
-00001122   _lock
-00001126   _unlock
-0000112a   _cleanup_ptr
-0000112e   _dtors_ptr
-00001132   TheSystemIsDown
-00001134   __end__
-00001134   end
+00001100   _ftable
+00001178   _tmpnams
+00001218   _ft_end
+00001366   _lock
+0000136a   _unlock
+0000136e   _cleanup_ptr
+00001372   _dtors_ptr
+0000137e   TheSystemIsDown
+00001382   __end__
+00001382   end
+00001384   _sys_memory
+00001584   _CIOBUF_
 00001f00   _stack
 00002100   __STACK_END
-00002100   _c_int00
-00002100   _c_int00_noexit
-0000212a   __cinit__
-0000212a   cinit
-00002132   packetize
-0000223e   test_application_main
-000022a0   _auto_init
-000022e6   generateFCS
-0000231a   system_initialize
-00002336   __mpyi_hw
-0000234c   main
-0000235e   memcpy
-00002370   bitStuffing
-0000237a   realTimeClock_initialize
-00002384   watchdog_initialize
-0000238e   _system_pre_init
-00002392   C$$EXIT
-00002392   abort
-00002396   _nop
-00002398   application_initialize
-0000239a   drivers_initialize
-0000239c   test_application_initialize
-000023bc   WatchdogKickTimeInterval
-000023c0   AnswerToLifeTheUniverseAndEverything
-000023c2   HardwareConstant
+00002100   __cinit__
+00002100   cinit
+00002184   _c_int00
+00002184   _c_int00_noargs
+000022ca   packetize
+000023d6   fputs
+000024ac   _printfi_minimal
+0000256c   setvbuf
+00002626   malloc
+000026cc   HOSTlseek
+00002752   fputc
+00002752   putc
+000027d4   free
+00002854   _wrt_ok
+000028ce   test_application_main
+0000293a   HOSTrename
+00002a08   HOSTopen
+00002a6a   _doflush
+00002acc   fclose
+00002b2c   HOSTwrite
+00002b8a   fseek
+00002be8   HOSTread
+00002c44   __divul
+00002c44   __remul
+00002d44   lseek
+00002d94   close
+00002dde   _auto_init
+00002e24   HOSTclose
+00002eac   fflush
+00002ef0   write
+00002f34   HOSTunlink
+00002fb6   L_LSL_15
+00002fba   L_LSL_14
+00002fbe   L_LSL_13
+00002fc2   L_LSL_12
+00002fc6   L_LSL_11
+00002fca   L_LSL_10
+00002fce   L_LSL_9
+00002fd2   L_LSL_8
+00002fd6   L_LSL_7
+00002fda   L_LSL_6
+00002fde   L_LSL_5
+00002fe2   L_LSL_4
+00002fe6   L_LSL_3
+00002fea   L_LSL_2
+00002fee   L_LSL_1
+00002ff4   L_LSR_15
+00002ff8   L_LSR_14
+00002ffc   L_LSR_13
+00003000   L_LSR_12
+00003004   L_LSR_11
+00003008   L_LSR_10
+0000300c   L_LSR_9
+00003010   L_LSR_8
+00003014   L_LSR_7
+00003018   L_LSR_6
+0000301c   L_LSR_5
+00003020   L_LSR_4
+00003024   L_LSR_3
+00003028   L_LSR_2
+0000302c   L_LSR_1
+00003032   _cleanup
+0000306c   minit
+000030a6   strncpy
+000030de   fprintf
+00003148   generateFCS
+000031ac   exit
+000031da   writemsg
+00003204   C$$IO$$
+00003208   readmsg
+00003234   unlink
+0000325e   _abort_msg
+00003286   memccpy
+000032ae   system_initialize
+000032ca   strchr
+000032e2   strcmp
+000032fa   __divu
+000032fa   __remu
+00003310   __mpyi_hw
+00003326   strcpy
+0000333c   memchr
+00003350   memset
+00003364   main
+00003376   memcpy
+00003388   strlen
+0000339a   bitStuffing
+000033a4   realTimeClock_initialize
+000033ae   watchdog_initialize
+000033c2   _system_pre_init
+000033c6   C$$EXIT
+000033c6   abort
+000033ca   remove
+000033ce   _nop
+000033d0   application_initialize
+000033d2   drivers_initialize
+000033d4   test_application_initialize
+0000345a   WatchdogKickTimeInterval
+00003464   AnswerToLifeTheUniverseAndEverything
+00003466   HardwareConstant
 0000fffe   _reset_vector
 ffffffff   .text
 ffffffff   __binit__
@@ -712,4 +945,4 @@ ffffffff   binit
 ffffffff   etext
 ffffffff   pinit
 
-[296 symbols]
+[376 symbols]

@@ -19,6 +19,7 @@ void main(void)
 	drivers_initialize();
 	system_initialize();
 	
+	// note: DebugMode is #defined in SystemConfig.h
 	#if DebugMode
 		test_application_initialize();
 		while(true)
