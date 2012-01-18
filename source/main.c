@@ -1,12 +1,15 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    Drivers header                                            //
+//    main program	                                            //
 //    last edited by: Kane Anderson                             //
-//    date: November 22, 2011                                   //
+//    date: January 17, 2012                                    //
+//																//
+//	  This is where the magic starts							//
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "application/Application.h"
+#include "drivers/Drivers.h"
+#include "system/System.h"
 #include "test application/TestApplication.h"
 
 //////////////////////////////////////////////////////////////////
@@ -23,10 +26,10 @@ void main(void)
 			test_application_main();
 		}
 	#else
-		application_initialize();
+		system_initialize();
 		while(true)
 		{
-			application_main();
+			system_main();
 		}
 	#endif
 }

@@ -24,6 +24,6 @@ Thermocouple;
 // functions //////////////////////////////////
 
 void thermocouple_initialize(void);
-word thermocouple_read(Thermocouple* thermocouple);
+Word thermocouple_read(Thermocouple* thermocouple);
 
 #endif

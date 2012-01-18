@@ -2,7 +2,7 @@
 //                                                              //
 //    Application source                                        //
 //    last edited by:  Craig Nemeth                             //
-//    date: November 22, 2011                                   //
+//    date: January 17, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -18,19 +18,6 @@ void application_initialize(void)
 void application_main(void)
 {
 	// TODO
- unsigned int i;
- 
-  WDTCTL = WDTPW | WDTHOLD;                 // Stop WDT
-  P5DIR |= BIT1;                            // P5.1 as output
-  P5OUT |= BIT1;                            // P5.1 set high
-
-  while(1)
-  {
-  	//printf("hello\n");                      // Print statement
-  	//fflush(stdout);                         // Flush buffer
-    P5OUT ^= BIT1;                          // Toggle P5.1
-    for(i=10000;i>0;i--);                   // Delay
-  }
 }
 
 //////////////////////////////////

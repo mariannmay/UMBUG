@@ -14,3 +14,8 @@ void drivers_initialize(void)
 {
 	// TODO
 }
+
+void drivers_update(void)
+{
+	// TODO
+}

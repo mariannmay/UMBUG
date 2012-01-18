@@ -15,7 +15,7 @@ void thermocouple_initialize(void)
 	// TODO
 }
 
-word thermocouple_read(Thermocouple* thermocouple)
+Word thermocouple_read(Thermocouple* thermocouple)
 {
 	// TODO
 	return 0x0000;

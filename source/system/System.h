@@ -2,7 +2,7 @@
 //                                                              //
 //    System header                                             //
 //    last edited by: Kane Anderson                             //
-//    date: November 22, 2011                                   //
+//    date: January 17, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -23,5 +23,9 @@
 //////////////////////////////////
 
 void system_initialize(void);
+void system_main(void);
+
+extern void application_main(void);
+extern void application_initialize(void);
 
 #endif

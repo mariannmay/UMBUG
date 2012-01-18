@@ -2,7 +2,7 @@
 //                                                              //
 //    Input Types                                               //
 //    last edited by: Kane Anderson                             //
-//    date: November 23, 2011                                   //
+//    date: January 17, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -24,6 +24,21 @@ typedef struct
 	Millivolts value;
 }
 AnalogInput;
+
+typedef struct
+{
+	DigitalInput pin0;
+}
+SerialInput_1Pin;
+
+typedef struct
+{
+	DigitalInput pin0;
+	DigitalInput pin1;
+	DigitalInput pin2;
+	DigitalInput pin3;
+}
+SerialInput_4Pin;
 
 // typedef union
 //{
