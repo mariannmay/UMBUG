@@ -6,7 +6,7 @@
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "COM.h"//includes the Packet struct
+#include "Packet.h"//includes the Packet struct
 
 #ifndef ENCODER_H
 #define ENCODER_H
