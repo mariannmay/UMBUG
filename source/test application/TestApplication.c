@@ -2,7 +2,7 @@
 //                                                              //
 //    TestApplication source                                    //
 //    last edited by: Craig Nemeth                              //
-//    date: January 10, 2012                                    //
+//    date: January 17, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -20,18 +20,24 @@ void test_application_main(void)
 {
 	// TODO
 	
-	//testing COM////////////////////////////////////////////////
-	//char information[] = {0x01,0x0F,0x01};
-	char pack[23];
-	//COM.packetize(information, pack); //I'm trying to call my COM method
-	//I tried including the COM folder into TestApplication.h so I could use the
-	//method I wrote in the COMS folder
-	int i;
-	for(i =0; i<sizeof(pack); i++)
-	{
-		//heres where I want to test each byte but I forget how you said to do it
-		//I'll ask next meeting about the syntax
-	}
-	/////////////////////////////////////////////////////////////
+	//testing COMs done in CDH processor////////////////////////////////////////////////////////
+	Data D;
+	//malloc required?
+	D.size = 3;
+	D.type = true;
+	D.index[0] = 'a';
+	D.index[1] = 'b';
+	D.index[2] = 'c';
+
+	Packet P;
+	//malloc here?
+	P.size = D.size+20;
+	
+	char dest[] = {'V','E','4','U','M','_','1'};
+	packetize(&D, &P, dest); //stuffing info into an AX.25 packet for VE4UM_1
+	
+	//heres where I want to test each byte
+	//assert(pack[17] == 'a');
+	//end of testing COM///////////////////////////////////////////////////
 }
 

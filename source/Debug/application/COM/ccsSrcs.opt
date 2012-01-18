@@ -1,1 +1,1 @@
-"../application/COM/COM.c" 
+"../application/COM/COM.c" "../application/COM/COMApplication.c" "../application/COM/Encoder.c" 

@@ -2,59 +2,68 @@
 //                                                              //
 //    COM source                                                //
 //    last edited by: Craig Nemeth                              //
-//    date: January 10, 2012                                     //
+//    date: January 17, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
 #include "COM.h"
 
-void doSomething(void)
-{
-	// TODO
-}
 
-
-///// packetize //////////////////////////////////////////////////
+///// packetize /////////////////////////////////////////////////////
 //wraps information in AX25 protocol and stores it in a packet
-//char info[] should be max length of 256
-//char packet[] should be length of info + 20
-//////////////////////////////////////////////////////////////////
-void packetize(char info[], char packet[])
+//
+//Parameters:
+//
+//Data *data should have index max length of 256 and should be
+//information. unless we're sending commands to ground
+//Packet *packet should should have length of *data->size + 20
+//char dest[] should be the destination callsign of length 7
+//
+//////////////////////////////////////////////////////////////////////
+void packetize(Data *data, Packet *packet, char dest[])
 {
-	//static char packet[info.size + 20]; //information packet, max size is 276 bytes with protocol and maximum info
+	//information packet, max size is 276 bytes with protocol and maximum info
 	
-	packet[0] = 0x7E;//start flag
-	//destination VE4UM_1
-	packet[1] = 0x56;
-	packet[2] = 0x45;
-	packet[3] = 0x34;
-	packet[4] = 0x55;
-	packet[5] = 0x4D;
-	packet[6] = 0x20;
-	packet[7] = 0x31;
-	//source VE4SCH1
-	packet[8] = 0x56;
-	packet[9] = 0x45;
-	packet[10] = 0x34;
-	packet[11] = 0x53;
-	packet[12] = 0x43;
-	packet[13] = 0x48;
-	packet[14] = 0x31;
-	//control
-	packet[15] = 0x00;
-	//PID protocol identifier
-	packet[16] = 0xF0; //no L3 protocol
-	//information insertion
-	unsigned int i;
-	for(i = 0; i<sizeof(info); i++)
+	unsigned int i;//counter
+	
+	packet->index[0] = 0x7E;//start flag
+	
+	//destination insertion
+	for(i =0; i<7; i++)
 	{
-		packet[17+i] = info[i];
+		packet->index[i+1] = dest[i];
 	}
-	//FCS generation
-	generateFCS(info, packet);  
+	
+	//source temporarily = VE4SCH1
+	packet->index[8] = 0x56;
+	packet->index[9] = 0x45;
+	packet->index[10] = 0x34;
+	packet->index[11] = 0x53;
+	packet->index[12] = 0x43;
+	packet->index[13] = 0x48;
+	packet->index[14] = 0x31;
+	
+	//control
+	packet->index[15] = 0x00;
+	
+	//PID protocol identifier
+	packet->index[16] = 0xF0; //no L3 protocol
+	
+	//information insertion
+	for(i = 0; i<data->size; i++)
+	{
+		packet->index[17+i] = data->index[i];
+	}
+	
+	//FCS generation and insertion
+	generateFCS(data, packet);  
 	
 	//end flag
-	packet[19 + sizeof(info)] = 0x7E;
+	packet->index[19 + data->size] = 0x7E;
+
+	//do bit stuffing on assembled packet	
+	bitStuffing(packet); 
+	 
 	//packet is complete
 	
 }
@@ -62,14 +71,48 @@ void packetize(char info[], char packet[])
 /////generateFCS////////////////////////////////////////////////////////
 //generates and inserts the FCS into the packet
 ////////////////////////////////////////////////////////////////////////
-void generateFCS(char *info, char *packet)
+void generateFCS(Data *data, Packet *packet)
 {
 	//generate the fcs
 	//temporarily 0x00
 
 	//FCS insertion
-	packet[17 + sizeof(info)] = 0x00; //1st half of fcs
-	packet[18 + sizeof(info)] = 0x00; //2nd half of fcs	
+	packet->index[17 + data->size] = 0x00; //1st half of fcs
+	packet->index[18 + data->size] = 0x00; //2nd half of fcs	
 }
 
+
+
+/// depacketize //////////////////////////////////////////////////////////
+//unpacks and checks packets recieved from the COMs subsystem
+//
+//parameters:
+//
+//Data *data is structure in which the recieved data will be stored
+//			  data->index array should be size of packet->size-20
+//Packet *packet is the structure holding the packet retrieved by COMs
+//
+////////////////////////////////////////////////////////////////////////
+void depacketize(Data *data, Packet *packet)
+{
+	
+	//check and correct errors with FCS
+	errorCorrection(packet);
+	
+	//TODO
+	//check info or command and set boolean variable data->type= true or false;
+	
+	int i;
+	for(i=0; i<data->size; i++)
+	{
+		data->index[i] = packet->index[17+i];
+	}
+	
+}
+
+void errorCorrection(Packet *packet)
+{
+	//TODO
+	//extract FCS, check and fix packet
+}
 
