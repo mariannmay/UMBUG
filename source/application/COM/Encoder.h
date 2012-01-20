@@ -2,7 +2,7 @@
 //                                                              //
 //    Encoder header file	                                    //
 //    last edited by: Craig Nemeth                              //
-//    date: January 17, 2012                                    //
+//    date: January 20, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -13,7 +13,5 @@
 
 void encodePacket(Packet *packet);
 void decodePacket(Packet *packet);
-void bitStuffing(Packet *packet);
-void removeStuffing(Packet *packet);
 
 #endif

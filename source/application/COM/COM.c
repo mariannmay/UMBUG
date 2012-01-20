@@ -8,6 +8,34 @@
 
 #include "COM.h"
 
+//monitors and controls the connection with a ground station
+void connectionControl(void)
+{
+	/*
+	
+	 * handshake1 is spammed from ground station while they predict we are coming overhead
+	 * handshake2 is our confirmation response to handshake1
+	 * handshake3 is ground confirming contact and may contain the first command
+	
+	if(handshake1 recieved)
+	{
+		sendHandshake2();
+	}else if(handshake3 recieved)
+	{
+		contact = true; //start sending data	
+	}
+	*/
+	
+	//TODO
+	/* must decide when we should be expecting ground confirmation of info packets recieved
+	
+	if(it's time to expect confirmation of reception & !confirmation)
+	{
+		contact = false; // We'll stop sending info packets
+	}
+	
+	*/	
+}
 
 ///// packetize /////////////////////////////////////////////////////
 //wraps information in AX25 protocol and stores it in a packet
@@ -60,9 +88,6 @@ void packetize(Data *data, Packet *packet, char dest[])
 	
 	//end flag
 	packet->index[19 + data->size] = 0x7E;
-
-	//do bit stuffing on assembled packet	
-	bitStuffing(packet); 
 	 
 	//packet is complete
 	

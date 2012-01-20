@@ -2,11 +2,15 @@
 //                                                              //
 //    Encoder source file	                                    //
 //    last edited by: Craig Nemeth                              //
-//    date: January 17, 2012                                    //
+//    date: January 20, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
 #include "Encoder.h"
+
+/*
+ * Bit stuffing and prepending and appending of start and end flags will be done on the fly
+ */
 
 //////////////////////////////////
 
@@ -30,17 +34,8 @@ void decodePacket(Packet *packet)
  * contiguous one bits are sent the sending station shall insert a zero bit 
  * after the fifth one bit. During frame reception, any time five contiguous one 
  * bits are received, a zero bit immediately following five one bits shall be discarded
+ *
+ * This will be done on the fly as packets are encoded
  */
- //
- //parameters: char *packet is the assembled AX.25 packet
- //
  //////////////////////////////////////////////////////////////////////////////////////
- void bitStuffing(Packet *packet)
- {
- 	//TODO 
- }
- 
- void removeStuffing(Packet *packet)
- {
- 	//TODO
- }
+

@@ -16,6 +16,9 @@
 
 //Functions///////////////////////////////////////////
 
+//connection control and maintenance
+void connectionControl(void);
+
 //sending packets/////////////////////////////////////
 void packetize(Data *data, Packet *packet, char dest[]);
 void generateFCS(Data *data, Packet *packet);
