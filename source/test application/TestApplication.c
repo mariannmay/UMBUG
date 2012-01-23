@@ -13,14 +13,17 @@
 void test_application_initialize(void)
 {
 	// TODO
-	
 }
 
 void test_application_main(void)
 {
-	// TODO
-	
-	//testing COMs done in CDH processor////////////////////////////////////////////////////////
+	test_COM();
+}
+
+//////////////////////////////////////////////////////////////////
+
+void test_COM(void)
+{
 	Data D;
 	//malloc required?
 	D.size = 3;
@@ -38,10 +41,8 @@ void test_application_main(void)
 	
 	//heres where I want to test each byte
 	//assert(pack[17] == 'a');
-	//end of testing COM///////////////////////////////////////////////////
-	
-	// make sure assert works
-	assert(5 == 42);
 }
 
+///////////////////////////////////////////////////////////////////
 
+// put other tests here
