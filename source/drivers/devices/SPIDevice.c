@@ -21,7 +21,7 @@ void SPI_transmit(SPIDevice* device)
 	// something like...
 	// Byte currentByte = '';
 	// while(currentByte != '/0')
-	// currentChar = ((*device).transmitMessage)++
+	// currentChar = (device->transmitMessage)++
 	// shiftRegister.byte = currentChar
 }
 

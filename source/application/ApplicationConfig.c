@@ -17,5 +17,4 @@
 #define CDH_PROCESSOR_COMPILE 1
 #define COM_PROCESSOR_COMPILE 0
 
-const int AnswerToLifeTheUniverseAndEverything = 42;
 
