@@ -15,12 +15,14 @@
 
 typedef struct
 {
+	Word pin;
 	bool state;
 }
 DigitalInput;
 
 typedef struct
 {
+	Word pin;
 	Millivolts value;
 }
 AnalogInput;

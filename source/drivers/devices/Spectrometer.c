@@ -2,7 +2,7 @@
 //                                                              //
 //    Spectrometer source                                      	//
 //    last edited by: Kane Anderson                             //
-//    date: January 12, 2012                                    //
+//    date: January 22, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -17,8 +17,8 @@ void spectrometer_initialize(Spectrometer* spectrometer)
 
 SpectrometryData readSpectrometer(Spectrometer* spectrometer)
 {
-	(*spectrometer).something.state = low;
-	(*spectrometer).somethingElse.state = high;
+	spectrometer->something.state = low;
+	spectrometer->somethingElse.state = high;
 	
 	// TODO
 	// finish this properly
@@ -27,16 +27,16 @@ SpectrometryData readSpectrometer(Spectrometer* spectrometer)
 	// or do whatever it is we need to do to read
 	// the data
 	
-	(*spectrometer).data.byte[0] = 0x00;
-	(*spectrometer).data.byte[1] = 0x00;
-	(*spectrometer).data.byte[2] = 0x00;
-	(*spectrometer).data.byte[3] = 0x00;
-	(*spectrometer).data.byte[4] = 0x00;
-	(*spectrometer).data.byte[5] = 0x00;
-	(*spectrometer).data.byte[6] = 0x00;
-	(*spectrometer).data.byte[7] = 0x00;
+	spectrometer->data.byte[0] = 0x00;
+	spectrometer->data.byte[1] = 0x00;
+	spectrometer->data.byte[2] = 0x00;
+	spectrometer->data.byte[3] = 0x00;
+	spectrometer->data.byte[4] = 0x00;
+	spectrometer->data.byte[5] = 0x00;
+	spectrometer->data.byte[6] = 0x00;
+	spectrometer->data.byte[7] = 0x00;
 	
-	return (*spectrometer).data;
+	return spectrometer->data;
 }
 
 

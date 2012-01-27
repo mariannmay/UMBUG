@@ -13,6 +13,5 @@
 
 //////////////////////////////////
 
-extern const int AnswerToLifeTheUniverseAndEverything;
 
 #endif

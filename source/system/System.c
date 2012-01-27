@@ -2,7 +2,7 @@
 //                                                              //
 //    System source                                             //
 //    last edited by: Kane Anderson                             //
-//    date: January 17, 2012                                    //
+//    date: January 22, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -16,12 +16,19 @@ static Watchdog systemWatchdog;
 //////////////////////////////////////////////////////////////////
 void system_initialize(void)
 {
+	drivers_initialize();
+	
 	StopMSP430WatchdogTimer;
 	
 	realTimeClock_initialize(&systemClock);
 	watchdog_initialize(&systemWatchdog);
 	
-	application_initialize();
+	
+	#if DebugMode
+		test_application_initialize();
+	#else
+		application_initialize();
+	#endif
 }
 
 // 	main has an infinite loop which calls this function every time
@@ -37,7 +44,12 @@ void system_main(void)
 		ToggleStatusLED;
 	}
 	
-	application_main();
+	// run the program
+	#if DebugMode
+		test_application_main();
+	#else
+		application_main();
+	#endif
 }
 
 
