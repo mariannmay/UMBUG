@@ -12,7 +12,6 @@
 void connectionControl(void)
 {
 	/*
-	
 	 * handshake1 is spammed from ground station while they predict we are coming overhead
 	 * handshake2 is our confirmation response to handshake1
 	 * handshake3 is ground confirming contact and may contain the first command
