@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
 //    COMApplication header                                     //
-//    last edited by: Kane Anderson                             //
-//    date: January 16, 2012                                    //
+//    last edited by: Craig Nemeth                              //
+//    date: January 17, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -10,6 +10,8 @@
 #define COMAPPLICATION_H
 
 #include "../ApplicationConfig.h"
+#include "Encoder.h"//includes the encoder methods
+#include "COM.h"//includes the Packet struct
 
 void COM_application_main(void);
 

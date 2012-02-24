@@ -2,7 +2,7 @@
 //                                                              //
 //    TestApplication source                                    //
 //    last edited by: Craig Nemeth                              //
-//    date: January 10, 2012                                    //
+//    date: January 17, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -13,14 +13,17 @@
 void test_application_initialize(void)
 {
 	// TODO
-	
 }
 
 void test_application_main(void)
 {
-	// TODO
-	
-	//testing COM////////////////////////////////////////////////////////
+	test_COM();
+}
+
+//////////////////////////////////////////////////////////////////
+
+void test_COM(void)
+{
 	Data D;
 	//malloc required?
 	D.size = 3;
@@ -38,6 +41,8 @@ void test_application_main(void)
 	
 	//heres where I want to test each byte
 	//assert(pack[17] == 'a');
-	//end of testing COM///////////////////////////////////////////////////
 }
 
+///////////////////////////////////////////////////////////////////
+
+// put other tests here

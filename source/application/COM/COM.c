@@ -2,12 +2,39 @@
 //                                                              //
 //    COM source                                                //
 //    last edited by: Craig Nemeth                              //
-//    date: January 16, 2012                                    //
+//    date: January 17, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
 #include "COM.h"
 
+//monitors and controls the connection with a ground station
+void connectionControl(void)
+{
+	/*
+	 * handshake1 is spammed from ground station while they predict we are coming overhead
+	 * handshake2 is our confirmation response to handshake1
+	 * handshake3 is ground confirming contact and may contain the first command
+	
+	if(handshake1 recieved)
+	{
+		sendHandshake2();
+	}else if(handshake3 recieved)
+	{
+		contact = true; //start sending data	
+	}
+	*/
+	
+	//TODO
+	/* must decide when we should be expecting ground confirmation of info packets recieved
+	
+	if(it's time to expect confirmation of reception & !confirmation)
+	{
+		contact = false; // We'll stop sending info packets
+	}
+	
+	*/	
+}
 
 ///// packetize /////////////////////////////////////////////////////
 //wraps information in AX25 protocol and stores it in a packet
@@ -60,9 +87,6 @@ void packetize(Data *data, Packet *packet, char dest[])
 	
 	//end flag
 	packet->index[19 + data->size] = 0x7E;
-
-	//do bit stuffing on assembled packet	
-	bitStuffing(packet); 
 	 
 	//packet is complete
 	
@@ -81,26 +105,7 @@ void generateFCS(Data *data, Packet *packet)
 	packet->index[18 + data->size] = 0x00; //2nd half of fcs	
 }
 
-/// bitStuffing //////////////////////////////////////////////////////////////////////
-/*
- * BIT STUFFING IN AX.25
- * 
- * In order to assure that the flag bit sequence mentioned above doesn't appear 
- * accidentally anywhere else in a frame, the sending station shall monitor the
- * bit sequence for a group of five or more contiguous one bits. Any time five
- * contiguous one bits are sent the sending station shall insert a zero bit 
- * after the fifth one bit. During frame reception, any time five contiguous one 
- * bits are received, a zero bit immediately following five one bits shall be discarded
- */
- //
- //parameters: char *packet is the assembled AX.25 packet
- //
- //////////////////////////////////////////////////////////////////////////////////////
- void bitStuffing(Packet *packet)
- {
- 	//TODO 
- 	//also I found that this should probably be placed on the COMs seperate processor
- }
+
 
 /// depacketize //////////////////////////////////////////////////////////
 //unpacks and checks packets recieved from the COMs subsystem

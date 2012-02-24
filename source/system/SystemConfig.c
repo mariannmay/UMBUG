@@ -2,7 +2,7 @@
 //                                                              //
 //    System config values                                      //
 //    last edited by: Kane Anderson                             //
-//    date: November 22, 2011                                   //
+//    date: January 22, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -10,4 +10,5 @@
 
 //////////////////////////////////
 
-const char* TheSystemIsDown = "The system is down!\n";
+const Time_ms WatchdogKickTimeInterval = 10; // [ms]
+

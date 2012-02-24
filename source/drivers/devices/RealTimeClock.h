@@ -1,30 +1,35 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    Watchdog header                                        	//
+//    Real time clock header                                  	//
 //    last edited by: Kane Anderson                             //
-//    date: January 4, 2012                                     //
+//    date: January 10, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#ifndef WATCHDOG_H
-#define WATCHDOG_H
+#ifndef REALTIMECLOCK_H
+#define REALTIMECLOCK_H
 
 #include <msp430fg4619.h>
 #include "../DriversConfig.h"
+#include "SPIDevice.h"
 
 ///////////////////////////////////////////////
 
 // structure //////////////////////////////////
 typedef struct
 {
-	DigitalInput something;
-	DigitalOutput something2;
+	SPIDevice SPI;
+	
+	Time_ms currentTime;
+	Time_ms timeSinceLastCheck;
 }
-Watchdog;
+RealTimeClock;
 
 // functions //////////////////////////////////
-#define StopMSP430WatchdogTimer WDTCTL = WDTPW | WDTHOLD
-void watchdog_initialize(Watchdog* watchdog);
-void kickTheDog(Watchdog* watchdog);
+
+void realTimeClock_initialize(RealTimeClock* clock);
+Time_ms realTimeClock_timeSinceLastCheck(RealTimeClock* clock);
+void realTimeClock_update(RealTimeClock* clock);
+void realTimeClock_reset(RealTimeClock* clock);
 
 #endif

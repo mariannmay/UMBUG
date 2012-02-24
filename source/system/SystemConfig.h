@@ -2,7 +2,7 @@
 //                                                              //
 //    System config header                                      //
 //    last edited by: Kane Anderson                             //
-//    date: November 22, 2011                                   //
+//    date: January 22, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -15,6 +15,6 @@
 
 #define DebugMode 1
 
-extern const char* TheSystemIsDown;
+extern const Time_ms WatchdogKickTimeInterval;
 
 #endif

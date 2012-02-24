@@ -14,17 +14,26 @@
 
 ///////////////////////////////////////////////
 
-// structure //////////////////////////////////
+// structures /////////////////////////////////
 typedef struct
 {
-	DigitalInput something;
-	DigitalOutput something2;
+	Byte data[8];
+}
+SPIMessage;
+
+typedef struct
+{
+	SerialInput_4Pin input;
+	
+	SPIMessage transmitMessage;
+	SPIMessage receivedMessage;
 }
 SPIDevice;
 
 // functions //////////////////////////////////
 
 void SPI_initialize(SPIDevice* device);
-void transmit(SPIDevice* recipient, char* message);
+void SPI_transmit(SPIDevice* device);
+void SPI_read(SPIDevice* device);
 
 #endif

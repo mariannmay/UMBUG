@@ -12,12 +12,12 @@
 //////////////////////////////////
 
 #include "../system/System.h"
-
 #include "../application/ApplicationConfig.h"
+#include <assert.h>
 
-//for testing my COMs application////////
+//for testing the COMs application////////
 #include "../application/COM/COM.h"
-
+void test_COM(void);
 //////////////////////////////////
 
 void test_application_initialize(void);

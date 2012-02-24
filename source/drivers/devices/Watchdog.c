@@ -10,7 +10,7 @@
 
 // functions //////////////////////////////////
 
-void watchdog_initialize(void)
+void watchdog_initialize(Watchdog* watchdog)
 {
 	// TODO
 }

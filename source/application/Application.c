@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
 //    Application source                                        //
-//    last edited by:  Craig Nemeth                             //
-//    date: November 22, 2011                                   //
+//    last edited by:  Kane Anderson                            //
+//    date: January 17, 2012                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -17,30 +17,21 @@ void application_initialize(void)
 
 void application_main(void)
 {
-	// TODO
- unsigned int i;
- 
-  WDTCTL = WDTPW | WDTHOLD;                 // Stop WDT
-  P5DIR |= BIT1;                            // P5.1 as output
-  P5OUT |= BIT1;                            // P5.1 set high
+	// note:
+	// CDH_PROCESSOR_COMPILE and COM_PROCESSOR_COMPILE
+	// are #defined in ApplicationConfig.h
+	
+	#if CDH_PROCESSOR_COMPILE
+		// the application which will run
+		// on the CDH processor
+		CDH_application_main();
+	#endif
 
-  while(1)
-  {
-  	//printf("hello\n");                      // Print statement
-  	//fflush(stdout);                         // Flush buffer
-    P5OUT ^= BIT1;                          // Toggle P5.1
-    for(i=10000;i>0;i--);                   // Delay
-  }
-  
-  #if CDH_PROCESSOR_COMPILE
-  	CDH_application_main(void);
-  #endif
-  
-  #if COM_PROCESSOR_COMPILE
-  	COM_application_main(void);
-  #endif
+	#if COM_PROCESSOR_COMPILE
+		// the application which will run
+		// on the COM processor
+		COM_application_main();
+	#endif
 }
 
 //////////////////////////////////
-
-
