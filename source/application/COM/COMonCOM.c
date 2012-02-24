@@ -1,19 +1,19 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    COMApplication header                                     //
+//    COMonCOM source                                           //
 //    last edited by: Craig Nemeth                              //
-//    date: January 20, 2012                                    //
+//    date: February 24, 2012                                   //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "COMApplication.h"
+#include "COMonCOM.h"
 
 /*
  * This is the Encoder microcontrollers main
  * It will control packet flow and encode and decode packets
  */
 
-void COM_application_main(void)
+void COMonCOM_main(void)
 {
 	
 	/* How I believe the COMs app should function
