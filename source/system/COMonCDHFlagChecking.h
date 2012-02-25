@@ -6,8 +6,8 @@
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#ifndef COMFlagChecking_H
-#define COMFlagChecking_H
+#ifndef COMonCDHFlagChecking_H
+#define COMonCDHFlagChecking_H
 
 #include "Packet.h"
 #include "../drivers/CDHPINS/CDHtoCOMInterruptSet.h"

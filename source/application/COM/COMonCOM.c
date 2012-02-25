@@ -9,14 +9,10 @@
 #include "COMonCOM.h"
 
 /*
- * This is the Encoder microcontrollers main
- * It will control packet flow and encode and decode packets
- */
-
 void COMonCOM_main(void)
 {
 	
-	/* How I believe the COMs app should function
+	// How I believe the COMs app should function
 	
 	bool contact = false; //true if established contact with ground (it's the encoder enable signal)
 						  //CDH controls this variable (I'll figure that out later)
@@ -39,6 +35,8 @@ void COMonCOM_main(void)
 			
 		}
 	}
-	*/
+	
 }
+
+*/
 

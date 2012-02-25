@@ -12,7 +12,7 @@
 // Includes //////////////////////////////////////////
 #include "../ApplicationConfig.h"
 #include "../../system/System.h"
-#include "../../system/COMFlagChecking.h"
+#include "../../system/COMonCDHFlagChecking.h"
 #include "../../system/Packet.h"
 
 //Functions///////////////////////////////////////////
