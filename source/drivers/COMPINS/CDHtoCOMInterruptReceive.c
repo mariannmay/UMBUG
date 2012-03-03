@@ -6,7 +6,7 @@
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "COMtoCDHInterruptSet.h"
+#include "CDHtoCOMInterruptReceive.h"
 
 void receiveInterrupt()
 {

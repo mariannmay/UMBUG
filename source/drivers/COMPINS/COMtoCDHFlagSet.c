@@ -6,9 +6,9 @@
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "COMtoCDHFlagCheck.h"
+#include "COMtoCDHFlagSet.h"
 
-void setPin(enum highLow)
+void setPin(/*enum highLow*/)
 {
 	
 }

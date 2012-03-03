@@ -6,7 +6,7 @@
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "COMFlagChecking.h"
+#include "COMonCOMFlagChecking.h"
 
 void SatelliteTransmitEnable(y)
 {

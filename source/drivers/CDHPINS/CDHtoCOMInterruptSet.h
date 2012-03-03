@@ -12,6 +12,6 @@
 #include <msp430fg4619.h>
 #include "../DriversConfig.h"
 
-void setPin(enum highLow);
+void setPin(/*enum highLow*/);
 
 #endif

@@ -6,7 +6,7 @@
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "COMtoCDHFlagCheck.h"
+#include "COMonCOMPeripherals.h"
 
 void checkportInterupts()
 {

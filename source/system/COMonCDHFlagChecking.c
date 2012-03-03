@@ -6,7 +6,7 @@
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "COMFlagChecking.h"
+#include "COMonCDHFlagChecking.h"
 
 ///// packetize /////////////////////////////////////////////////////
 //wraps information in AX25 protocol and stores it in a packet

@@ -13,8 +13,8 @@
 #include "../drivers/CDHPINS/CDHtoCOMInterruptSet.h"
 #include "../drivers/CDHPINS/COMtoCDHFlagCheck.h"
 
-void checkFlag() 
-void setInterrupt()
+void checkFlag();
+void setInterrupt();
 
 //sending packets/////////////////////////////////////
 void packetize(Data *data, Packet *packet, char dest[]);

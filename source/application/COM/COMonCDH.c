@@ -8,6 +8,21 @@
 
 #include "COMonCDH.h"
 
+void checkForMessages(void)
+{
+	
+}
+
+void respondToMessage(void)
+{
+	
+}
+
+void addCommandToListOfTasks(void)
+{
+	
+}
+
 //monitors and controls the connection with a ground station
 void connectionControl(void)
 {

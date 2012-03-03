@@ -8,6 +8,61 @@
 
 #include "COMonCOM.h"
 
+void newPacketFromGround(/*check,interpret,checkBitErrorRate*/)
+{
+	
+}
+
+void handshakeGround()
+{
+	
+}
+
+void addToSendQueue()
+{
+	
+}
+
+void receiveCDHPacket()
+{
+	
+}
+
+void indexPointerTable()
+{
+	
+}
+
+void preEncodePSK()
+{
+	
+}
+
+void sendPacketFromQueue()
+{
+	
+}
+
+void useRadio()
+{
+	
+}
+
+void flagPayloadData(priorities)
+{
+	
+}
+
+void maintainCOMTemperature()
+{
+	
+}
+
+void communicateCDHprocessor()
+{
+	
+}
+
 /*
 void COMonCOM_main(void)
 {

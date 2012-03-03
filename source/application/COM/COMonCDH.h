@@ -17,9 +17,9 @@
 
 //Functions///////////////////////////////////////////
 
-void checkForMessages()
-void respondToMessage()
-void addCommandToListOfTasks()
+void checkForMessages(void);
+void respondToMessage(void);
+void addCommandToListOfTasks(void);
 
 //connection control and maintenance
 void connectionControl(void);
