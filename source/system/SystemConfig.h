@@ -13,7 +13,7 @@
 
 //////////////////////////////////
 
-#define DebugMode 1
+#define DebugMode 0
 
 extern const Time_ms WatchdogKickTimeInterval;
 

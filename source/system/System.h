@@ -24,6 +24,7 @@
 
 void system_initialize(void);
 void system_main(void);
+void system_abort(void);
 
 extern void application_main(void);
 extern void application_initialize(void);

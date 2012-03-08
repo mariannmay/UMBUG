@@ -14,6 +14,7 @@
 #include "../system/System.h"
 #include "../application/ApplicationConfig.h"
 #include <assert.h>
+#include <stdio.h>
 
 //for testing the COMs application////////
 #include "../application/COM/COM.h"

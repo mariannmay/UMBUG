@@ -17,8 +17,7 @@
 // structure //////////////////////////////////
 typedef struct
 {
-	DigitalInput something;
-	DigitalOutput something2;
+	DigitalOutput* WDI;
 }
 Watchdog;
 

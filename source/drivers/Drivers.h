@@ -2,7 +2,7 @@
 //                                                              //
 //    Drivers header                                            //
 //    last edited by: Kane Anderson                             //
-//    date: January 22, 2012                                    //
+//    date: March 6, 2012       	                            //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -22,6 +22,16 @@
 #include "../drivers/devices/Thermocouple.h"
 #include "../drivers/devices/Watchdog.h"
 
+
+// a struct containing all of the system's devices ///////////////
+typedef struct
+{
+	Watchdog		systemWatchdog;
+	RealTimeClock	systemClock;
+}
+AllDevices;
+
+extern AllDevices devices;
 
 //////////////////////////////////////////////////////////////////
 // toggle the main LED

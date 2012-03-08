@@ -10,8 +10,7 @@
 #define DRIVERSCONFIG_H
 
 #include "../SimpleDefinitions.h"
-#include "InputTypes.h"
-#include "OutputTypes.h"
+#include "IOTypes.h"
 
 //////////////////////////////////
 

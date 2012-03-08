@@ -8,27 +8,24 @@
 
 #include "System.h"
 
-// GLOBAL VARIABLE ///////////////////////////////////////////////
-static RealTimeClock systemClock;
-static Time_ms systemTimer;
-static Watchdog systemWatchdog;
+// TODO REMOVE
+#include <stdio.h>
+
+Time_ms systemTimer;
 
 //////////////////////////////////////////////////////////////////
 void system_initialize(void)
 {
+	
 	drivers_initialize();
-	
 	StopMSP430WatchdogTimer;
-	
-	realTimeClock_initialize(&systemClock);
-	watchdog_initialize(&systemWatchdog);
-	
 	
 	#if DebugMode
 		test_application_initialize();
 	#else
 		application_initialize();
 	#endif
+
 }
 
 // 	main has an infinite loop which calls this function every time
@@ -36,13 +33,20 @@ void system_main(void)
 {
 	// upkeep items
 	drivers_update();
-	systemTimer += realTimeClock_timeSinceLastCheck(&systemClock);
-	if (systemTimer >= WatchdogKickTimeInterval) kickTheDog(&systemWatchdog);
-	if (systemTimer >= OneSecond)
-	{
-		realTimeClock_reset(&systemClock);
+	systemTimer += realTimeClock_timeSinceLastCheck(&(devices.systemClock));
+//	if (systemTimer >= WatchdogKickTimeInterval)
+//	{
+		kickTheDog(&(devices.systemWatchdog));
+//	}
+//	if (systemTimer >= OneSecond)
+//	{
+		realTimeClock_reset(&(devices.systemClock));
 		ToggleStatusLED;
-	}
+//	}
+	
+	// TODO REMOVE debug only
+	//printf("WDI: %d\r\n", temp);
+	//fflush(stdout);
 	
 	// run the program
 	#if DebugMode
@@ -50,6 +54,14 @@ void system_main(void)
 	#else
 		application_main();
 	#endif
+}
+
+void system_abort(void)
+{
+	for(;;)
+	{
+		; // do nothing
+	}
 }
 
 

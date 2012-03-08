@@ -8,11 +8,24 @@
 
 #include "Drivers.h"
 
+// initialize devices ////////////////////////////////////////////
+AllDevices devices;
+
 //////////////////////////////////////////////////////////////////
 
 void drivers_initialize(void)
 {
-	//TODO
+	// system watchdog
+		/*
+		// sets 10.6 direction to 'output'
+		P10DIR |= BIT6;
+		devices.systemWatchdog.WDI->port = P10OUT;
+		devices.systemWatchdog.WDI->pin = 5;
+		devices.systemWatchdog.WDI->state = low;
+		*/
+		
+	// system clock
+		
 }
 
 void drivers_update(void)
