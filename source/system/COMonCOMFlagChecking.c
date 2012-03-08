@@ -1,17 +1,19 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    Encoder header file	                                    //
+//    COMonCOMFlagChecking source                               //
 //    last edited by: Craig Nemeth                              //
-//    date: January 20, 2012                                    //
+//    date: February 24, 2012                                   //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "Packet.h"//includes the Packet struct
+#include "COMonCOMFlagChecking.h"
 
-#ifndef ENCODER_H
-#define ENCODER_H
+void checkFlag()
+{
+	
+}
 
-void encodePacket(Packet *packet);
-void decodePacket(Packet *packet);
-
-#endif
+void setInterrupt()
+{
+	
+}

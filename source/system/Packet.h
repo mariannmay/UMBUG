@@ -9,7 +9,7 @@
 #ifndef PACKET_H
 #define PACKET_H
 
-#include "../../system/System.h"
+#include "System.h"
 
 //Structures///////////////////////////////////////////
 typedef struct
