@@ -8,7 +8,9 @@
 
 #include "COMtoCDHFlagCheck.h"
 
+/*
 void checkPin()
 {
 	
-}
+}*/
+

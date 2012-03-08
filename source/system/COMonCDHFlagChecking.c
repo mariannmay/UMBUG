@@ -111,3 +111,5 @@ void errorCorrection(Packet *packet)
 	//TODO
 	//extract FCS, check and fix packet
 }
+
+

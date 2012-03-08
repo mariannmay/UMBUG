@@ -8,7 +8,7 @@
 
 #include "CDHtoCOMInterruptSet.h"
 
-void setPin(/*enum highLow*/)
-{
-	
-}
+//void setPin(/*enum highLow*/)
+//{
+//	
+//}

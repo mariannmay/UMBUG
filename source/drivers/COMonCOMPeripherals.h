@@ -17,3 +17,5 @@ void checkTNCbufferFull();
 void checkRealTimeClock();
 
 #endif
+
+

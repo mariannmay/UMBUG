@@ -12,6 +12,7 @@
 #include <msp430fg4619.h>
 #include "../DriversConfig.h"
 
-void checkPin();
+//void checkPin();
 
 #endif
+
