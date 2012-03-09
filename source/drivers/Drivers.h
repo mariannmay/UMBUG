@@ -2,14 +2,12 @@
 //                                                              //
 //    Drivers header                                            //
 //    last edited by: Kane Anderson                             //
-//    date: January 22, 2012                                    //
+//    date: March 6, 2012       	                            //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
 #ifndef DRIVERS_H
 #define DRIVERS_H
-
-#include <msp430fg4619.h>
 
 #include "DriversConfig.h"
 
@@ -23,12 +21,23 @@
 #include "../drivers/devices/Watchdog.h"
 
 
+// a struct containing all of the system's devices ///////////////
+typedef struct
+{
+	Watchdog		systemWatchdog;
+	RealTimeClock	systemClock;
+}
+AllDevices;
+
+extern AllDevices devices;
+
 //////////////////////////////////////////////////////////////////
 // toggle the main LED
 #define ToggleStatusLED P5DIR |= BIT1; P5OUT ^= BIT1
 
 //////////////////////////////////////////////////////////////////
 void drivers_initialize(void);
-void drivers_update(void);
+void drivers_readInputs(void);
+void drivers_setOutputs(void);
 
 #endif

@@ -1,17 +1,15 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    Encoder header file	                                    //
+//    COMtoCDHFlagCheck source                                  //
 //    last edited by: Craig Nemeth                              //
-//    date: January 20, 2012                                    //
+//    date: February 24, 2012                                   //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "Packet.h"//includes the Packet struct
+#include "COMtoCDHFlagSet.h"
 
-#ifndef ENCODER_H
-#define ENCODER_H
+//void setPin(/*enum highLow*/)
+//{
+//	
+//}
 
-void encodePacket(Packet *packet);
-void decodePacket(Packet *packet);
-
-#endif

@@ -9,7 +9,6 @@
 #ifndef WATCHDOG_H
 #define WATCHDOG_H
 
-#include <msp430fg4619.h>
 #include "../DriversConfig.h"
 
 ///////////////////////////////////////////////
@@ -17,8 +16,7 @@
 // structure //////////////////////////////////
 typedef struct
 {
-	DigitalInput something;
-	DigitalOutput something2;
+	DigitalOutput* WDI;
 }
 Watchdog;
 

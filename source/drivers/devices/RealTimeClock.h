@@ -9,7 +9,6 @@
 #ifndef REALTIMECLOCK_H
 #define REALTIMECLOCK_H
 
-#include <msp430fg4619.h>
 #include "../DriversConfig.h"
 #include "SPIDevice.h"
 
@@ -18,7 +17,7 @@
 // structure //////////////////////////////////
 typedef struct
 {
-	SPIDevice SPI;
+	SPIDevice* SPI;
 	
 	Time_ms currentTime;
 	Time_ms timeSinceLastCheck;

@@ -9,7 +9,6 @@
 #ifndef SPIDEVICE_H
 #define SPIDEVICE_H
 
-#include <msp430fg4619.h>
 #include "../DriversConfig.h"
 
 ///////////////////////////////////////////////

@@ -12,18 +12,24 @@
 
 void test_application_initialize(void)
 {
-	// TODO
+	printf("Test application start -----------------\r\n");
+	fflush(stdout);
 }
 
 void test_application_main(void)
 {
 	test_COM();
+	
+	printf("All tests complete! --------------------\r\n");
+	fflush(stdout);
+	system_abort();
 }
 
 //////////////////////////////////////////////////////////////////
 
 void test_COM(void)
 {
+	/*
 	Data D;
 	//malloc required?
 	D.size = 3;
@@ -41,6 +47,10 @@ void test_COM(void)
 	
 	//heres where I want to test each byte
 	//assert(pack[17] == 'a');
+	*/
+	
+	printf("    COM test complete\r\n");
+	fflush(stdout);
 }
 
 ///////////////////////////////////////////////////////////////////

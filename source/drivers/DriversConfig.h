@@ -2,16 +2,14 @@
 //                                                              //
 //    Drivers config header                                     //
 //    last edited by: Kane Anderson                             //
-//    date: November 22, 2011                                   //
+//    date: March 8, 2012	                                    //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
 #ifndef DRIVERSCONFIG_H
 #define DRIVERSCONFIG_H
 
-#include "../SimpleDefinitions.h"
-#include "InputTypes.h"
-#include "OutputTypes.h"
+#include "./devices/msp430/MSP430FG4619_IOPorts.h"
 
 //////////////////////////////////
 
