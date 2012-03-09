@@ -31,8 +31,22 @@ void drivers_initialize(void)
 	devices.systemWatchdog.WDI = &msp430.PORT_10.digitalOutput[5];
 	watchdog_initialize(&devices.systemWatchdog);
 	
-	// TODO add other devices...
+		/*
+		// sets 10.6 direction to 'output'
+		P10DIR |= BIT6;
+		devices.systemWatchdog.WDI->port = P10OUT;
+		devices.systemWatchdog.WDI->pin = 5;
+		devices.systemWatchdog.WDI->state = low;
+		*/
+		
+	// system clock
 	
+	//Processor Specific
+	#if COMPROCESSOR
+		P10DIR 
+	#elseif CDHPROCESSOR
+	
+	#endif
 }
 
 //////////////////////////////////////////////////////////////////
