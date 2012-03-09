@@ -2,7 +2,7 @@
 //                                                              //
 //    IO Types   	                                            //
 //    last edited by: Kane Anderson                             //
-//    date: March 3, 2012 		                                //
+//    date: March 8, 2012 		                                //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -16,57 +16,52 @@
 
 typedef struct
 {
-	Word port;
+	volatile Byte port;
 	char pin;
 	bool state;
 }
 DigitalInput;
 
-void initializeDigitalInput(DigitalInput* input, Word port, char pin);
+void initializeDigitalInput(DigitalInput* input, Byte port, char pin);
+void readDigitalInput(DigitalInput* input);
 
 ///////////////////////////////////////////////
 
 typedef struct
 {
-	Word port;
+	volatile Word port;
 	char pin;
 	Millivolts value;
 }
 AnalogInput;
 
 void initializeAnalogInput(AnalogInput* input, Word port, char pin);
-
-///////////////////////////////////////////////
-
-typedef struct
-{
-	DigitalInput pin0;
-}
-SerialInput_1Pin;
+void readAnalogInput(AnalogInput* input);
 
 ////////////////////////////////////////////////
 
 typedef struct
 {
-	Word port;
+	volatile Byte port;
 	char pin;
 	bool state;
 }
 SerialInput;
 
-void initializeSerialInput(SerialInput* input, Word port, char pin);
+void initializeSerialInput(SerialInput* input, Byte port, char pin);
+void readSerialInput(SerialInput* input);
 
 /////////////////////////////////////////////////
 
 typedef struct
 {
-	Word port;
+	Byte port;
 	char pin;
 	bool state;
 }
 SerialOutput;
 
-void initializeSerialOutput(SerialOutput* input, Word port, char pin);
+void initializeSerialOutput(SerialOutput* input, Byte port, char pin);
 
 /////////////////////////////////////////////////
 
@@ -95,12 +90,13 @@ SerialInput_4Pin;
 
 typedef struct
 {
-	Word port;
+	Byte port;
 	char pin;
 	bool state;
 }
 DigitalOutput;
 
+void initializeDigitalOutput(DigitalOutput* output, Byte port, char pin);
 void setDigitalOutput(DigitalOutput* output);
 void clearDigitalOutput(DigitalOutput* output);
 
@@ -108,7 +104,7 @@ void clearDigitalOutput(DigitalOutput* output);
 
 typedef struct
 {
-	Word port;
+	Byte port;
 	char pin;
 	Millivolts value;
 }

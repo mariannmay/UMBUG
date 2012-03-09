@@ -2,7 +2,7 @@
 //                                                              //
 //    representation of the processor                           //
 //    last edited by: Kane Anderson                             //
-//    date: March 7, 2012                                    	//
+//    date: March 8, 2012                                    	//
 //																//
 //	  Software representations of digital inputs and outputs	//
 //	  and serial comms (or whatever other pins)					//
@@ -15,7 +15,8 @@
 //////////////////////////////////////////////////////////////////
 
 #include <msp430fg4619.h>
-#include "../DriversConfig.h"
+#include "../../IOTypes.h"
+#include "./AnalogToDigitalConverter.h"
 
 //////////////////////////////////////////////////////////////////
 

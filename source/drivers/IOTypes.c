@@ -14,25 +14,55 @@
 
 //////////////////////////////////////////////////////////////////
 
-void initializeDigitalInput(DigitalInput* input, Word port, char pin)
+void initializeDigitalInput(DigitalInput* input, Byte port, char pin)
 {
 	input->port = port;
 	input->pin = pin;
 	input->state = false;
 }
 
+void readDigitalInput(DigitalInput* input)
+{
+	Byte portState = input->port;
+	int pinNum = input->pin;
+	
+	bool answer;
+	
+	switch(pinNum)
+	{
+		case	0 :	answer = (bool)((portState & BIT0) >> 0); break;
+		case	1 :	answer = (bool)((portState & BIT1) >> 1); break;
+		case	2 : answer = (bool)((portState & BIT2) >> 2); break;
+		case	3 : answer = (bool)((portState & BIT3) >> 3); break;
+		case	4 : answer = (bool)((portState & BIT4) >> 4); break;
+		case	5 : answer = (bool)((portState & BIT5) >> 5); break;
+		case	6 : answer = (bool)((portState & BIT6) >> 6); break;
+		case	7 : answer = (bool)((portState & BIT7) >> 7); break;
+		
+		default	  : answer = false;
+					
+	}
+	
+	input->state = answer;
+}
+
 //////////////////////////////////////////////////////////////////
 
-void initializeSerialInput(SerialInput* input, Word port, char pin)
+void initializeSerialInput(SerialInput* input, Byte port, char pin)
 {
 	input->port = port;
 	input->pin = pin;
 	input->state = false;
 }
 
+void readSerialInput(SerialInput* input)
+{
+	// TODO
+}
+
 //////////////////////////////////////////////////////////////////
 
-void initializeSerialOutput(SerialOutput* output, Word port, char pin)
+void initializeSerialOutput(SerialOutput* output, Byte port, char pin)
 {
 	output->port = port;
 	output->pin = pin;
@@ -45,10 +75,22 @@ void initializeAnalogInput(AnalogInput* input, Word port, char pin)
 {
 	input->port = port;
 	input->pin = pin;
-	input->value = 0x00;
+	input->value = 0x0000;
+}
+
+void readAnalogInput(AnalogInput* input)
+{
+	input->value = input->port;
 }
 
 ///////////////////////////////////////////////
+
+void initializeDigitalOutput(DigitalOutput* output, Byte port, char pin)
+{
+	output->port = port;
+	output->pin = pin;
+	output->state = false;
+}
 
 void setDigitalOutput(DigitalOutput* output)
 {

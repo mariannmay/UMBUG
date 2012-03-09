@@ -29,6 +29,7 @@ void test_application_main(void)
 
 void test_COM(void)
 {
+	/*
 	Data D;
 	//malloc required?
 	D.size = 3;
@@ -46,6 +47,7 @@ void test_COM(void)
 	
 	//heres where I want to test each byte
 	//assert(pack[17] == 'a');
+	*/
 	
 	printf("    COM test complete\r\n");
 	fflush(stdout);

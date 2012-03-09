@@ -9,7 +9,6 @@
 #ifndef SDCARD_H
 #define SDCARD_H
 
-#include <msp430fg4619.h>
 #include "../DriversConfig.h"
 #include "SPIDevice.h"
 

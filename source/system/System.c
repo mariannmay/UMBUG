@@ -32,7 +32,6 @@ void system_initialize(void)
 void system_main(void)
 {
 	// upkeep items
-	drivers_update();
 	systemTimer += realTimeClock_timeSinceLastCheck(&(devices.systemClock));
 //	if (systemTimer >= WatchdogKickTimeInterval)
 //	{

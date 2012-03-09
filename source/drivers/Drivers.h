@@ -9,8 +9,6 @@
 #ifndef DRIVERS_H
 #define DRIVERS_H
 
-#include <msp430fg4619.h>
-
 #include "DriversConfig.h"
 
 // here we should put all devices
@@ -39,6 +37,7 @@ extern AllDevices devices;
 
 //////////////////////////////////////////////////////////////////
 void drivers_initialize(void);
-void drivers_update(void);
+void drivers_readInputs(void);
+void drivers_setOutputs(void);
 
 #endif
