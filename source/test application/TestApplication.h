@@ -17,8 +17,10 @@
 #include <stdio.h>
 
 //for testing the COMs application////////
-#include "../application/COM/COM.h"
+
+#include "../application/COM/COMonCDH.h"
 void test_COM(void);
+
 //////////////////////////////////
 
 void test_application_initialize(void);

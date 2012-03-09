@@ -1,7 +1,7 @@
 ******************************************************************************
-                  MSP430 Linker PC v3.3.3                      
+       MSP430 Evaluation Linker PC v3.3.1                      
 ******************************************************************************
->> Linked Thu Mar 08 00:00:59 2012
+>> Linked Thu Mar 08 20:17:32 2012
 
 OUTPUT FILE NAME:   <Project-Cheesecake.out>
 ENTRY POINT SYMBOL: "_c_int00"  address: 0000217e
@@ -16,7 +16,7 @@ MEMORY CONFIGURATION
   PERIPHERALS_16BIT     00000100   00000100  00000000  00000100  RWIX
   INFOB                 00001000   00000080  00000000  00000080  RWIX
   INFOA                 00001080   00000080  00000000  00000080  RWIX
-  RAM                   00001100   00001000  00000d80  00000280  RWIX
+  RAM                   00001100   00001000  00000980  00000680  RWIX
   FLASH                 00002100   0000dec0  00001518  0000c9a8  RWIX
   INT00                 0000ffc0   00000002  00000000  00000002  RWIX
   INT01                 0000ffc2   00000002  00000000  00000002  RWIX
@@ -72,16 +72,16 @@ section   page    origin      length       input sections
                   0000155a    00000004     System.obj (.bss)
                   0000155e    00000002     rts430x.lib : fopen.obj (.bss)
 
-.sysmem    0    00001560    00000400     UNINITIALIZED
+.sysmem    0    00001560    00000200     UNINITIALIZED
                   00001560    00000004     rts430x.lib : memory.obj (.sysmem)
-                  00001564    000003fc     --HOLE--
+                  00001564    000001fc     --HOLE--
 
-.cio       0    00001960    00000120     UNINITIALIZED
-                  00001960    00000120     rts430x.lib : trgmsg.obj (.cio)
+.cio       0    00001760    00000120     UNINITIALIZED
+                  00001760    00000120     rts430x.lib : trgmsg.obj (.cio)
 
-.stack     0    00001d00    00000400     UNINITIALIZED
-                  00001d00    00000002     rts430x.lib : boot.obj (.stack)
-                  00001d02    000003fe     --HOLE--
+.stack     0    00001f00    00000200     UNINITIALIZED
+                  00001f00    00000002     rts430x.lib : boot.obj (.stack)
+                  00001f02    000001fe     --HOLE--
 
 .cinit     0    00002100    0000007e     
                   00002100    00000042     rts430x.lib : lowlev.obj (.cinit)
@@ -471,10 +471,10 @@ ffffffff   .text
 0000006f   UCB0TXBUF
 00000120   WDTCTL
 00003610   WatchdogKickTimeInterval
-00001960   _CIOBUF_
+00001760   _CIOBUF_
 00002100   __STACK_END
-00000400   __STACK_SIZE
-00000400   __SYSMEM_SIZE
+00000200   __STACK_SIZE
+00000200   __SYSMEM_SIZE
 00000001   __TI_args_main
 00000001   __TI_auto_init
 00000001   __TI_exit
@@ -504,7 +504,7 @@ ffffffff   __text__
 000034a6   _nop
 0000252a   _printfi_minimal
 0000fffe   _reset_vector
-00001d00   _stack
+00001f00   _stack
 00001560   _sys_memory
 0000349a   _system_pre_init
 0000136a   _tmpnams
@@ -814,8 +814,8 @@ address    name
 000001ee   DMA2DA
 000001ee   DMA2DAL
 000001f2   DMA2SZ
-00000400   __STACK_SIZE
-00000400   __SYSMEM_SIZE
+00000200   __STACK_SIZE
+00000200   __SYSMEM_SIZE
 00001100   .bss
 00001100   __bss__
 00001100   msp430
@@ -831,8 +831,8 @@ address    name
 00001560   __end__
 00001560   _sys_memory
 00001560   end
-00001960   _CIOBUF_
-00001d00   _stack
+00001760   _CIOBUF_
+00001f00   _stack
 00002100   __STACK_END
 00002100   __cinit__
 00002100   cinit
