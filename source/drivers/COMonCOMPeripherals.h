@@ -15,7 +15,7 @@
 void checkportInterupts();
 void checkTNCbufferFull();
 void checkRealTimeClock();
-
+// hh
 #endif
 
 
