@@ -9,7 +9,7 @@
 #ifndef SPIDEVICE_H
 #define SPIDEVICE_H
 
-#include "../DriversConfig.h"
+#include "../../DriversConfig.h"
 
 ///////////////////////////////////////////////
 
@@ -22,7 +22,7 @@ SPIMessage;
 
 typedef struct
 {
-	SerialInput_4Pin input;
+	SPIModule_4Pin SPI;
 	
 	SPIMessage transmitMessage;
 	SPIMessage receivedMessage;
@@ -31,7 +31,7 @@ SPIDevice;
 
 // functions //////////////////////////////////
 
-void SPI_initialize(SPIDevice* device);
+void initialize_SPI(void);
 void SPI_transmit(SPIDevice* device);
 void SPI_read(SPIDevice* device);
 

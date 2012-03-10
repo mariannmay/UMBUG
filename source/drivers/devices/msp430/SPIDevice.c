@@ -10,7 +10,7 @@
 
 // functions //////////////////////////////////
 
-void SPI_initialize(SPIDevice* device)
+void initialize_SPI(void)
 {
 	// TODO
 }

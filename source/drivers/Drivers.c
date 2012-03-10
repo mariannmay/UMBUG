@@ -40,13 +40,7 @@ void drivers_initialize(void)
 		*/
 		
 	// system clock
-	
-	//Processor Specific
-	#if COMPROCESSOR
-		P10DIR 
-	#elseif CDHPROCESSOR
-	
-	#endif
+
 }
 
 //////////////////////////////////////////////////////////////////

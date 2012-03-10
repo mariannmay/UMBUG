@@ -126,5 +126,7 @@ void initialize_msp430_IO_ports(void)
 	// configuring Analog to Digital conversion -------------------------------------
 	initialize_analogToDigitalConverter();
 	
+	initialize_SPI();
+	
 	
 }
