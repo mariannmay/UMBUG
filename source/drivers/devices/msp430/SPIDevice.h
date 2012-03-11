@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
 //    SPIDevice header                                        	//
-//    last edited by: Kane Anderson                             //
-//    date: January 4, 2012                                     //
+//    last edited by: Craig Nemeth                              //
+//    date: March 10, 2012                                      //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -31,8 +31,8 @@ SPIDevice;
 
 // functions //////////////////////////////////
 
-void initialize_SPI(void);
-void SPI_transmit(SPIDevice* device);
-void SPI_read(SPIDevice* device);
+void initialize_SPI(int master);
+void SPI_transmit(char data);
+void SPI_receive(char* data);
 
 #endif
