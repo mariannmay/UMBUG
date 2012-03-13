@@ -72,7 +72,9 @@ typedef struct
 	SerialOutput slaveInMasterOut;
 	SerialOutput slaveTransmitEnable;
 }
-SerialInput_4Pin;
+SPIModule_4Pin;
+
+void initializeSPIModule_4pin(SPIModule_4Pin* module);
 
 // typedef union
 //{

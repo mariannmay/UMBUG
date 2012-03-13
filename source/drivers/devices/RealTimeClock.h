@@ -10,7 +10,6 @@
 #define REALTIMECLOCK_H
 
 #include "../DriversConfig.h"
-#include "SPIDevice.h"
 
 ///////////////////////////////////////////////
 

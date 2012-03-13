@@ -17,6 +17,7 @@
 #include <msp430fg4619.h>
 #include "../../IOTypes.h"
 #include "./AnalogToDigitalConverter.h"
+#include "./SPIDevice.h"
 
 //////////////////////////////////////////////////////////////////
 

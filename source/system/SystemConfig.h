@@ -14,8 +14,8 @@
 //////////////////////////////////
 
 #define DebugMode 1
-#define COMPROCESSOR 1
-#define CDHPROCESSOR 0
+#define COMPROCESSOR 0
+#define CDHPROCESSOR 1
 
 extern const Time_ms WatchdogKickTimeInterval;
 
