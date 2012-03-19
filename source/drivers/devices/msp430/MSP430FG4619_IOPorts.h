@@ -36,7 +36,8 @@ typedef struct
 	struct { SerialInput		serialInput[4]	;
 			 SerialOutput		serialOutput[4]	;	} PORT_4;
 	
-	struct { AnalogInput		analogInput[2]	;
+	struct { AnalogInput		analogInput		;
+			 DigitalOutput		digitalOutput	;
 			 DigitalInput		digitalInput[6]	;	} PORT_5;
 			 
 	struct { AnalogInput		analogInput[8]	;	} PORT_6;

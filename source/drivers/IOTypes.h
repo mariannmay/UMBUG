@@ -16,52 +16,52 @@
 
 typedef struct
 {
-	volatile Byte port;
+	char portNum;
 	char pin;
 	bool state;
 }
 DigitalInput;
 
-void initializeDigitalInput(DigitalInput* input, Byte port, char pin);
+void initializeDigitalInput(DigitalInput* input, char portNum, char pin);
 void readDigitalInput(DigitalInput* input);
 
 ///////////////////////////////////////////////
 
 typedef struct
 {
-	volatile Word port;
+	char portNum;
 	char pin;
 	Millivolts value;
 }
 AnalogInput;
 
-void initializeAnalogInput(AnalogInput* input, Word port, char pin);
+void initializeAnalogInput(AnalogInput* input, char portNum, char pin);
 void readAnalogInput(AnalogInput* input);
 
 ////////////////////////////////////////////////
 
 typedef struct
 {
-	volatile Byte port;
+	char portNum;
 	char pin;
 	bool state;
 }
 SerialInput;
 
-void initializeSerialInput(SerialInput* input, Byte port, char pin);
+void initializeSerialInput(SerialInput* input, char portNum, char pin);
 void readSerialInput(SerialInput* input);
 
 /////////////////////////////////////////////////
 
 typedef struct
 {
-	Byte port;
+	char portNum;
 	char pin;
 	bool state;
 }
 SerialOutput;
 
-void initializeSerialOutput(SerialOutput* input, Byte port, char pin);
+void initializeSerialOutput(SerialOutput* input, char portNum, char pin);
 
 /////////////////////////////////////////////////
 
@@ -90,13 +90,13 @@ SerialInput_4Pin;
 
 typedef struct
 {
-	Byte port;
+	char portNum;
 	char pin;
 	bool state;
 }
 DigitalOutput;
 
-void initializeDigitalOutput(DigitalOutput* output, Byte port, char pin);
+void initializeDigitalOutput(DigitalOutput* output, char portNum, char pin);
 void setDigitalOutput(DigitalOutput* output);
 void clearDigitalOutput(DigitalOutput* output);
 
@@ -104,7 +104,7 @@ void clearDigitalOutput(DigitalOutput* output);
 
 typedef struct
 {
-	Byte port;
+	char portNum;
 	char pin;
 	Millivolts value;
 }

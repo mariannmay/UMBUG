@@ -15,6 +15,7 @@ AllDevices devices;
 
 void drivers_initialize(void)
 {
+	
 	// this initializes all of our named IO, allowing you to use
 	// things like...
 	// bool foo = msp430.PORT_1.digitalInput[0].state;
@@ -30,23 +31,10 @@ void drivers_initialize(void)
 	// system watchdog
 	devices.systemWatchdog.WDI = &msp430.PORT_10.digitalOutput[5];
 	watchdog_initialize(&devices.systemWatchdog);
-	
-		/*
-		// sets 10.6 direction to 'output'
-		P10DIR |= BIT6;
-		devices.systemWatchdog.WDI->port = P10OUT;
-		devices.systemWatchdog.WDI->pin = 5;
-		devices.systemWatchdog.WDI->state = low;
-		*/
 		
 	// system clock
+	devices.systemStatusLED = &msp430.PORT_5.digitalOutput;
 	
-	//Processor Specific
-	#if COMPROCESSOR
-		P10DIR 
-	#elseif CDHPROCESSOR
-	
-	#endif
 }
 
 //////////////////////////////////////////////////////////////////
@@ -57,11 +45,11 @@ void drivers_readInputs(void)
 	int index;
 	for (index = 0; index < 8; index++)
 	{
+		if (index < 1) { readAnalogInput (&msp430.PORT_5.analogInput);		   }
 		if (index < 8) { readDigitalInput(&msp430.PORT_1.digitalInput[index]); }
 		if (index < 6) { readDigitalInput(&msp430.PORT_2.digitalInput[index]); }
 		if (index < 4) { readDigitalInput(&msp430.PORT_3.digitalInput[index]); }
 		if (index < 6) { readDigitalInput(&msp430.PORT_5.digitalInput[index]); }
-		if (index < 2) { readAnalogInput (&msp430.PORT_5.analogInput [index]); }
 		if (index < 8) { readAnalogInput (&msp430.PORT_6.analogInput [index]); }
 		if (index < 2) { readAnalogInput (&msp430.PORT_10.analogInput[index]); }
 	}
@@ -76,11 +64,19 @@ void drivers_readInputs(void)
 
 void drivers_setOutputs(void)
 {
+	
 	// drive the digital outputs
 	int index;
 	bool temp;
+	
 	for (index = 0; index < 8; index++)
 	{
+		
+		if (index < 1)
+		{
+			if (msp430.PORT_5.digitalOutput.state == high) { setDigitalOutput(&msp430.PORT_5.digitalOutput); }
+			else										   { clearDigitalOutput(&msp430.PORT_5.digitalOutput); }
+		}
 		if (index < 4)
 		{
 			temp = msp430.PORT_7.digitalOutput[index].state;
@@ -104,6 +100,7 @@ void drivers_setOutputs(void)
 			temp ?	setDigitalOutput(&msp430.PORT_10.digitalOutput[index]) :
 					clearDigitalOutput(&msp430.PORT_10.digitalOutput[index]);
 		}
+		
 	}
 	
 	// TODO setup digital to analog converter and set outputs here

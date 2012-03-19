@@ -1,14 +1,24 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    System config values                                      //
+//    Console access header                                     //
 //    last edited by: Kane Anderson                             //
-//    date: January 22, 2012                                    //
+//    date: March 18, 2012                                      //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "SystemConfig.h"
+#ifndef CONSOLE_H
+#define CONSOLE_H
+
+// includes //////////////////////
+
+#include <stdio.h>
+#include <string.h>
+
+// functions /////////////////////
+
+void runConsole(void);
 
 //////////////////////////////////
 
-const Time_ms WatchdogKickTimeInterval = 200; // [ms]
+#endif
 

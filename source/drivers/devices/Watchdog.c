@@ -8,11 +8,6 @@
 
 #include "Watchdog.h"
 
-
-// TODO REMOVE
-#include <stdio.h>
-
-
 // functions //////////////////////////////////
 
 void watchdog_initialize(Watchdog* watchdog)
@@ -22,36 +17,19 @@ void watchdog_initialize(Watchdog* watchdog)
 
 void kickTheDog(Watchdog* watchdog)
 {
-	// toggle between high and low
-	char oldState = watchdog->WDI->state;
-	
-	// TODO REMOVE (debug)
-	printf("\r\n");
-	printf("in kickTheDog's start, oldState is ");
-	fflush(stdout);
-	
-	
-	switch (oldState)
+
+	switch (watchdog->WDI->state)
 	{
-		 case low	:	printf("0\r\n");
-						fflush(stdout);
-						setDigitalOutput(watchdog->WDI);
+		 case low	:	watchdog->WDI->state = high;
 						break;
 		 
-		 case high	:	printf("1\r\n");
-						fflush(stdout);
-						clearDigitalOutput(watchdog->WDI);
+		 case high	:	watchdog->WDI->state = low;
 						break;
 		 
-		 default	:	printf("WRONG!\r\n");
-						fflush(stdout);
-						clearDigitalOutput(watchdog->WDI);
+		 default	:	; // do nothing
+						
 	}
 	
-	// TODO REMOVE (debug)
-	char newState = watchdog->WDI->state;
-	printf("in kickTheDog's end, newState is %x\r\n", newState);
-	fflush(stdout);
 }
 
 
