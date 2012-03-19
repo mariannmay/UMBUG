@@ -4,6 +4,8 @@
 *.mk
 *.pp
 *.obj
+*.map
+*.opt
 *makefile
 *.launch
 *.out

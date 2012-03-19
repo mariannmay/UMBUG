@@ -49,6 +49,13 @@ void test_COM(void)
 	//assert(pack[17] == 'a');
 	*/
 	
+	//testing SPI
+	int i;
+	for(i=0; i<1000; i++)
+	{
+		SPI_transmit(0x5F);
+	}
+	
 	printf("    COM test complete\r\n");
 	fflush(stdout);
 }

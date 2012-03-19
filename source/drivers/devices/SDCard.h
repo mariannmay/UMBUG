@@ -10,7 +10,7 @@
 #define SDCARD_H
 
 #include "../DriversConfig.h"
-#include "SPIDevice.h"
+
 
 // same thing //////////////////////////////////
 typedef SPIDevice SDCard;

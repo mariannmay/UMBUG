@@ -16,7 +16,6 @@
 #include "../drivers/devices/Multiplexer.h"
 #include "../drivers/devices/RealTimeClock.h"
 #include "../drivers/devices/SDCard.h"
-#include "../drivers/devices/SPIDevice.h"
 #include "../drivers/devices/Thermocouple.h"
 #include "../drivers/devices/Watchdog.h"
 
