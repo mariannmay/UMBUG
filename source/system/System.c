@@ -23,6 +23,8 @@ void system_initialize(void)
 	#else
 		application_initialize();
 	#endif
+	
+	initializeConsole();
 
 }
 

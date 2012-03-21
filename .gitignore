@@ -9,5 +9,3 @@
 *makefile
 *.launch
 *.out
-*.map
-*.opt

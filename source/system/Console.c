@@ -12,16 +12,30 @@
 
 // functions /////////////////////
 
+void initializeConsole(void)
+{
+	consoleInputBuffer[0] = null_char;
+	consoleInputBufferIndex = 0;	
+}
+
 void runConsole(void)
 {
-	//printf("console running\r\n");
-	//fflush(stdout);
+	if (stdin == NULL) { return; }
 	
-	//char* input = "";
-	//const char* emptyLine = "";
+	consoleInputBuffer[consoleInputBufferIndex] = (*stdin->buff_stop);
 	
-	//gets(input);
+	if ((consoleInputBufferIndex > 0) && (consoleInputBuffer[consoleInputBufferIndex] == null_char))
+	{
+		printf("\r\n> echo > %s", consoleInputBuffer);
+		consoleInputBufferIndex = 0;
+	}
 	
+	consoleInputBufferIndex++;
+	
+	if (consoleInputBufferIndex > CONSOLE_BUFFER_SIZE)
+	{
+		consoleInputBufferIndex = 0;
+	}
 	
 }
 
