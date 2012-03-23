@@ -40,7 +40,7 @@ void system_main(void)
 //	if (systemTimer >= OneSecond)
 //	{
 		realTimeClock_reset(&(devices.systemClock));
-		ToggleStatusLED;
+		//ToggleStatusLED;
 //	}
 	
 	// TODO REMOVE debug only
