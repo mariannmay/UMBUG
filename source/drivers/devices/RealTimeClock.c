@@ -19,6 +19,11 @@ Time_ms realTimeClock_timeSinceLastCheck(RealTimeClock* clock)
 {
 	Time_ms returnValue = clock->timeSinceLastCheck;
 	clock->timeSinceLastCheck = 0;
+	
+	// TODO TEMP UNTIL IT IS FIXED PROPERLY
+	returnValue = 50;
+	
+	
 	return returnValue;
 }
 

@@ -18,6 +18,8 @@ void test_application_initialize(void)
 
 void test_application_main(void)
 {
+	
+  	WDTCTL = WDTPW | WDTHOLD;                 // Stop WDT
 	test_COM();
 	
 	printf("All tests complete! --------------------\r\n");
@@ -48,6 +50,26 @@ void test_COM(void)
 	//heres where I want to test each byte
 	//assert(pack[17] == 'a');
 	*/
+	
+	P5DIR |= BIT1;                // P5.1 as output
+  	P5OUT |= BIT1;                // P5.1 set high
+	
+	
+	//testing SPI
+	int i;
+	for(i=0; i<10; i++)
+	{
+		P5OUT ^= BIT1;              // Toggle P5.1
+		//printf("ON/OFF");
+		fflush(stdout);
+		//ToggleStatusLED;
+		char* data;
+		SPI_EEPROM_readbyte(data, i);
+		printf("byte ");
+		printf(data);
+		unsigned int x;
+		for(x=50000;x>0;x--);       // Delay
+	}
 	
 	printf("    COM test complete\r\n");
 	fflush(stdout);

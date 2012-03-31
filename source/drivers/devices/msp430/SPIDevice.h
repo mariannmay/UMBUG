@@ -1,15 +1,15 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
 //    SPIDevice header                                        	//
-//    last edited by: Kane Anderson                             //
-//    date: January 4, 2012                                     //
+//    last edited by: Craig Nemeth                              //
+//    date: March 10, 2012                                      //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
 #ifndef SPIDEVICE_H
 #define SPIDEVICE_H
 
-#include "../DriversConfig.h"
+#include "../../DriversConfig.h"
 
 ///////////////////////////////////////////////
 
@@ -22,7 +22,7 @@ SPIMessage;
 
 typedef struct
 {
-	SerialInput_4Pin input;
+	SPIModule_4Pin SPI;
 	
 	SPIMessage transmitMessage;
 	SPIMessage receivedMessage;
@@ -31,8 +31,9 @@ SPIDevice;
 
 // functions //////////////////////////////////
 
-void SPI_initialize(SPIDevice* device);
-void SPI_transmit(SPIDevice* device);
-void SPI_read(SPIDevice* device);
+void initialize_SPI(int master);
+void SPI_transmit(char data);
+void SPI_receive(char* data);
+void SPI_EEPROM_readbyte(char* data, int address);
 
 #endif

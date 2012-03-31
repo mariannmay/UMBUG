@@ -9,14 +9,13 @@
 #ifndef DRIVERS_H
 #define DRIVERS_H
 
-#include "DriversConfig.h"
+#include "./DriversConfig.h"
 
 // here we should put all devices
 #include "../drivers/devices/Counter.h"
 #include "../drivers/devices/Multiplexer.h"
 #include "../drivers/devices/RealTimeClock.h"
 #include "../drivers/devices/SDCard.h"
-#include "../drivers/devices/SPIDevice.h"
 #include "../drivers/devices/Thermocouple.h"
 #include "../drivers/devices/Watchdog.h"
 
@@ -26,16 +25,14 @@ typedef struct
 {
 	Watchdog		systemWatchdog;
 	RealTimeClock	systemClock;
+	DigitalOutput*	systemStatusLED;
 }
 AllDevices;
 
 extern AllDevices devices;
 
 //////////////////////////////////////////////////////////////////
-// toggle the main LED
-#define ToggleStatusLED P5DIR |= BIT1; P5OUT ^= BIT1
 
-//////////////////////////////////////////////////////////////////
 void drivers_initialize(void);
 void drivers_readInputs(void);
 void drivers_setOutputs(void);

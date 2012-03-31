@@ -1,1 +1,15 @@
+-vmspx 
+-g 
+--define=__MSP430FG4619__ 
+--diag_warning=225 
+--printf_support=minimal 
+-z 
+-m"Project-Cheesecake.map" 
+--stack_size=0x400 
+--heap_size=0x400 
+--use_hw_mpy=16 
+--warn_sections 
+-i"C:/Program Files (x86)/Texas Instruments/ccsv4/msp430/include" -i"C:/Users/Kane/Project-Cheesecake/source/application" -i"C:/Users/Kane/Project-Cheesecake/source/test application" -i"C:/Users/Kane/Project-Cheesecake/source" -i"C:/Users/Kane/Project-Cheesecake/source/drivers" -i"C:/Users/Kane/Project-Cheesecake/source/drivers/devices" -i"C:/Users/Kane/Project-Cheesecake/source/system" -i"C:/Program Files (x86)/Texas Instruments/ccsv4/tools/compiler/msp430/lib" -i"C:/Program Files (x86)/Texas Instruments/ccsv4/tools/compiler/msp430/include" 
+--reread_libs 
+--rom_model 
 "./application/ApplicationConfig.obj" "./application/Application.obj" "./application/CDH/CDHApplication.obj" "./application/COM/COMonCOM.obj" "./application/COM/COMonCDH.obj" "./application/STR/STR.obj" "./drivers/CDHPINS/COMtoCDHFlagCheck.obj" "./drivers/CDHPINS/CDHtoCOMInterruptSet.obj" "./drivers/COMPINS/COMtoCDHFlagSet.obj" "./drivers/COMPINS/CDHtoCOMInterruptReceive.obj" "./drivers/IOTypes.obj" "./drivers/DriversConfig.obj" "./drivers/Drivers.obj" "./drivers/COMonCOMPeripherals.obj" "./drivers/devices/Watchdog.obj" "./drivers/devices/Thermocouple.obj" "./drivers/devices/Spectrometer.obj" "./drivers/devices/SDCard.obj" "./drivers/devices/RealTimeClock.obj" "./drivers/devices/Multiplexer.obj" "./drivers/devices/DFlipFlop.obj" "./drivers/devices/Counter.obj" "./drivers/devices/msp430/SPIDevice.obj" "./drivers/devices/msp430/MSP430FG4619_IOPorts.obj" "./drivers/devices/msp430/AnalogToDigitalConverter.obj" "./main.obj" "./SimpleDefinitions.obj" "./system/SystemConfig.obj" "./system/System.obj" "./system/Console.obj" "./system/COMonCOMTransmissions.obj" "./system/COMonCOMFlagChecking.obj" "./system/COMonCDHFlagChecking.obj" "./test application/TestApplication.obj" -l"libc.a" "../lnk_msp430fg4619.cmd" 

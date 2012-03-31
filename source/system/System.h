@@ -18,6 +18,7 @@
 #endif
 
 #include "../drivers/Drivers.h"
+#include "./Console.h"
 #include "SystemConfig.h"
 
 //////////////////////////////////
@@ -25,6 +26,7 @@
 void system_initialize(void);
 void system_main(void);
 void system_abort(void);
+void toggleStatusLED(void);
 
 extern void application_main(void);
 extern void application_initialize(void);
