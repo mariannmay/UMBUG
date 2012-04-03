@@ -9,3 +9,5 @@
 *makefile
 *.launch
 *.out
+
+source/Debug/

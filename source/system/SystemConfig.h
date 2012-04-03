@@ -18,6 +18,5 @@
 #define CDHPROCESSOR 1
 
 extern const Time_ms WatchdogKickTimeInterval;
-#define CONSOLE_BUFFER_SIZE 128
 
 #endif
