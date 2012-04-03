@@ -34,5 +34,6 @@ SPIDevice;
 void initialize_SPI(int master);
 void SPI_transmit(char data);
 void SPI_receive(char* data);
+void SPI_EEPROM_readbyte(char* data, int address);
 
 #endif
