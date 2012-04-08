@@ -70,7 +70,7 @@ void initialize_msp430_IO_ports(void)
 	initializeDigitalInput (	&msp430.PORT_5.digitalInput[0],		5,	2	);
 	initializeDigitalInput (	&msp430.PORT_5.digitalInput[1],		5,	3	);
 	initializeDigitalInput (	&msp430.PORT_5.digitalInput[2],		5,	4	);
-	initializeDigitalInput (	&msp430.PORT_5.digitalInput[3],		5,	5	);
+	initializeDigitalInput (	&msp430.PORT_5.digitalInput[3],		5,	5	);	// sd card detect
 	initializeDigitalInput (	&msp430.PORT_5.digitalInput[4],		5,	6	);
 	initializeDigitalInput (	&msp430.PORT_5.digitalInput[5],		5,	7	);
 	
@@ -98,7 +98,7 @@ void initialize_msp430_IO_ports(void)
 	
 	// PORT_8
 	P8DIR = 0xFF; // 1111 1111
-	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[0],	8,	0	);
+	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[0],	8,	0	);	// sd card select
 	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[1],	8,	1	);
 	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[2],	8,	2	);
 	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[3],	8,	3	);
@@ -125,7 +125,7 @@ void initialize_msp430_IO_ports(void)
 	initializeDigitalOutput(	&msp430.PORT_10.digitalOutput[2],	10,	2	);
 	initializeDigitalOutput(	&msp430.PORT_10.digitalOutput[3],	10,	3	);
 	initializeDigitalOutput(	&msp430.PORT_10.digitalOutput[4],	10,	4	);
-	initializeDigitalOutput(	&msp430.PORT_10.digitalOutput[5],	10,	5	);
+	initializeDigitalOutput(	&msp430.PORT_10.digitalOutput[5],	10,	5	);	// watchdog WDI
 	initializeAnalogInput  (	&msp430.PORT_10.analogInput[0],		10,	6	);
 	initializeAnalogInput  (	&msp430.PORT_10.analogInput[1],		10,	7	);
 	

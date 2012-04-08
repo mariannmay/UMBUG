@@ -10,4 +10,4 @@
 
 //////////////////////////////////
 
-const char HardwareConstant = 0xF2;
+

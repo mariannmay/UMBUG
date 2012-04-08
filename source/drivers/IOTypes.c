@@ -218,11 +218,6 @@ void initializeSerialInput(SerialInput* input, char portNum, char pin)
 	input->state = false;
 }
 
-void readSerialInput(SerialInput* input)
-{
-	// TODO
-}
-
 //////////////////////////////////////////////////////////////////
 
 void initializeSerialOutput(SerialOutput* output, char portNum, char pin)
@@ -231,6 +226,10 @@ void initializeSerialOutput(SerialOutput* output, char portNum, char pin)
 	output->pin = pin;
 	output->state = false;
 }
+
+//////////////////////////////////////////////////////////////////
+
+
 
 ///////////////////////////////////////////////
 
@@ -595,11 +594,6 @@ void clearDigitalOutput(DigitalOutput* output)
 
 ///////////////////////////////////////////////
 
-// used on the COM processor
-void setAnalogOutput(AnalogOutput* output)
-{
-	// TODO
-}
 
 
 

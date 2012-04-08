@@ -2,7 +2,7 @@
 //                                                              //
 //    Drivers header                                            //
 //    last edited by: Kane Anderson                             //
-//    date: March 6, 2012       	                            //
+//    date: April 06, 2012                                      //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -26,6 +26,8 @@ typedef struct
 	Watchdog		systemWatchdog;
 	RealTimeClock	systemClock;
 	DigitalOutput*	systemStatusLED;
+	SPIModule_3Pin	spiBus;
+	SDCard			sdCard;
 }
 AllDevices;
 

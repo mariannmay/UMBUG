@@ -13,6 +13,6 @@
 
 //////////////////////////////////
 
-extern const char HardwareConstant;
+#define STANDARD_SPI_MESSAGE_SIZE 8
 
 #endif

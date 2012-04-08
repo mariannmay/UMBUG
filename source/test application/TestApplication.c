@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
 //    TestApplication source                                    //
-//    last edited by: Craig Nemeth                              //
-//    date: January 17, 2012                                    //
+//    last edited by: Kane Anderson                             //
+//    date: April 06, 2012                                      //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -63,10 +63,13 @@ void test_COM(void)
 		//printf("ON/OFF");
 		fflush(stdout);
 		//ToggleStatusLED;
-		char* data;
-		SPI_EEPROM_readbyte(data, i);
-		printf("byte ");
-		printf(data);
+		
+		// Kane commented this out because it was giving compile warnings
+		//char* data;
+
+		//SPI_EEPROM_readbyte(data, i);
+		//printf("byte ");
+		//printf(data);
 		unsigned int x;
 		for(x=50000;x>0;x--);       // Delay
 	}
