@@ -18,8 +18,6 @@ void test_application_initialize(void)
 
 void test_application_main(void)
 {
-	
-  	WDTCTL = WDTPW | WDTHOLD;                 // Stop WDT
 	test_COM();
 	
 	printf("All tests complete! --------------------\r\n");

@@ -10,6 +10,9 @@
 
 Time_ms systemTimer;
 
+// TODO REMOVE
+int TEMP_STATUS_LED_COUNT;
+
 //////////////////////////////////////////////////////////////////
 
 void system_initialize(void)
@@ -40,6 +43,7 @@ void system_main(void)
 	{
 		toggleStatusLED();
 		systemTimer = 0;
+
 	}
 
 	kickTheDog(&(devices.systemWatchdog));
@@ -53,7 +57,6 @@ void system_main(void)
 	
 	drivers_setOutputs();
 	
-	runConsole();
 	
 }
 

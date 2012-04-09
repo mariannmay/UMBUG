@@ -9,5 +9,5 @@
 *makefile
 *.launch
 *.out
-*.map
-*.opt
+
+source/Debug/
