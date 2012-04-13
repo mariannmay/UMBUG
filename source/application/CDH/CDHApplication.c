@@ -30,5 +30,15 @@ void CDHMainScheduleLoop(void)
 	for(;;)
 	{
 		//Freeze, criminal! >:|
+		
+		//List of function pointers:
+		//float (*pt3Func)(float, float); // TODO: something like this...http://www.newty.de/fpt/intro.html
+		// TODO: List of time limits for those functions:
+		// TODO: List of time between those functions:
+		
+		//TODO: set time-out timer (limittimerfacade)
+		//TODO: start next process in the list (make a list first of function pointers)
+		//pt2Func(a, b); // TODO: Something like this...http://www.newty.de/fpt/intro.html
+		
 	}
 }
