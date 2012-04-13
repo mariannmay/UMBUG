@@ -12,5 +12,6 @@
 #include "../ApplicationConfig.h"
 
 void CDH_application_main(void);
+void CDHMainScheduleLoop(void);
 
 #endif

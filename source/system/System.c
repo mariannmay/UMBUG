@@ -7,6 +7,7 @@
 //////////////////////////////////////////////////////////////////
 
 #include "System.h"
+#include <stdio.h>
 
 Time_ms systemTimer;
 
@@ -50,8 +51,10 @@ void system_main(void)
 	
 	// run the program
 	#if DebugMode
+		printf("==DEBUG MODE==\n");
 		test_application_main();
 	#else
+		printf("==not DEBUG MODE==\n");
 		application_main();
 	#endif
 	
