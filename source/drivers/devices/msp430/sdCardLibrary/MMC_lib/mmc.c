@@ -120,7 +120,7 @@ char mmcInit(void)
   halSPISetup();
 
   // Enable secondary function
-#if SPI_SER_INTF != SER_INTF_BITBANG
+#if SPI_SER_INTF != SER_INTF_BITBANG //TODO: does this work? Shouldn't it be if(SPI_SER_INTF ...) because we're in a normal (not pre-compiler) function?
   MMC_PxSEL |= MMC_SIMO + MMC_SOMI + MMC_UCLK;
 #endif  
   

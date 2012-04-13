@@ -12,7 +12,7 @@
 
 // functions //////////////////////////////////
 
-void initialize_SPI(void)
+void initialize_SPI(int not_used_yet)
 {	
 	// Use the library to setup SPI on port USCIB0
 	halSPISetup();

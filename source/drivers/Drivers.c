@@ -43,7 +43,8 @@ void drivers_initialize(void)
 	devices.spiBus.clock				= &msp430.PORT_3.serialInput[1];	// P3.2
 	devices.spiBus.slaveInMasterOut		= &msp430.PORT_3.serialOutput[1];	// P3.0
 	devices.spiBus.slaveOutMasterIn		= &msp430.PORT_3.serialInput[0];	// P3.3
-	initialize_SPI();
+	initialize_SPI(1);
+	initialize_SPI(2); //TODO: fix this ?? Should there be two?
 	
 	// SD card
 	devices.sdCard.SPI.bus				= &devices.spiBus;

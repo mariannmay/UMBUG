@@ -31,7 +31,6 @@ void application_main(void)
 		// the application which will run
 		// on the CDH processor
 		
-		//FIX: The processor isn't getting here! CDH_PROCESSOR_COMPILE is set to 1, so it SHOULD be working...
 		printf("__we are the CDH processor__\n");
 		CDH_application_main();
 	}

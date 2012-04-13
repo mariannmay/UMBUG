@@ -42,7 +42,7 @@ SPIDevice;
 
 // functions ///// these come from the library 
 
-void initialize_SPI(void);
+void initialize_SPI(int not_yet_used);
 void SPI_transmit(unsigned char* bufferedData, unsigned int size);
 void SPI_receive(unsigned char* bufferedData, unsigned int size);
 

@@ -10,6 +10,7 @@
 //////////////////////////////////////////////////////////////////
 
 #include "./MSP430FG4619_IOPorts.h"
+#include "../../../application/ApplicationConfig.c" //TODO: this should be changed to be a .h file, right?
 
 // global variable ///////////////////////////////////////////////
 
@@ -132,12 +133,15 @@ void initialize_msp430_IO_ports(void)
 	// configuring Analog to Digital conversion -------------------------------------
 	initialize_analogToDigitalConverter();
 	
-	#if CDHPROCESSOR
+	if(CDH_PROCESSOR_COMPILE)
+	{
 		initialize_SPI(1);
-	#else
-		#if COMPROCESSOR
+	}
+	else
+	{
+		if(COM_PROCESSOR_COMPILE)
+		{
 			initialize_SPI(0);
-		#endif
-	#endif
-	
+		}
+	}
 }

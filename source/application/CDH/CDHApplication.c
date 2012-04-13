@@ -26,7 +26,7 @@ void CDHMainScheduleLoop(void)
 	// TODO: write the always-running loop here which gathers and runs commands from the ground and gets interrupted by the schedule.
 	//       - make a data structure which holds commands (Maybe function pointers and parameters somehow? Maybe just packets which will be parsed later?)
 	
-	printf("CDH scheduler is now looping indefinitely.\n");
+	printf("CDH scheduler will now loop indefinitely.\n");
 	for(;;)
 	{
 		//Freeze, criminal! >:|
