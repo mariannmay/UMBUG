@@ -10,7 +10,6 @@
 //////////////////////////////////////////////////////////////////
 
 #include "./MSP430FG4619_IOPorts.h"
-#include "../../../application/ApplicationConfig.c" //TODO: this should be changed to be a .h file, right?
 
 // global variable ///////////////////////////////////////////////
 

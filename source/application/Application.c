@@ -7,7 +7,6 @@
 //////////////////////////////////////////////////////////////////
 
 #include "Application.h"
-#include "ApplicationConfig.c" //TODO: this should be changed to be a .h file, right?
 #include "CDH/CDHApplication.h"
 #include "COM/COMonCOM.h"
 #include <stdio.h>

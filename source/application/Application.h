@@ -16,7 +16,7 @@
 #include "ApplicationConfig.h"
 
 #if CDH_PROCESSOR_COMPILE
-#include "CDHApplication.h"
+#include "./CDH/CDHApplication.h"
 #endif
 
 #if COM_PROCESSOR_COMPILE
