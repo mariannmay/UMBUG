@@ -26,7 +26,14 @@ void CDHMainScheduleLoop(void)
 	// TODO: write the always-running loop here which gathers and runs commands from the ground and gets interrupted by the schedule.
 	//       - make a data structure which holds commands (Maybe function pointers and parameters somehow? Maybe just packets which will be parsed later?)
 	
-	printf("CDH scheduler will now loop indefinitely.\n");
+	//printf("CDH scheduler will now loop indefinitely.\n");		// we don't want this to print all the time
+	
+	
+	// um... the drivers and system layer still needs to run.  We can't have an infinite loop here
+	// (or anywhere for that matter).
+	// This function will be called once every processor loop
+	// Kane
+	/*
 	for(;;)
 	{
 		//Freeze, criminal! >:|
@@ -41,4 +48,5 @@ void CDHMainScheduleLoop(void)
 		//pt2Func(a, b); // TODO: Something like this...http://www.newty.de/fpt/intro.html
 		
 	}
+	*/
 }

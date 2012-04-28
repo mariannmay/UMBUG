@@ -51,10 +51,10 @@ void system_main(void)
 	
 	// run the program
 	#if DebugMode
-		printf("==DEBUG MODE==\n");
+		//printf("== DEBUG MODE ==\n");		// we don't want to print this every loop!
 		test_application_main();
 	#else
-		printf("==not DEBUG MODE==\n");
+		//printf("== not DEBUG MODE ==\n");		// we don't want to print this every loop!
 		application_main();
 	#endif
 	
