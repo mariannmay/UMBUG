@@ -32,9 +32,9 @@ void initialize_msp430_IO_ports(void)
 	
 	// PORT_2																		CDH					COM
 	P2DIR = 0x10; // 0001 0000
-	initializeDigitalInput (	&msp430.PORT_2.digitalInput[0],		2,	0	);	//  				/
-	initializeDigitalInput (	&msp430.PORT_2.digitalInput[1],		2,	1	);	//  				/
-	initializeDigitalInput (	&msp430.PORT_2.digitalInput[2],		2,	2	);	//  				/
+	initializeDigitalInput (	&msp430.PORT_2.digitalInput[0],		2,	0	);	// digitalMUXIn0	/
+	initializeDigitalInput (	&msp430.PORT_2.digitalInput[1],		2,	1	);	// digitalMUXIn1	/
+	initializeDigitalInput (	&msp430.PORT_2.digitalInput[2],		2,	2	);	// digitalMUXIn2	/
 	initializeDigitalInput (	&msp430.PORT_2.digitalInput[3],		2,	3	);	//  				/
 	initializeSerialOutput (	&msp430.PORT_2.serialOutput,		2,	4	);	//  				/
 	initializeSerialInput  (	&msp430.PORT_2.serialInput,			2,	5	);	//  				/
@@ -76,9 +76,9 @@ void initialize_msp430_IO_ports(void)
 	
 	// PORT_6																		CDH					COM
 	P6DIR = 0X00; // 0000 0000
-	initializeAnalogInput  (	&msp430.PORT_6.analogInput[0],		6,	0	);	//  				/
-	initializeAnalogInput  (	&msp430.PORT_6.analogInput[1],		6,	1	);	//  				/
-	initializeAnalogInput  (	&msp430.PORT_6.analogInput[2],		6,	2	);	//  				/
+	initializeAnalogInput  (	&msp430.PORT_6.analogInput[0],		6,	0	);	//  analogMUXIn0	/
+	initializeAnalogInput  (	&msp430.PORT_6.analogInput[1],		6,	1	);	//  analogMUXIn1	/
+	initializeAnalogInput  (	&msp430.PORT_6.analogInput[2],		6,	2	);	//  analogMUXIn2	/
 	initializeAnalogInput  (	&msp430.PORT_6.analogInput[3],		6,	3	);	//  				/
 	initializeAnalogInput  (	&msp430.PORT_6.analogInput[4],		6,	4	);	//  				/
 	initializeAnalogInput  (	&msp430.PORT_6.analogInput[5],		6,	5	);	//  				/
@@ -102,9 +102,9 @@ void initialize_msp430_IO_ports(void)
 	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[1],	8,	1	);	// MUX select 0		/
 	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[2],	8,	2	);	// MUX select 1		/
 	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[3],	8,	3	);	// MUX select 2		/
-	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[4],	8,	4	);	//  				/
-	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[5],	8,	5	);	//  				/
-	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[6],	8,	6	);	//  				/
+	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[4],	8,	4	);	// digitalMUXOut0	/
+	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[5],	8,	5	);	// digitalMUXOut1	/
+	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[6],	8,	6	);	// digitalMUXOut2	/
 	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[7],	8,	7	);	//  				/
 	
 	// PORT_9																		CDH					COM

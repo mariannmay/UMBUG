@@ -23,11 +23,21 @@
 // a struct containing all of the system's devices ///////////////
 typedef struct
 {
-	Watchdog		systemWatchdog;
-	RealTimeClock	systemClock;
-	DigitalOutput*	systemStatusLED;
-	SPIModule_3Pin	spiBus;
-	SDCard			sdCard;
+	Watchdog								systemWatchdog;
+	RealTimeClock							systemClock;
+	DigitalOutput*							systemStatusLED;
+	SPIModule_3Pin							spiBus;
+	SDCard									sdCard;
+	MultiplexerSelectLines					multiplexerSelectLines;
+	DigitalMultiplexer_8_1_Inputs			digitalInputMUX0;
+	DigitalMultiplexer_8_1_Inputs			digitalInputMUX1;
+	DigitalMultiplexer_8_1_Inputs			digitalInputMUX2;
+	AnalogMultiplexer_8_1_Inputs			analogInputMUX0;
+	AnalogMultiplexer_8_1_Inputs			analogInputMUX1;
+	AnalogMultiplexer_8_1_Inputs			analogInputMUX2;
+	DigitalSoftwareMultiplexer_8_1_Outputs	digitalOutputMUX0;
+	DigitalSoftwareMultiplexer_8_1_Outputs	digitalOutputMUX1;
+	DigitalSoftwareMultiplexer_8_1_Outputs	digitalOutputMUX2;
 }
 AllDevices;
 

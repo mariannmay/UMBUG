@@ -37,6 +37,7 @@ void system_main(void)
 {
 	
 	// upkeep items
+	goToNextMultiplexerSelection(&devices.multiplexerSelectLines);
 	drivers_readInputs();
 	
 	systemTimer += realTimeClock_timeSinceLastCheck(&(devices.systemClock));
