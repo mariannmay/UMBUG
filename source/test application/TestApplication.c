@@ -15,7 +15,7 @@ void test_application_initialize(void)
 	printf("Test application start -----------------\r\n");
 	fflush(stdout);
 	
-	#if CDHPROCESSOR
+	#if CDH_PROCESSOR_COMPILE
 		initialize_SPI(1);
 	#else
 		initialize_SPI(0);
@@ -61,7 +61,7 @@ void test_COM(void)
 
 	//testing SPI
 
-	#if CDHPROCESSOR
+	#if CDH_PROCESSOR_COMPILE
 		int i;
 		for(i=0; i<100; i++)
 		{
