@@ -13,5 +13,14 @@
 
 //////////////////////////////////
 
+// choose whether to compile code for the CDH redundant controllers
+// or the COM encoding controller
+// IMPORTANT: only one of these should be defined as 1.
+// NOT BOTH OF THEM
+#define CDH_PROCESSOR_COMPILE 1
+#define COM_PROCESSOR_COMPILE 0
+
+// some constant
+extern const int StuffConstant;
 
 #endif

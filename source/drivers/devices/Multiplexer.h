@@ -14,59 +14,50 @@
 ///////////////////////////////////////////////
 
 // structure //////////////////////////////////
-typedef struct
-{
-	bool S0;
-	DigitalInput in0;
-	DigitalInput in1;
-	DigitalOutput out;
-}
-MUX_2_1;
 
 typedef struct
 {
-	bool S0;
-	bool S1;
-	DigitalInput in0;
-	DigitalInput in1;
-	DigitalInput in2;
-	DigitalInput in3;
-	DigitalOutput out;
+	DigitalOutput* S0;
+	DigitalOutput* S1;
+	DigitalOutput* S2;
 }
-MUX_4_1;
+MultiplexerSelectLines;
 
 typedef struct
 {
-	bool S0;
-	bool S1;
-	bool S2;
-	DigitalInput in0;
-	DigitalInput in1;
-	DigitalInput in2;
-	DigitalInput in3;
-	DigitalInput in4;
-	DigitalInput in5;
-	DigitalInput in6;
-	DigitalInput in7;
-	DigitalOutput out;
+	MultiplexerSelectLines* selectLines;
+	
+	DigitalInput* currentInput;
+	
+	bool input[8];
 }
-MUX_8_1;
+DigitalMultiplexer_8_1_Inputs;
 
 typedef struct
 {
-	bool S0;
-	DigitalInput in;
-	DigitalOutput out0;
-	DigitalOutput out1;
+	MultiplexerSelectLines* selectLines;
+	
+	AnalogInput* currentInput;
+	
+	Millivolts input[8];
 }
-MUX_1_2;
+AnalogMultiplexer_8_1_Inputs;
+
+typedef struct
+{
+	MultiplexerSelectLines* selectLines;
+	
+	DigitalOutput* currentOutput;
+	
+	bool output[8];
+}
+DigitalSoftwareMultiplexer_8_1_Outputs;
 
 // functions //////////////////////////////////
 
-void mux_initialize(void);
-void mux_2_1_Setup(MUX_2_1* mux, bool S0);
-void mux_4_1_Setup(MUX_4_1* mux, bool S0, bool S1);
-void mux_8_1_Setup(MUX_8_1* mux, bool S0, bool S1, bool S2);
-void mux_1_2_Setup(MUX_1_2* mux, bool S0);
+void readMultiplexedDigitalInput(DigitalMultiplexer_8_1_Inputs* mux);
+void readMultiplexedAnalogInput(AnalogMultiplexer_8_1_Inputs* mux);
+void sendSoftwareMultiplexedDigitalOutput(DigitalSoftwareMultiplexer_8_1_Outputs* mux);
+void goToNextMultiplexerSelection(MultiplexerSelectLines* selectLines);
 
 #endif

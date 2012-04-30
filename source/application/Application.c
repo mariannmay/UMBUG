@@ -7,7 +7,6 @@
 //////////////////////////////////////////////////////////////////
 
 #include "Application.h"
-#include "ApplicationConfig.c" //TODO: this should be changed to be a .h file, right?
 #include "CDH/CDHApplication.h"
 #include "COM/COMonCOM.h"
 #include <stdio.h>
@@ -31,7 +30,7 @@ void application_main(void)
 		// the application which will run
 		// on the CDH processor
 		
-		printf("__we are the CDH processor__\n");
+		//printf("__we are the CDH processor__\n");		// we don't want this to print every loop
 		CDH_application_main();
 	}
 
@@ -39,7 +38,7 @@ void application_main(void)
 	{
 		// the application which will run
 		// on the COM processor
-		printf("__we are the COM processor__\n");
+		//printf("__we are the COM processor__\n");		// we don't want this to print every loop
 		//COM_application_main(); //TODO: make this function
 	}
 }
