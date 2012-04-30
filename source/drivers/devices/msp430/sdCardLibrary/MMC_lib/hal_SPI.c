@@ -124,12 +124,16 @@ void halSPISetup(int master)
 {
 	if(master==1)
 	{
+		SPI_PxDIR |= 0x0B; //%00001011
+		SPI_PxDIR &= 0xFB; //%11111011
 		UCB0CTL0 = UCMST+UCCKPL+UCMSB+UCSYNC;     // 3-pin, 8-bit SPI master
 		UCB0CTL1 = UCSSEL_2+UCSWRST;              // SMCLK
 		UCB0BR0 |= 0x02;                          // UCLK/2
 		UCB0BR1 = 0;
 	}else
 	{
+		SPI_PxDIR |= 0x04; //%00000100
+		SPI_PxDIR &= 0xF4; //%11110100
 		UCB0CTL0 = UCCKPL+UCMSB+UCSYNC;     // 3-pin, 8-bit SPI Slave
 		UCB0CTL0 &= !UCMST;
 		UCB0CTL1 = UCSSEL_2+UCSWRST;              // SMCLK

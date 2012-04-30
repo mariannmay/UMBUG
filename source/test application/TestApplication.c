@@ -14,6 +14,13 @@ void test_application_initialize(void)
 {
 	printf("Test application start -----------------\r\n");
 	fflush(stdout);
+	
+	#if CDHPROCESSOR
+		initialize_SPI(1);
+	#else
+		initialize_SPI(0);
+	#endif
+	
 }
 
 void test_application_main(void)
@@ -51,32 +58,33 @@ void test_COM(void)
 	
 	P5DIR |= BIT1;                // P5.1 as output
   	P5OUT |= BIT1;                // P5.1 set high
-	
-	
-	//testing SPI
-	int i;
-	for(i=0; i<1; i++)
-	{
-		P5OUT ^= BIT1;              // Toggle P5.1
-		//printf("ON/OFF");
-		fflush(stdout);
-		//ToggleStatusLED;
-		
-		// Kane commented this out because it was giving compile warnings
-		//char* data;
 
-		//SPI_EEPROM_readbyte(data, i);
-		//printf("byte ");
-		//printf(data);
-		unsigned int x;
-		for(x=50000;x>0;x--);       // Delay
-	}
-	
+	//testing SPI
+
 	#if CDHPROCESSOR
-		halSPISetup(1);
+		int i;
+		for(i=0; i<100; i++)
+		{
+			P5OUT ^= BIT1;              //always Toggle P5.1 if master
+			spiSendByte(0x55);
+			unsigned int x;
+			for(x=50000;x>0;x--);       // Delay
+		}
 	#else
-		halSPISetup(0);
+		while(1)
+		{
+			while(halSPIRXREADY==0)
+			{
+				
+			}
+			if(halSPIRXBUF==0x55)
+			{
+				P5OUT ^= BIT1; //if connected to master toggle LED
+			}
+		}
 	#endif
+	
+	fflush(stdout);
 	
 	printf("    COM test complete\r\n");
 	fflush(stdout);
