@@ -117,7 +117,7 @@ char mmcInit(void)
   MMC_CD_PxDIR &=  ~MMC_CD;
   
   // Init SPI Module
-  halSPISetup();
+  halSPISetup(1);
 
   // Enable secondary function
 #if SPI_SER_INTF != SER_INTF_BITBANG //TODO: does this work? Shouldn't it be if(SPI_SER_INTF ...) because we're in a normal (not pre-compiler) function?

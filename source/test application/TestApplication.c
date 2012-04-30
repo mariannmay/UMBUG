@@ -55,7 +55,7 @@ void test_COM(void)
 	
 	//testing SPI
 	int i;
-	for(i=0; i<10; i++)
+	for(i=0; i<1; i++)
 	{
 		P5OUT ^= BIT1;              // Toggle P5.1
 		//printf("ON/OFF");
@@ -71,6 +71,12 @@ void test_COM(void)
 		unsigned int x;
 		for(x=50000;x>0;x--);       // Delay
 	}
+	
+	#if CDHPROCESSOR
+		halSPISetup(1);
+	#else
+		halSPISetup(0);
+	#endif
 	
 	printf("    COM test complete\r\n");
 	fflush(stdout);

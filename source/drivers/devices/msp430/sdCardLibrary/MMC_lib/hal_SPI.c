@@ -120,14 +120,25 @@
 #endif
 
 // SPI port functions
-void halSPISetup(void)
+void halSPISetup(int master)
 {
-  UCB0CTL0 = UCMST+UCCKPL+UCMSB+UCSYNC;     // 3-pin, 8-bit SPI master
-  UCB0CTL1 = UCSSEL_2+UCSWRST;              // SMCLK
-  UCB0BR0 |= 0x02;                          // UCLK/2
-  UCB0BR1 = 0;
-  //UCB0MCTL = 0;
-  UCB0CTL1 &= ~UCSWRST;                     // **Initialize USCI state machine**
+	if(master==1)
+	{
+		UCB0CTL0 = UCMST+UCCKPL+UCMSB+UCSYNC;     // 3-pin, 8-bit SPI master
+		UCB0CTL1 = UCSSEL_2+UCSWRST;              // SMCLK
+		UCB0BR0 |= 0x02;                          // UCLK/2
+		UCB0BR1 = 0;
+	}else
+	{
+		UCB0CTL0 = UCCKPL+UCMSB+UCSYNC;     // 3-pin, 8-bit SPI Slave
+		UCB0CTL0 &= !UCMST;
+		UCB0CTL1 = UCSSEL_2+UCSWRST;              // SMCLK
+		UCB0BR0 |= 0x02;                          // UCLK/2
+		UCB0BR1 = 0;	
+	}
+	
+	//UCB0MCTL = 0;
+	UCB0CTL1 &= ~UCSWRST;                     // **Initialize USCI state machine**
 }
 
 //Send one byte via SPI

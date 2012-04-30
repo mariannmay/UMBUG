@@ -12,10 +12,12 @@
 
 // functions //////////////////////////////////
 
-void initialize_SPI(int not_used_yet)
+//1 - for master
+//0 - for slave
+void initialize_SPI(int master)
 {	
 	// Use the library to setup SPI on port USCIB0
-	halSPISetup();
+	halSPISetup(master);
 }
 
 // Use the library to send the data
