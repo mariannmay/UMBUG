@@ -21,7 +21,7 @@ Time_ms realTimeClock_timeSinceLastCheck(RealTimeClock* clock)
 	clock->timeSinceLastCheck = 0;
 	
 	// TODO TEMP UNTIL IT IS FIXED PROPERLY
-	returnValue = 50;
+	returnValue = 1;
 	
 	
 	return returnValue;

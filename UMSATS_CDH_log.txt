@@ -1,0 +1,2 @@
+== REGULAR OPERATION ==
+CDH scheduler initialized.

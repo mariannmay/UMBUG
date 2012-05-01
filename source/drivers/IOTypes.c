@@ -255,8 +255,7 @@ void initializeDigitalOutput(DigitalOutput* output, char portNum, char pin)
 }
 
 void setDigitalOutput(DigitalOutput* output)
-{
-
+{	
 	switch(output->portNum)
 	{
 		case 1	:	
