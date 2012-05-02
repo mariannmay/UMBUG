@@ -9,7 +9,7 @@
 #ifndef LOG_H
 #define LOG_H
 
-#include "../DriversConfig.h"
+#include "../drivers/DriversConfig.h"
 #include "./SystemConfig.h"
 #include <stdio.h>
 

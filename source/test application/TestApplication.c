@@ -71,7 +71,7 @@ void test_COM(void)
 			for(x=50000;x>0;x--);       // Delay
 		}
 	#else
-		while(1)
+		for(;;)
 		{
 			while(halSPIRXREADY==0)
 			{
@@ -85,10 +85,10 @@ void test_COM(void)
 		}
 	#endif
 	
-	fflush(stdout);
+	//fflush(stdout);
 	
-	printf("    COM test complete\r\n");
-	fflush(stdout);
+	//printf("    COM test complete\r\n");
+	//fflush(stdout);
 }
 
 ///////////////////////////////////////////////////////////////////

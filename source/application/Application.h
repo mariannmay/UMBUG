@@ -20,7 +20,7 @@
 #endif
 
 #if COM_PROCESSOR_COMPILE
-#include "COMApplication.h"
+#include "./COM/COMonCDH.h"
 #endif
 
 //////////////////////////////////
