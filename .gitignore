@@ -10,4 +10,5 @@
 *.launch
 *.out
 
+source/application/ApplicationConfig.h
 source/Debug/
