@@ -62,8 +62,7 @@ void test_COM(void)
 	//testing SPI
 
 	#if CDH_PROCESSOR_COMPILE
-		int i;
-		for(i=0; i<100; i++)
+		for(;;)
 		{
 			P5OUT ^= BIT1;              //always Toggle P5.1 if master
 			spiSendByte(0x55);
@@ -73,11 +72,7 @@ void test_COM(void)
 	#else
 		for(;;)
 		{
-			while(halSPIRXREADY==0)
-			{
-				
-			}
-			char buff = halSPIRXBUF;
+			char buff = spiSendByte(0x55);
 			if(buff==0x55)
 			{
 				P5OUT ^= BIT1; //if connected to master toggle LED

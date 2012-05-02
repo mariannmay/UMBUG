@@ -1,2 +1,1 @@
-== REGULAR OPERATION ==
-CDH scheduler initialized.
+Test application start -----------------

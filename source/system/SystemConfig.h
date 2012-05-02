@@ -13,7 +13,7 @@
 
 //////////////////////////////////
 
-#define DebugMode 0
+#define DebugMode 1
 #define COMPROCESSOR 0
 #define CDHPROCESSOR 1
 
