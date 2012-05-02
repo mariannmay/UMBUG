@@ -77,7 +77,8 @@ void test_COM(void)
 			{
 				
 			}
-			if(halSPIRXBUF==0x55)
+			char buff = halSPIRXBUF;
+			if(buff==0x55)
 			{
 				P5OUT ^= BIT1; //if connected to master toggle LED
 			}
