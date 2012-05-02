@@ -73,10 +73,15 @@ void test_COM(void)
 	#else
 		for(;;)
 		{
+			printf("waiting for SPI\r\n");
+			fflush(stdout);
 			while(halSPIRXREADY==0)
 			{
-				
+				printf(".");
+				fflush(stdout);
 			}
+			printf("\r\n\n\n\n\nfinally got out of that damn loop!\r\n\n\n");
+			fflush(stdout);
 			char buff = halSPIRXBUF;
 			if(buff==0x55)
 			{
