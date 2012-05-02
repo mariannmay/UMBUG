@@ -24,7 +24,7 @@ void sdCard_initialize(SDCard* card)
     	timeout++;
     	if (timeout == 50)                      // Try 50 times until error
     	{
-      		printf ("No SD card found!! %x\n", card->status);
+      		//printf ("No SD card found!! %x\n", card->status);
       		break;
     	}
   	}

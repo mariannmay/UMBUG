@@ -18,6 +18,10 @@ void CDH_application_main(void)
 	// TODO: start the hardware interrupt timer for the next thing that needs to run from scheduler
 	//       - use CommandTimerFacade's setTimer() command.
 	//       - also use LimitTimerFacade's setTimer() command to set the time limit for the current command (send ground an error if we go over the limit).
+	
+	printf("CDH scheduler initialized.\n");
+	fflush(stdout);
+	
 	CDHMainScheduleLoop();
 }
 
@@ -26,16 +30,18 @@ void CDHMainScheduleLoop(void)
 	// TODO: write the always-running loop here which gathers and runs commands from the ground and gets interrupted by the schedule.
 	//       - make a data structure which holds commands (Maybe function pointers and parameters somehow? Maybe just packets which will be parsed later?)
 	
-	//printf("CDH scheduler will now loop indefinitely.\n");		// we don't want this to print all the time
-	
-	
-	// um... the drivers and system layer still needs to run.  We can't have an infinite loop here
-	// (or anywhere for that matter).
-	// This function will be called once every processor loop
-	// Kane
-	/*
 	for(;;)
 	{
+		// read how much time has passed during the previous loop
+		systemTimer += realTimeClock_timeSinceLastCheck(&(devices.systemClock));
+		if (systemTimer >= OneSecond)
+		{
+			toggleStatusLED();
+			systemTimer = 0;
+		}
+		
+		kickTheDog(&(devices.systemWatchdog));
+	
 		//Freeze, criminal! >:|
 		
 		//List of function pointers:
@@ -48,5 +54,5 @@ void CDHMainScheduleLoop(void)
 		//pt2Func(a, b); // TODO: Something like this...http://www.newty.de/fpt/intro.html
 		
 	}
-	*/
+	
 }

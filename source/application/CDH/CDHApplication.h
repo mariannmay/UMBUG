@@ -10,6 +10,7 @@
 #define CDHAPPLICATION_H
 
 #include "../ApplicationConfig.h"
+#include "../../system/System.h"
 
 void CDH_application_main(void);
 void CDHMainScheduleLoop(void);

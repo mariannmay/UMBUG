@@ -16,7 +16,6 @@
 void application_initialize(void)
 {
 	// TODO
-	printf("application_init(void)\n");
 }
 
 void application_main(void)

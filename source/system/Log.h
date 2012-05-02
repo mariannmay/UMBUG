@@ -1,15 +1,18 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    System config values                                      //
+//    Log header      		                                  	//
 //    last edited by: Kane Anderson                             //
-//    date: January 22, 2012                                    //
+//    date: April 30, 2012      	                            //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "SystemConfig.h"
+#ifndef LOG_H
+#define LOG_H
 
-//////////////////////////////////
+#include "../DriversConfig.h"
+#include "./SystemConfig.h"
+#include <stdio.h>
 
-const Time_ms WatchdogKickTimeInterval = 200; // [ms]
-const char* DataLogFileName = "../../UMSATS_CDH_log.txt";
+void initializeLogFile(void);
 
+#endif
