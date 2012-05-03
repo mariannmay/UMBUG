@@ -64,19 +64,25 @@ void test_COM(void)
 	#if CDH_PROCESSOR_COMPILE
 		for(;;)
 		{
-			P5OUT ^= BIT1;              //always Toggle P5.1 if master
+			toggleStatusLED();              //always Toggle P5.1 if master
 			spiSendByte(0x55);
 			unsigned int x;
 			for(x=50000;x>0;x--);       // Delay
 		}
 	#else
+		printf("SPI test\r\n");
+		fflush(stdout);
 		for(;;)
 		{
+			printf(".");
+			fflush(stdout);
 			char buff = spiSendByte(0x55);
 			if(buff==0x55)
 			{
-				P5OUT ^= BIT1; //if connected to master toggle LED
+				toggleStatusLED(); //if connected to master toggle LED
 			}
+			printf("\r\n\n\n\n finally got out of that damn loop!\r\n\n");
+			fflush(stdout);
 		}
 	#endif
 	
