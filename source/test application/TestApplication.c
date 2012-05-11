@@ -62,6 +62,7 @@ void test_COM(void)
 	//testing SPI
 
 	#if CDH_PROCESSOR_COMPILE
+		P3OUT = 0x01; //set STE high for slave enable
 		for(;;)
 		{
 			P5OUT ^= BIT1;              //always Toggle P5.1 if master
@@ -70,6 +71,18 @@ void test_COM(void)
 			for(x=50000;x>0;x--);       // Delay
 		}
 	#else
+	  for(;;)
+	  {
+		while (halSPITXREADY ==0);   // wait while not ready for TX
+		halSPI_SEND(DUMMY_CHAR);     // dummy write
+		while (halSPIRXREADY ==0);   // wait for RX buffer (full)
+		char buff = halSPIRXBUF;
+		if(buff==0x55)
+		{
+			P5OUT ^= BIT1; //if connected to master toggle LED
+		}
+	  }
+	  /*
 		for(;;)
 		{
 			char buff = spiSendByte(0x55);
@@ -78,6 +91,7 @@ void test_COM(void)
 				P5OUT ^= BIT1; //if connected to master toggle LED
 			}
 		}
+		*/
 	#endif
 	
 	//fflush(stdout);

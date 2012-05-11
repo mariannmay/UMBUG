@@ -34,7 +34,13 @@ void drivers_initialize(void)
 		
 	// system clock
 	devices.systemStatusLED					= &msp430.PORT_5.digitalOutput;
+	//smclk
+	FLL_CTL0 |= DCOPLUS;
+	FLL_CTL1 &= ~SELS;
+	FLL_CTL1 &= ~SMCLKOFF;
+	FLL_CTL1 |= XT2OFF;
 	
+	SCFI0 = FLL_DIV_1 | FN_2;
 	// SPI bus
 	// note: this code is redundant.  The SPI library will take care
 	//       of writing to these pins for us.  They are shown here
