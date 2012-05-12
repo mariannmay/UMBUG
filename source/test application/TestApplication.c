@@ -63,12 +63,14 @@ void test_COM(void)
 
 	#if CDH_PROCESSOR_COMPILE
 		P3OUT = 0x01; //set STE high for slave enable
+		
 		for(;;)
 		{
-			P5OUT ^= BIT1;              //always Toggle P5.1 if master
+			//P5OUT ^= BIT1;              //always Toggle P5.1 if master
 			spiSendByte(0xFF);
 			//unsigned int x;
 			//for(x=50000;x>0;x--);       // Delay
+			//P3OUT ^= 0x08;
 		}
 	#else
 	  for(;;)
@@ -79,7 +81,7 @@ void test_COM(void)
 		//char buff = halSPIRXBUF;
 		//if(buff==0x55)
 		//{
-			if((P3IN & 0x01) == 0x01)//check STE
+			if((P3IN & 0x01) == 0x01)//check STE high
 			{
 				P5OUT ^= BIT1; //if connected to master toggle LED
 			}
