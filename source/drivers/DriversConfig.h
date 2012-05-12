@@ -14,5 +14,6 @@
 //////////////////////////////////
 
 extern const char HardwareConstant;
+extern const UI16 SpectrometerBufferSize;
 
 #endif

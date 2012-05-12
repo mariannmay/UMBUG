@@ -11,7 +11,7 @@
 
 #include <msp430fg4619.h>
 #include "../DriversConfig.h"
-
+#include "./msp430/PWM.h"
 
 //structures/////////////////////////////
 
@@ -24,8 +24,9 @@ typedef struct
 
 typedef struct
 {
-	PWMIn	freq;
-	PWMIn	dty_cycl;
+	//PWMIn	freq;
+	// use ACLK
+	Percentage	dty_cycl;
 	PWMOut	pwm_out0;
 	PWMOut	pwm_out1;
 	PWMOut	pwm_out2;

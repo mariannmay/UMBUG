@@ -10,7 +10,6 @@
 #define SIMPLEDEFINITIONS_H
 
 #include <stdbool.h>
-#include "../drivers/IOTypes.h"
 
 // logic //////////////////////////////////////
 #define high true
@@ -24,18 +23,7 @@ typedef unsigned int UI16;
 typedef signed int SI16;
 typedef unsigned long UL32;
 ///////////////////////////////////////////////
-
-
-typedef struct
-{
-	DigitalOutput rod1;
-	DigitalOutput rod2;
-	DigitalOutput rod3;
-	DigitalOutput rod4;
-	DigitalOutput rod5;
-	DigitalOutput rod6;
-}
-PWMOut;
+typedef signed int Percentage;
 
 
 // voltage and current ////////////////////////

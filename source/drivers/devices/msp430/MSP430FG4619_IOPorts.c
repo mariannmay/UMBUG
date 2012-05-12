@@ -113,7 +113,7 @@ void initialize_msp430_IO_ports(void)
 	initializeDigitalOutput(	&msp430.PORT_9.digitalOutput[1],	9,	1	);
 	initializeDigitalOutput(	&msp430.PORT_9.digitalOutput[2],	9,	2	);
 	initializeDigitalOutput(	&msp430.PORT_9.digitalOutput[3],	9,	3	);
-	initializeDigitalOutput(	&msp430.PORT_9.digitalOutput[4],	9,	4	);
+	initializeDigitalOutput(	&msp430.PORT_9.digitalOutput[4],	9,	4	);	// start pulse for spectrometer
 	initializeDigitalOutput(	&msp430.PORT_9.digitalOutput[5],	9,	5	);
 	initializeDigitalOutput(	&msp430.PORT_9.digitalOutput[6],	9,	6	);
 	initializeDigitalOutput(	&msp430.PORT_9.digitalOutput[7],	9,	7	);

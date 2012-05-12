@@ -18,6 +18,7 @@
 #include "../drivers/devices/SDCard.h"
 #include "../drivers/devices/Thermocouple.h"
 #include "../drivers/devices/Watchdog.h"
+#include "../drivers/devices/Spectrometer.h"
 
 
 // a struct containing all of the system's devices ///////////////
@@ -26,6 +27,8 @@ typedef struct
 	Watchdog		systemWatchdog;
 	RealTimeClock	systemClock;
 	DigitalOutput*	systemStatusLED;
+	Spectrometer	spectrometer1;
+	Spectrometer	spectrometer2;
 }
 AllDevices;
 

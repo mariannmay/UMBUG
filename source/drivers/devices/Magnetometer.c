@@ -10,6 +10,8 @@
 
 void magnetometerspiInitialize(Magnetometer* m )
 {
+	// TODO
+	/*
 	if (m->hardware.input.miso.state == high)
 	{
 		// do stuff
@@ -31,7 +33,7 @@ void magnetometerspiInitialize(Magnetometer* m )
 	{
 		//To Do	
 	}
-	
+	*/
 	
 }
 

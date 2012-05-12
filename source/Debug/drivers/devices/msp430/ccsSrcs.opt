@@ -1,1 +1,1 @@
-"../drivers/devices/msp430/AnalogToDigitalConverter.c" "../drivers/devices/msp430/MSP430FG4619_IOPorts.c" "../drivers/devices/msp430/SPIDevice.c" 
+"../drivers/devices/msp430/AnalogToDigitalConverter.c" "../drivers/devices/msp430/MSP430FG4619_IOPorts.c" "../drivers/devices/msp430/PWM.c" "../drivers/devices/msp430/SPIDevice.c" 

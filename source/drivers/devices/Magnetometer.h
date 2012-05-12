@@ -11,7 +11,7 @@
 
 #include <msp430fg4619.h>
 #include "../DriversConfig.h"
-#include "../devices/SPIDevice.h"
+#include "./msp430/SPIDevice.h"
 
 ///////structures//////////////////////////
 

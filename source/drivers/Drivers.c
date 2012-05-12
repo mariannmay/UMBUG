@@ -35,6 +35,10 @@ void drivers_initialize(void)
 	// system clock
 	devices.systemStatusLED = &msp430.PORT_5.digitalOutput;
 	
+	// spectrometers
+	devices.spectrometer1.strtpulse = &msp430.PORT_9.digitalOutput[4];
+	devices.spectrometer1.video = &msp430.PORT_6.analogInput[3];
+	
 }
 
 //////////////////////////////////////////////////////////////////
