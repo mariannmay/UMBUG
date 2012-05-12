@@ -1,4 +1,1 @@
 Test application start -----------------
-== DEBUG MODE ==
-SPI test
-.

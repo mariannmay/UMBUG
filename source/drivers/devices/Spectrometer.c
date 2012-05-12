@@ -98,7 +98,7 @@ void spectrometer_trigger(Spectrometer* spectrometer)
 
 void spectrometer_wait_2clock_cycle(Spectrometer* spectrometer)
 {
-	// wait for one clock cycle
+	// wait for 2 clock cycles
 	//HOW TO WAIT FOR TWO CLOCK CYCLES?
 	
 }
@@ -140,7 +140,7 @@ void takePicture(Spectrometer* spectrometer){
 void stopPicture(Spectrometer* spectrometer){
 	//	TODO
 	//stop taking pictures
-	
+}
 	
 void ccdReset(void)
 {

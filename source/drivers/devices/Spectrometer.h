@@ -55,6 +55,7 @@ void spectrometer_initialize(Spectrometer* spectrometer);
 void spectrometer_startVideo(Spectrometer* spectrometer);
 void spectrometer_endStartPulse(Spectrometer* spectrometer);
 void spectrometer_wait_1clock_cycle(Spectrometer* spectrometer);
+void spectrometer_wait_2clock_cycle(Spectrometer* spectrometer);
 void takePicture(Spectrometer* spectrometer);
 
 #endif

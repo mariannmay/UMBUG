@@ -66,20 +66,26 @@ void test_COM(void)
 		for(;;)
 		{
 			P5OUT ^= BIT1;              //always Toggle P5.1 if master
-			spiSendByte(0x55);
-			unsigned int x;
-			for(x=50000;x>0;x--);       // Delay
+			spiSendByte(0xFF);
+			//unsigned int x;
+			//for(x=50000;x>0;x--);       // Delay
 		}
 	#else
 	  for(;;)
 	  {
 		//while (halSPITXREADY ==0);   // wait while not ready for TX
 		//halSPI_SEND(DUMMY_CHAR);     // dummy write
-		while (halSPIRXREADY ==0);   // wait for RX buffer (full)
+		//while (halSPIRXREADY ==0);   // wait for RX buffer (full)
 		//char buff = halSPIRXBUF;
 		//if(buff==0x55)
 		//{
-			P5OUT ^= BIT1; //if connected to master toggle LED
+			if((P3IN & 0x01) == 0x01)//check STE
+			{
+				P5OUT ^= BIT1; //if connected to master toggle LED
+			}
+			
+			unsigned int x;
+			for(x=50000;x>0;x--);
 		//}
 	  }
 	  /*

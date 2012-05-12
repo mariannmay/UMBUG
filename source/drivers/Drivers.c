@@ -34,23 +34,36 @@ void drivers_initialize(void)
 		
 	// system clock
 	devices.systemStatusLED					= &msp430.PORT_5.digitalOutput;
-	//smclk
-	FLL_CTL0 |= DCOPLUS;
-	FLL_CTL1 &= ~SELS;
-	FLL_CTL1 &= ~SMCLKOFF;
+	
+	//set operating mode to fully active using the status register
+	_bic_SR_register(LPM4_bits);
+	
+	//smclk clock setup
+	FLL_CTL0 |= DCOPLUS + XTS_FLL;
+	FLL_CTL1 &= ~(SELS + SELM0 + SELM1 + SMCLKOFF + FLL_DIV0 + FLL_DIV0);
 	FLL_CTL1 |= XT2OFF;
 	
-	SCFI0 = FLL_DIV_1 | FN_2;
+	/* System Clock Frequency Integrator 0 */
+	SCFI0 &= ~(FLLD0 + FLLD1);
+	SCFI0 |= FN_2; //FLL_DIV_1 | 
+	/* System Clock Frequency Integrator 1 */
+	//SCFI1 is auto set
+	/* System Clock Frequency Control */
+	SCFQCTL = SCFQ_1M;
+	
+	
+	
+	
 	// SPI bus
 	// note: this code is redundant.  The SPI library will take care
 	//       of writing to these pins for us.  They are shown here
 	//		 simply for clarification, and so nobody else uses the pins.
 	// TODO verify and claim the proper pin numbers
-	devices.spiBus.clock					= &msp430.PORT_3.serialInput[1];	// P3.2
-	devices.spiBus.slaveInMasterOut			= &msp430.PORT_3.serialOutput[1];	// P3.0
-	devices.spiBus.slaveOutMasterIn			= &msp430.PORT_3.serialInput[0];	// P3.3
-	initialize_SPI(1);
-	initialize_SPI(2); //TODO: fix this ?? Should there be two?
+	//devices.spiBus.clock					= &msp430.PORT_3.serialInput[1];	// P3.2
+	//devices.spiBus.slaveInMasterOut			= &msp430.PORT_3.serialOutput[1];	// P3.0
+	//devices.spiBus.slaveOutMasterIn			= &msp430.PORT_3.serialInput[0];	// P3.3
+	//initialize_SPI(1);
+	//initialize_SPI(2); //TODO: fix this ?? Should there be two?
 						//... yes, COM needs 2
 	
 	// SD card

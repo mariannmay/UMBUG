@@ -146,8 +146,9 @@ void halSPISetup(int master)
 	//UCB0MCTL = 0;
 	UCB0CTL1 &= ~UCSWRST;                     // **Initialize USCI state machine**
 	
-	//UCB0RXIE = 1;							//interrupt enables
-	//UCB0TXIE = 1;
+	IE2 |= 0x0F;							//interrupt enables
+	//UCB0RXIE = 1;		?					
+	//UCB0TXIE = 1;		?
 }
 
 //Send one byte via SPI
