@@ -23,6 +23,8 @@ typedef unsigned int UI16;
 typedef signed int SI16;
 typedef unsigned long UL32;
 ///////////////////////////////////////////////
+typedef signed int Percentage;
+
 
 // voltage and current ////////////////////////
 typedef SI16 Millivolts;

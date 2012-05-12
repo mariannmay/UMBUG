@@ -8,6 +8,9 @@
 
 #include "Spectrometer.h"
 
+//declarations/////////////////////////////////
+
+
 // functions //////////////////////////////////
 
 void spectrometer_initialize(Spectrometer* spectrometer)
@@ -15,28 +18,132 @@ void spectrometer_initialize(Spectrometer* spectrometer)
 	// TODO
 }
 
-SpectrometryData readSpectrometer(Spectrometer* spectrometer)
+void spectrometerClk(Spectrometer* spectrometer)
 {
-	spectrometer->something.state = low;
-	spectrometer->somethingElse.state = high;
-	
-	// TODO
-	// finish this properly
-	// replace the 0x00s with some read function
-	// to read serial data from the spectrometer
-	// or do whatever it is we need to do to read
-	// the data
-	
-	spectrometer->data.byte[0] = 0x00;
-	spectrometer->data.byte[1] = 0x00;
-	spectrometer->data.byte[2] = 0x00;
-	spectrometer->data.byte[3] = 0x00;
-	spectrometer->data.byte[4] = 0x00;
-	spectrometer->data.byte[5] = 0x00;
-	spectrometer->data.byte[6] = 0x00;
-	spectrometer->data.byte[7] = 0x00;
-	
-	return spectrometer->data;
+	// Set the frequency of the clock 
+	// TODO use whatever clock is available... maybe ACLK or similar.
+	//spectrometer     = 800; //Set Spectrometer clock to be 800 MHz
+							//Timers from the microprocessor may need to be used for this function
+							//Since I do not know how to use this properly I wont worry about it AT PRESENT
+		
+}
+void spectrometer_endStartPulse(Spectrometer* spectrometer)
+{
+	spectrometer->strtpulse->state = low;
 }
 
+void spectrometer_wait_1clock_cycle(Spectrometer* spectrometer)
+{
+	// wait for one clock cycle
+	//HOW TO WAIT FOR ONE CLOCK CYCLE?
+	//spectrometer-> 	
+}
+	
+	void spectrometer_wait_half_clock_cycle(Spectrometer* spectrometer){
+	//wait for one clock cycle
+	//HOW TO WAIT FOR HALF CLOCK CYCLE?
+	//spectrometer->	
+	}
+void startVideo(Spectrometer* spectrometer)
+{
+	static long memoryLocationIndex = 0x3000;
+	
+	spectrometer->oldClockState = spectrometer->newClockState;
+	spectrometer->newClockState = spectrometer->clk->state;
+	bool negativeEdgeOnClockOccurred = ((spectrometer->oldClockState == high) && (spectrometer->newClockState == low));
+	bool positiveEdgeOnClockOccurred = ((spectrometer->oldClockState == low) && (spectrometer->newClockState == high));
+	
+	//Sequence Of Operation 1
+	spectrometer->strtpulse->state=low;
+	if(negativeEdgeOnClockOccurred){
+		spectrometer->strtpulse->state=high;
+	}
+	spectrometer_wait_1clock_cycle(spectrometer);	
+	takePicture(spectrometer);
+	spectrometer_wait_1clock_cycle(spectrometer);
+	spectrometer_wait_half_clock_cycle(spectrometer);
+	spectrometer->trigger->state = low;
+	spectrometer_wait_half_clock_cycle(spectrometer);
+	spectrometer->trigger->state = high;
+	spectrometer_wait_2clock_cycle(spectrometer);
+	
+	
+	if(positiveEdgeOnClockOccurred){
+		spectrometer_wait_1clock_cycle(spectrometer);
+		if(negativeEdgeOnClockOccurred){
+			spectrometer->trigger->state = low;
+		}
+		
+	}
+	spectrometer_wait_1clock_cycle(spectrometer);
+		
+	spectrometer->strtpulse->state = high;
+	// TODO 
+	// add functionality for using the SD card
+	//sd [memoryLocationIndex] = spectrometer1.video;// does this make sense? 
+	
+	memoryLocationIndex += 0x01;	// to the next byte
+
+}
+void end_of_Sequence(Spectrometer* spectrometer)
+{
+	spectrometer->eos->state = low;
+}
+
+void spectrometer_trigger(Spectrometer* spectrometer)
+{
+	spectrometer->trigger->state = low;
+}
+
+
+void spectrometer_wait_2clock_cycle(Spectrometer* spectrometer)
+{
+	// wait for one clock cycle
+	//HOW TO WAIT FOR TWO CLOCK CYCLES?
+	
+}
+void takePicture(Spectrometer* spectrometer){
+
+	// set ST pin on A2D chip on
+	// do a quick low pulse
+	spectrometer->strtpulse->state = low;
+	clearDigitalOutput(spectrometer->strtpulse);
+	int wait = 0;
+	for (wait = 0; wait < 10; wait++){;}			// twiddle thumbs
+	spectrometer->strtpulse->state = high;
+	setDigitalOutput(spectrometer->strtpulse);
+	
+	//if (spectrometer.strtpulse == low)
+	//{
+		// wait for one clock cycle
+		//HOW TO WAIT FOR ONE CLOCK CYCLE?
+	
+		// start inputing video data to the microprocesor 
+			// capture the current analog value
+			
+			spectrometer->data.byte[spectrometer->currentIndexOfVideoCapture] = (Byte) spectrometer->video->value;
+			spectrometer->currentIndexOfVideoCapture++;
+			
+		// wait for one clock cycle
+		//HOW TO WAIT FOR ONE CLOCK CYCLE?
+	
+		//pull trigger signal low
+		spectrometer->trigger = low;
+	
+	// read in data however that happens for this chip (SPI?)
+	
+	//}
+	
+	
+	
+}
+void stopPicture(Spectrometer* spectrometer){
+	//	TODO
+	//stop taking pictures
+	
+	
+void ccdReset(void)
+{
+	// TODO
+}
 
