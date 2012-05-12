@@ -122,6 +122,8 @@
 // SPI port functions
 void halSPISetup(int master)
 {
+	UCB0CTL1 |= UCSWRST;                     // **Initialize USCI registers**
+	
 	if(master==1)
 	{
 		SPI_PxDIR |= 0x0B; //%00001011
@@ -143,6 +145,9 @@ void halSPISetup(int master)
 	
 	//UCB0MCTL = 0;
 	UCB0CTL1 &= ~UCSWRST;                     // **Initialize USCI state machine**
+	
+	//UCB0RXIE = 1;							//interrupt enables
+	//UCB0TXIE = 1;
 }
 
 //Send one byte via SPI

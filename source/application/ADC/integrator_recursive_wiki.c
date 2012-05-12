@@ -1,6 +1,6 @@
 #include <math.h>  // include file for fabs and sin
 #include <stdio.h> // include file for printf
- 
+/* 
 //
 // Recursive auxiliary function for adaptiveSimpsons() function below
 //                                                                                                 
@@ -38,4 +38,4 @@ int main(){
                                                           // the new variable I
  printf("I = %lf\n",I); // print the result
  return 0;
-}
+}*/

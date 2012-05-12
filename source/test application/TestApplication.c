@@ -73,14 +73,14 @@ void test_COM(void)
 	#else
 	  for(;;)
 	  {
-		while (halSPITXREADY ==0);   // wait while not ready for TX
-		halSPI_SEND(DUMMY_CHAR);     // dummy write
+		//while (halSPITXREADY ==0);   // wait while not ready for TX
+		//halSPI_SEND(DUMMY_CHAR);     // dummy write
 		while (halSPIRXREADY ==0);   // wait for RX buffer (full)
-		char buff = halSPIRXBUF;
-		if(buff==0x55)
-		{
+		//char buff = halSPIRXBUF;
+		//if(buff==0x55)
+		//{
 			P5OUT ^= BIT1; //if connected to master toggle LED
-		}
+		//}
 	  }
 	  /*
 		for(;;)
