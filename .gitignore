@@ -9,5 +9,7 @@
 *makefile
 *.launch
 *.out
-*.map
-*.opt
+
+./UMSATS_CDH_log.txt
+source/application/ApplicationConfig.h
+source/Debug/

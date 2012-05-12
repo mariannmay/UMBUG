@@ -13,7 +13,6 @@
 
 //////////////////////////////////
 
-extern const char HardwareConstant;
-extern const UI16 SpectrometerBufferSize;
+#define STANDARD_SPI_MESSAGE_SIZE 8
 
 #endif

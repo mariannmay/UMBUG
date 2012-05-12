@@ -13,10 +13,9 @@
 
 //////////////////////////////////
 
-#define DebugMode 0
-#define COMPROCESSOR 0
-#define CDHPROCESSOR 1
+#define DebugMode 1
 
 extern const Time_ms WatchdogKickTimeInterval;
+extern const char* DataLogFileName;
 
 #endif

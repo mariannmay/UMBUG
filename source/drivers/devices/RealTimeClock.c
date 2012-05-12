@@ -21,7 +21,7 @@ Time_ms realTimeClock_timeSinceLastCheck(RealTimeClock* clock)
 	clock->timeSinceLastCheck = 0;
 	
 	// TODO TEMP UNTIL IT IS FIXED PROPERLY
-	returnValue = 50;
+	returnValue = 1;
 	
 	
 	return returnValue;
@@ -29,7 +29,7 @@ Time_ms realTimeClock_timeSinceLastCheck(RealTimeClock* clock)
 
 void realTimeClock_update(RealTimeClock* clock)
 {
-	SPIMessage received = clock->SPI->receivedMessage;
+	SPIMessage received = clock->SPI->bus->receivedMessage;
 	// TODO
 	// fix
 	Byte timeHighByte = received.data[0];
@@ -61,7 +61,7 @@ void realTimeClock_reset(RealTimeClock* clock)
 	resetPlease.data[6] = 0xFF;
 	resetPlease.data[7] = 0xFF;
 	
-	clock->SPI->transmitMessage = resetPlease; 
+	clock->SPI->bus->transmitMessage = resetPlease;
 }
 
 

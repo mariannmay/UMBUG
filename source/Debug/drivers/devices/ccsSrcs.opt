@@ -1,1 +1,0 @@
-"../drivers/devices/Counter.c" "../drivers/devices/DFlipFlop.c" "../drivers/devices/Magnetometer.c" "../drivers/devices/Multiplexer.c" "../drivers/devices/Photodiodes.c" "../drivers/devices/RealTimeClock.c" "../drivers/devices/SDCard.c" "../drivers/devices/Spectrometer.c" "../drivers/devices/Thermocouple.c" "../drivers/devices/TorqueRods.c" "../drivers/devices/Watchdog.c" 

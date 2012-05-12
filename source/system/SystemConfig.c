@@ -11,4 +11,5 @@
 //////////////////////////////////
 
 const Time_ms WatchdogKickTimeInterval = 200; // [ms]
+const char* DataLogFileName = "../../UMSATS_CDH_log.txt";
 

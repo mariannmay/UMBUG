@@ -7,7 +7,7 @@ C_SRCS += \
 ../system/COMonCDHFlagChecking.c \
 ../system/COMonCOMFlagChecking.c \
 ../system/COMonCOMTransmissions.c \
-../system/Console.c \
+../system/Log.c \
 ../system/System.c \
 ../system/SystemConfig.c 
 
@@ -15,7 +15,7 @@ OBJS += \
 ./system/COMonCDHFlagChecking.obj \
 ./system/COMonCOMFlagChecking.obj \
 ./system/COMonCOMTransmissions.obj \
-./system/Console.obj \
+./system/Log.obj \
 ./system/System.obj \
 ./system/SystemConfig.obj 
 
@@ -23,7 +23,7 @@ C_DEPS += \
 ./system/COMonCDHFlagChecking.pp \
 ./system/COMonCOMFlagChecking.pp \
 ./system/COMonCOMTransmissions.pp \
-./system/Console.pp \
+./system/Log.pp \
 ./system/System.pp \
 ./system/SystemConfig.pp 
 
@@ -31,7 +31,7 @@ OBJS__QTD += \
 ".\system\COMonCDHFlagChecking.obj" \
 ".\system\COMonCOMFlagChecking.obj" \
 ".\system\COMonCOMTransmissions.obj" \
-".\system\Console.obj" \
+".\system\Log.obj" \
 ".\system\System.obj" \
 ".\system\SystemConfig.obj" 
 
@@ -39,7 +39,7 @@ C_DEPS__QTD += \
 ".\system\COMonCDHFlagChecking.pp" \
 ".\system\COMonCOMFlagChecking.pp" \
 ".\system\COMonCOMTransmissions.pp" \
-".\system\Console.pp" \
+".\system\Log.pp" \
 ".\system\System.pp" \
 ".\system\SystemConfig.pp" 
 
@@ -47,7 +47,7 @@ C_SRCS_QUOTED += \
 "../system/COMonCDHFlagChecking.c" \
 "../system/COMonCOMFlagChecking.c" \
 "../system/COMonCOMTransmissions.c" \
-"../system/Console.c" \
+"../system/Log.c" \
 "../system/System.c" \
 "../system/SystemConfig.c" 
 
@@ -74,10 +74,10 @@ system/COMonCOMTransmissions.obj: ../system/COMonCOMTransmissions.c $(GEN_OPTS) 
 	@echo 'Finished building: $<'
 	@echo ' '
 
-system/Console.obj: ../system/Console.c $(GEN_OPTS) $(GEN_SRCS)
+system/Log.obj: ../system/Log.c $(GEN_OPTS) $(GEN_SRCS)
 	@echo 'Building file: $<'
 	@echo 'Invoking: Compiler'
-	"C:/Program Files (x86)/Texas Instruments/ccsv4/tools/compiler/msp430/bin/cl430" -vmspx -g --define=__MSP430FG4619__ --include_path="C:/Program Files (x86)/Texas Instruments/ccsv4/msp430/include" --include_path="C:/Program Files (x86)/Texas Instruments/ccsv4/tools/compiler/msp430/include" --include_path="C:/Users/Kane/Project-Cheesecake/source/application" --include_path="C:/Users/Kane/Project-Cheesecake/source/test application" --include_path="C:/Users/Kane/Project-Cheesecake/source" --include_path="C:/Users/Kane/Project-Cheesecake/source/drivers" --include_path="C:/Users/Kane/Project-Cheesecake/source/drivers/devices" --include_path="C:/Users/Kane/Project-Cheesecake/source/system" --diag_warning=225 --printf_support=minimal --preproc_with_compile --preproc_dependency="system/Console.pp" --obj_directory="system" $(GEN_OPTS_QUOTED) $(subst #,$(wildcard $(subst $(SPACE),\$(SPACE),$<)),"#")
+	"C:/Program Files (x86)/Texas Instruments/ccsv4/tools/compiler/msp430/bin/cl430" -vmspx -g --define=__MSP430FG4619__ --include_path="C:/Program Files (x86)/Texas Instruments/ccsv4/msp430/include" --include_path="C:/Program Files (x86)/Texas Instruments/ccsv4/tools/compiler/msp430/include" --include_path="C:/Users/Kane/Project-Cheesecake/source/application" --include_path="C:/Users/Kane/Project-Cheesecake/source/test application" --include_path="C:/Users/Kane/Project-Cheesecake/source" --include_path="C:/Users/Kane/Project-Cheesecake/source/drivers" --include_path="C:/Users/Kane/Project-Cheesecake/source/drivers/devices" --include_path="C:/Users/Kane/Project-Cheesecake/source/system" --diag_warning=225 --printf_support=minimal --preproc_with_compile --preproc_dependency="system/Log.pp" --obj_directory="system" $(GEN_OPTS_QUOTED) $(subst #,$(wildcard $(subst $(SPACE),\$(SPACE),$<)),"#")
 	@echo 'Finished building: $<'
 	@echo ' '
 

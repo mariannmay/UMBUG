@@ -10,6 +10,4 @@
 
 //////////////////////////////////
 
-const char HardwareConstant = 0xF2;
-// TODO figure out a good size for this
-const UI16 SpectrometerBufferSize = 100;
+
