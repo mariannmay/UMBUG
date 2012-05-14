@@ -10,10 +10,9 @@
 #define SYSTEMCONFIG_H
 
 #include "../SimpleDefinitions.h"
+#include "../userConfig.h"
 
 //////////////////////////////////
-
-#define DebugMode 1
 
 extern const Time_ms WatchdogKickTimeInterval;
 extern const char* DataLogFileName;

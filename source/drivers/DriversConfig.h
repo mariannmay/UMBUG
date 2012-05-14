@@ -10,6 +10,7 @@
 #define DRIVERSCONFIG_H
 
 #include "./devices/msp430/MSP430FG4619_IOPorts.h"
+#include "../userConfig.h"
 
 //////////////////////////////////
 
