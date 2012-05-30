@@ -242,7 +242,53 @@ void initializeAnalogInput(AnalogInput* input, char portNum, char pin)
 
 void readAnalogInput(AnalogInput* input)
 {
-	// TODO
+	startNewAnalogToDigitalConversion();
+	UI8 waitForConversionCounter;
+	for (waitForConversionCounter = 0; waitForConversionCounter <= 2; waitForConversionCounter++)
+	{
+		; // do nothing
+	}
+	
+	//////////////
+	
+	switch (input->portNum)
+	{
+		case 5:
+			switch (input->pin)
+			{
+				case 0:		input->value = AnalogToDigital_Port_5_0; break;
+				case 1:		input->value = AnalogToDigital_Port_5_1; break;
+				default: return;
+			}
+			break;
+		
+		case 6:
+			switch (input->pin)
+			{
+				case 0:		input->value = AnalogToDigital_Port_6_0; break;
+				case 1:		input->value = AnalogToDigital_Port_6_1; break;
+				case 2:		input->value = AnalogToDigital_Port_6_2; break;
+				case 3:		input->value = AnalogToDigital_Port_6_3; break;
+				case 4:		input->value = AnalogToDigital_Port_6_4; break;
+				case 5:		input->value = AnalogToDigital_Port_6_5; break;
+				case 6:		input->value = AnalogToDigital_Port_6_6; break;
+				case 7:		input->value = AnalogToDigital_Port_6_7; break;
+				default: return;
+			}
+			break;
+		
+		case 10:
+			switch (input->pin)
+			{
+				case 6:		input->value = AnalogToDigital_Port_10_6; break;
+				case 7:		input->value = AnalogToDigital_Port_10_7; break;
+				default: return;
+			}
+			break;
+			
+		default:
+			return;
+	}
 }
 
 ///////////////////////////////////////////////
