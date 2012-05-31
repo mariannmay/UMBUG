@@ -17,6 +17,7 @@ extern void system_main(void);
 
 void main(void)
 {
+	
 	system_initialize();
 	
 	for(;;)

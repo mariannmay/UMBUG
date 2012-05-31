@@ -13,6 +13,10 @@
 #include "./SystemConfig.h"
 #include <stdio.h>
 
+// for printing a line to the file
+void logLine(char* s);
+
+
 void initializeLogFile(void);
 
 #endif

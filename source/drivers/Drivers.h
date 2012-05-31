@@ -38,6 +38,8 @@ typedef struct
 	DigitalSoftwareMultiplexer_8_1_Outputs	digitalOutputMUX0;
 	DigitalSoftwareMultiplexer_8_1_Outputs	digitalOutputMUX1;
 	DigitalSoftwareMultiplexer_8_1_Outputs	digitalOutputMUX2;
+	
+	Thermocouple							testThermocouple;
 }
 AllDevices;
 

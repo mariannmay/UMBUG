@@ -95,6 +95,9 @@ void drivers_initialize(void)
 	// digital output multiplexer 2
 	devices.digitalOutputMUX2.selectLines	= &devices.multiplexerSelectLines;
 	devices.digitalOutputMUX2.currentOutput	= &msp430.PORT_8.digitalOutput[6];
+	
+	// johnsons test thermocouple
+	devices.testThermocouple.voltageInput		= &msp430.PORT_6.analogInput[6];
 }
 
 //////////////////////////////////////////////////////////////////

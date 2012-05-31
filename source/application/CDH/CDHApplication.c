@@ -30,14 +30,24 @@ void CDHMainScheduleLoop(void)
 	// TODO: write the always-running loop here which gathers and runs commands from the ground and gets interrupted by the schedule.
 	//       - make a data structure which holds commands (Maybe function pointers and parameters somehow? Maybe just packets which will be parsed later?)
 	
+	//testing ADC stuff
+	
+	//int adcreading = 0;
+		
 	for(;;)
 	{
 		// read how much time has passed during the previous loop
 		systemTimer += realTimeClock_timeSinceLastCheck(&(devices.systemClock));
+		if (systemTimer == OneSecond/2)
+		{
+			startNewAnalogToDigitalConversion();
+		}
 		if (systemTimer >= OneSecond)
 		{
 			toggleStatusLED();
 			systemTimer = 0;
+			//adcreading = AllDevices.analogInputMUX0
+			
 		}
 		
 		kickTheDog(&(devices.systemWatchdog));

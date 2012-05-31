@@ -1,8 +1,8 @@
-/*//
+//
 //  torqure.c
 //  
 //
-//  Created by Joshua Hernandez on 12-05-05.
+//  Created by Joshua Hernandez on 12-05-07.
 //  Copyright (c) 2012.
 //
 
@@ -12,6 +12,7 @@
 
 
 #define VECTOR_LENGTH 3
+#define MAX_INT 2147483647
 
 
 typedef enum{
@@ -22,7 +23,7 @@ typedef enum{
 }boolean;
 
 
-int* calcMoment(int* tau,int* BField){
+float* calcMoment(float* tau,float* BField){
 	
 	/*
 	 
@@ -30,7 +31,7 @@ int* calcMoment(int* tau,int* BField){
 	 BField = 3d magnetic field of current position
 	 moment = 3d magnetic moment needed
 	 
-	 unit-A == unit vector in the direction of A	 
+	 unit-A == unit vector in the direction of A
 
 	 | Vector | == magnitude of vector
 	 
@@ -53,13 +54,13 @@ int* calcMoment(int* tau,int* BField){
 	 */
 	
 	
-	/*
-	int* moment;
-	int BFieldMagSq=0;
-	int i=0;
+	
+	float* moment;
+	float BFieldMagSq=0;
+	float i=0;
 	
 	
-	moment = malloc( sizeof(int)*VECTOR_LENGTH );
+	moment = malloc( sizeof(float)*VECTOR_LENGTH );
 
 	for(i=0 ; i<VECTOR_LENGTH ; i++){
 
@@ -78,24 +79,96 @@ int* calcMoment(int* tau,int* BField){
 	return moment;
 }
 
-boolean testCross(int* A,int* B,int* C){
+float* orthogonalComp(float* a, float* b){
+
+	/*
+	
+		proj_B(A) = ( A dot unit-B ) unit-B
+		
+				  = ( A dot B ) B / |B|^2
+		
+		orthognal comp of A with respect to B
+		
+		A - proj_B(A)
+	
+	*/
+	
+	float* proj;
+	float normBSq;
+	float aDotB;
+	int i=0;
+	
+	proj = malloc( sizeof(float)*VECTOR_LENGTH) );
+	
+	for(i=0;i<VECTOR_LENGTH;i++){
+		normBSq += b[i]*b[i];
+		aDotB += a[i]*b[i];
+	}
+	
+	for(i=0;i<VECTOR_LENGTH;i++){
+	
+		proj[i]=aDotB*b[i]/normBSq;
+	}
+	
+	return proj;
+}
+
+float sqrt(float x){
+
+	float rootx=0;;
+	int i=0;
+	int isquare=0;
+	int max_iter = 10;
+	
+	while(isquare<MAX_INT && isquare<x){
+		isquare = i*i;
+		i++;
+	}
+	i--;
+
+	if( abs(isquare - x) < abs(i*i - x)  ){
+		rootx=isquare;
+	}
+	else{
+		rootx=i*i;
+	}
+	
+	for(i=0, i< max_iter ; i++){
+		rootx = 0.5*( rootx + (x/rootx) );
+	}
+	
+	return rootx;
+}
+
+float abs(x){
+
+	if(x>0){
+		return x;
+	else{
+		return -x;
+	}
+}
+
+boolean testCross(float* a,float* b,float* c){
 	
 	boolean returnBool=TRUE;
+	float tol;
 	
 	// tests A = B X C
 	
 	// where A,B,C are all vectors
 	
-	if( a[1-1] != b[2-1]*c[3-1] - b[3-1]*c[2-1] ) {
+	tol = 0.00001
+	
+	if( a[1-1] - ( b[2-1]*c[3-1] - b[3-1]*c[2-1] ) < tol ) {
 		returnBool=FALSE;
 	}
-	if( a[2-1] != b[3-1]*c[1-1] - b[1-1]*c[3-1]  ){
+	if( a[2-1] - ( b[3-1]*c[1-1] - b[1-1]*c[3-1]  ) < tol ){
 		returnBool=FALSE;
 	}
-	if( a[3-1] != b[1-1]*c[2-1] - b[2-1]*c[1-1] ){
+	if( a[3-1] - ( b[1-1]*c[2-1] - b[2-1]*c[1-1] ) < tol  ){
 		returnBool=FALSE;
 	}
 	
 	return returnBool;
 }
-*/

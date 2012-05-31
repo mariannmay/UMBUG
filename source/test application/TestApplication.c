@@ -25,7 +25,9 @@ void test_application_initialize(void)
 
 void test_application_main(void)
 {
-	test_COM();
+	johnsonsTest();
+	
+	//test_COM();
 	
 	printf("All tests complete! --------------------\r\n");
 	fflush(stdout);
@@ -54,7 +56,7 @@ void test_COM(void)
 	
 	//heres where I want to test each byte
 	//assert(pack[17] == 'a');
-	*/
+	
 	
 	P5DIR |= BIT1;                // P5.1 as output
   	P5OUT |= BIT1;                // P5.1 set high
@@ -90,8 +92,25 @@ void test_COM(void)
 	
 	//printf("    COM test complete\r\n");
 	//fflush(stdout);
+	 * 
+	 
+	 */
 }
 
 ///////////////////////////////////////////////////////////////////
+
+// johnson's test
+void johnsonsTest(void)
+{
+	printf("\r\nJohnson's Test --------\r\n");
+	fflush(stdout);
+	
+	// read the voltage on a fake thermocouple
+	// the pin is port 6.6 (pin 5)
+	//readAnalogInput(&devices.johnsonTest.voltageInput);
+}
+
+///////////////////////////////////////////////////////////////////
+
 
 // put other tests here

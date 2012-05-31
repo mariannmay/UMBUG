@@ -8,6 +8,12 @@
 
 #include "./Log.h"
 
+void logLine(char* string)
+{
+	printf("\r\n%s\r\n", string);
+	fflush(stdout);
+}
+
 void initializeLogFile(void)
 {
 	FILE* fp = fopen(DataLogFileName, "w");
@@ -21,3 +27,5 @@ void initializeLogFile(void)
 		fp = freopen(DataLogFileName, "w", stdout);
 	}
 }
+
+
