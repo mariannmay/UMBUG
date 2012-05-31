@@ -122,6 +122,8 @@
 // SPI port functions
 void halSPISetup(int master)
 {
+	UCB0CTL1 |= UCSWRST;                     // **Initialize USCI registers**
+	
 	if(master==1)
 	{
 		SPI_PxDIR |= 0x0B; //%00001011
@@ -135,7 +137,7 @@ void halSPISetup(int master)
 		SPI_PxDIR |= 0x04; //%00000100
 		SPI_PxDIR &= 0xF4; //%11110100
 		UCB0CTL0 = UCCKPL+UCMSB+UCSYNC;     // 3-pin, 8-bit SPI Slave
-		UCB0CTL0 &= !UCMST;
+		UCB0CTL0 &= ~UCMST;
 		UCB0CTL1 = UCSSEL_2+UCSWRST;              // SMCLK
 		UCB0BR0 |= 0x02;                          // UCLK/2
 		UCB0BR1 = 0;	
@@ -143,6 +145,10 @@ void halSPISetup(int master)
 	
 	//UCB0MCTL = 0;
 	UCB0CTL1 &= ~UCSWRST;                     // **Initialize USCI state machine**
+	
+	IE2 |= 0x0F;							//interrupt enables
+	//UCB0RXIE = 1;		?					
+	//UCB0TXIE = 1;		?
 }
 
 //Send one byte via SPI

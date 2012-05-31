@@ -64,28 +64,44 @@ void test_COM(void)
 	//testing SPI
 
 	#if CDH_PROCESSOR_COMPILE
+		P3OUT = 0x01; //set STE high for slave enable
+		
 		for(;;)
 		{
-			toggleStatusLED();              //always Toggle P5.1 if master
-			spiSendByte(0x55);
-			unsigned int x;
-			for(x=50000;x>0;x--);       // Delay
+			//P5OUT ^= BIT1;              //always Toggle P5.1 if master
+			spiSendByte(0xFF);
+			//unsigned int x;
+			//for(x=50000;x>0;x--);       // Delay
+			//P3OUT ^= 0x08;
 		}
 	#else
-		printf("SPI test\r\n");
-		fflush(stdout);
+	  for(;;)
+	  {
+		//while (halSPITXREADY ==0);   // wait while not ready for TX
+		//halSPI_SEND(DUMMY_CHAR);     // dummy write
+		//while (halSPIRXREADY ==0);   // wait for RX buffer (full)
+		//char buff = halSPIRXBUF;
+		//if(buff==0x55)
+		//{
+			if((P3IN & 0x01) == 0x01)//check STE high
+			{
+				P5OUT ^= BIT1; //if connected to master toggle LED
+			}
+			
+			unsigned int x;
+			for(x=50000;x>0;x--);
+		//}
+	  }
+	  /*
 		for(;;)
 		{
-			printf(".");
-			fflush(stdout);
 			char buff = spiSendByte(0x55);
 			if(buff==0x55)
 			{
-				toggleStatusLED(); //if connected to master toggle LED
+				P5OUT ^= BIT1; //if connected to master toggle LED
 			}
-			printf("\r\n\n\n\n finally got out of that damn loop!\r\n\n");
-			fflush(stdout);
 		}
+		*/
 	#endif
 	
 	//fflush(stdout);

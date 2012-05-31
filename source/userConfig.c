@@ -1,12 +1,9 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    Drivers config values                                     //
-//    last edited by: Kane Anderson                             //
-//    date: November 22, 2011                                   //
+//    User config values                                        //
+//    last edited by: Craig Nemeth                              //
+//    date: May 14, 2012                                        //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "DriversConfig.h"
-
-//////////////////////////////////
-
+#include "userConfig.h"
