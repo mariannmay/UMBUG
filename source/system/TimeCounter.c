@@ -6,7 +6,7 @@ int compareTimeCount(TimeCount *a, TimeCount *b)
 {
 	//a is greater than b, return 1
 	
-	if ((a->MSW > b->MSW) || (a->MSW == b->MSW && (a->LSW > b->LSW))
+	if ((a->MSW > b->MSW) || (a->MSW == b->MSW && (a->LSW > b->LSW)))
 		return 1;
 	//a is equal to be, return 0
 	if (a->MSW == b->MSW && a->LSW == b->LSW)
@@ -16,7 +16,7 @@ int compareTimeCount(TimeCount *a, TimeCount *b)
 	else	
 		return -1;
 }
-void initTimeCount(TimeCount *a)
+void initTimeCount(TimeCounter *a) //MODIFIED SO THAT CODE WOULD COMPILE. TODO: change it to what is actually desirable.
 {
 	a->LSW = 0;
 	a->MSW = 0;
