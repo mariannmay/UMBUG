@@ -24,7 +24,7 @@ typedef enum{
 
 int* calcMoment(int* tau,int* BField){
 	
-	/*
+	
 	 
 	 tau = 3d torque requiered
 	 BField = 3d magnetic field of current position
@@ -50,10 +50,10 @@ int* calcMoment(int* tau,int* BField){
 	 
 	 moment = ( BField X tau ) / | BField |^2
 	 
-	 */
+	 
 	
 	
-	/*
+	
 	int* moment;
 	int BFieldMagSq=0;
 	int i=0;
