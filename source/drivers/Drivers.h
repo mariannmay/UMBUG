@@ -26,6 +26,7 @@ typedef struct
 	Watchdog		systemWatchdog;
 	RealTimeClock	systemClock;
 	DigitalOutput*	systemStatusLED;
+	Battery			mainBattery;
 }
 AllDevices;
 

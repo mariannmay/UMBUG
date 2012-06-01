@@ -35,6 +35,9 @@ void drivers_initialize(void)
 	// system clock
 	devices.systemStatusLED = &msp430.PORT_5.digitalOutput;
 	
+	// main battery
+	devices.mainBattery.Battery = &msp430.PORT_6.analogInput[2];
+	
 }
 
 //////////////////////////////////////////////////////////////////
