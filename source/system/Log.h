@@ -1,24 +1,18 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    Console access header                                     //
+//    Log header      		                                  	//
 //    last edited by: Kane Anderson                             //
-//    date: March 18, 2012                                      //
+//    date: April 30, 2012      	                            //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#ifndef CONSOLE_H
-#define CONSOLE_H
+#ifndef LOG_H
+#define LOG_H
 
-// includes //////////////////////
-
+#include "../drivers/DriversConfig.h"
+#include "./SystemConfig.h"
 #include <stdio.h>
-#include <string.h>
 
-// functions /////////////////////
-
-void runConsole(void);
-
-//////////////////////////////////
+void initializeLogFile(void);
 
 #endif
-

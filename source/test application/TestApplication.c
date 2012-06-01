@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
 //    TestApplication source                                    //
-//    last edited by: Craig Nemeth                              //
-//    date: January 17, 2012                                    //
+//    last edited by: Kane Anderson                             //
+//    date: April 06, 2012                                      //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -14,12 +14,17 @@ void test_application_initialize(void)
 {
 	printf("Test application start -----------------\r\n");
 	fflush(stdout);
+	
+	#if CDH_PROCESSOR_COMPILE
+		initialize_SPI(1);
+	#else
+		initialize_SPI(0);
+	#endif
+	
 }
 
 void test_application_main(void)
 {
-	
-  	WDTCTL = WDTPW | WDTHOLD;                 // Stop WDT
 	test_COM();
 	
 	printf("All tests complete! --------------------\r\n");
@@ -53,26 +58,54 @@ void test_COM(void)
 	
 	P5DIR |= BIT1;                // P5.1 as output
   	P5OUT |= BIT1;                // P5.1 set high
-	
-	
+
 	//testing SPI
-	int i;
-	for(i=0; i<10; i++)
-	{
-		P5OUT ^= BIT1;              // Toggle P5.1
-		//printf("ON/OFF");
-		fflush(stdout);
-		//ToggleStatusLED;
-		char* data;
-		SPI_EEPROM_readbyte(data, i);
-		printf("byte ");
-		printf(data);
-		unsigned int x;
-		for(x=50000;x>0;x--);       // Delay
-	}
+
+	#if CDH_PROCESSOR_COMPILE
+		P3OUT = 0x01; //set STE high for slave enable
+		
+		for(;;)
+		{
+			//P5OUT ^= BIT1;              //always Toggle P5.1 if master
+			spiSendByte(0xFF);
+			//unsigned int x;
+			//for(x=50000;x>0;x--);       // Delay
+			//P3OUT ^= 0x08;
+		}
+	#else
+	  for(;;)
+	  {
+		//while (halSPITXREADY ==0);   // wait while not ready for TX
+		//halSPI_SEND(DUMMY_CHAR);     // dummy write
+		//while (halSPIRXREADY ==0);   // wait for RX buffer (full)
+		//char buff = halSPIRXBUF;
+		//if(buff==0x55)
+		//{
+			if((P3IN & 0x01) == 0x01)//check STE high
+			{
+				P5OUT ^= BIT1; //if connected to master toggle LED
+			}
+			
+			unsigned int x;
+			for(x=50000;x>0;x--);
+		//}
+	  }
+	  /*
+		for(;;)
+		{
+			char buff = spiSendByte(0x55);
+			if(buff==0x55)
+			{
+				P5OUT ^= BIT1; //if connected to master toggle LED
+			}
+		}
+		*/
+	#endif
 	
-	printf("    COM test complete\r\n");
-	fflush(stdout);
+	//fflush(stdout);
+	
+	//printf("    COM test complete\r\n");
+	//fflush(stdout);
 }
 
 ///////////////////////////////////////////////////////////////////

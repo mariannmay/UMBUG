@@ -10,9 +10,10 @@
 #define DRIVERSCONFIG_H
 
 #include "./devices/msp430/MSP430FG4619_IOPorts.h"
+#include "../userConfig.h"
 
 //////////////////////////////////
 
-extern const char HardwareConstant;
+#define STANDARD_SPI_MESSAGE_SIZE 8
 
 #endif

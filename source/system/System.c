@@ -2,11 +2,12 @@
 //                                                              //
 //    System source                                             //
 //    last edited by: Kane Anderson                             //
-//    date: January 22, 2012                                    //
+//    date: April 30, 2012                                   	//
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
 #include "System.h"
+#include <stdio.h>
 
 Time_ms systemTimer;
 
@@ -17,13 +18,14 @@ void system_initialize(void)
 	systemTimer = 0;
 	drivers_initialize();
 	StopMSP430WatchdogTimer;
+	initializeLogFile();
 	
 	#if DebugMode
 		test_application_initialize();
 	#else
 		application_initialize();
 	#endif
-
+	
 }
 
 //////////////////////////////////////////////////////////////////
@@ -31,30 +33,14 @@ void system_initialize(void)
 // 	main has an infinite loop which calls this function every time
 void system_main(void)
 {
-	
-	// upkeep items
-	drivers_readInputs();
-	
-	systemTimer += realTimeClock_timeSinceLastCheck(&(devices.systemClock));
-	if (systemTimer >= OneSecond)
-	{
-		toggleStatusLED();
-		systemTimer = 0;
-	}
-
-	kickTheDog(&(devices.systemWatchdog));
-	
 	// run the program
 	#if DebugMode
+		printf("== DEBUG MODE ==\n");
 		test_application_main();
 	#else
+		printf("== REGULAR OPERATION ==\n");
 		application_main();
 	#endif
-	
-	drivers_setOutputs();
-	
-	runConsole();
-	
 }
 
 //////////////////////////////////////////////////////////////////
@@ -72,8 +58,12 @@ void toggleStatusLED(void)
 
 	switch (devices.systemStatusLED->state)
 	{
-		 case low	:	devices.systemStatusLED->state = high; break;
-		 case high	:	devices.systemStatusLED->state = low; break;
+		 case low	:	devices.systemStatusLED->state = high;
+						setDigitalOutput(devices.systemStatusLED);
+						break;
+		 case high	:	devices.systemStatusLED->state = low;
+						clearDigitalOutput(devices.systemStatusLED);
+						break;
 		 default	:	; // do nothing
 						
 	}

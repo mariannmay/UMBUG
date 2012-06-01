@@ -11,6 +11,7 @@
 
 #include <msp430fg4619.h>
 #include "../SimpleDefinitions.h"
+#include "./devices/msp430/AnalogToDigitalConverter.h"
 
 ///////////////////////////////////////////////
 
@@ -49,7 +50,6 @@ typedef struct
 SerialInput;
 
 void initializeSerialInput(SerialInput* input, char portNum, char pin);
-void readSerialInput(SerialInput* input);
 
 /////////////////////////////////////////////////
 
@@ -64,31 +64,6 @@ SerialOutput;
 void initializeSerialOutput(SerialOutput* input, char portNum, char pin);
 
 /////////////////////////////////////////////////
-
-typedef struct
-{
-	SerialInput clock;
-	SerialInput slaveOutMasterIn;
-	SerialOutput slaveInMasterOut;
-	SerialOutput slaveTransmitEnable;
-}
-SPIModule_4Pin;
-
-void initializeSPIModule_4pin(SPIModule_4Pin* module);
-
-// typedef union
-//{
-//	Timestamp timestamp;
-//  byte ID;
-//  byte data[8];
-//}
-//IncomingPacket;
-
-
-
-
-
-///////////////////////////////////////////////
 
 typedef struct
 {
@@ -111,8 +86,6 @@ typedef struct
 	Millivolts value;
 }
 AnalogOutput;
-
-void setAnalogOutput(AnalogOutput* output);
 
 ///////////////////////////////////////////////
 

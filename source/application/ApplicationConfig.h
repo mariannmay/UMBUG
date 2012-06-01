@@ -10,8 +10,11 @@
 #define APPLICATIONCONFIG_H
 
 #include "../SimpleDefinitions.h"
+#include "../userConfig.h"
 
 //////////////////////////////////
 
+// some constant
+extern const int StuffConstant;
 
 #endif

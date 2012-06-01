@@ -15,11 +15,16 @@
 	#include "stdlib.h"
 	#include "stdio.h"
 	#include "assert.h"
+#else
+	#include "./Log.h"
 #endif
 
 #include "../drivers/Drivers.h"
-#include "./Console.h"
 #include "SystemConfig.h"
+
+//////////////////////////////////
+
+extern Time_ms systemTimer;
 
 //////////////////////////////////
 
@@ -27,6 +32,8 @@ void system_initialize(void);
 void system_main(void);
 void system_abort(void);
 void toggleStatusLED(void);
+
+//////////////////////////////////
 
 extern void application_main(void);
 extern void application_initialize(void);

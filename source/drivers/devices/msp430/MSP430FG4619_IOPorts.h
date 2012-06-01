@@ -15,6 +15,7 @@
 //////////////////////////////////////////////////////////////////
 
 #include <msp430fg4619.h>
+#include "../../../application/ApplicationConfig.h"
 #include "../../IOTypes.h"
 #include "./AnalogToDigitalConverter.h"
 #include "./SPIDevice.h"
