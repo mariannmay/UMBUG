@@ -51,7 +51,8 @@ void drivers_initialize(void)
 	/* System Clock Frequency Control */
 	SCFQCTL = SCFQ_1M;
 	
-	
+	// this sets timer A up
+	initializeTimerA();
 	
 	
 	// SPI bus

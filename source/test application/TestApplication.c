@@ -12,8 +12,7 @@
 
 void test_application_initialize(void)
 {
-	printf("Test application start -----------------\r\n");
-	fflush(stdout);
+	logLine("Test application start -----------------\r\n");
 	
 	#if CDH_PROCESSOR_COMPILE
 		initialize_SPI(1);
@@ -26,11 +25,12 @@ void test_application_initialize(void)
 void test_application_main(void)
 {
 	johnsonsTest();
+	johnsonsTest();
+	johnsonsTest();
 	
 	//test_COM();
 	
-	printf("All tests complete! --------------------\r\n");
-	fflush(stdout);
+	logLine("All tests complete! --------------------\r\n");
 	system_abort();
 }
 
@@ -92,7 +92,7 @@ void test_COM(void)
 			for(x=50000;x>0;x--);
 		//}
 	  }
-	  /*
+	  
 		for(;;)
 		{
 			char buff = spiSendByte(0x55);
@@ -101,14 +101,13 @@ void test_COM(void)
 				P5OUT ^= BIT1; //if connected to master toggle LED
 			}
 		}
-		*/
+		
 	#endif
 	
 	//fflush(stdout);
 	
-	//printf("    COM test complete\r\n");
+	//logLine("    COM test complete");
 	//fflush(stdout);
-	 * 
 	 
 	 */
 }
@@ -118,12 +117,19 @@ void test_COM(void)
 // johnson's test
 void johnsonsTest(void)
 {
-	printf("\r\nJohnson's Test --------\r\n");
-	fflush(stdout);
+	logLine("Johnson's Test --------\r\n");
+	
+	UI16 numberOfTests = 10000;
+	UI16 index;
 	
 	// read the voltage on a fake thermocouple
 	// the pin is port 6.6 (pin 5)
-	//readAnalogInput(&devices.johnsonTest.voltageInput);
+	for (index = 0; index < numberOfTests; index++)
+	{
+		readAnalogInput(devices.testThermocouple.voltageInput);
+		logCombo("analog input on 6.6", devices.testThermocouple.voltageInput->value);
+		logLine("");
+	}
 }
 
 ///////////////////////////////////////////////////////////////////

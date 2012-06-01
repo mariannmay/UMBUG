@@ -10,7 +10,19 @@
 
 void logLine(char* string)
 {
-	printf("\r\n%s\r\n", string);
+	printf("%s\r\n", string);
+	fflush(stdout);
+}
+
+void logUI32(UL32 value)
+{
+	printf("%d\r\n", value);
+	fflush(stdout);
+}
+
+void logCombo(char* s, UL32 value)
+{
+	printf("%s: %d\r\n", s, value);
 	fflush(stdout);
 }
 
@@ -19,7 +31,7 @@ void initializeLogFile(void)
 	FILE* fp = fopen(DataLogFileName, "w");
 	if (fp == NULL)
 	{
-		printf("Error in opening a file...");
+		logLine("Error in opening a file...");
 		fflush(stdout);
 	}
 	else

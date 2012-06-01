@@ -35,17 +35,13 @@ void system_initialize(void)
 
 // 	main has an infinite loop which calls this function every time
 void system_main(void)
-{
-	// TODO REMOVE
-	printf("System main\r\n");
-	fflush(stdout);
-	
+{	
 	// run the program
 	#if DebugMode
-		printf("== DEBUG MODE ==\n");
+		logLine("== DEBUG MODE ==\r\n");
 		test_application_main();
 	#else
-		printf("== REGULAR OPERATION ==\n");
+		logLine("== REGULAR OPERATION ==\r\n");
 		application_main();
 	#endif
 }

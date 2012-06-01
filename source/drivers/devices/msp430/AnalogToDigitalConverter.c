@@ -12,15 +12,21 @@
 
 void initialize_analogToDigitalConverter(void)
 {
-	ADC12CTL0 = 0x0000;		// allows you to configure the analog to digital port
-	ADC12CTL1 = 0x0622;		// see user guide page 28-23 for more details, but...
-							// conversion mode is 'sequence of channels' (page 28-12)
-							// uses the internal oscillator
-							// the a2d clock is divided into 2
-							// sample and hold not inverted
-							// SAMPCON is in pulse mode
-							// timer A controls the Sample and Hold
-							// the first sample is ADC12MEM0
+	ADC12CTL0 = 0x0000;				// allows you to configure the analog to digital port
+	ADC12CTL1 = 0x0622;				// see user guide page 28-23 for more details, but...
+									// uses the internal oscillator
+									// the a2d clock is divided into 2
+									// sample and hold not inverted
+									// SAMPCON is in pulse mode
+									// timer A controls the Sample and Hold
+									// the first sample is ADC12MEM0
+    ADC12CTL1 |= (SHP+CONSEQ_3);	// conversion mode is 'repeat sequence of channels' (page 28-12)
+    ADC12CTL0 = (ADC12ON+MSC);
+							
+							
+							
+							
+							
 	ADC12MCTL0 = 0x00;		// makes A0 go to MEM0, with V+ = Vcc and V- = Vss
 	ADC12MCTL1 = 0x01;		// makes A1 go to MEM1, with V+ = Vcc and V- = Vss
 	ADC12MCTL2 = 0x02;		// makes A2 go to MEM2, with V+ = Vcc and V- = Vss
@@ -36,7 +42,7 @@ void initialize_analogToDigitalConverter(void)
 	ADC12MCTL12 = 0x0C;		// makes A12 go to MEM12, with V+ = Vcc and V- = Vss
 	ADC12MCTL13 = 0x0D;		// makes A13 go to MEM13, with V+ = Vcc and V- = Vss
 	ADC12MCTL14 = 0x0E;		// makes A14 go to MEM14, with V+ = Vcc and V- = Vss
-	ADC12MCTL15 = 0x0F;		// makes A15 go to MEM15, with V+ = Vcc and V- = Vss
+	ADC12MCTL15 = 0x0F+EOS;	// makes A15 go to MEM15, with V+ = Vcc and V- = Vss
 	ADC12IE = 0x00;			// disable analog to digital interrupts... we'll get to them soon enough
 	ADC12CTL0 = 0x00F3; 	// see the user guide page 28-22 for interpretation
 	P6SEL = 0xFF; 			// sets port 6 to use all 8 A2D
@@ -44,13 +50,24 @@ void initialize_analogToDigitalConverter(void)
 
 //////////////////////////////////////////////////////////////////
 
+#include "stdio.h"
+
 void startNewAnalogToDigitalConversion(void)
 {
 	// this involves toggling the ENC bit of the ADC12CTL0 register
 	// see msp430fg4619 user guide page 28-12
-	ADC12CTL0 &= 0xFFFD; // 1111 1111 1111 1101
-	ADC12CTL0 |= 0x0002; // 0000 0000 0000 0010
+	ADC12CTL0 &= 0xFFFC; // 1111 1111 1111 1101
+	ADC12CTL0 |= (ENC+ADC12SC);
+	
+	while (ADC12CTL0 && ADC12SC)
+	{
+		printf("***waiting...\r\n"); fflush(stdout); // wait until conversion is done
+	}
 	
 }
+
+
+
+
 
 

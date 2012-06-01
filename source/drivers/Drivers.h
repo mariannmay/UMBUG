@@ -18,6 +18,7 @@
 #include "../drivers/devices/SDCard.h"
 #include "../drivers/devices/Thermocouple.h"
 #include "../drivers/devices/Watchdog.h"
+#include "../drivers/devices/msp430/TimerA.h"
 
 
 // a struct containing all of the system's devices ///////////////

@@ -1,19 +1,19 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    CDHApplication header                                     //
+//    representation of timer A			                        //
 //    last edited by: Kane Anderson                             //
-//    date: January 16, 2012                                    //
+//    date: May 30, 2012                                    	//
+//																//
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#ifndef CDHAPPLICATION_H
-#define CDHAPPLICATION_H
+#ifndef TIMERA_H
+#define TIMERA_H
 
-#include "../ApplicationConfig.h"
-#include "../../system/System.h"
-#include "../../system/Log.h"
+//////////////////////////////////////////////////////////////////
 
-void CDH_application_main(void);
-void CDHMainScheduleLoop(void);
+#include <msp430fg4619.h>
+
+void initializeTimerA(void);
 
 #endif

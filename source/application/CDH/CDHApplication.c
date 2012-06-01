@@ -7,7 +7,6 @@
 //////////////////////////////////////////////////////////////////
 
 #include "CDHApplication.h"
-#include <stdio.h>
 
 void CDH_application_main(void)
 {
@@ -19,8 +18,7 @@ void CDH_application_main(void)
 	//       - use CommandTimerFacade's setTimer() command.
 	//       - also use LimitTimerFacade's setTimer() command to set the time limit for the current command (send ground an error if we go over the limit).
 	
-	printf("CDH scheduler initialized.\n");
-	fflush(stdout);
+	logLine("CDH scheduler initialized");
 	
 	CDHMainScheduleLoop();
 }

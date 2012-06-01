@@ -243,11 +243,6 @@ void initializeAnalogInput(AnalogInput* input, char portNum, char pin)
 void readAnalogInput(AnalogInput* input)
 {
 	startNewAnalogToDigitalConversion();
-	UI8 waitForConversionCounter;
-	for (waitForConversionCounter = 0; waitForConversionCounter <= 2; waitForConversionCounter++)
-	{
-		; // do nothing
-	}
 	
 	//////////////
 	
