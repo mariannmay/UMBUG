@@ -5,9 +5,10 @@
 //
 //******************************************************************************
  
-#include <Power_Management.h>
-#include <msp430xxxx.h>
-#include <Power_Switching_Function.h>
+// Kane commented it out because the file doesn't exist
+//#include <Power_Management.h>
+#include <msp430fg4619.h>
+//#include <Power_Switching_Function.h>
  
 // To be defined after consulting with Mathew or Kane
 #define MIN_POWER        // todo
@@ -16,6 +17,7 @@
  
 void powermanagement()
 {
+	/*
   int battery_state = 0;
   int charge_level = 0;
  
@@ -45,7 +47,7 @@ void powermanagement()
   
   }
  
- 
+ 	*/
 }
  
 

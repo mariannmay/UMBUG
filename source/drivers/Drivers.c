@@ -36,7 +36,7 @@ void drivers_initialize(void)
 	devices.systemStatusLED = &msp430.PORT_5.digitalOutput;
 	
 	// main battery
-	devices.mainBattery.Battery = &msp430.PORT_6.analogInput[2];
+	devices.mainBattery.voltageLevel = &msp430.PORT_6.analogInput[2];
 	
 }
 

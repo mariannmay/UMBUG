@@ -12,6 +12,7 @@
 #include "./DriversConfig.h"
 
 // here we should put all devices
+#include "../drivers/devices/Battery.h"
 #include "../drivers/devices/Counter.h"
 #include "../drivers/devices/Multiplexer.h"
 #include "../drivers/devices/RealTimeClock.h"
@@ -27,6 +28,7 @@ typedef struct
 	RealTimeClock	systemClock;
 	DigitalOutput*	systemStatusLED;
 	Battery			mainBattery;
+	Thermocouple	testThermocouple;
 }
 AllDevices;
 
