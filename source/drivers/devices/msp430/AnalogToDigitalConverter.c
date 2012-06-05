@@ -59,10 +59,10 @@ void startNewAnalogToDigitalConversion(void)
 	ADC12CTL0 &= 0xFFFC; // 1111 1111 1111 1101
 	ADC12CTL0 |= (ENC+ADC12SC);
 	
-	while (ADC12CTL0 && ADC12SC)
-	{
-		printf("***waiting...\r\n"); fflush(stdout); // wait until conversion is done
-	}
+	//while (ADC12CTL0 && ADC12SC)
+	//{
+	//	printf("***waiting...\r\n"); fflush(stdout); // wait until conversion is done
+	//}
 	
 }
 

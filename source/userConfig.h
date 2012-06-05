@@ -10,7 +10,7 @@
 #define USERCONFIG_H_
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
-#define DebugMode 1
+#define DebugMode 0
 
 // choose whether to compile code for the CDH redundant controllers
 // or the COM encoding controller
