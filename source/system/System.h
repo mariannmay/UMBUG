@@ -32,7 +32,8 @@ void system_initialize(void);
 void system_main(void);
 void system_abort(void);
 void toggleStatusLED(void);
-
+void enableInterrupts(void);
+void disableInterrupts(void);
 //////////////////////////////////
 
 extern void application_main(void);

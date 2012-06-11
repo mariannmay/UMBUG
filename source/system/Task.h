@@ -27,25 +27,51 @@ May 31 2012
 #ifndef TASK_H_
 #define TASK_H_
 
-#endif /*TASK_H_*/
+#define TASKTYPE_GROUND_COMMAND	0
+#define TASKTYPE_ROUTINE		1
 
+#define TASKTYPE_REGULAR_PRIORITY	0
+#define TASKTYPE_HIGH_PRIORITY		1
+
+#define TASK_INCOMPLETE	0
+#define TASK_COMPLETE	1
+
+#define TASK_MAX_TASKS	128
+typedef struct 
+{
+	int (*func)();
+	/*TimeCounter scheduledTime;*/
+	/*TimeCunter duration;*/
+	
+}	GroundCommandTask;
 
 typedef struct 
 {
 	int (*func)();
-	TimeCounter scheduledTime;
-	TimeCounter	duration;
+	/*TimeCounter scheduledTime;*/
+	/*TimeCounter	duration;*/
+	UI8 completed;
 	
-	/*
-	 * 	Perhaps a function to call if the previous function fails? Is this logic useful or necessary? 
-	 * */	
-	
-} Task;
+}	RoutineTask;
 
 
-void initTask(Task *t, int (*pt2Func)(), TimeCounter *schedTime, TimeCounter *duration);
-void destroyTask(Task *t);
-int performTask(Task *t);
+
+void initGroundCommandTask(GroundCommandTask *t, int (*pt2Func)()/*, TimeCounter *schedTime, TimeCounter *duration*/);//remove time stuff for now, just test basic functionality.
+void destroyGroundCommandTask(GroundCommandTask *t);
+int performGroundCommandTask(GroundCommandTask *t);
+
+/*
+void initRoutineTask(RoutineTask *t, int (*pt2Func)(), TimeCounter *schedTime, TimeCounter *duration);
+void destroyRoutineTask(RoutineTask *t);
+int performRoutineTask(RoutineTask *t);
+*/
+
 //if you want to reschedule a task, create a new task.
 //if you want a task to perform a different function, make a new Task.  dont be sloppy.
 
+/*
+ * Test function to test basic task switchign
+ */
+void performCurrentTask(void);
+
+#endif /*TASK_H_*/
