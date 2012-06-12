@@ -31,10 +31,7 @@ void initTimerA(){
 	 */
 	TACCR0 = 1024;
 	//TACCR0 = 65535;
-	
-	
-	
-	
+
 	/*
 	 * interrupt call for basic task switching.
 	 */
@@ -42,6 +39,8 @@ void initTimerA(){
 	
 	
 }
+
+
 /*
  * get this working at some point, maybe it already does?
 void changeTimerAInterrupt((*pt2func)(void)){

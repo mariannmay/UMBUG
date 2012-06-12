@@ -34,21 +34,17 @@ void CDHMainScheduleLoop(void)
 		
 	for(;;)
 	{
+		kickTheDog(&(devices.systemWatchdog));
+		
 		// read how much time has passed during the previous loop
 		systemTimer += realTimeClock_timeSinceLastCheck(&(devices.systemClock));
-		if (systemTimer == OneSecond/2)
-		{
-			startNewAnalogToDigitalConversion();
-		}
+
 		if (systemTimer >= OneSecond)
 		{
 			toggleStatusLED();
 			systemTimer = 0;
-			//adcreading = AllDevices.analogInputMUX0
 			
 		}
-		
-		kickTheDog(&(devices.systemWatchdog));
 	
 		//Freeze, criminal! >:|
 		

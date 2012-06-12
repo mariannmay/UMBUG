@@ -18,31 +18,44 @@
 
 typedef struct
 {
-	Byte data[8];
+	Byte data;
 }
 SPIMessage;
 
 typedef struct
 {
-	SerialInput*	clock;
-	SerialInput*	slaveOutMasterIn;
-	SerialOutput*	slaveInMasterOut;
+	SerialOutput*	clock;
+	SerialInput*	serialInput;
+	SerialOutput*	serialOutput;
+	SerialOutput*	slaveTransmitEnable;
 	
 	SPIMessage		transmitMessage;
-	SPIMessage		receivedMessage;
+	SPIMessage		receiveMessage;
 }
-SPIModule_3Pin;
+SPIModule_4Pin_master;
 
 typedef struct
 {
-	SPIModule_3Pin*		bus;
-	DigitalOutput*		enable;
+	SerialInput*	clock;
+	SerialInput*	serialInput;
+	SerialOutput*	serialOutput;
+	SerialInput*	transmitEnable;		// active low
+	
+	SPIMessage		transmitMessage;
+	SPIMessage		receiveMessage;
 }
-SPIDevice;
+SPIModule_4Pin_slave;
+
+typedef struct
+{
+	SPIModule_4Pin_master*		bus;
+	DigitalOutput*				enable;
+}
+SPI_Slave;
 
 // functions ///// these come from the library 
 
-void initialize_SPI(int not_yet_used);
+void initialize_SPI(bool spiMaster);
 void SPI_transmit(unsigned char* bufferedData, unsigned int size);
 void SPI_receive(unsigned char* bufferedData, unsigned int size);
 
