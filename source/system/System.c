@@ -7,6 +7,7 @@
 //////////////////////////////////////////////////////////////////
 
 #include "System.h"
+#include "../drivers/devices/msp430/TimerA.h"
 #include <stdio.h>
 
 Time_ms systemTimer;
@@ -21,13 +22,16 @@ void system_initialize(void)
 	drivers_initialize();
 	
 	StopMSP430WatchdogTimer;
-	initializeLogFile();
-	
+	//initializeLogFile();
+	initTimerA();
+	//enableInterrupts();
+	/*
 	#if DebugMode
 		test_application_initialize();
 	#else
 		application_initialize();
 	#endif
+	*/
 	
 }
 
@@ -73,5 +77,16 @@ void toggleStatusLED(void)
 	
 }
 
+void enableInterrupts(void)
+{
 
+	__bis_SR_register(GIE);
+	
+}
 
+void disableInterrupts(void)
+{
+	
+	__bic_SR_register(GIE);
+	
+}

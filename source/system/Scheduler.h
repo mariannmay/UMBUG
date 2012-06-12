@@ -19,19 +19,13 @@
 
 typedef struct{
 	
-	TimeCounter *currentTime;
-	Task *tasks;
-	Task *currentTask;
+	TimeCounter currentTime;
+	//Task *tasks;
+	//Task *currentTask;
 	
 	
 } Scheduler;
 
 void initScheduler(Scheduler *a);
+void initTimers();
 
-/*
- * incrementTime
- */
-void nextInterval(Scheduler *a);
-
-
-void 

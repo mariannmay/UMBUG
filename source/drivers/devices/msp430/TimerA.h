@@ -1,19 +1,16 @@
-//////////////////////////////////////////////////////////////////
-//                                                              //
-//    representation of timer A			                        //
-//    last edited by: Kane Anderson                             //
-//    date: May 30, 2012                                    	//
-//																//
-//                                                              //
-//////////////////////////////////////////////////////////////////
+#include "msp430fg4619.h"
+#include "../../../system/System.h" //for toggle led fucntion
+#ifndef TIMERA_H_
+#define TIMERA_H_
 
-#ifndef TIMERA_H
-#define TIMERA_H
+//pointer to function to call for interrupt.  change this to change interrupt function.
+extern void (*timerAInt_taccr1)(void);
 
-//////////////////////////////////////////////////////////////////
+/*Basic Init function
+ */
+void initTimerA();
 
-#include <msp430fg4619.h>
-
-void initializeTimerA(void);
-
-#endif
+/*Blink a LED!
+ */
+void blink();
+#endif /*TIMERA_H_*/
