@@ -20,7 +20,7 @@
 #include "../application/COM/COMonCDH.h"
 
 void test_COM(void);
-void johnsonsTest(void);
+void analogToDigitalTest(void);
 
 //////////////////////////////////
 

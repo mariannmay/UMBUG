@@ -38,6 +38,9 @@ void drivers_initialize(void)
 	// main battery
 	devices.mainBattery.voltageLevel = &msp430.PORT_6.analogInput[2];
 	
+	// test
+	devices.testThermocouple.voltageInput = &msp430.PORT_6.analogInput[6];
+	
 }
 
 //////////////////////////////////////////////////////////////////
