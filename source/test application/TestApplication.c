@@ -12,7 +12,9 @@
 
 void test_application_initialize(void)
 {
+
 	logLine("Test application start -----------------\r\n");
+
 	
 	#if CDH_PROCESSOR_COMPILE
 		initialize_SPI(1);
@@ -25,9 +27,9 @@ void test_application_initialize(void)
 void test_application_main(void)
 {
 	analogToDigitalTest();
-	
+
 	//test_COM();
-	
+
 	logLine("All tests complete! --------------------\r\n");
 	system_abort();
 }

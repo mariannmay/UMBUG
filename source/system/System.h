@@ -11,16 +11,17 @@
 
 //////////////////////////////////
 
+#include "../userConfig.h"
+#include "../drivers/Drivers.h"
+#include "SystemConfig.h"
+#include <stdlib.h>
+
 #if DebugMode
 	#include "stdlib.h"
 	#include "stdio.h"
 	#include "assert.h"
-#else
 	#include "./Log.h"
 #endif
-
-#include "../drivers/Drivers.h"
-#include "SystemConfig.h"
 
 //////////////////////////////////
 

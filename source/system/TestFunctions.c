@@ -32,3 +32,4 @@ void initTestTasks(){
 		initGroundCommandTask(&(tasks[2]),&testFunction3);
 	
 }
+
