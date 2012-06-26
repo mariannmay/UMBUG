@@ -67,12 +67,12 @@ void drivers_initialize(void)
 						//... yes, COM needs 2
 	
 	// SD card
-	devices.sdCard.SPI.bus					= &devices.spiBus;
-	devices.sdCard.SPI.enable				= &msp430.PORT_8.digitalOutput[0];
-	devices.sdCard.SPI.enable->state		= high;
-	devices.sdCard.cardPresence				= &msp430.PORT_5.digitalInput[3];
-	devices.sdCard.status					= SDCARD_UNINITIALIZED;
-	sdCard_initialize(&devices.sdCard);
+	//devices.sdCard.SPI.bus					= &devices.spiBus;
+	//devices.sdCard.SPI.enable				= &msp430.PORT_8.digitalOutput[0];
+	//devices.sdCard.SPI.enable->state		= high;
+	//devices.sdCard.cardPresence				= &msp430.PORT_5.digitalInput[3];
+	//devices.sdCard.status					= SDCARD_UNINITIALIZED;
+	//sdCard_initialize(&devices.sdCard);
 	
 	// master multiplexer select lines... used for all multiplexed I/O
 	devices.multiplexerSelectLines.S0		= &msp430.PORT_8.digitalOutput[1];
