@@ -30,10 +30,10 @@ void initialize_SPI_master(void)
 	UCB0CTL1  = 0x00 | UCSWRST;	// not ready to work yet
 	UCB0CTL1 |= UCSSEL_2;		// use SMCLK as the clock source
 	
-	UCB0BR0  = 0x02;			// bit rate is SMCLK / 2
-	UCB0BR1  = 0x00;			// bit rate is SMCLK / 2
-	
-	IE2		|= 0x00;			// interrupts disabled... MSP polls them
+	UCB0BR0   = 0x02;			// bit rate is SMCLK / 2
+	UCB0BR1   = 0x00;			// bit rate is SMCLK / 2
+	 
+	IE2		 |= 0x00;			// interrupts disabled... MSP polls them
 	
 	UCB0CTL1 &= ~UCSWRST;		// now it's ready.
 	
