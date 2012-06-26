@@ -156,8 +156,8 @@ void halSPISetup(int master)
 		  // Data rate = SMCLK/2 ~= 500kHz
 		  // UCA0BR1 = 0x00 & UCA0BR0 = 0x02
 		  //-------------------------------------------------------------------------
-		  UCB0BR0 = 0x00;                           
-		  UCB0BR1 = 0x01;
+		  UCB0BR0 = 0x02;                           
+		  UCB0BR1 = 0x00;
 		  //3) Configure ports <-BEGIN
 		  P3SEL |= 0x0E; // P3.1,P3.2,P3.3 option select
 		  P3DIR |= 0x01; // P3.0 output direction
@@ -193,8 +193,8 @@ void halSPISetup(int master)
 		  // Data rate = SMCLK/2 ~= 500kHz
 		  // UCA0BR1 = 0x00 & UCA0BR0 = 0x02
 		  //-------------------------------------------------------------------------
-		  UCB0BR0 = 0x00;                           
-		  UCB0BR1 = 0x01;
+		  UCB0BR0 = 0x02;                           
+		  UCB0BR1 = 0x00;
 		  //3) Configure ports <-BEGIN
 		  P3SEL |= 0x0E; // P3.1,P3.2,P3.3 option select
 		  P3DIR &= ~0x01; // P3.0 input direction
