@@ -21,6 +21,6 @@
 //////////////////////////////////////////////////////////////////
 
 void initialize_digitalToAnalogConverter(void);
-void startNewDigitalToAnalogConversion(Word digital_12_bit_value);
+void startNewDigitalToAnalogConversion(Word digital_12_bit_value, int outputNumber);
 
 #endif

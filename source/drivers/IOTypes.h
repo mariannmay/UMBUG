@@ -12,6 +12,7 @@
 #include <msp430fg4619.h>
 #include "../SimpleDefinitions.h"
 #include "./devices/msp430/AnalogToDigitalConverter.h"
+#include "./devices/msp430/DigitalToAnalogConverter.h"
 
 ///////////////////////////////////////////////
 
@@ -38,6 +39,19 @@ AnalogInput;
 
 void initializeAnalogInput(AnalogInput* input, char portNum, char pin);
 void readAnalogInput(AnalogInput* input);
+
+////////////////////////////////////////////////
+
+typedef struct
+{
+	char portNum;
+	char pin;
+	Word value;
+}
+AnalogOutput;
+
+void initializeAnalogOutput(AnalogOutput* output, char portNum, char pin);
+void sendAnalogOutput(AnalogOutput* output);
 
 ////////////////////////////////////////////////
 
@@ -76,16 +90,6 @@ DigitalOutput;
 void initializeDigitalOutput(DigitalOutput* output, char portNum, char pin);
 void setDigitalOutput(DigitalOutput* output);
 void clearDigitalOutput(DigitalOutput* output);
-
-///////////////////////////////////////////////
-
-typedef struct
-{
-	char portNum;
-	char pin;
-	Millivolts value;
-}
-AnalogOutput;
 
 ///////////////////////////////////////////////
 
