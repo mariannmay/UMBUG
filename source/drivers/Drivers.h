@@ -46,7 +46,5 @@ extern AllDevices devices;
 //////////////////////////////////////////////////////////////////
 
 void drivers_initialize(void);
-void drivers_readInputs(void);
-void drivers_setOutputs(void);
 
 #endif

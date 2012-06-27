@@ -61,8 +61,8 @@ void test_COM(void)
 			P3OUT |= 0x01; //set STE high for slave disable
 			
 			// just a time killing loop
-			int waitTimer = 10000;
-			for (waitTimer; waitTimer > 0; waitTimer--){ ; }
+			int waitTimer;
+			for (waitTimer = 10000; waitTimer > 0; waitTimer--){ ; }
 	
 		}
 	#else
@@ -94,8 +94,8 @@ void test_COM(void)
 	  
 	#endif
 	
-	printf("    COM test complete\r\n");
-	fflush(stdout);
+	//printf("    COM test complete\r\n");
+	//fflush(stdout);
 }
 
 ///////////////////////////////////////////////////////////////////

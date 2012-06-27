@@ -82,8 +82,8 @@ void initialize_msp430_IO_ports(void)
 	initializeAnalogInput  (	&msp430.PORT_6.analogInput[3],		6,	3	);	//  				/
 	initializeAnalogInput  (	&msp430.PORT_6.analogInput[4],		6,	4	);	//  				/
 	initializeAnalogInput  (	&msp430.PORT_6.analogInput[5],		6,	5	);	//  				/
-	initializeAnalogInput  (	&msp430.PORT_6.analogInput[6],		6,	6	);	//  				/
-	initializeAnalogInput  (	&msp430.PORT_6.analogInput[7],		6,	7	);	//  				/
+	initializeAnalogOutput (	&msp430.PORT_6.analogOutput,		6,	6	);	//  				/
+	initializeAnalogInput  (	&msp430.PORT_6.analogInput[6],		6,	7	);	//  				/
 	
 	// PORT_7																		CDH					COM
 	P7DIR = 0xF3; // 1111 0011
