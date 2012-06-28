@@ -20,6 +20,18 @@ No IPC required as far as I know as of may 31 2012.
 
 Troy Denton
 May 31 2012
+
+
+Jun 27 2012
+Following the KISS principle, decisions have been made to keep the scheduler relatively simple.
+IE - no context switching.
+
+Before a task is performed, a write to an EEPROM happens.  A register (one dedicated to each task) is incremented.
+When the function returns, the register is decremented.
+
+The key point being, if the function never returned, a residual "fudge up" is left in the non-volatile memory.
+
+If the number of "fudge-ups" exceeds a predetermined value, that function does not get called any more.
 */
 
 
@@ -37,9 +49,13 @@ May 31 2012
 #define TASK_COMPLETE	1
 
 #define TASK_MAX_TASKS	128
+
+extern int* previous_SP;
+extern unsigned short oldpc;
 typedef struct 
 {
 	int (*func)();
+	UI16 timeout;
 	/*TimeCounter scheduledTime;*/
 	/*TimeCunter duration;*/
 	
@@ -56,7 +72,7 @@ typedef struct
 
 
 
-void initGroundCommandTask(GroundCommandTask *t, int (*pt2Func)()/*, TimeCounter *schedTime, TimeCounter *duration*/);//remove time stuff for now, just test basic functionality.
+void initGroundCommandTask(GroundCommandTask *t, int (*pt2Func)(), int timeout/*, TimeCounter *schedTime, TimeCounter *duration*/);//remove time stuff for now, just test basic functionality.
 void destroyGroundCommandTask(GroundCommandTask *t);
 int performGroundCommandTask(GroundCommandTask *t);
 
@@ -72,6 +88,7 @@ int performRoutineTask(RoutineTask *t);
 /*
  * Test function to test basic task switchign
  */
-void performCurrentTask(void);
 
+unsigned short getPCofCallingFunction(void);
 #endif /*TASK_H_*/
+

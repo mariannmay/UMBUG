@@ -1,13 +1,14 @@
 /*
- * TaskList - a circular buffer of task structures.
+ * TaskList - a list of tasks.
  * 
- * Ground commands get their own task list, as do routine operations.
+ * 
  * 
  * 
  * 
  * */
 
-
+#include "Task.h"
+#include "../SimpleDefinitions.h"
 #ifndef TASKLIST_H_
 #define TASKLIST_H_
 
@@ -16,6 +17,27 @@
 
 #define TASKLIST_MAX_NUM_TASKS 128 //this is just a guess right now.
 
+extern int __TaskListIDs;
+typedef struct
+{
+	/*
+	 * always allocated TASKLIST_MAX_NUM_TASKS.  whether or not its filled is another matter.
+	 */
+	Task	tasks[TASKLIST_MAX_NUM_TASKS];
+	/*
+	 * numTasks keeps track of the number of _actual_ tasks in the list.
+	 * This is done in case we want to be able to add tasks at runtime basically.
+	 */
+	int		numTasks;
+	/*
+	 * the current task's index into the tasks array
+	 */
+	int		currentTaskIndex;	
+	
+	
+} TaskList;
+void performCurrentTask(TaskList*);
+void initTaskList(TaskList*);
 /*
 typedef struct 
 {
@@ -35,7 +57,7 @@ typedef struct
 		
 } GroundCommandTaskList;
 */
-typedef struct
+/*typedef struct
 {
 	GroundCommandTask	gct;
 	BasicTaskNode* next;
@@ -47,7 +69,7 @@ typedef struct	//may not need this
 	int size;
 	BasicTaskNode* head;	//the first node
 }	BasicTaskList;
-
+*/
 /*
 typedef struct
 {

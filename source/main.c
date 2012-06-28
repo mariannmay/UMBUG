@@ -11,6 +11,7 @@
 #include <msp430fg4619.h>
 #include <stdio.h>
 #include "drivers/devices/msp430/TimerA.h"
+#include "drivers/devices/msp430/TimerB.h"
 #include "system/Task.h"
 #include "system/TestFunctions.h"
 #include "system/System.h"
@@ -29,6 +30,7 @@ void main(void)
 	
 	
 	initTimerA();
+	initTimerB();
   	enableInterrupts();//__bis_SR_register(GIE);           // Enable interrupts
 	//WDTCTL = WDTPW + WDTHOLD;	
 	int x = 0;
@@ -42,6 +44,5 @@ void main(void)
 		y = x;
 		//printf("Thunderlizards\n");
 	}
-	x=4;
 	
 }

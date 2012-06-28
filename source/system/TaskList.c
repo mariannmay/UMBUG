@@ -1,4 +1,62 @@
-void insertTask(BasicTaskList *btl,GroundCommandTask *gct)
+#include "TaskList.h"
+
+
+/*
+ * If i ever catch you playing with this variable I will break your kneecaps -Troy
+ */
+int __TaskListIDs = 0;
+/*
+ * Perform the current task in the given list.
+ * 
+ */
+
+void performCurrentTask(TaskList tl*)
+{
+	//setTimerB(tasks[taskIndex].timeout);
+	
+	//NEED TO WRITE TO THE EEPROM HERE (INCREMENT)
+	/*
+	 * Calculate Address of "Fudge Register" for the current Task
+	 * total 13 bit address.
+	 * bis 0-6 (inclusive) represent the index of the task.
+	 * bits 7-12 (inclusive) represent the ID of the taskList
+	 * 
+	 * Therefore, need a 2 byte (16 bit) integer for this.
+	 */
+	UI16 fudgeRegister = (tl->ID<<2&0xFF00)+(tl->currentTaskIndex&0x00FF);
+	
+	//read in fudge register
+	//increment this value
+	//write this value to fudge register
+	
+	int result = tl->tasks[tl->currentTaskIndex++]();		//postincrement,increment after accessing.
+	
+	tl->currentTaskIndex = (tl->currentTaskIndex + 1)%tl->numTasks;
+	
+	
+	/*Debug print for now*/
+	printf("Result: %d\n",result);
+	
+	//NEED TO WRITE TO THE EEPROM HERE (DECREMENT)
+	//decrement fudge value written, write again.
+}
+
+/*
+ * Initialize values for a new TaskList
+ */
+void initTaskList(TaskList tl*)
+{
+	tl->currentTaskIndex = 0;
+	tl->numTasks = 0;
+	tl->ID = __TaskListIDs++;
+}
+
+
+/*
+ * 
+ * old linked list idea I was throwing around, have now thrown out  -Troy
+ * 
+ * void insertTask(BasicTaskList *btl,GroundCommandTask *gct)
 {
 	BasicTaskNode *newTask;
 	newTask = (BasicTaskNode*)malloc(sizeof(BasicTaskNode));
@@ -32,6 +90,7 @@ void insertTask(BasicTaskList *btl,GroundCommandTask *gct)
 		
 	}
 }
+
 void initBasicTaskList(BasicTaskList *btl)
 {
 	*btl->size = 0;

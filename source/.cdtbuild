@@ -64,7 +64,7 @@
 <resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/drivers/devices/msp430/Context.c" name="Context.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/drivers/devices/msp430/Context.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1415143171./Project-Cheesecake/drivers/devices/msp430/Context.c">
 <tool id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1415143171./Project-Cheesecake/drivers/devices/msp430/Context.c" name="MSP430 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1415143171"/>
 </resourceConfiguration>
-<resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/system/TaskList.c" name="TaskList.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/system/TaskList.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1415143171./Project-Cheesecake/system/TaskList.c">
+<resourceConfiguration exclude="false" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/system/TaskList.c" name="TaskList.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/system/TaskList.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1415143171./Project-Cheesecake/system/TaskList.c">
 <tool id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1415143171./Project-Cheesecake/system/TaskList.c" name="MSP430 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1415143171"/>
 </resourceConfiguration>
 </configuration>
