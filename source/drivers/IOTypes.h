@@ -12,6 +12,7 @@
 #include <msp430fg4619.h>
 #include "../SimpleDefinitions.h"
 #include "./devices/msp430/AnalogToDigitalConverter.h"
+#include "stdio.h"
 
 ///////////////////////////////////////////////
 

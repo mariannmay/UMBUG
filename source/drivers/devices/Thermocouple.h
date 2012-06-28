@@ -16,7 +16,7 @@
 // structure //////////////////////////////////
 typedef struct
 {
-	AnalogInput voltageInput;
+	AnalogInput* voltageInput;
 }
 Thermocouple;
 

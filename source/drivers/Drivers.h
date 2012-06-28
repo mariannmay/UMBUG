@@ -2,7 +2,7 @@
 //                                                              //
 //    Drivers header                                            //
 //    last edited by: Kane Anderson                             //
-//    date: April 06, 2012                                      //
+//    date: March 6, 2012       	                            //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -12,6 +12,7 @@
 #include "./DriversConfig.h"
 
 // here we should put all devices
+#include "../drivers/devices/Battery.h"
 #include "../drivers/devices/Counter.h"
 #include "../drivers/devices/Multiplexer.h"
 #include "../drivers/devices/RealTimeClock.h"

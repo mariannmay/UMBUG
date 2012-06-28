@@ -11,16 +11,17 @@
 
 //////////////////////////////////
 
+#include "../userConfig.h"
+#include "../drivers/Drivers.h"
+#include "SystemConfig.h"
+#include <stdlib.h>
+
 #if DebugMode
 	#include "stdlib.h"
 	#include "stdio.h"
 	#include "assert.h"
-#else
 	#include "./Log.h"
 #endif
-
-#include "../drivers/Drivers.h"
-#include "SystemConfig.h"
 
 //////////////////////////////////
 
@@ -32,7 +33,8 @@ void system_initialize(void);
 void system_main(void);
 void system_abort(void);
 void toggleStatusLED(void);
-
+void enableInterrupts(void);
+void disableInterrupts(void);
 //////////////////////////////////
 
 extern void application_main(void);

@@ -11,6 +11,7 @@
 
 #include "../ApplicationConfig.h"
 #include "../../system/System.h"
+#include "../../system/Log.h"
 
 void CDH_application_main(void);
 void CDHMainScheduleLoop(void);

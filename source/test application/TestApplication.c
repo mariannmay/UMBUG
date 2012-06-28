@@ -12,8 +12,9 @@
 
 void test_application_initialize(void)
 {
-	printf("Test application start -----------------\r\n");
-	fflush(stdout);
+
+	logLine("Test application start -----------------\r\n");
+
 	
 	#if CDH_PROCESSOR_COMPILE
 		initialize_SPI(1);
@@ -25,10 +26,11 @@ void test_application_initialize(void)
 
 void test_application_main(void)
 {
-	test_COM();
-	
-	printf("All tests complete! --------------------\r\n");
-	fflush(stdout);
+	analogToDigitalTest();
+
+	//test_COM();
+
+	logLine("All tests complete! --------------------\r\n");
 	system_abort();
 }
 
@@ -54,7 +56,7 @@ void test_COM(void)
 	
 	//heres where I want to test each byte
 	//assert(pack[17] == 'a');
-	*/
+	
 	
 	P5DIR |= BIT1;                // P5.1 as output
   	P5OUT |= BIT1;                // P5.1 set high
@@ -90,7 +92,7 @@ void test_COM(void)
 			for(x=50000;x>0;x--);
 		//}
 	  }
-	  /*
+	  
 		for(;;)
 		{
 			char buff = spiSendByte(0x55);
@@ -99,15 +101,37 @@ void test_COM(void)
 				P5OUT ^= BIT1; //if connected to master toggle LED
 			}
 		}
-		*/
+		
 	#endif
 	
 	//fflush(stdout);
 	
-	//printf("    COM test complete\r\n");
+	//logLine("    COM test complete");
 	//fflush(stdout);
+	 
+	 */
 }
 
 ///////////////////////////////////////////////////////////////////
+
+void analogToDigitalTest(void)
+{
+	logLine("A to D test conversions");
+	logLine("-----------------");
+	
+	UI16 numberOfTests = 300;
+	UI16 index;
+		
+	// read the voltage on a fake thermocouple
+	// the pin is port 6.6 (pin 5)
+	for (index = 0; index < numberOfTests; index++)
+	{
+		readAnalogInput(devices.testThermocouple.voltageInput);
+		logCombo("analog input on 6.6", devices.testThermocouple.voltageInput->value);
+	}
+}
+
+///////////////////////////////////////////////////////////////////
+
 
 // put other tests here

@@ -12,6 +12,7 @@
 
 #include <stdio.h>
 
+void setupADC(void);
 void getThermalSensor(void);
 
 

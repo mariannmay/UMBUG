@@ -88,15 +88,12 @@
 #define SDCARD_UNINITIALIZED 1
 #define SDCARD_INITIALIZED 0
 
-// YOU ARE HERE:
-// copy a bunch of stuff from the library.
-
 
 // struct //////////////////////////////////
 
 typedef struct
 {
-	SPIDevice		SPI;
+	SPI_Slave		SPI;
 	DigitalInput*	cardPresence;
 	unsigned long	cardSize;
 	unsigned char	status;

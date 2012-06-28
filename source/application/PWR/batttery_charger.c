@@ -6,9 +6,10 @@
 //        Mohamed Temam Nasri
 //******************************************************************************
  
-#include <msp430xxxx.h> 
+#include <msp430fg4619.h> 
 
-#include <battery_charger.h>
+// Kane commented it out because this file doesn't exist
+//#include <battery_charger.h>
  
 //#define CHARGERENABLE	   TODO
 #define STAT1		//TODO

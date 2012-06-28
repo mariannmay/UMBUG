@@ -42,6 +42,12 @@ typedef struct {
 	
 } TimeCounter;
 
+typedef struct {
+	UL32 MSW;   // THIS WAS MADE JUST SO THAT THE CODE WOULD COMPILE. (Please only commit working code to the master branch :P ) TODO: fix.
+	UL32 LSW;
+} TimeCount;
+
+
 /*
  * Tests the relationship between a and b.
  * 
@@ -55,7 +61,7 @@ int compareTimeCounter(TimeCount *a, TimeCount *b);
 /*
  * use this to initialize a TimeCounter to 0.
  * */
-void initTimeCounter(TimeCount *a);
+void initTimeCounter(TimeCounter *a);
 
 /*
  * Use this to increment the timecounter a by one millisecond.
@@ -78,7 +84,7 @@ void destroyTimeCount(TimeCount *a);
  * so dont go wasting your time with other functions.  This makes life easy.
  * */
 
-void initDuration(TimeCount *t, int days, int hours, int minutes, int seconds, int milliseconds);
+void initDuration(TimeCounter *t, int days, int hours, int minutes, int seconds, int milliseconds);
 
 //NO DECREMENT TIME COUNT ALLOWED.  UNECESSARY OPERATION LEADS TO BAD DESIGN!!!
 

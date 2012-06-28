@@ -2,7 +2,7 @@
 //                                                              //
 //    Drivers main file                                         //
 //    last edited by: Kane Anderson                             //
-//    date: April 06, 2012                                      //
+//    date: March 8, 2011                                   	//
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
@@ -29,11 +29,11 @@ void drivers_initialize(void)
 	// comment beside the pin to say what it is used for.
 	
 	// system watchdog
-	devices.systemWatchdog.WDI				= &msp430.PORT_10.digitalOutput[5];
+	devices.systemWatchdog.WDI = &msp430.PORT_10.digitalOutput[5];
 	watchdog_initialize(&devices.systemWatchdog);
 		
 	// system clock
-	devices.systemStatusLED					= &msp430.PORT_5.digitalOutput;
+	devices.systemStatusLED = &msp430.PORT_5.digitalOutput;
 	
 
 	//set operating mode to fully active using the status register
@@ -139,21 +139,7 @@ void drivers_readInputs(void)
 	// before next time
 	startNewAnalogToDigitalConversion();
 	
-	// read serial inputs
-	// note: for simplicity, we currently only have 8-Byte messages
-	//		 this puts the data in the buffer that belongs to 
-	//		 devices.SPIBus.receivedMessage
-	SPI_receive(devices.spiBus.receivedMessage.data, STANDARD_SPI_MESSAGE_SIZE);
-	
-	// read multiplexed inputs...
-	// there are 3 select lines, so each input is populated once
-	// every 8 processor main loops
-	readMultiplexedDigitalInput(&devices.digitalInputMUX0);
-	readMultiplexedDigitalInput(&devices.digitalInputMUX1);
-	readMultiplexedDigitalInput(&devices.digitalInputMUX2);
-	readMultiplexedAnalogInput(&devices.analogInputMUX0);
-	readMultiplexedAnalogInput(&devices.analogInputMUX1);
-	readMultiplexedAnalogInput(&devices.analogInputMUX2);
+	// TODO read serial inputs
 }
 
 void drivers_setOutputs(void)
@@ -199,19 +185,5 @@ void drivers_setOutputs(void)
 	
 	// TODO setup digital to analog converter and set outputs here
 	
-	// send serial outputs
-	// note: for simplicity, we currently only have 8-Byte messages
-	//		 this sends the data in the buffer that belongs to 
-	//		 devices.SPIBus.transmitMessage
-	SPI_transmit(devices.spiBus.transmitMessage.data, STANDARD_SPI_MESSAGE_SIZE);
-	
-	// send multiplexed outputs
-	// there are 3 select lines, so each output is actually sent once
-	// every 8 processor main loops
-	sendSoftwareMultiplexedDigitalOutput(&devices.digitalOutputMUX0);
-	sendSoftwareMultiplexedDigitalOutput(&devices.digitalOutputMUX1);
-	sendSoftwareMultiplexedDigitalOutput(&devices.digitalOutputMUX2);
+	// TODO send serial outputs
 }
-
-
-

@@ -11,38 +11,74 @@
 #ifndef TASKLIST_H_
 #define TASKLIST_H_
 
-#endif /*TASKLIST_H_*/
+
 
 
 #define TASKLIST_MAX_NUM_TASKS 128 //this is just a guess right now.
 
-
+/*
 typedef struct 
 {
-	Task tasks[TASKLIST_MAX_NUM_TASKS];	//the circular buffer
-	int start;							//the insert position
+	RoutineTask tasks[TASKLIST_MAX_NUM_TASKS];	//the circular buffer
+	int insert;							//the insert position
 	int current;						//the current task position
 	int num;							//the number of tasks in the system.
 		
-} TaskList;
+} RoutineTaskList;
 
+typedef struct 
+{
+	GroundCommandTask tasks[TASKLIST_MAX_NUM_TASKS];	//the circular buffer
+	int insert;							//the insert position
+	int current;						//the current task position
+	int num;							//the number of tasks in the system.
+		
+} GroundCommandTaskList;
+*/
+typedef struct
+{
+	GroundCommandTask	gct;
+	BasicTaskNode* next;
+	
+}	BasicTaskNode;
+
+typedef struct	//may not need this
+{
+	int size;
+	BasicTaskNode* head;	//the first node
+}	BasicTaskList;
+
+/*
+typedef struct
+{
+	
+	RoutineTaskNode *next;	
+	RoutineTask task;
+	
+}	RoutineTaskNode;
+
+typedef struct
+{
+	
+	GroundCommandTaskNode *next;	
+	GroundCommandTask task;
+	
+}	GroundCommandTaskNode;
+*/
 
 /*
  * initialize a taskList structure.
  */
-void initTaskList(TaskList *tl);
+ /*
+void initGroundCommandTaskList(GroundCommandTaskList *tl);
+void initRoutineTaskList(RoutineTaskList *tl);
+*/
 
 /*
- * Executes the next task in the list.  Removes the previous??????????????????????????
- * 
- * returns the return value of the executed function
+ *	add a task to the list.  Tasks are removed upon completion. 
  */
-int executeNextTask();
-
 /*
- * Add task to a tasklist - returns 1 for success or 0 for failure (full buffer).
- */
-int addTask(TaskList *tl, Task *t); 
-
-
-
+int addRoutineTask(RoutineTaskList *tl, RoutineTask *t); 
+int addGroundCommandTask(GroundCommandTaskList *tl, GroundCommandTask *t);
+*/
+#endif /*TASKLIST_H_*/

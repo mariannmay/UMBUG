@@ -12,39 +12,60 @@
 #include "../../DriversConfig.h"
 #include "./sdCardLibrary/MMC_lib/hal_SPI.h"
 
+#ifndef DUMMY_CHAR
+#define DUMMY_CHAR 			0xFF
+#endif
+
+#define SPI_TX_READY		(UC0IFG & UCB0TXIFG)
+#define SPI_TX_DONE			(UCB0STAT & UCBUSY)
+#define SPI_RX_READY		(UC0IFG & UCB0RXIFG)
+
 ///////////////////////////////////////////////
 
 // structures /////////////////////////////////
 
 typedef struct
 {
-	Byte data[8];
+	Byte 					data;
 }
 SPIMessage;
 
 typedef struct
 {
-	SerialInput*	clock;
-	SerialInput*	slaveOutMasterIn;
-	SerialOutput*	slaveInMasterOut;
+	SerialOutput*			clock;
+	SerialInput*			serialInput;
+	SerialOutput*			serialOutput;
+	SerialOutput*			slaveTransmitEnable;
 	
-	SPIMessage		transmitMessage;
-	SPIMessage		receivedMessage;
+	SPIMessage				transmitMessage;
+	SPIMessage				receiveMessage;
 }
-SPIModule_3Pin;
+SPIModule_4Pin_master;
 
 typedef struct
 {
-	SPIModule_3Pin*		bus;
-	DigitalOutput*		enable;
+	SerialInput*			clock;
+	SerialInput*			serialInput;
+	SerialOutput*			serialOutput;
+	SerialInput*			transmitEnable;		// active low
+	
+	SPIMessage				transmitMessage;
+	SPIMessage				receiveMessage;
 }
-SPIDevice;
+SPIModule_4Pin_slave;
 
-// functions ///// these come from the library 
+typedef struct
+{
+	SPIModule_4Pin_master*	bus;
+	DigitalOutput*			enable;
+}
+SPI_Slave;
 
-void initialize_SPI(int not_yet_used);
-void SPI_transmit(unsigned char* bufferedData, unsigned int size);
-void SPI_receive(unsigned char* bufferedData, unsigned int size);
+// functions //////////////////////////////////
+
+void initialize_SPI(bool spiMaster);
+Byte SPI_transmit(const Byte data);
+void SPI_receive(Byte* data);
 
 #endif
 
