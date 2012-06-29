@@ -12,20 +12,16 @@
 
 void test_application_initialize(void)
 {
-	printf("Test application start -----------------\r\n");
-	fflush(stdout);
-	
 	#if CDH_PROCESSOR_COMPILE
 		initialize_SPI(1);
 	#else
 		initialize_SPI(0);
 	#endif
-	
 }
 
 void test_application_main(void)
 {
-	test_COM();
+	//test_COM();
 	
 	printf("All tests complete! --------------------\r\n");
 	fflush(stdout);
