@@ -75,45 +75,45 @@ void drivers_initialize(void)
 	//sdCard_initialize(&devices.sdCard);
 	
 	// master multiplexer select lines... used for all multiplexed I/O
-	devices.multiplexerSelectLines.S0		= &msp430.PORT_8.digitalOutput[1];
-	devices.multiplexerSelectLines.S1		= &msp430.PORT_8.digitalOutput[2];
-	devices.multiplexerSelectLines.S2		= &msp430.PORT_8.digitalOutput[3];
+	//devices.multiplexerSelectLines.S0		= &msp430.PORT_8.digitalOutput[1];
+	//devices.multiplexerSelectLines.S1		= &msp430.PORT_8.digitalOutput[2];
+	//devices.multiplexerSelectLines.S2		= &msp430.PORT_8.digitalOutput[3];
 	
 	// digital input multiplexer 0
-	devices.digitalInputMUX0.selectLines	= &devices.multiplexerSelectLines;
-	devices.digitalInputMUX0.currentInput	= &msp430.PORT_2.digitalInput[0];
+	//devices.digitalInputMUX0.selectLines	= &devices.multiplexerSelectLines;
+	//devices.digitalInputMUX0.currentInput	= &msp430.PORT_2.digitalInput[0];
 	
 	// digital input multiplexer 1
-	devices.digitalInputMUX1.selectLines	= &devices.multiplexerSelectLines;
-	devices.digitalInputMUX1.currentInput	= &msp430.PORT_2.digitalInput[1];
+	//devices.digitalInputMUX1.selectLines	= &devices.multiplexerSelectLines;
+	//devices.digitalInputMUX1.currentInput	= &msp430.PORT_2.digitalInput[1];
 	
 	// digital input multiplexer 2
-	devices.digitalInputMUX2.selectLines	= &devices.multiplexerSelectLines;
-	devices.digitalInputMUX2.currentInput	= &msp430.PORT_2.digitalInput[2];
+	//devices.digitalInputMUX2.selectLines	= &devices.multiplexerSelectLines;
+	//devices.digitalInputMUX2.currentInput	= &msp430.PORT_2.digitalInput[2];
 	
 	// analog input multiplexer 0
-	devices.analogInputMUX0.selectLines		= &devices.multiplexerSelectLines;
-	devices.analogInputMUX0.currentInput	= &msp430.PORT_6.analogInput[0];
+	//devices.analogInputMUX0.selectLines		= &devices.multiplexerSelectLines;
+	//devices.analogInputMUX0.currentInput	= &msp430.PORT_6.analogInput[0];
 	
 	// analog input multiplexer 1
-	devices.analogInputMUX1.selectLines		= &devices.multiplexerSelectLines;
-	devices.analogInputMUX1.currentInput	= &msp430.PORT_6.analogInput[1];
+	//devices.analogInputMUX1.selectLines		= &devices.multiplexerSelectLines;
+	//devices.analogInputMUX1.currentInput	= &msp430.PORT_6.analogInput[1];
 	
 	// analog input multiplexer 2
-	devices.analogInputMUX2.selectLines		= &devices.multiplexerSelectLines;
-	devices.analogInputMUX2.currentInput	= &msp430.PORT_6.analogInput[2];
+	//devices.analogInputMUX2.selectLines		= &devices.multiplexerSelectLines;
+	//devices.analogInputMUX2.currentInput	= &msp430.PORT_6.analogInput[2];
 	
 	// digital output multiplexer 0
-	devices.digitalOutputMUX0.selectLines	= &devices.multiplexerSelectLines;
-	devices.digitalOutputMUX0.currentOutput	= &msp430.PORT_8.digitalOutput[4];
+	//devices.digitalOutputMUX0.selectLines	= &devices.multiplexerSelectLines;
+	//devices.digitalOutputMUX0.currentOutput	= &msp430.PORT_8.digitalOutput[4];
 	
 	// digital output multiplexer 1
-	devices.digitalOutputMUX1.selectLines	= &devices.multiplexerSelectLines;
-	devices.digitalOutputMUX1.currentOutput	= &msp430.PORT_8.digitalOutput[5];
+	//devices.digitalOutputMUX1.selectLines	= &devices.multiplexerSelectLines;
+	//devices.digitalOutputMUX1.currentOutput	= &msp430.PORT_8.digitalOutput[5];
 	
 	// digital output multiplexer 2
-	devices.digitalOutputMUX2.selectLines	= &devices.multiplexerSelectLines;
-	devices.digitalOutputMUX2.currentOutput	= &msp430.PORT_8.digitalOutput[6];
+	//devices.digitalOutputMUX2.selectLines	= &devices.multiplexerSelectLines;
+	//devices.digitalOutputMUX2.currentOutput	= &msp430.PORT_8.digitalOutput[6];
 }
 
 //////////////////////////////////////////////////////////////////

@@ -45,7 +45,6 @@ void system_main(void)
 		logLine("== DEBUG MODE ==\r\n");
 		test_application_main();
 	#else
-		logLine("== REGULAR OPERATION ==\r\n");
 		application_main();
 	#endif
 }
