@@ -12,9 +12,8 @@
 
 void test_application_initialize(void)
 {
-
-	logLine("Test application start -----------------\r\n");
-
+	printf("Test application start -----------------\r\n");
+	fflush(stdout);
 	
 	#if CDH_PROCESSOR_COMPILE
 		initialize_SPI(1);
@@ -26,11 +25,10 @@ void test_application_initialize(void)
 
 void test_application_main(void)
 {
-	analogToDigitalTest();
-
-	//test_COM();
-
-	logLine("All tests complete! --------------------\r\n");
+	test_COM();
+	
+	printf("All tests complete! --------------------\r\n");
+	fflush(stdout);
 	system_abort();
 }
 
@@ -38,25 +36,7 @@ void test_application_main(void)
 
 void test_COM(void)
 {
-	/*
-	Data D;
-	//malloc required?
-	D.size = 3;
-	D.type = true;
-	D.index[0] = 'a';
-	D.index[1] = 'b';
-	D.index[2] = 'c';
 
-	Packet P;
-	//malloc here?
-	P.size = D.size+20;
-	
-	char dest[] = {'V','E','4','U','M','_','1'};
-	packetize(&D, &P, dest); //stuffing info into an AX.25 packet for VE4UM_1
-	
-	//heres where I want to test each byte
-	//assert(pack[17] == 'a');
-	
 	
 	P5DIR |= BIT1;                // P5.1 as output
   	P5OUT |= BIT1;                // P5.1 set high
@@ -64,74 +44,60 @@ void test_COM(void)
 	//testing SPI
 
 	#if CDH_PROCESSOR_COMPILE
-		P3OUT = 0x01; //set STE high for slave enable
+		P3OUT &= ~0x01;		// slave enable
 		
-		for(;;)
+		char nextCharToSend = '1';
+		for(;;nextCharToSend++)
 		{
-			//P5OUT ^= BIT1;              //always Toggle P5.1 if master
-			spiSendByte(0xFF);
-			//unsigned int x;
-			//for(x=50000;x>0;x--);       // Delay
-			//P3OUT ^= 0x08;
+
+			UCB0CTL1 |= UCSWRST;
+			UCB0CTL1 &= ~UCSWRST;
+			if (nextCharToSend == ':') nextCharToSend = '1';
+			
+			P3OUT &= ~0x01; //set STE low for slave enable
+			char buff = spiSendByte(nextCharToSend);
+			printf("recieved: %c\n", buff);
+			
+			P3OUT |= 0x01; //set STE high for slave disable
+			
+			// just a time killing loop
+			int waitTimer = 10000;
+			for (waitTimer; waitTimer > 0; waitTimer--){ ; }
+	
 		}
 	#else
-	  for(;;)
+		
+		printf("    COM Slave Initialize\r\n");
+		printf("Searching for: %c\n", 'C');
+		fflush(stdout);
+		
+	  int x;
+	  for(x =0;x<100;x++)
 	  {
-		//while (halSPITXREADY ==0);   // wait while not ready for TX
-		//halSPI_SEND(DUMMY_CHAR);     // dummy write
-		//while (halSPIRXREADY ==0);   // wait for RX buffer (full)
-		//char buff = halSPIRXBUF;
-		//if(buff==0x55)
-		//{
-			if((P3IN & 0x01) == 0x01)//check STE high
-			{
-				P5OUT ^= BIT1; //if connected to master toggle LED
-			}
-			
-			unsigned int x;
-			for(x=50000;x>0;x--);
-		//}
-	  }
-	  
-		for(;;)
+
+		UCB0CTL1 |= UCSWRST;
+		UCB0CTL1 &= ~UCSWRST;
+	  	UCB0TXBUF = 'C';
+		while((P3IN & 0x01) == 0x01);	//wait for enable
+		bool enabled = ((P3IN | 0xFE) == 0xFE);
+		if (enabled)
 		{
-			char buff = spiSendByte(0x55);
-			if(buff==0x55)
-			{
-				P5OUT ^= BIT1; //if connected to master toggle LED
-			}
+			//while (halSPITXREADY ==0);   // wait while not ready for TX
+			//halSPI_SEND(0xFF);     // dummy write
+			while (halSPIRXREADY ==0);   // wait for RX buffer (full)
+			char buff = UCB0RXBUF;
+			printf("recieved: %c\n", buff);
+			
 		}
 		
+	  }
+	  
 	#endif
 	
-	//fflush(stdout);
-	
-	//logLine("    COM test complete");
-	//fflush(stdout);
-	 
-	 */
+	printf("    COM test complete\r\n");
+	fflush(stdout);
 }
 
 ///////////////////////////////////////////////////////////////////
-
-void analogToDigitalTest(void)
-{
-	logLine("A to D test conversions");
-	logLine("-----------------");
-	
-	UI16 numberOfTests = 300;
-	UI16 index;
-		
-	// read the voltage on a fake thermocouple
-	// the pin is port 6.6 (pin 5)
-	for (index = 0; index < numberOfTests; index++)
-	{
-		readAnalogInput(devices.testThermocouple.voltageInput);
-		logCombo("analog input on 6.6", devices.testThermocouple.voltageInput->value);
-	}
-}
-
-///////////////////////////////////////////////////////////////////
-
 
 // put other tests here
