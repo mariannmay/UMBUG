@@ -13,6 +13,7 @@
 
 #include "../system/System.h"
 #include "../application/ApplicationConfig.h"
+#include "../application/PWR/UART.h"
 #include <assert.h>
 #include <stdio.h>
 

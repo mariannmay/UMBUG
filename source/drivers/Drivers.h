@@ -27,7 +27,7 @@ typedef struct
 	Watchdog								systemWatchdog;
 	RealTimeClock							systemClock;
 	DigitalOutput*							systemStatusLED;
-	SPIModule_3Pin							spiBus;
+//	SPIModule_3Pin							spiBus;
 	SDCard									sdCard;
 	MultiplexerSelectLines					multiplexerSelectLines;
 	DigitalMultiplexer_8_1_Inputs			digitalInputMUX0;

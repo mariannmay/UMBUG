@@ -36,11 +36,8 @@
 
 //include "TI_USCI_UART_Regs.h"
 //Global Functions
-extern void InitUART(void);
-extern void StartUARTRx(void);
-extern void StopUARTRx(void);
-extern void WriteUART(unsigned char data);
-extern void putsUART(unsigned char *buffer, unsigned short StringSize);
+
+void InitUART(void);
 
 
 #endif /*UART_H_*/

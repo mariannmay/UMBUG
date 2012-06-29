@@ -10,58 +10,68 @@
 
 
 #include "msp430.h"
-#include "main.h"
+//#include "../main.h"
 #include "UART.h"
 
+#include <stdio.h>
 
+#include "UART.h"
+#include "TI_USCI_UART_Regs.h"
   
 /**
 * @brief Function Name:     InitUART.                                                 
 * @brief  Description: This function initialized the USCI-UART.
 * @param none                                                   
 * @return none                                                    
-*/     
+*/    
+    #define USAxCTL		     U1CTL	    /* USART Control Register  */	
+    #define USAxBR0     	 U1BR0			/* USART Baud Rate 0 */
+    #define USAxBR1     	 U1BR1			/* USART Baud Rate 1 */
+    #define USAxRXCTL   	 U1RCTL 		/* USART Receive Control  Register */
+    #define USAxTXCTL   	 U1TCTL   		/* USART Transmit Control Register */
+    #define USAxRXBUF        U1RXBUF        /* USART Receive Register Buffer*/
+    #define USAxTXBUF        U1TXBUF        /* USART Transmit Register Buffer*/
+    #define USAxIE 		     IE2      		/* USART Interrupt Enable Register */
+    #define USAxIFG		     IFG2      		/* USART Interrupt Flags Register */                        
+    #define USAxME           ME2            /* USART Module Enable */
+    #define USAxMCTL         U1MCTL          // Modulation control register
+  
+    #define USAxRXIE         BIT6
+    #define USAxTXIE         BIT7
+    #define USAxRXIFG        BIT6
+    #define USAxTXIFG        BIT7
+
+
 void InitUART(void){ 
 
-  USAxCTL |=UCSWRST;	           /* USART Software Reset; stops USART state machine */
+
+	printf("test2\n");
+
+ USAxCTL |=UCSWRST;	           /* USART Software Reset; stops USART state machine */
   
-  
+   UART_PxSEL |=BIT0+BIT1;
+   ME2|=BIT5+BIT4;
   UART_PxDIR &= ~UART_RX_PAD;               // Configure Px.X as input
   UART_PxDIR |= UART_TX_PAD;                // Configure Px.X as output
-  UART_PxSEL |= (UART_TX_PAD|UART_RX_PAD); // Px.x & Px.X = USCI_Ax TXD & RXD
+
   
-  USAxCTL |=0x20;                           // No parity 	          
-  USAxTXCTL|=0x00;
-  USAxRXCTL|=0x0D;
+  USAxCTL |=CHAR;                           // No parity, 8 bits data ,1 stop bit	          
+  USAxTXCTL|=SSEL1;                         // UCLK = ACLK 
   USAxBR0=3;                       
   USAxBR1=0;			
   	  
+  USAxMCTL = 0x4a;                         // Modulation
   
-  UCAxMCTL =  (UCBRF_0|UCBRS_6);  // Modulation UCBRSx = 6
+	printf("test1\n");
   
-  UCAxIFG &= ~UCAxRXIFG;          //Clear RX IFG
-  USAxCTL =0x30;             // **Initialize USART state machine**
+ 
+  USAxCTL &= ~UCSWRST;             // **Initialize USART state machine**
                              // No parity, Two stops bits,8 bits data, Idle line//                                  
-             
-   USAxIE|= USAxTXIE+ USAxRXIE;          // Enable USART Transmit and Receive interrupt enable   
-  
+    USAxTXBUF=0xAA;  
+    USAxRXBUF=0xFF; 
+    while (!(IFG1 & UTXIFG1));   // check this condition     
+  // USAxIE|= USAxTXIE+ USAxRXIE;          // Enable USART Transmit and Receive interrupt enable   
+}
 /* **************End of INITIALIZATION OF THE UART*****************************/
 
-}  
 
-/* StopUARTRx.: This function disables the USCI-UART interrupts in order
- *  to not acknowledge byte sent by the TX.*/
-void StopUARTRx(void){
-
-  USAxIE &= ~USAxRXIE;             // Disable USART RX interrupt 
-  
-}
-/*************End of StopUARTx*************/
-
-/* StartUARTRx.: This function enables the USCI-UART interrupts in order 
-                 to be ready to receive USBID messages.*/
-void StartUARTRx(void){
-  
-  USAxIFG &= ~USAxRXIFG;           // Clear RX IFG
-  USAxIE |= USAxRXIE;              // Enable USART RX interrupt
-}

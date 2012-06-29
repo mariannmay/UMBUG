@@ -15,6 +15,8 @@ void test_application_initialize(void)
 
 	logLine("Test application start -----------------\r\n");
 
+	printf("definitely\n");
+	InitUART();
 	
 	#if CDH_PROCESSOR_COMPILE
 		initialize_SPI(1);
@@ -126,8 +128,8 @@ void analogToDigitalTest(void)
 	// the pin is port 6.6 (pin 5)
 	for (index = 0; index < numberOfTests; index++)
 	{
-		readAnalogInput(devices.testThermocouple.voltageInput);
-		logCombo("analog input on 6.6", devices.testThermocouple.voltageInput->value);
+		//readAnalogInput(devices.testThermocouple.voltageInput);
+		//logCombo("analog input on 6.6", devices.testThermocouple.voltageInput->value);
 	}
 }
 
