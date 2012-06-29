@@ -2,11 +2,30 @@
 //                                                              //
 //    IO Types	                                                //
 //    last edited by: Kane Anderson                             //
-//    date: March 3, 2012                                   	//
+//    date: June 26, 2012                                   	//
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
 #include "./IOTypes.h"
+
+//////////////////////////////////////////////////////////////////
+
+void initializeAnalogOutput(AnalogOutput* output, char portNum, char pin)
+{
+	// nothing to do here
+}
+
+void sendAnalogOutput(AnalogOutput* output)
+{
+	if ((output->portNum == 6) && (output->pin == 6))
+	{
+		startNewDigitalToAnalogConversion(output->value, 0);
+	}
+	else if ((output->portNum == 6) && (output->pin == 7))
+	{
+		startNewDigitalToAnalogConversion(output->value, 1);
+	}
+}
 
 //////////////////////////////////////////////////////////////////
 
