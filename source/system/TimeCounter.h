@@ -9,9 +9,12 @@
  * need to include methods for incrementing - need to handle the rollover of course.
  * 
  * */
-#include "../SimpleDefinitions.h"
+
 #ifndef TIMECOUNTER_H_
 #define TIMECOUNTER_H_
+
+#include "../SimpleDefinitions.h"
+#include <stdlib.h>
 
 #endif /*TIMECOUNTER_H_*/
 

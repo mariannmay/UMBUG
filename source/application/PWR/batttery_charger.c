@@ -33,6 +33,7 @@ void bc_disable(void)
 char bc_status(void) 
 { 
   //TODO 
+  return 0xFF;
 } 
  
 /* ISR for Battery Charger
