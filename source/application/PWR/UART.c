@@ -35,7 +35,7 @@
     #define USAxIFG		     IFG2      		/* USART Interrupt Flags Register */                        
     #define USAxME           ME2            /* USART Module Enable */
     #define USAxMCTL         U1MCTL          // Modulation control register
-  
+ 
     #define USAxRXIE         BIT6
     #define USAxTXIE         BIT7
     #define USAxRXIFG        BIT6
@@ -49,8 +49,8 @@ void InitUART(void){
 
  USAxCTL |=UCSWRST;	           /* USART Software Reset; stops USART state machine */
   
-   UART_PxSEL |=BIT0+BIT1;
-   ME2|=BIT5+BIT4;
+  UART_PxSEL |=BIT0+BIT1; 
+  USAxME|=BIT5+BIT4;                       // Enable Transmit and  Receive module 
   UART_PxDIR &= ~UART_RX_PAD;               // Configure Px.X as input
   UART_PxDIR |= UART_TX_PAD;                // Configure Px.X as output
 
@@ -64,13 +64,16 @@ void InitUART(void){
   
 	printf("test1\n");
   
- 
-  USAxCTL &= ~UCSWRST;             // **Initialize USART state machine**
-                             // No parity, Two stops bits,8 bits data, Idle line//                                  
-    USAxTXBUF=0xAA;  
-    USAxRXBUF=0xFF; 
-    while (!(IFG1 & UTXIFG1));   // check this condition     
-  // USAxIE|= USAxTXIE+ USAxRXIE;          // Enable USART Transmit and Receive interrupt enable   
+
+  USAxCTL &= ~UCSWRST;                       // **Initialize USART state machine**
+                                             // No parity, Two stops bits,8 bits data, Idle line//                                  
+  
+  USAxIE|=BIT5+BIT4;                         //Enable USART Transmit and Receive interrupts
+  
+    while (!(USAxIFG & UTXIFG1));   // check this condition     
+    USAxTXBUF=0xAA;                 // should transmit AA
+    while (!(USAxIFG & UTXIFG1));   // check if the module is ready to send data     
+    USAxTXBUF=0x11;                 // should transmit 11
 }
 /* **************End of INITIALIZATION OF THE UART*****************************/
 
