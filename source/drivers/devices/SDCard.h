@@ -93,7 +93,7 @@
 
 typedef struct
 {
-	SPI_Slave		SPI;
+	SPI_Device		SPI;
 	DigitalInput*	cardPresence;
 	unsigned long	cardSize;
 	unsigned char	status;

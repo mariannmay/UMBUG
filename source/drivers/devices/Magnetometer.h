@@ -18,7 +18,7 @@
 typedef struct
 {
 	//TO DO
-	SPI_Slave hardware;
+	SPI_Device hardware;
 	
 }
 Magnetometer;

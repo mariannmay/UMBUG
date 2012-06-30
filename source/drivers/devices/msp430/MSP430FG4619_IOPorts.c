@@ -132,15 +132,13 @@ void initialize_msp430_IO_ports(void)
 	// configuring Analog to Digital conversion -------------------------------------
 	initialize_analogToDigitalConverter();
 	
-	if(CDH_PROCESSOR_COMPILE)
-	{
-		initialize_SPI(1);
-	}
-	else
-	{
-		if(COM_PROCESSOR_COMPILE)
-		{
-			initialize_SPI(0);
-		}
-	}
+	#if CDH_PROCESSOR_COMPILE
+		initialize_SPI(SPI_CHANNEL_1, SPI_TYPE_Master);
+	#else
+		initialize_SPI(SPI_CHANNEL_1, SPI_TYPE_Slave);
+		initialize_SPI_SPI_CHANNEL_2, SPI_TYPE_Master);
+	#endif
 }
+
+
+

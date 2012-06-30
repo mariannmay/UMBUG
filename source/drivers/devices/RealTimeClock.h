@@ -16,7 +16,7 @@
 // structure //////////////////////////////////
 typedef struct
 {
-	SPI_Slave* SPI;
+	SPI_Device* SPI;
 	
 	Time_ms currentTime;
 	Time_ms timeSinceLastCheck;
