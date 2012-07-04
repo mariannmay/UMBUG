@@ -36,45 +36,51 @@ If the number of "fudge-ups" exceeds a predetermined value, that function does n
 
 
 #include "../SimpleDefinitions.h"
+#include "TimeCounter.h"
 #ifndef TASK_H_
 #define TASK_H_
 
-#define TASKTYPE_GROUND_COMMAND	0
-#define TASKTYPE_ROUTINE		1
 
-#define TASKTYPE_REGULAR_PRIORITY	0
-#define TASKTYPE_HIGH_PRIORITY		1
 
 #define TASK_INCOMPLETE	0
 #define TASK_COMPLETE	1
 
-#define TASK_MAX_TASKS	128
 
-extern int* previous_SP;
-extern unsigned short oldpc;
-typedef struct 
+
+
+
+typedef struct
 {
 	int (*func)();
-	UI16 timeout;
-	/*TimeCounter scheduledTime;*/
-	/*TimeCunter duration;*/
-	
-}	GroundCommandTask;
-
-typedef struct 
-{
-	int (*func)();
-	/*TimeCounter scheduledTime;*/
-	/*TimeCounter	duration;*/
-	UI8 completed;
-	
-}	RoutineTask;
-
-
-
-void initGroundCommandTask(GroundCommandTask *t, int (*pt2Func)(), int timeout/*, TimeCounter *schedTime, TimeCounter *duration*/);//remove time stuff for now, just test basic functionality.
-void destroyGroundCommandTask(GroundCommandTask *t);
-int performGroundCommandTask(GroundCommandTask *t);
+	ShortDuration duration;
+	UI16 maxRetries;
+	 
+} Task;
+//extern int* previous_SP;
+//extern unsigned short oldpc;
+//typedef struct 
+//{
+//	int (*func)();
+//	UI16 timeout;
+//	/*TimeCounter scheduledTime;*/
+//	/*TimeCunter duration;*/
+//	
+//}	GroundCommandTask;
+//
+//typedef struct 
+//{
+//	int (*func)();
+//	/*TimeCounter scheduledTime;*/
+//	/*TimeCounter	duration;*/
+//	UI8 completed;
+//	
+//}	RoutineTask;
+//
+//
+//
+//void initGroundCommandTask(GroundCommandTask *t, int (*pt2Func)(), int timeout/*, TimeCounter *schedTime, TimeCounter *duration*/);//remove time stuff for now, just test basic functionality.
+//void destroyGroundCommandTask(GroundCommandTask *t);
+//int performGroundCommandTask(GroundCommandTask *t);
 
 /*
 void initRoutineTask(RoutineTask *t, int (*pt2Func)(), TimeCounter *schedTime, TimeCounter *duration);
@@ -85,10 +91,5 @@ int performRoutineTask(RoutineTask *t);
 //if you want to reschedule a task, create a new task.
 //if you want a task to perform a different function, make a new Task.  dont be sloppy.
 
-/*
- * Test function to test basic task switchign
- */
-
-unsigned short getPCofCallingFunction(void);
 #endif /*TASK_H_*/
 

@@ -1,10 +1,11 @@
 #include "TimerA.h"
 #include "../../../system/Task.h"
+#include "../../../system/TimeCounter.h"
 #include <stdio.h>
 /*
  * Refer to this outside of the file with the extern keyword!!
  */
-void (*timerAInt_taccr1)(void);
+extern TimeCounter currentTime;
 void initTimerA(){
 	/*Timer A control register.
 	 * TASSEL_2 = use SMCLK for clock source
@@ -27,12 +28,9 @@ void initTimerA(){
 	 * period of count - counts up from 0 to TACCR0 and then registers an interrupt.
 	 */
 	//TACCR0 = 1024;
-	TACCR0 = 0xF000;
+	TACCR0 = 0x0100;
 	
-	/*
-	 * interrupt call for basic task switching.
-	 */
-	timerAInt_taccr1 = &performCurrentTask;
+
 }
 /*
  * get this working at some point, maybe it already does?
@@ -51,9 +49,11 @@ __interrupt void timerA0int(){
 	//printf("TEst\n");
 	if(TAIV && TAIV_TACCR1)	//if capture compare reg 1 interrupt
 	{
-		//set up timerb for interrupt!
-		timerAInt_taccr1();
-		//clear timerb interrupt!
+		//increment the current time by 1mS
+		incrementTimeCounter(&currentTime);
+		/*
+		 * Do comparisons here, execute time-tagged and/or immediate commands.
+		 */
 	}
 	
 	

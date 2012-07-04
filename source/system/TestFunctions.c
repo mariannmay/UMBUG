@@ -5,8 +5,7 @@
  */
  
  
-extern GroundCommandTask tasks[];
-extern int taskIndex;
+
 int testFunction1(){
 
 	printf("Test function 1\n");
@@ -25,10 +24,3 @@ int testFunction3(){
 	return 3;
 }
 
-void initTestTasks(){
-		
-		initGroundCommandTask(&(tasks[0]),&testFunction1,50);
-		initGroundCommandTask(&(tasks[1]),&testFunction2,500);
-		initGroundCommandTask(&(tasks[2]),&testFunction3,5000);
-	
-}
