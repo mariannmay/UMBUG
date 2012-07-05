@@ -16,8 +16,7 @@
 #include <assert.h>
 #include <stdio.h>
 
-//for testing the COMs application////////
-#include "../application/COM/COMonCDH.h"
+
 
 void test_COM(void);
 
