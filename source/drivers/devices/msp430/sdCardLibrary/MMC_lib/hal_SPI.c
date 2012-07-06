@@ -39,7 +39,7 @@ void halSPISetup(int master)
 		  //UCMST (Master mode)               = 1b  ->  Master mode
 		  //UCMODEx (USCI mode)               = 00b ->  3-Pin SPI
 		  //UCSYNC (Synchronous mode enable)  = 1b  ->  Synchronous mode
-		  UCB0CTL0 = 0x29;
+		  UCB0CTL0 = 0xA9;
 		  //-------------------------------------------------------------------------
 		  //-------------------------------------------------------------------------
 		  //UCA0CTL1 -> Control Register 1
@@ -60,6 +60,8 @@ void halSPISetup(int master)
 		  //3) Configure ports <-BEGIN
 		  P3SEL |= 0x0E; // P3.1,P3.2,P3.3 option select
 		  P3DIR |= 0x01; // P3.0 output direction
+		  P3SEL &= ~0x01;// P3.0 is GPIO!!!!!!!!!!!
+		  
 		  P3DIR &= ~0x10; //P3.4 input
 	}else
 	{
@@ -76,7 +78,7 @@ void halSPISetup(int master)
 		  //UCMST (Master mode)               = 0b  ->  Slave mode
 		  //UCMODEx (USCI mode)               = 00b ->  3-Pin SPI
 		  //UCSYNC (Synchronous mode enable)  = 1b  ->  Synchronous mode
-		  UCB0CTL0 = 0x21;
+		  UCB0CTL0 = 0xA1;
 		  //-------------------------------------------------------------------------
 		  //-------------------------------------------------------------------------
 		  //UCA0CTL1 -> Control Register 1

@@ -72,18 +72,10 @@ void test_COM(void)
 		#endif
 		
 		#if EEPROM_CONNECTED
-			
-			int t;
-			for(t=0;t<1000;t++)
-			{
-		  		UCB0CTL1 |= UCSWRST;
-  				UCB0CTL1 &= ~UCSWRST;
-  				P3OUT &= ~0x01;
-				spiSendByte(0x5F);
-				P3OUT |= 0x01;				
-			}
-			
-			
+
+			long timeWaster;
+			int retard=67;		
+						
 			//opcodes
 			#define WREN  6
 			#define WRDI  4
@@ -91,6 +83,42 @@ void test_COM(void)
 			#define WRSR  1
 			#define READ  3
 			#define WRITE 2
+
+		  	UCB0CTL1 |= UCSWRST;
+  			UCB0CTL1 &= ~UCSWRST;
+			
+			// Select EEPROM
+			P3OUT &= ~0x01;
+			// Send WRITE ENABLE command
+			spiSendByte(RDSR);
+			P3OUT &= ~0x01;
+			spiSendByte(0xFF);  
+			// Deselect EEPROM
+			P3OUT |= 0x01;
+
+		  	UCB0CTL1 |= UCSWRST;
+  			UCB0CTL1 &= ~UCSWRST;
+
+			// Select EEPROM
+			P3OUT &= ~0x01;
+			// Send WRITE ENABLE command
+			spiSendByte(WRSR);
+			P3OUT &= ~0x01;
+			spiSendByte(0x00);  
+			// Deselect EEPROM
+			P3OUT |= 0x01;
+
+		  	UCB0CTL1 |= UCSWRST;
+  			UCB0CTL1 &= ~UCSWRST;
+
+			// Select EEPROM
+			P3OUT &= ~0x01;
+			// Send WRITE ENABLE command
+			spiSendByte(RDSR);
+			P3OUT &= ~0x01;
+			spiSendByte(0xFF);  
+			// Deselect EEPROM
+			P3OUT |= 0x01;
 			
 		  	UCB0CTL1 |= UCSWRST;
   			UCB0CTL1 &= ~UCSWRST;
@@ -102,8 +130,8 @@ void test_COM(void)
 			// Deselect EEPROM
 			P3OUT |= 0x01;
 			// Wait for command to be processed
-			long timeWaster;
-			int retard=67;
+			timeWaster;
+			retard=67;
 			for(timeWaster=0;timeWaster<10;timeWaster++)
 			{
 				retard += (9-8);
@@ -131,6 +159,7 @@ void test_COM(void)
   				UCB0CTL1 &= ~UCSWRST;
   				P3OUT &= ~0x01;
 				spiSendByte(i);
+				P3OUT &= ~0x01;
 			}
 			// Deselect EEPROM
 			P3OUT |= 0x01; //release chip
