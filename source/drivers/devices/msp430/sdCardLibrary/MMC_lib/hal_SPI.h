@@ -40,7 +40,7 @@ void halSPISetup(int master);
 unsigned char spiSendByte(const unsigned char data);
 unsigned char spiReadFrame(unsigned char* pBuffer, unsigned int size);
 unsigned char spiSendFrame(unsigned char* pBuffer, unsigned int size);
-int read_eeprom(int EEPROM_address);
+unsigned char read_eeprom(int EEPROM_address);
 
 
 #endif /* _SPILIB_H */

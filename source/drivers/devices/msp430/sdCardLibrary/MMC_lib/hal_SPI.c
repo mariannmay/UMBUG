@@ -236,7 +236,7 @@ unsigned char spiSendFrame(unsigned char* pBuffer, unsigned int size)
  * read_eeprom()
  * Description: Read a byte from the specified address.
  **/
-int read_eeprom(int EEPROM_address)
+unsigned char read_eeprom(int EEPROM_address)
 {
 	//opcodes
 	#define WREN  6
@@ -246,15 +246,13 @@ int read_eeprom(int EEPROM_address)
 	#define READ  3
 	#define WRITE 2
 	
-  	int data;
+  	unsigned char data;
   	UCB0CTL1 |= UCSWRST;
 	UCB0CTL1 &= ~UCSWRST; 
   	// Select device
   	P3OUT &= ~0x01;
   	// Send READ command
   	spiSendByte(READ); //transmit read opcode
-  	int x;
-  	for(x=0;x<1000;x++);
   	// Send address of where to read from
   	UCB0CTL1 |= UCSWRST;
 	UCB0CTL1 &= ~UCSWRST; 
@@ -265,6 +263,12 @@ int read_eeprom(int EEPROM_address)
   	// Send dummy write to sync clock
   	UCB0CTL1 |= UCSWRST;
 	UCB0CTL1 &= ~UCSWRST; 
+	int y;
+	int z=4;
+	for(y=0;y<10;y++)
+	{
+		z++;
+	}
   	data = spiSendByte(0xFF); //get data byte
   	// Deselect device
   	P3OUT |= 0x01; //release chip, signal end transfer

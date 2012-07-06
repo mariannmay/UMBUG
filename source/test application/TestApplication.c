@@ -73,7 +73,8 @@ void test_COM(void)
 		
 		#if EEPROM_CONNECTED
 			
-			for(;;)
+			int t;
+			for(t=0;t<1000;t++)
 			{
 		  		UCB0CTL1 |= UCSWRST;
   				UCB0CTL1 &= ~UCSWRST;
@@ -82,7 +83,7 @@ void test_COM(void)
 				P3OUT |= 0x01;				
 			}
 			
-			/*
+			
 			//opcodes
 			#define WREN  6
 			#define WRDI  4
@@ -102,7 +103,11 @@ void test_COM(void)
 			P3OUT |= 0x01;
 			// Wait for command to be processed
 			long timeWaster;
-			for(timeWaster=0;timeWaster<100000;timeWaster++);
+			int retard=67;
+			for(timeWaster=0;timeWaster<10;timeWaster++)
+			{
+				retard += (9-8);
+			};
 			
 		  	UCB0CTL1 |= UCSWRST;
   			UCB0CTL1 &= ~UCSWRST;
@@ -124,26 +129,26 @@ void test_COM(void)
 			for(i = 0; i < 512; i++) {
 		  		UCB0CTL1 |= UCSWRST;
   				UCB0CTL1 &= ~UCSWRST;
+  				P3OUT &= ~0x01;
 				spiSendByte(i);
 			}
 			// Deselect EEPROM
 			P3OUT |= 0x01; //release chip
 			  
 			//wait for eeprom to finish writing
-			for(timeWaster=0;timeWaster<300000;timeWaster++)
-			{
-				int x = 1+4;
+			int x = 1+4;
+			for(timeWaster=0;timeWaster<30000;timeWaster++)
+			{	
 				x++;
 			}
 			
 			//read the EEPROM back to confirm
-			int data = 0;
+			unsigned char data = 0;
 			for(i = 0; i < 512; i++) {
 		   		data = read_eeprom(i); 
-				printf("read: %u\n", data);
+				//printf("read: %c\n", data);
 			}
-  			for(timeWaster=0;timeWaster<5000;timeWaster++);
-			*/
+			
 		#endif
 	#else
 		

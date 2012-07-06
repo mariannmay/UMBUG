@@ -1,1 +1,4 @@
 Test application start -----------------
+== DEBUG MODE ==
+    COM test complete
+All tests complete! --------------------
