@@ -252,7 +252,7 @@ unsigned char read_eeprom(int EEPROM_address)
   	UCB0CTL1 |= UCSWRST;
 	UCB0CTL1 &= ~UCSWRST; 
   	// Select device
-  	P3OUT &= ~0x01;
+  	P8OUT &= ~0x01;
   	// Send READ command
   	spiSendByte(READ); //transmit read opcode
   	// Send address of where to read from
@@ -273,7 +273,7 @@ unsigned char read_eeprom(int EEPROM_address)
 	}
   	data = spiSendByte(0xFF); //get data byte
   	// Deselect device
-  	P3OUT |= 0x01; //release chip, signal end transfer
+  	P8OUT |= 0x01; //release chip, signal end transfer
   	// Return value
   	return data;
 }
