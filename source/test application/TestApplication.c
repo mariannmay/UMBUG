@@ -12,12 +12,10 @@
 
 void test_application_initialize(void)
 {
-
+     InitUART();
 	logLine("Test application start -----------------\r\n");
-
-	printf("definitely\n");
-	InitUART();
-	
+     
+	logLine("testdone");
 	#if CDH_PROCESSOR_COMPILE
 		initialize_SPI(1);
 	#else

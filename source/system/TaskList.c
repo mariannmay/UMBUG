@@ -1,9 +1,9 @@
-//void insertTask(BasicTaskList *btl,GroundCommandTask *gct)
-//{
-//	BasicTaskNode *newTask;
-	//newTask = (BasicTaskNode*)malloc(sizeof(BasicTaskNode));
-//	newTask->gct = gct;
-/*	if (*btl->size == 0)
+void insertTask(BasicTaskList *btl,GroundCommandTask *gct)
+{
+	BasicTaskNode *newTask;
+	newTask = (BasicTaskNode*)malloc(sizeof(BasicTaskNode));
+	newTask->gct = gct;
+	if (*btl->size == 0)
 	{
 		*btl->head = newTask;
 		*btl->head->next = NULL;
@@ -21,7 +21,7 @@
 		}
 		if (btn->next == NULL)
 		{
-			//btn->next = (BasicTaskNode*)malloc(sizeof(BasicTaskNode));
+			btn->next = (BasicTaskNode*)malloc(sizeof(BasicTaskNode));
 			btn->next->gct = gct;
 			btn->next->next = NULL;	
 		} else
@@ -30,13 +30,13 @@
 			prev->next = newTask;
 		}
 		
-	}*/
-//}
-//void initBasicTaskList(BasicTaskList *btl)
-//{
-//	*btl->size = 0;
-//	*btl->head = NULL;	
-//}
+	}
+}
+void initBasicTaskList(BasicTaskList *btl)
+{
+	*btl->size = 0;
+	*btl->head = NULL;	
+}
 
 
 

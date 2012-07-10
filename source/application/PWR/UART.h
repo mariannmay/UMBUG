@@ -17,7 +17,7 @@
 
 
 
-#define USART_A_MODULE  0      // Select which USCI_A module to use [0-1]
+#define USART_A_MODULE  1     // Select which USCI_A module to use [0-1]
 #define UART_BAUDRATE  9600 //Specify baudrate
 #define UART_BAUDRATE_REG  (unsigned short)(MCLK_FREQ/UART_BAUDRATE)
 
@@ -36,10 +36,9 @@
 
 //include "TI_USCI_UART_Regs.h"
 //Global Functions
-
-void InitUART(void);
+ void InitUART(void);
+ 
 
 
 #endif /*UART_H_*/
 
-/********************************************END***************************/

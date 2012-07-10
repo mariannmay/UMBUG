@@ -19,8 +19,8 @@
     #define USAxME           ME1             /* USART Module Enable */
 
   
-    #define USAxRXIE         BIT6
-    #define USAxTXIE         BIT7
+    #define USAxRXIE         BIT1
+    #define USAxTXIE         BIT0
     #define USAxRXIFG        BIT6
     #define USAxTXIFG        BIT7
   

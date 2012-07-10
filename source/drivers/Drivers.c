@@ -68,7 +68,7 @@ void drivers_initialize(void)
 						//... yes, COM needs 2
 	
 	// SD card
-//	devices.sdCard.SPI.bus					= &devices.spiBus;
+	//devices.sdCard.SPI.bus					= &devices.spiBus;
 	devices.sdCard.SPI.enable				= &msp430.PORT_8.digitalOutput[0];
 	devices.sdCard.SPI.enable->state		= high;
 	devices.sdCard.cardPresence				= &msp430.PORT_5.digitalInput[3];
