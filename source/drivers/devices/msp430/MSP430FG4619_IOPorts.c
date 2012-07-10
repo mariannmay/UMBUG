@@ -98,7 +98,7 @@ void initialize_msp430_IO_ports(void)
 	
 	// PORT_8																		CDH					COM
 	P8DIR = 0xFF; // 1111 1111
-	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[0],	8,	0	);	// 					/
+	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[0],	8,	0	);	// TODO: SPI ENable or something 	/
 	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[1],	8,	1	);	// MUX select 0		/
 	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[2],	8,	2	);	// MUX select 1		/
 	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[3],	8,	3	);	// MUX select 2		/

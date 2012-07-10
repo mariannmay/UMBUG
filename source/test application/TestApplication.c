@@ -88,47 +88,47 @@ void test_COM(void)
   			UCB0CTL1 &= ~UCSWRST;
 			
 			// Select EEPROM
-			P3OUT &= ~0x01;
+			P8OUT &= ~0x01;
 			// Send WRITE ENABLE command
 			spiSendByte(RDSR);
-			P3OUT &= ~0x01;
+			P8OUT &= ~0x01;
 			spiSendByte(0xFF);  
 			// Deselect EEPROM
-			P3OUT |= 0x01;
+			P8OUT |= 0x01;
 
 		  	UCB0CTL1 |= UCSWRST;
   			UCB0CTL1 &= ~UCSWRST;
 
 			// Select EEPROM
-			P3OUT &= ~0x01;
+			P8OUT &= ~0x01;
 			// Send WRITE ENABLE command
 			spiSendByte(WRSR);
-			P3OUT &= ~0x01;
+			P8OUT &= ~0x01;
 			spiSendByte(0x00);  
 			// Deselect EEPROM
-			P3OUT |= 0x01;
+			P8OUT |= 0x01;
 
 		  	UCB0CTL1 |= UCSWRST;
   			UCB0CTL1 &= ~UCSWRST;
 
 			// Select EEPROM
-			P3OUT &= ~0x01;
+			P8OUT &= ~0x01;
 			// Send WRITE ENABLE command
 			spiSendByte(RDSR);
-			P3OUT &= ~0x01;
+			P8OUT &= ~0x01;
 			spiSendByte(0xFF);  
 			// Deselect EEPROM
-			P3OUT |= 0x01;
+			P8OUT |= 0x01;
 			
 		  	UCB0CTL1 |= UCSWRST;
   			UCB0CTL1 &= ~UCSWRST;
 			
 			// Select EEPROM
-			P3OUT &= ~0x01;
+			P8OUT &= ~0x01;
 			// Send WRITE ENABLE command
 			spiSendByte(WREN); 
 			// Deselect EEPROM
-			P3OUT |= 0x01;
+			P8OUT |= 0x01;
 			// Wait for command to be processed
 			timeWaster;
 			retard=67;
@@ -141,7 +141,7 @@ void test_COM(void)
   			UCB0CTL1 &= ~UCSWRST;
 			
 			// Select EEPROM
-			P3OUT &= ~0x01;
+			P8OUT &= ~0x01;
 			// Send WRITE command
 			spiSendByte(WRITE);
 			// Send ADDRESS where to start writing
@@ -157,12 +157,12 @@ void test_COM(void)
 			for(i = 0; i < 512; i++) {
 		  		UCB0CTL1 |= UCSWRST;
   				UCB0CTL1 &= ~UCSWRST;
-  				P3OUT &= ~0x01;
+  				P8OUT &= ~0x01;
 				spiSendByte(i);
-				P3OUT &= ~0x01;
+				P8OUT &= ~0x01;
 			}
 			// Deselect EEPROM
-			P3OUT |= 0x01; //release chip
+			P8OUT |= 0x01; //release chip
 			  
 			//wait for eeprom to finish writing
 			int x = 1+4;
@@ -226,7 +226,7 @@ void test_COM(void)
 	  		spiSendByte(0x40);
 	  		spiSendByte(0x00);
 	  		spiSendByte(0x00);
-	  		P3OUT ~= 0x01;			//CS low
+	  		P8OUT ~= 0x01;			//CS low
 	  		spiSendByte(0x00);
 	  		spiSendByte(0x00);
 	  		spiSendByte(0x95);		//CRC
