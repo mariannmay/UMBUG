@@ -19,6 +19,7 @@
 #include "../drivers/devices/SDCard.h"
 #include "../drivers/devices/Thermocouple.h"
 #include "../drivers/devices/Watchdog.h"
+#include "../drivers/devices/Radio.h"
 
 
 // a struct containing all of the system's devices ///////////////
@@ -29,6 +30,9 @@ typedef struct
 	DigitalOutput*	systemStatusLED;
 	//Battery			mainBattery;
 	Thermocouple	testThermocouple;
+	Radio			radio;
+	
+	AnalogInput*	test_AtoD;
 }
 AllDevices;
 

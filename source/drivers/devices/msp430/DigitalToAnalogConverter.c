@@ -15,8 +15,8 @@ void initialize_digitalToAnalogConverter(void)
 	DAC12_0CTL  = 0x00;
 	
 	DAC12_0CTL &= ~DAC12OPS;		// output on P6.6
-	DAC12_0CTL &= ~DAC12SREF1;		// 
-	DAC12_0CTL &= ~DAC12SREF0;		// sets reference voltage to Vref+
+	DAC12_0CTL |= DAC12SREF1;		// 
+	DAC12_0CTL |= DAC12SREF0;		// sets reference voltage to Vref+
 	DAC12_0CTL &= ~DAC12RES;		// sets the resolution to 12 bits instead of 8
 	DAC12_0CTL |= DAC12IR;			// output range is 0 -> Vref
 	DAC12_0CTL |= DAC12AMP_7;		// high speed, high current usage

@@ -19,8 +19,9 @@
 //for testing the COMs application////////
 #include "../application/COM/COMonCDH.h"
 
-void test_COM(void);
-void analogToDigitalTest(void);
+void test_SPI(void);
+void test_analogToDigital(void);
+void test_digitalToAnalog(void);
 
 //////////////////////////////////
 

@@ -51,6 +51,15 @@ void drivers_initialize(void)
 	/* System Clock Frequency Control */
 	SCFQCTL = SCFQ_1M;
 	
+	// Set up digital to analog conversion
+	devices.radio.microphone				= &msp430.PORT_6.analogOutput;
+	initialize_digitalToAnalogConverter();
+	
+	// for debug purposes
+	// TODO REMOVE
+	devices.test_AtoD						= &msp430.PORT_6.analogInput[5]; // P6.5, pin #4
+	
+	
 	
 	
 	

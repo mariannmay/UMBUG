@@ -18,6 +18,13 @@ void test_application_initialize(void)
 void test_application_main(void)
 {
 	//test_COM();
+	test_analogToDigital();
+	
+	int D2A_tests;
+	for (D2A_tests = 0; D2A_tests < 10; D2A_tests++)
+	{ 
+		test_digitalToAnalog();
+	}
 	
 	printf("All tests complete! --------------------\r\n");
 	fflush(stdout);
@@ -26,10 +33,9 @@ void test_application_main(void)
 
 //////////////////////////////////////////////////////////////////
 
-void test_COM(void)
+void test_SPI(void)
 {
 
-	
 	P5DIR |= BIT1;                // P5.1 as output
   	P5OUT |= BIT1;                // P5.1 set high
 
@@ -88,6 +94,29 @@ void test_COM(void)
 	
 	//printf("    COM test complete\r\n");
 	//fflush(stdout);
+}
+
+///////////////////////////////////////////////////////////////////
+
+void test_analogToDigital(void)
+{
+	// TODO
+}
+
+///////////////////////////////////////////////////////////////////
+
+void test_digitalToAnalog(void)
+{
+	int i;
+	for (i = 0; i < 0xFFF; i++)
+	{
+		devices.radio.microphone->value = i;
+		startNewDigitalToAnalogConversion(devices.radio.microphone->value, 0);
+		//logCombo("set digital out on P6.6", i);
+		
+		readAnalogInput(devices.test_AtoD);
+		//logCombo("read analog in on P6.5 ", devices.test_AtoD->value);
+	}
 }
 
 ///////////////////////////////////////////////////////////////////

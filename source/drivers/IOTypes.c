@@ -285,7 +285,6 @@ void readAnalogInput(AnalogInput* input)
 				case 3:		input->value = ADC12MEM3; break;
 				case 4:		input->value = ADC12MEM4; break;
 				case 5:		input->value = ADC12MEM5; break;
-				case 6:		input->value = ADC12MEM6; break;
 				case 7:		input->value = ADC12MEM7; break;
 				default: return;
 			}
