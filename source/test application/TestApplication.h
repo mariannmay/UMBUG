@@ -16,9 +16,6 @@
 #include <assert.h>
 #include <stdio.h>
 
-//for testing the COMs application////////
-#include "../application/COM/COMonCDH.h"
-
 void test_SPI(void);
 void test_analogToDigital(void);
 void test_digitalToAnalog(void);

@@ -42,38 +42,13 @@ SPI_CHANNEL;
 
 typedef struct
 {
-	SerialOutput*				clock;
-	SerialInput*				serialInput;
-	SerialOutput*				serialOutput;
-	DigitalOutput*				slaveTransmitEnable;
-}
-SPIModule_4Pin_master;
-
-typedef struct
-{
-	SerialInput*				clock;
-	SerialInput*				serialInput;
-	SerialOutput*				serialOutput;
-	DigitalInput*				transmitEnable;		// active low
-}
-SPIModule_4Pin_slave;
-
-typedef struct
-{
-	union
-	{
-		SPIModule_4Pin_slave*	slave;
-		SPIModule_4Pin_master*	master;
-	}
-	SPI;
-	
+	SPI_TYPE					type;
+	SPI_CHANNEL					channel;
+		
 	Byte						transmitMessage;
 	Byte						receiveMessage;
 	
-	SPI_TYPE					type;
-	SPI_CHANNEL					channel;
-	
-	DigitalOutput				chipSelect;
+	DigitalOutput*				chipSelect;
 }
 SPI_Device;
 

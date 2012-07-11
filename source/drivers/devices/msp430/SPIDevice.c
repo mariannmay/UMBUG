@@ -26,7 +26,7 @@ bool initialize_SPI_master(SPI_CHANNEL channel)
 	{
 		case SPI_CHANNEL_1:
 			// 1)
-			UCB0CTL1 |= UCSWRST;                     // **Initialize USCI registers**
+			UCB0CTL1   |= UCSWRST;                     // **Initialize USCI registers**
 			
 			//2) -> Initialize all USCI registers Set <- BEGIN
 			// CONTROL REGISTERS
@@ -41,7 +41,7 @@ bool initialize_SPI_master(SPI_CHANNEL channel)
 			//UCMST (Master mode)               = 1b  ->  Master mode
 			//UCMODEx (USCI mode)               = 00b ->  3-Pin SPI
 			//UCSYNC (Synchronous mode enable)  = 1b  ->  Synchronous mode
-			UCB0CTL0 = 0x29;
+			UCB0CTL0	= 0x29;
 			//-------------------------------------------------------------------------
 			//-------------------------------------------------------------------------
 			//UCA0CTL1 -> Control Register 1
@@ -51,27 +51,37 @@ bool initialize_SPI_master(SPI_CHANNEL channel)
 			//---------------------------------------------------------
 			//UCSSELx (USCI clock source select)= 10b ->  SMCLK
 			//UCSWRST (Software reset)          = 1b  ->  normally set by a PUC
-			UCB0CTL1 = 0x80;                     
+			UCB0CTL1	= 0x80;                     
 			//-------------------------------------------------------------------------
 			// DATA RATE
 			// Data rate = SMCLK/2 ~= 500kHz
 			// UCA0BR1 = 0x00 & UCA0BR0 = 0x02
 			//-------------------------------------------------------------------------
-			UCB0BR0 = 0x02;                           
-			UCB0BR1 = 0x00;
+			UCB0BR0		= 0x02;                           
+			UCB0BR1		= 0x00;
 			
-			//3) Configure ports <-BEGIN
-			P3SEL |= 0x0E; // P3.1,P3.2,P3.3 option select
-			P3DIR |= 0x01; // P3.0 output direction
-			P3DIR &= ~0x10; //P3.4 input
+			//3) Configure ports
+			P3SEL	   |= 0x0E;				// P3.1,P3.2,P3.3 option select
+			P3DIR	   |= 0x01;				// P3.0 output direction
+			P3DIR	   &= ~0x10;				// P3.4 input
 			
 			// 4)
-			UCB0CTL1 &= ~UCSWRST;                     // **Initialize USCI state machine**
+			UCB0CTL1   &= ~UCSWRST;       // **Initialize USCI state machine**
 			break;
 		
 		case SPI_CHANNEL_2:
-			// TODO
-			;
+
+			UCA0CTL1   |= UCSWRST;      // **Initialize USCI registers**
+			UCA0CTL0	= 0x29;
+			UCA0CTL1	= 0x80;
+			UCA0BR0		= 0x02;
+			UCA0BR1		= 0x00;
+			
+			P7SEL	   |= 0x0E;
+			P7DIR	   |= 0x01;
+			P7DIR	   &= ~0x10;
+			
+			UCA0CTL1   &= ~UCSWRST;
 			break;
 			
 		default:
@@ -89,7 +99,7 @@ bool initialize_SPI_slave(SPI_CHANNEL channel)
 	{
 		case SPI_CHANNEL_1:
 			// 1)
-			UCB0CTL1 |= UCSWRST;                     // **Initialize USCI registers**
+			UCB0CTL1   |= UCSWRST;                     // **Initialize USCI registers**
 			
 			//2) -> Initialize all USCI registers Set <- BEGIN
 			// CONTROL REGISTERS
@@ -104,7 +114,7 @@ bool initialize_SPI_slave(SPI_CHANNEL channel)
 			//UCMST (Master mode)               = 0b  ->  Slave mode
 			//UCMODEx (USCI mode)               = 00b ->  3-Pin SPI
 			//UCSYNC (Synchronous mode enable)  = 1b  ->  Synchronous mode
-			UCB0CTL0 = 0x21;
+			UCB0CTL0	= 0x21;
 			//-------------------------------------------------------------------------
 			//-------------------------------------------------------------------------
 			//UCA0CTL1 -> Control Register 1
@@ -114,27 +124,37 @@ bool initialize_SPI_slave(SPI_CHANNEL channel)
 			//---------------------------------------------------------
 			//UCSSELx (USCI clock source select)= 10b ->  SMCLK
 			//UCSWRST (Software reset)          = 1b  ->  normally set by a PUC
-			UCB0CTL1 = 0x80;                     
+			UCB0CTL1	= 0x80;                     
 			//-------------------------------------------------------------------------
 			// DATA RATE
 			// Data rate = SMCLK/2 ~= 500kHz
 			// UCA0BR1 = 0x00 & UCA0BR0 = 0x02
 			//-------------------------------------------------------------------------
-			UCB0BR0 = 0x02;                           
-			UCB0BR1 = 0x00;
+			UCB0BR0		= 0x02;                           
+			UCB0BR1		= 0x00;
 			
 			//3) Configure ports <-BEGIN
-			P3SEL |= 0x0E; // P3.1,P3.2,P3.3 option select
-			P3DIR &= ~0x01; // P3.0 input direction
-			P3DIR |= 0x10; //P3.4 output	
+			P3SEL	   |= 0x0E;				// P3.1,P3.2,P3.3 option select
+			P3DIR	   &= ~0x01;			// P3.0 input direction
+			P3DIR	   |= 0x10;				// P3.4 output	
 			
 			// 4)
-			UCB0CTL1 &= ~UCSWRST;                     // **Initialize USCI state machine**
+			UCB0CTL1   &= ~UCSWRST;			// **Initialize USCI state machine**
 			break;
 			
 		case SPI_CHANNEL_2:
-			// TODO
-			;
+
+			UCA0CTL1   |= UCSWRST;          // **Initialize USCI registers**
+			
+			UCA0CTL0	= 0x21;
+			UCA0CTL1	= 0x80;                     
+			UCA0BR0		= 0x02;                           
+			UCA0BR1		= 0x00;
+			P7SEL	   |= 0x0E;				// P3.1,P3.2,P3.3 option select
+			P7DIR	   &= ~0x01;			// P3.0 input direction
+			P7DIR	   |= 0x10;				// P3.4 output	
+			
+			UCA0CTL1   &= ~UCSWRST;			// **Initialize USCI state machine**
 			break;
 			
 		default:
@@ -167,29 +187,43 @@ bool initialize_SPI(SPI_CHANNEL channel, SPI_TYPE spiType)
 
 void SPI_transmit(SPI_Device* device, const Byte data)
 {
-	setDigitalOutput(&device->chipSelect);
+	setDigitalOutput(device->chipSelect);
 	device->transmitMessage = data;
 	
-	switch(device->channel)
+	if (device->type == SPI_TYPE_Master)
 	{
-		case SPI_CHANNEL_1:
-			UCB0CTL1 |= UCSWRST;
-			UCB0CTL1 &= ~UCSWRST;					// software reset
-			while ((UC0IFG&UCB0TXIFG) == 0);		// wait while not ready for TX
-			IFG2 &= ~UCB0RXIFG;
-			UCB0TXBUF = device->transmitMessage;	// write
-			while ((UC0IFG&UCB0RXIFG) == 0);		// wait for RX buffer (full)
-			device->receiveMessage = (UCB0RXBUF);
-			break;
-			
-		case SPI_CHANNEL_2:
-			// TODO
-			device->receiveMessage = DUMMY_CHAR;
-			break;
-			
-		default:
-			device->receiveMessage = DUMMY_CHAR;
+		switch(device->channel)
+		{
+			case SPI_CHANNEL_1:
+				UCB0CTL1	|= UCSWRST;
+				UCB0CTL1	&= ~UCSWRST;				// software reset
+				while ((UC0IFG&UCB0TXIFG) == 0);		// wait while not ready for TX
+				IFG2		&= ~UCB0RXIFG;
+				UCB0TXBUF	 = device->transmitMessage;	// write
+				while ((UC0IFG&UCB0RXIFG) == 0);		// wait for RX buffer (full)
+				device->receiveMessage = (UCB0RXBUF);
+				break;
+				
+			case SPI_CHANNEL_2:
+				UCA0CTL1	|= UCSWRST;
+				UCA0CTL1	&= ~UCSWRST;				// software reset
+				while ((UC0IFG&UCA0TXIFG) == 0);		// wait while not ready for TX
+				IFG2		&= ~UCA0RXIFG;
+				UCA0TXBUF	 = device->transmitMessage;	// write
+				while ((UC0IFG&UCA0RXIFG) == 0);		// wait for RX buffer (full)
+				device->receiveMessage = (UCA0RXBUF);
+				break;
+				
+			default:
+				device->receiveMessage = DUMMY_CHAR;
+		}
 	}
+	else
+	{
+		// TODO
+	}
+	
+	clearDigitalOutput(device->chipSelect);
 }
 
 ///////////////////////////////////////////////

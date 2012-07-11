@@ -8,7 +8,6 @@
 
 #include "Application.h"
 #include "CDH/CDHApplication.h"
-#include "COM/COMonCOM.h"
 #include <stdio.h>
 
 //////////////////////////////////

@@ -15,14 +15,16 @@ void realTimeClock_initialize(RealTimeClock* clock)
 	// TODO
 }
 
-Time_ms realTimeClock_timeSinceLastCheck(RealTimeClock* clock)
+Time_ms realTimeClock_timeSinceLastCheck(RealTimeClock* RTC)
 {
-	Time_ms returnValue = clock->timeSinceLastCheck;
-	clock->timeSinceLastCheck = 0;
+	Time_ms returnValue = RTC->timeSinceLastCheck;
+	RTC->timeSinceLastCheck = 0;
 	
 	// TODO TEMP UNTIL IT IS FIXED PROPERLY
 	returnValue = 1;
+	//returnValue = 0;	// actually use this one if you have an RTC
 	
+	SPI_transmit(RTC->SPI, DUMMY_CHAR);
 	
 	return returnValue;
 }

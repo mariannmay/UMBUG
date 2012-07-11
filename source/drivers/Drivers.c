@@ -15,51 +15,50 @@ AllDevices devices;
 
 void drivers_initialize(void)
 {
-	
-	// this initializes all of our named IO, allowing you to use
-	// things like...
-	// bool foo = msp430.PORT_1.digitalInput[0].state;
-	// msp430.PORT_9.digitalOutput[4].state = true;
 	initialize_msp430_IO_ports();
 	
-	
-	// now go through devices...
 	// refer to the msp430 spreadsheet on google docs for
 	// where to put your pins... when you use up a pin,
 	// comment beside the pin to say what it is used for.
 	
-	// system watchdog
+	// system watchdog ///////////////////////////////////////////
+	
 	devices.systemWatchdog.WDI				= &msp430.PORT_10.digitalOutput[5];
 	watchdog_initialize(&devices.systemWatchdog);
 		
-	// system clock
+	// system clock //////////////////////////////////////////////
+	
+	devices.systemClock.SPI->chipSelect		= &msp430.PORT_10.digitalOutput[4];
+	
+	// system status LED /////////////////////////////////////////
+	
 	devices.systemStatusLED					= &msp430.PORT_5.digitalOutput;
 	
-	//set operating mode to fully active using the status register
+	// operating mode to fully active ////////////////////////////
+	
 	_bic_SR_register(LPM4_bits);
 	
-	//smclk clock setup
+	// smclk clock setup /////////////////////////////////////////
+	
 	FLL_CTL0 |= DCOPLUS + XTS_FLL;
 	FLL_CTL1 &= ~(SELS + SELM0 + SELM1 + SMCLKOFF + FLL_DIV0 + FLL_DIV0);
 	FLL_CTL1 |= XT2OFF;
 	
-	/* System Clock Frequency Integrator 0 */
+	// System Clock Frequency Integrator 0 ///////////////////////
+	
 	SCFI0 &= ~(FLLD0 + FLLD1);
-	SCFI0 |= FN_2; //FLL_DIV_1 | 
-	/* System Clock Frequency Integrator 1 */
-	//SCFI1 is auto set
-	/* System Clock Frequency Control */
+	SCFI0 |= FN_2; //FLL_DIV_1 |
+	 
+	// System Clock Frequency Control ////////////////////////////
+	
 	SCFQCTL = SCFQ_1M;
 	
-	// Set up digital to analog conversion
+	// Digital to analog conversion //////////////////////////////
 	devices.radio.microphone				= &msp430.PORT_6.analogOutput;
-	initialize_digitalToAnalogConverter();
 	
 	// for debug purposes
 	// TODO REMOVE
 	devices.test_AtoD						= &msp430.PORT_6.analogInput[5]; // P6.5, pin #4
-	
-	
 	
 	
 	

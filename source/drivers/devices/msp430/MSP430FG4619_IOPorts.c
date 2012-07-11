@@ -124,7 +124,7 @@ void initialize_msp430_IO_ports(void)
 	initializeDigitalOutput(	&msp430.PORT_10.digitalOutput[1],	10,	1	);	//  				/
 	initializeDigitalOutput(	&msp430.PORT_10.digitalOutput[2],	10,	2	);	//  				/
 	initializeDigitalOutput(	&msp430.PORT_10.digitalOutput[3],	10,	3	);	//  				/
-	initializeDigitalOutput(	&msp430.PORT_10.digitalOutput[4],	10,	4	);	//  				/
+	initializeDigitalOutput(	&msp430.PORT_10.digitalOutput[4],	10,	4	);	// RTC chip enable	/
 	initializeDigitalOutput(	&msp430.PORT_10.digitalOutput[5],	10,	5	);	// watchdog WDI		/
 	initializeAnalogInput  (	&msp430.PORT_10.analogInput[0],		10,	6	);	//  				/
 	initializeAnalogInput  (	&msp430.PORT_10.analogInput[1],		10,	7	);	//  				/
@@ -132,11 +132,14 @@ void initialize_msp430_IO_ports(void)
 	// configuring Analog to Digital conversion -------------------------------------
 	initialize_analogToDigitalConverter();
 	
+	// configuring Digital to Analog conversion -------------------------------------
+	initialize_digitalToAnalogConverter();
+	
 	#if CDH_PROCESSOR_COMPILE
 		initialize_SPI(SPI_CHANNEL_1, SPI_TYPE_Master);
 	#else
 		initialize_SPI(SPI_CHANNEL_1, SPI_TYPE_Slave);
-		initialize_SPI_SPI_CHANNEL_2, SPI_TYPE_Master);
+		initialize_SPI(SPI_CHANNEL_2, SPI_TYPE_Master);
 	#endif
 }
 
