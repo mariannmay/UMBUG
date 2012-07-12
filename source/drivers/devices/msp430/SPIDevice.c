@@ -187,30 +187,68 @@ bool initialize_SPI(SPI_CHANNEL channel, SPI_TYPE spiType)
 
 void SPI_transmit(SPI_Device* device, const Byte data)
 {
-	setDigitalOutput(device->chipSelect);
 	device->transmitMessage = data;
 	
 	if (device->type == SPI_TYPE_Master)
 	{
+		setDigitalOutput(device->chipSelect);
+		int waitTimer;
+		
+		switch(device->channel)
+		{
+			case SPI_CHANNEL_1:
+				UCB0CTL1	|= UCSWRST;
+				UCB0CTL1	&= ~UCSWRST;								// software reset
+				P3OUT		&= ~0x01;									// slave enable
+				while ((UC0IFG & UCB0TXIFG) == 0);						// wait while not ready for TX
+				IFG2		&= ~UCB0RXIFG;
+				UCB0TXBUF	 = device->transmitMessage;					// write
+				while ((UC0IFG & UCB0RXIFG) == 0);						// wait for RX buffer (full)
+				device->receiveMessage = (UCB0RXBUF);
+				for (waitTimer = 100; waitTimer > 0; waitTimer--){ ; }	// just a time killing loop
+				P3OUT		|= 0x01;									// set STE high for slave disable
+				break;
+				
+			case SPI_CHANNEL_2:
+				UCA0CTL1	|= UCSWRST;
+				UCA0CTL1	&= ~UCSWRST;								// software reset
+				P7OUT		&= ~0x01;									// slave enable
+				while ((UC0IFG & UCA0TXIFG) == 0);						// wait while not ready for TX
+				IFG2		&= ~UCA0RXIFG;
+				UCA0TXBUF	 = device->transmitMessage;					// write
+				while ((UC0IFG & UCA0RXIFG) == 0);						// wait for RX buffer (full)
+				device->receiveMessage = (UCA0RXBUF);
+				for (waitTimer = 100; waitTimer > 0; waitTimer--){ ; }	// just a time killing loop
+				P7OUT		|= 0x01;									// set STE high for slave disable
+				break;
+				
+			default:
+				device->receiveMessage = DUMMY_CHAR;
+		}
+	
+		clearDigitalOutput(device->chipSelect);
+	}
+	else if (device->type == SPI_TYPE_Slave)
+	{
+		while(!device->chipSelect->state) {;}			// wait for enable
+
 		switch(device->channel)
 		{
 			case SPI_CHANNEL_1:
 				UCB0CTL1	|= UCSWRST;
 				UCB0CTL1	&= ~UCSWRST;				// software reset
-				while ((UC0IFG&UCB0TXIFG) == 0);		// wait while not ready for TX
 				IFG2		&= ~UCB0RXIFG;
 				UCB0TXBUF	 = device->transmitMessage;	// write
-				while ((UC0IFG&UCB0RXIFG) == 0);		// wait for RX buffer (full)
+				while ((UC0IFG & UCB0RXIFG) == 0);		// wait for RX buffer (full)
 				device->receiveMessage = (UCB0RXBUF);
 				break;
 				
 			case SPI_CHANNEL_2:
 				UCA0CTL1	|= UCSWRST;
 				UCA0CTL1	&= ~UCSWRST;				// software reset
-				while ((UC0IFG&UCA0TXIFG) == 0);		// wait while not ready for TX
 				IFG2		&= ~UCA0RXIFG;
 				UCA0TXBUF	 = device->transmitMessage;	// write
-				while ((UC0IFG&UCA0RXIFG) == 0);		// wait for RX buffer (full)
+				while ((UC0IFG & UCA0RXIFG) == 0);		// wait for RX buffer (full)
 				device->receiveMessage = (UCA0RXBUF);
 				break;
 				
@@ -218,19 +256,44 @@ void SPI_transmit(SPI_Device* device, const Byte data)
 				device->receiveMessage = DUMMY_CHAR;
 		}
 	}
-	else
-	{
-		// TODO
-	}
 	
-	clearDigitalOutput(device->chipSelect);
 }
 
 ///////////////////////////////////////////////
 
 void SPI_receive(SPI_Device* device)
 {
-	SPI_transmit(device, DUMMY_CHAR);
+	if (device->type == SPI_TYPE_Master)
+	{
+		SPI_transmit(device, DUMMY_CHAR);
+	}
+	else if (device->type == SPI_TYPE_Slave)
+	{
+		if (device->channel == SPI_CHANNEL_1)
+		{
+			UCB0CTL1 |= UCSWRST;
+			UCB0CTL1 &= ~UCSWRST;
+		  	UCB0TXBUF = DUMMY_CHAR;
+			while(device->chipSelect->state == false);	//wait for enable
+			{
+				while ((UC0IFG & UCB0RXIFG) == 0);   // wait for RX buffer (full)
+				char buff = UCB0RXBUF;
+				device->receiveMessage = buff;
+			}
+		}
+		else if (device->channel == SPI_CHANNEL_2)
+		{
+			UCA0CTL1 |= UCSWRST;
+			UCA0CTL1 &= ~UCSWRST;
+		  	UCA0TXBUF = DUMMY_CHAR;
+			while(device->chipSelect->state == false);	//wait for enable
+			{
+				while ((UC0IFG & UCA0RXIFG) == 0);   // wait for RX buffer (full)
+				char buff = UCA0RXBUF;
+				device->receiveMessage = buff;
+			}
+		}
+	}
 }
 
 
