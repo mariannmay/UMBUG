@@ -23,10 +23,10 @@ void test_application_initialize(void)
 
 void test_application_main(void)
 {
-	//test_SPI();
+	test_SPI();
 	//test_analogToDigital();
 	//test_digitalToAnalog();
-	test_SPI_framework();
+	//test_SPI_framework();
 	
 	printf("All tests complete! --------------------\r\n");
 	fflush(stdout);
