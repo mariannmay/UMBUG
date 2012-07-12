@@ -190,15 +190,15 @@ bool initialize_SPI(SPI_Device* device)
 
 void SPI_transmit(SPI_Device* device, const Byte data)
 {
-	printf("trying to send\r\n");
-	fflush(stdout);
+	//printf("trying to send\r\n");
+	//fflush(stdout);
 	
 	device->transmitMessage = data;
 	
 	if (device->type == SPI_TYPE_Master)
 	{
-		printf("    master\r\n");
-		fflush(stdout);
+		//printf("    master\r\n");
+		//fflush(stdout);
 		
 		setDigitalOutput(device->chipSelect.out);
 		int waitTimer;
@@ -206,10 +206,9 @@ void SPI_transmit(SPI_Device* device, const Byte data)
 		switch(device->channel)
 		{
 			case SPI_CHANNEL_1:
-				printf("    CH1\r\n");
-				fflush(stdout);
+				//printf("    CH1\r\n");
+				//fflush(stdout);
 			
-				fflush(stdout);
 				UCB0CTL1	|= UCSWRST;
 				UCB0CTL1	&= ~UCSWRST;								// software reset
 				P3OUT		&= ~0x01;									// slave enable
@@ -276,32 +275,36 @@ void SPI_transmit(SPI_Device* device, const Byte data)
 
 void SPI_receive(SPI_Device* device)
 {
-	printf("trying to receive\r\n");
-	fflush(stdout);
+	//printf("trying to receive\r\n");
+	//fflush(stdout);
 	
 	if (device->type == SPI_TYPE_Master)
 	{
-		printf("    master\r\n");
-		fflush(stdout);
+		//printf("    master\r\n");
+		//fflush(stdout);
 		SPI_transmit(device, DUMMY_CHAR);
 	}
 	else if (device->type == SPI_TYPE_Slave)
 	{
-		printf("    slave\r\n");
-		fflush(stdout);
+		//printf("    slave\r\n");
+		//fflush(stdout);
 		
 		if (device->channel == SPI_CHANNEL_1)
 		{
-			printf("    CH1\r\n");
-			fflush(stdout);
+			//printf("    CH1\r\n");
+			//fflush(stdout);
 				
 			UCB0CTL1 |= UCSWRST;
 			UCB0CTL1 &= ~UCSWRST;
 		  	UCB0TXBUF = DUMMY_CHAR;
-		  	while(device->chipSelect.in->state == low);		// wait for chip select
 		  	
-		  	printf("        selected\r\n");
-		  	fflush(stdout);
+		  	while(device->chipSelect.in->state == low)		// wait for chip select
+		  	{
+		  		readDigitalInput(device->chipSelect.in);
+		  	}
+		  	
+		  	//printf("        selected\r\n");
+		  	//fflush(stdout);
 		  	
 		  	while((P3IN & 0x01) == 0x01);					// wait for slave transmit enable
 		  	bool enabled = ((P3IN | 0xFE) == 0xFE);
