@@ -22,7 +22,7 @@ void system_initialize(void)
 	drivers_initialize();
 	
 	StopMSP430WatchdogTimer;
-	initTimerA();
+	//initTimerA();
 	//enableInterrupts();
 	
 	#if DebugMode
