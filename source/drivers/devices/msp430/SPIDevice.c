@@ -228,9 +228,9 @@ void SPI_transmit(SPI_Device* device, const Byte data)
 
 ///////////////////////////////////////////////
 
-void SPI_receive(SPI_Device* device, Byte* data)
-{   
-    // TODO
+void SPI_receive(SPI_Device* device)
+{
+	SPI_transmit(device, DUMMY_CHAR);
 }
 
 

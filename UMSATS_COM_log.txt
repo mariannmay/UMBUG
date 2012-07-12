@@ -1,4 +1,3 @@
 == DEBUG MODE ==
 
 testing SPI with framework
-All tests complete! --------------------

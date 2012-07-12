@@ -56,7 +56,7 @@ SPI_Device;
 
 bool initialize_SPI(SPI_CHANNEL channel, SPI_TYPE spiType);		// returns true if OK
 void SPI_transmit(SPI_Device* device, const Byte data);
-void SPI_receive(SPI_Device* device, Byte* data);
+void SPI_receive(SPI_Device* device);
 
 #endif
 

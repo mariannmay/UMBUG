@@ -12,19 +12,21 @@
 
 void test_application_initialize(void)
 {
-
+	#if CDH_PROCESSOR_COMPILE
+		logLine("running test on CDH processor");
+		logLine("please check UMSATS_CDH_log.txt");
+	#else
+		logLine("running test on COM processor");
+		logLine("please check UMSATS_COM_log.txt");
+	#endif
 }
 
 void test_application_main(void)
 {
-	//test_COM();
-	test_analogToDigital();
-	
-	int D2A_tests;
-	for (D2A_tests = 0; D2A_tests < 10; D2A_tests++)
-	{ 
-		test_digitalToAnalog();
-	}
+	//test_SPI();
+	//test_analogToDigital();
+	//test_digitalToAnalog();
+	test_SPI_framework();
 	
 	printf("All tests complete! --------------------\r\n");
 	fflush(stdout);
@@ -33,9 +35,53 @@ void test_application_main(void)
 
 //////////////////////////////////////////////////////////////////
 
+void test_SPI_framework(void)
+{
+	#if CDH_PROCESSOR_COMPILE
+		logLine("testing SPI with framework");
+		SPI_transmit(devices.systemClock.SPI, 'K');
+		SPI_transmit(devices.systemClock.SPI, 'a');
+		SPI_transmit(devices.systemClock.SPI, 'n');
+		SPI_transmit(devices.systemClock.SPI, 'e');
+		SPI_transmit(devices.systemClock.SPI, ' ');
+		SPI_transmit(devices.systemClock.SPI, 'i');
+		SPI_transmit(devices.systemClock.SPI, 's');
+		SPI_transmit(devices.systemClock.SPI, ' ');
+		SPI_transmit(devices.systemClock.SPI, 'a');
+		SPI_transmit(devices.systemClock.SPI, 'w');
+		SPI_transmit(devices.systemClock.SPI, 'e');
+		SPI_transmit(devices.systemClock.SPI, 's');
+		SPI_transmit(devices.systemClock.SPI, 'o');
+		SPI_transmit(devices.systemClock.SPI, 'm');
+		SPI_transmit(devices.systemClock.SPI, 'e');
+		SPI_transmit(devices.systemClock.SPI, ' ');
+	
+		int i;
+		for (i = 0; i < 1000; i++)
+		{
+			SPI_transmit(devices.systemClock.SPI, '*');
+		}
+	#else
+		logLine("testing SPI with framework");
+		for (;;)
+		{
+			SPI_receive(devices.systemClock.SPI);
+			char received = devices.systemClock.SPI->receiveMessage;
+			if (received != DUMMY_CHAR)
+			{
+				printf("received: %c\r\n", received);
+				fflush(stdout);
+			}
+		}
+	#endif
+}
+
+//////////////////////////////////////////////////////////////////
+
 void test_SPI(void)
 {
-
+	logLine("testing SPI");
+	
 	P5DIR |= BIT1;                // P5.1 as output
   	P5OUT |= BIT1;                // P5.1 set high
 
@@ -101,21 +147,28 @@ void test_SPI(void)
 void test_analogToDigital(void)
 {
 	// TODO
+	logLine("testing A to D conversion");
 }
 
 ///////////////////////////////////////////////////////////////////
 
 void test_digitalToAnalog(void)
 {
-	int i;
-	for (i = 0; i < 0xFFF; i++)
-	{
-		devices.radio.microphone->value = i;
-		startNewDigitalToAnalogConversion(devices.radio.microphone->value, 0);
-		//logCombo("set digital out on P6.6", i);
-		
-		readAnalogInput(devices.test_AtoD);
-		//logCombo("read analog in on P6.5 ", devices.test_AtoD->value);
+	logLine("testing D to A conversion");
+	
+	int D2A_tests;
+	for (D2A_tests = 0; D2A_tests < 10; D2A_tests++)
+	{ 
+		int i;
+		for (i = 0; i < 0xFFF; i++)
+		{
+			devices.radio.microphone->value = i;
+			startNewDigitalToAnalogConversion(devices.radio.microphone->value, 0);
+			//logCombo("set digital out on P6.6", i);
+			
+			readAnalogInput(devices.test_AtoD);
+			//logCombo("read analog in on P6.5 ", devices.test_AtoD->value);
+		}
 	}
 }
 

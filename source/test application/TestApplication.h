@@ -17,6 +17,7 @@
 #include <stdio.h>
 
 void test_SPI(void);
+void test_SPI_framework(void);
 void test_analogToDigital(void);
 void test_digitalToAnalog(void);
 
