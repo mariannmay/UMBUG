@@ -28,7 +28,24 @@ void drivers_initialize(void)
 		
 	// system clock //////////////////////////////////////////////
 	
-	devices.systemClock.SPI->chipSelect		= &msp430.PORT_10.digitalOutput[4];
+	//devices.systemClock.SPI.chipSelect		= &msp430.PORT_10.digitalOutput[4];
+	//devices.systemClock.SPI.channel			= SPI_CHANNEL_1;
+	//devices.systemClock.SPI.type			= SPI_TYPE_Master;
+	//initialize_SPI(&devices.systemClock.SPI);
+	
+	// TEST ONLY AND REMOVE LATER TODO ///////////////////////////
+	
+	#if CDH_PROCESSOR_COMPILE
+		devices.test_SPI_device.chipSelect.out	= &msp430.PORT_10.digitalOutput[4];
+		devices.test_SPI_device.channel			= SPI_CHANNEL_1;
+		devices.test_SPI_device.type			= SPI_TYPE_Master;
+	#else
+		devices.test_SPI_device.chipSelect.in	= &msp430.PORT_1.digitalInput[5];
+		devices.test_SPI_device.channel			= SPI_CHANNEL_1;
+		devices.test_SPI_device.type			= SPI_TYPE_Slave;
+	#endif
+	
+	initialize_SPI(&devices.test_SPI_device);
 	
 	// system status LED /////////////////////////////////////////
 	

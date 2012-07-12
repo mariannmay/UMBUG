@@ -39,34 +39,34 @@ void test_SPI_framework(void)
 {
 	#if CDH_PROCESSOR_COMPILE
 		logLine("testing SPI with framework");
-		SPI_transmit(devices.systemClock.SPI, 'K');
-		SPI_transmit(devices.systemClock.SPI, 'a');
-		SPI_transmit(devices.systemClock.SPI, 'n');
-		SPI_transmit(devices.systemClock.SPI, 'e');
-		SPI_transmit(devices.systemClock.SPI, ' ');
-		SPI_transmit(devices.systemClock.SPI, 'i');
-		SPI_transmit(devices.systemClock.SPI, 's');
-		SPI_transmit(devices.systemClock.SPI, ' ');
-		SPI_transmit(devices.systemClock.SPI, 'a');
-		SPI_transmit(devices.systemClock.SPI, 'w');
-		SPI_transmit(devices.systemClock.SPI, 'e');
-		SPI_transmit(devices.systemClock.SPI, 's');
-		SPI_transmit(devices.systemClock.SPI, 'o');
-		SPI_transmit(devices.systemClock.SPI, 'm');
-		SPI_transmit(devices.systemClock.SPI, 'e');
-		SPI_transmit(devices.systemClock.SPI, ' ');
+		SPI_transmit(&devices.test_SPI_device, 'K');
+		SPI_transmit(&devices.test_SPI_device, 'a');
+		SPI_transmit(&devices.test_SPI_device, 'n');
+		SPI_transmit(&devices.test_SPI_device, 'e');
+		SPI_transmit(&devices.test_SPI_device, ' ');
+		SPI_transmit(&devices.test_SPI_device, 'i');
+		SPI_transmit(&devices.test_SPI_device, 's');
+		SPI_transmit(&devices.test_SPI_device, ' ');
+		SPI_transmit(&devices.test_SPI_device, 'a');
+		SPI_transmit(&devices.test_SPI_device, 'w');
+		SPI_transmit(&devices.test_SPI_device, 'e');
+		SPI_transmit(&devices.test_SPI_device, 's');
+		SPI_transmit(&devices.test_SPI_device, 'o');
+		SPI_transmit(&devices.test_SPI_device, 'm');
+		SPI_transmit(&devices.test_SPI_device, 'e');
+		SPI_transmit(&devices.test_SPI_device, ' ');
 	
 		int i;
 		for (i = 0; i < 1000; i++)
 		{
-			SPI_transmit(devices.systemClock.SPI, '*');
+			SPI_transmit(&devices.test_SPI_device, '*');
 		}
 	#else
 		logLine("testing SPI with framework");
 		for (;;)
 		{
-			SPI_receive(devices.systemClock.SPI);
-			char received = devices.systemClock.SPI->receiveMessage;
+			SPI_receive(&devices.test_SPI_device);
+			char received = devices.test_SPI_device.receiveMessage;
 			if (received != DUMMY_CHAR)
 			{
 				printf("received: %c\r\n", received);

@@ -10,6 +10,9 @@
 
 #include "SPIDevice.h"
 
+// TODO REMOVE
+#include <stdio.h>
+
 // functions //////////////////////////////////
 
 
@@ -167,16 +170,16 @@ bool initialize_SPI_slave(SPI_CHANNEL channel)
 ///////////////////////////////////////////////
 
 // returns whether or not this was successful
-bool initialize_SPI(SPI_CHANNEL channel, SPI_TYPE spiType)
+bool initialize_SPI(SPI_Device* device)
 {
 	
-	if (spiType == SPI_TYPE_Master)
+	if (device->type == SPI_TYPE_Master)
 	{
-		return initialize_SPI_master(channel);
+		return initialize_SPI_master(device->channel);
 	}
-	else if (spiType == SPI_TYPE_Slave)
+	else if (device->type == SPI_TYPE_Slave)
 	{
-		return initialize_SPI_slave(channel);
+		return initialize_SPI_slave(device->channel);
 	}
 	
 	return false;
@@ -187,16 +190,26 @@ bool initialize_SPI(SPI_CHANNEL channel, SPI_TYPE spiType)
 
 void SPI_transmit(SPI_Device* device, const Byte data)
 {
+	printf("trying to send\r\n");
+	fflush(stdout);
+	
 	device->transmitMessage = data;
 	
 	if (device->type == SPI_TYPE_Master)
 	{
-		setDigitalOutput(device->chipSelect);
+		printf("    master\r\n");
+		fflush(stdout);
+		
+		setDigitalOutput(device->chipSelect.out);
 		int waitTimer;
 		
 		switch(device->channel)
 		{
 			case SPI_CHANNEL_1:
+				printf("    CH1\r\n");
+				fflush(stdout);
+			
+				fflush(stdout);
 				UCB0CTL1	|= UCSWRST;
 				UCB0CTL1	&= ~UCSWRST;								// software reset
 				P3OUT		&= ~0x01;									// slave enable
@@ -226,11 +239,11 @@ void SPI_transmit(SPI_Device* device, const Byte data)
 				device->receiveMessage = DUMMY_CHAR;
 		}
 	
-		clearDigitalOutput(device->chipSelect);
+		clearDigitalOutput(device->chipSelect.out);
 	}
 	else if (device->type == SPI_TYPE_Slave)
 	{
-		while(!device->chipSelect->state) {;}			// wait for enable
+		while(!device->chipSelect.in->state) {;}			// wait for enable
 
 		switch(device->channel)
 		{
@@ -263,23 +276,38 @@ void SPI_transmit(SPI_Device* device, const Byte data)
 
 void SPI_receive(SPI_Device* device)
 {
+	printf("trying to receive\r\n");
+	fflush(stdout);
+	
 	if (device->type == SPI_TYPE_Master)
 	{
+		printf("    master\r\n");
+		fflush(stdout);
 		SPI_transmit(device, DUMMY_CHAR);
 	}
 	else if (device->type == SPI_TYPE_Slave)
 	{
+		printf("    slave\r\n");
+		fflush(stdout);
+		
 		if (device->channel == SPI_CHANNEL_1)
 		{
+			printf("    CH1\r\n");
+			fflush(stdout);
+				
 			UCB0CTL1 |= UCSWRST;
 			UCB0CTL1 &= ~UCSWRST;
 		  	UCB0TXBUF = DUMMY_CHAR;
-		  	while(device->chipSelect->state == low);	// wait for chip select
-		  	while((P3IN & 0x01) == 0x01);				// wait for slave transmit enable
+		  	while(device->chipSelect.in->state == low);		// wait for chip select
+		  	
+		  	printf("        selected\r\n");
+		  	fflush(stdout);
+		  	
+		  	while((P3IN & 0x01) == 0x01);					// wait for slave transmit enable
 		  	bool enabled = ((P3IN | 0xFE) == 0xFE);
 			if (enabled)
 			{
-				while ((UC0IFG & UCB0RXIFG) == 0);		// wait for RX buffer (full)
+				while ((UC0IFG & UCB0RXIFG) == 0);			// wait for RX buffer (full)
 				char buff = UCB0RXBUF;
 				device->receiveMessage = buff;
 			}
@@ -289,12 +317,12 @@ void SPI_receive(SPI_Device* device)
 			UCA0CTL1 |= UCSWRST;
 			UCA0CTL1 &= ~UCSWRST;
 		  	UCA0TXBUF = DUMMY_CHAR;
-		  	while(device->chipSelect->state == low);	// wait for chip select
-		  	while((P7IN & 0x01) == 0x01);				// wait for slave transmit enable
+		  	while(device->chipSelect.in->state == low);		// wait for chip select
+		  	while((P7IN & 0x01) == 0x01);					// wait for slave transmit enable
 		  	bool enabled = ((P7IN | 0xFE) == 0xFE);
 			if (enabled)
 			{
-				while ((UC0IFG & UCA0RXIFG) == 0);		// wait for RX buffer (full)
+				while ((UC0IFG & UCA0RXIFG) == 0);			// wait for RX buffer (full)
 				char buff = UCA0RXBUF;
 				device->receiveMessage = buff;
 			}
