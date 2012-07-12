@@ -274,9 +274,12 @@ void SPI_receive(SPI_Device* device)
 			UCB0CTL1 |= UCSWRST;
 			UCB0CTL1 &= ~UCSWRST;
 		  	UCB0TXBUF = DUMMY_CHAR;
-			while(device->chipSelect->state == false);	//wait for enable
+		  	while(device->chipSelect->state == low);	// wait for chip select
+		  	while((P3IN & 0x01) == 0x01);				// wait for slave transmit enable
+		  	bool enabled = ((P3IN | 0xFE) == 0xFE);
+			if (enabled)
 			{
-				while ((UC0IFG & UCB0RXIFG) == 0);   // wait for RX buffer (full)
+				while ((UC0IFG & UCB0RXIFG) == 0);		// wait for RX buffer (full)
 				char buff = UCB0RXBUF;
 				device->receiveMessage = buff;
 			}
@@ -286,9 +289,12 @@ void SPI_receive(SPI_Device* device)
 			UCA0CTL1 |= UCSWRST;
 			UCA0CTL1 &= ~UCSWRST;
 		  	UCA0TXBUF = DUMMY_CHAR;
-			while(device->chipSelect->state == false);	//wait for enable
+		  	while(device->chipSelect->state == low);	// wait for chip select
+		  	while((P7IN & 0x01) == 0x01);				// wait for slave transmit enable
+		  	bool enabled = ((P7IN | 0xFE) == 0xFE);
+			if (enabled)
 			{
-				while ((UC0IFG & UCA0RXIFG) == 0);   // wait for RX buffer (full)
+				while ((UC0IFG & UCA0RXIFG) == 0);		// wait for RX buffer (full)
 				char buff = UCA0RXBUF;
 				device->receiveMessage = buff;
 			}

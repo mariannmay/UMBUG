@@ -109,7 +109,7 @@ void test_SPI(void)
 			for (waitTimer = 10000; waitTimer > 0; waitTimer--){ ; }
 	
 		}
-	#else
+	#else		// SLAVE
 		
 		printf("    COM Slave Initialize\r\n");
 		printf("Searching for: %c\n", 'C');
