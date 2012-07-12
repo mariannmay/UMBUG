@@ -33,6 +33,7 @@ typedef struct
 	Radio			radio;
 	
 	AnalogInput*	test_AtoD;
+	SPI_Device		test_SPI_device;
 }
 AllDevices;
 

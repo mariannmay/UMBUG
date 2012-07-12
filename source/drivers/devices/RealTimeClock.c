@@ -24,7 +24,7 @@ Time_ms realTimeClock_timeSinceLastCheck(RealTimeClock* RTC)
 	returnValue = 1;
 	//returnValue = 0;	// actually use this one if you have an RTC
 	
-	SPI_transmit(RTC->SPI, DUMMY_CHAR);
+	SPI_transmit(&RTC->SPI, DUMMY_CHAR);
 	
 	return returnValue;
 }
