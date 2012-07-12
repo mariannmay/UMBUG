@@ -16,19 +16,22 @@ Time_ms systemTimer;
 
 void system_initialize(void)
 {
+	
 	systemTimer = 0;
+	
 	drivers_initialize();
+	
 	StopMSP430WatchdogTimer;
-	//initializeLogFile();
 	initTimerA();
 	//enableInterrupts();
-	/*
+	
 	#if DebugMode
 		test_application_initialize();
+		initializeLogFile();
 	#else
 		application_initialize();
 	#endif
-	*/
+	
 	
 }
 
@@ -36,13 +39,12 @@ void system_initialize(void)
 
 // 	main has an infinite loop which calls this function every time
 void system_main(void)
-{
+{	
 	// run the program
 	#if DebugMode
-		printf("== DEBUG MODE ==\n");
+		logLine("== DEBUG MODE ==\r\n");
 		test_application_main();
 	#else
-		printf("== REGULAR OPERATION ==\n");
 		application_main();
 	#endif
 }

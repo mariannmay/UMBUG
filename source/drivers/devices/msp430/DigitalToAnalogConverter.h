@@ -1,22 +1,24 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    representation of the processor's A2D                     //
+//    representation of the processor's D2A                     //
 //    last edited by: Kane Anderson                             //
-//    date: June 11, 2012                                    	//
+//    date: June 26, 2012                                    	//
 //																//
 //////////////////////////////////////////////////////////////////
 
-#ifndef ANALOGTODIGITALCONVERTER_H
-#define ANALOGTODIGITALCONVERTER_H
+#ifndef DIGITALTOANALOGCONVERTER_H
+#define DIGITALTOANALOGCONVERTER_H
 
 //////////////////////////////////////////////////////////////////
 
 #include <msp430fg4619.h>
-
+#include "../../../SimpleDefinitions.h"
 
 //////////////////////////////////////////////////////////////////
 
-void initialize_analogToDigitalConverter(void);
-void startNewAnalogToDigitalConversion(void);
+//////////////////////////////////////////////////////////////////
+
+void initialize_digitalToAnalogConverter(void);
+void startNewDigitalToAnalogConversion(Word digital_12_bit_value, int outputNumber);
 
 #endif

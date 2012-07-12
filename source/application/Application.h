@@ -19,9 +19,6 @@
 #include "./CDH/CDHApplication.h"
 #endif
 
-#if COM_PROCESSOR_COMPILE
-#include "./COM/COMonCDH.h"
-#endif
 
 //////////////////////////////////
 

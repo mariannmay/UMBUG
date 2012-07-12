@@ -7,7 +7,6 @@
 //////////////////////////////////////////////////////////////////
 
 #include "CDHApplication.h"
-#include <stdio.h>
 
 void CDH_application_main(void)
 {
@@ -19,8 +18,7 @@ void CDH_application_main(void)
 	//       - use CommandTimerFacade's setTimer() command.
 	//       - also use LimitTimerFacade's setTimer() command to set the time limit for the current command (send ground an error if we go over the limit).
 	
-	printf("CDH scheduler initialized.\n");
-	fflush(stdout);
+	logLine("CDH scheduler initialized");
 	
 	CDHMainScheduleLoop();
 }
@@ -30,17 +28,23 @@ void CDHMainScheduleLoop(void)
 	// TODO: write the always-running loop here which gathers and runs commands from the ground and gets interrupted by the schedule.
 	//       - make a data structure which holds commands (Maybe function pointers and parameters somehow? Maybe just packets which will be parsed later?)
 	
+	//testing ADC stuff
+	
+	//int adcreading = 0;
+		
 	for(;;)
 	{
+		kickTheDog(&(devices.systemWatchdog));
+		
 		// read how much time has passed during the previous loop
 		systemTimer += realTimeClock_timeSinceLastCheck(&(devices.systemClock));
+
 		if (systemTimer >= OneSecond)
 		{
 			toggleStatusLED();
 			systemTimer = 0;
+			
 		}
-		
-		kickTheDog(&(devices.systemWatchdog));
 	
 		//Freeze, criminal! >:|
 		

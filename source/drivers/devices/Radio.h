@@ -1,28 +1,28 @@
 //////////////////////////////////////////////////////////////////
 //                                                              //
-//    Thermocouple header                                     	//
+//    Radio header                                        		//
 //    last edited by: Kane Anderson                             //
-//    date: January 10, 2012                                    //
+//    date: June 26, 2012                                       //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#ifndef THERMOCOUPLE_H
-#define THERMOCOUPLE_H
+#ifndef RADIO_H
+#define RADIO_H
 
-#include "../DriversConfig.h"
+#include "../IOTypes.h"
 
 ///////////////////////////////////////////////
 
 // structure //////////////////////////////////
 typedef struct
 {
-	AnalogInput* voltageInput;
+	AnalogOutput* microphone;
+	DigitalOutput* pushToTalk;
 }
-Thermocouple;
+Radio;
 
 // functions //////////////////////////////////
 
-void thermocouple_initialize(void);
-Word thermocouple_read(Thermocouple* thermocouple);
+void radio_initialize(Radio* radio);
 
 #endif

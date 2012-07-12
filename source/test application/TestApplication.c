@@ -12,20 +12,21 @@
 
 void test_application_initialize(void)
 {
-	printf("Test application start -----------------\r\n");
-	fflush(stdout);
-	
 	#if CDH_PROCESSOR_COMPILE
-		initialize_SPI(1);
+		logLine("running test on CDH processor");
+		logLine("please check UMSATS_CDH_log.txt");
 	#else
-		initialize_SPI(0);
+		logLine("running test on COM processor");
+		logLine("please check UMSATS_COM_log.txt");
 	#endif
-	
 }
 
 void test_application_main(void)
 {
-	test_COM();
+	//test_SPI();
+	//test_analogToDigital();
+	//test_digitalToAnalog();
+	test_SPI_framework();
 	
 	printf("All tests complete! --------------------\r\n");
 	fflush(stdout);
@@ -34,27 +35,52 @@ void test_application_main(void)
 
 //////////////////////////////////////////////////////////////////
 
-void test_COM(void)
+void test_SPI_framework(void)
 {
-	/*
-	Data D;
-	//malloc required?
-	D.size = 3;
-	D.type = true;
-	D.index[0] = 'a';
-	D.index[1] = 'b';
-	D.index[2] = 'c';
+	#if CDH_PROCESSOR_COMPILE
+		logLine("testing SPI with framework");
+		SPI_transmit(devices.systemClock.SPI, 'K');
+		SPI_transmit(devices.systemClock.SPI, 'a');
+		SPI_transmit(devices.systemClock.SPI, 'n');
+		SPI_transmit(devices.systemClock.SPI, 'e');
+		SPI_transmit(devices.systemClock.SPI, ' ');
+		SPI_transmit(devices.systemClock.SPI, 'i');
+		SPI_transmit(devices.systemClock.SPI, 's');
+		SPI_transmit(devices.systemClock.SPI, ' ');
+		SPI_transmit(devices.systemClock.SPI, 'a');
+		SPI_transmit(devices.systemClock.SPI, 'w');
+		SPI_transmit(devices.systemClock.SPI, 'e');
+		SPI_transmit(devices.systemClock.SPI, 's');
+		SPI_transmit(devices.systemClock.SPI, 'o');
+		SPI_transmit(devices.systemClock.SPI, 'm');
+		SPI_transmit(devices.systemClock.SPI, 'e');
+		SPI_transmit(devices.systemClock.SPI, ' ');
+	
+		int i;
+		for (i = 0; i < 1000; i++)
+		{
+			SPI_transmit(devices.systemClock.SPI, '*');
+		}
+	#else
+		logLine("testing SPI with framework");
+		for (;;)
+		{
+			SPI_receive(devices.systemClock.SPI);
+			char received = devices.systemClock.SPI->receiveMessage;
+			if (received != DUMMY_CHAR)
+			{
+				printf("received: %c\r\n", received);
+				fflush(stdout);
+			}
+		}
+	#endif
+}
 
-	Packet P;
-	//malloc here?
-	P.size = D.size+20;
-	
-	char dest[] = {'V','E','4','U','M','_','1'};
-	packetize(&D, &P, dest); //stuffing info into an AX.25 packet for VE4UM_1
-	
-	//heres where I want to test each byte
-	//assert(pack[17] == 'a');
-	*/
+//////////////////////////////////////////////////////////////////
+
+void test_SPI(void)
+{
+	logLine("testing SPI");
 	
 	P5DIR |= BIT1;                // P5.1 as output
   	P5OUT |= BIT1;                // P5.1 set high
@@ -62,50 +88,88 @@ void test_COM(void)
 	//testing SPI
 
 	#if CDH_PROCESSOR_COMPILE
-		P3OUT = 0x01; //set STE high for slave enable
+		P3OUT &= ~0x01;		// slave enable
 		
-		for(;;)
+		char nextCharToSend = '1';
+		for(;;nextCharToSend++)
 		{
-			//P5OUT ^= BIT1;              //always Toggle P5.1 if master
-			spiSendByte(0xFF);
-			//unsigned int x;
-			//for(x=50000;x>0;x--);       // Delay
-			//P3OUT ^= 0x08;
+
+			UCB0CTL1 |= UCSWRST;
+			UCB0CTL1 &= ~UCSWRST;
+			if (nextCharToSend == ':') nextCharToSend = '1';
+			
+			P3OUT &= ~0x01; //set STE low for slave enable
+			char buff = spiSendByte(nextCharToSend);
+			printf("recieved: %c\n", buff);
+			
+			P3OUT |= 0x01; //set STE high for slave disable
+			
+			// just a time killing loop
+			int waitTimer;
+			for (waitTimer = 10000; waitTimer > 0; waitTimer--){ ; }
+	
 		}
 	#else
-	  for(;;)
+		
+		printf("    COM Slave Initialize\r\n");
+		printf("Searching for: %c\n", 'C');
+		fflush(stdout);
+		
+	  int x;
+	  for(x =0;x<100;x++)
 	  {
-		//while (halSPITXREADY ==0);   // wait while not ready for TX
-		//halSPI_SEND(DUMMY_CHAR);     // dummy write
-		//while (halSPIRXREADY ==0);   // wait for RX buffer (full)
-		//char buff = halSPIRXBUF;
-		//if(buff==0x55)
-		//{
-			if((P3IN & 0x01) == 0x01)//check STE high
-			{
-				P5OUT ^= BIT1; //if connected to master toggle LED
-			}
-			
-			unsigned int x;
-			for(x=50000;x>0;x--);
-		//}
-	  }
-	  /*
-		for(;;)
+
+		UCB0CTL1 |= UCSWRST;
+		UCB0CTL1 &= ~UCSWRST;
+	  	UCB0TXBUF = 'C';
+		while((P3IN & 0x01) == 0x01);	//wait for enable
+		bool enabled = ((P3IN | 0xFE) == 0xFE);
+		if (enabled)
 		{
-			char buff = spiSendByte(0x55);
-			if(buff==0x55)
-			{
-				P5OUT ^= BIT1; //if connected to master toggle LED
-			}
+			//while (halSPITXREADY ==0);   // wait while not ready for TX
+			//halSPI_SEND(0xFF);     // dummy write
+			while (halSPIRXREADY ==0);   // wait for RX buffer (full)
+			char buff = UCB0RXBUF;
+			printf("recieved: %c\n", buff);
+			
 		}
-		*/
+		
+	  }
+	  
 	#endif
-	
-	//fflush(stdout);
 	
 	//printf("    COM test complete\r\n");
 	//fflush(stdout);
+}
+
+///////////////////////////////////////////////////////////////////
+
+void test_analogToDigital(void)
+{
+	// TODO
+	logLine("testing A to D conversion");
+}
+
+///////////////////////////////////////////////////////////////////
+
+void test_digitalToAnalog(void)
+{
+	logLine("testing D to A conversion");
+	
+	int D2A_tests;
+	for (D2A_tests = 0; D2A_tests < 10; D2A_tests++)
+	{ 
+		int i;
+		for (i = 0; i < 0xFFF; i++)
+		{
+			devices.radio.microphone->value = i;
+			startNewDigitalToAnalogConversion(devices.radio.microphone->value, 0);
+			//logCombo("set digital out on P6.6", i);
+			
+			readAnalogInput(devices.test_AtoD);
+			//logCombo("read analog in on P6.5 ", devices.test_AtoD->value);
+		}
+	}
 }
 
 ///////////////////////////////////////////////////////////////////

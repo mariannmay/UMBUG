@@ -2,11 +2,30 @@
 //                                                              //
 //    IO Types	                                                //
 //    last edited by: Kane Anderson                             //
-//    date: March 3, 2012                                   	//
+//    date: June 26, 2012                                   	//
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
 #include "./IOTypes.h"
+
+//////////////////////////////////////////////////////////////////
+
+void initializeAnalogOutput(AnalogOutput* output, char portNum, char pin)
+{
+	// nothing to do here
+}
+
+void sendAnalogOutput(AnalogOutput* output)
+{
+	if ((output->portNum == 6) && (output->pin == 6))
+	{
+		startNewDigitalToAnalogConversion(output->value, 0);
+	}
+	else if ((output->portNum == 6) && (output->pin == 7))
+	{
+		startNewDigitalToAnalogConversion(output->value, 1);
+	}
+}
 
 //////////////////////////////////////////////////////////////////
 
@@ -243,11 +262,6 @@ void initializeAnalogInput(AnalogInput* input, char portNum, char pin)
 void readAnalogInput(AnalogInput* input)
 {
 	startNewAnalogToDigitalConversion();
-	UI8 waitForConversionCounter;
-	for (waitForConversionCounter = 0; waitForConversionCounter <= 2; waitForConversionCounter++)
-	{
-		; // do nothing
-	}
 	
 	//////////////
 	
@@ -256,8 +270,8 @@ void readAnalogInput(AnalogInput* input)
 		case 5:
 			switch (input->pin)
 			{
-				case 0:		input->value = AnalogToDigital_Port_5_0; break;
-				case 1:		input->value = AnalogToDigital_Port_5_1; break;
+				case 0:		input->value = ADC12MEM9; break;
+				case 1:		input->value = ADC12MEM8; break;
 				default: return;
 			}
 			break;
@@ -265,14 +279,13 @@ void readAnalogInput(AnalogInput* input)
 		case 6:
 			switch (input->pin)
 			{
-				case 0:		input->value = AnalogToDigital_Port_6_0; break;
-				case 1:		input->value = AnalogToDigital_Port_6_1; break;
-				case 2:		input->value = AnalogToDigital_Port_6_2; break;
-				case 3:		input->value = AnalogToDigital_Port_6_3; break;
-				case 4:		input->value = AnalogToDigital_Port_6_4; break;
-				case 5:		input->value = AnalogToDigital_Port_6_5; break;
-				case 6:		input->value = AnalogToDigital_Port_6_6; break;
-				case 7:		input->value = AnalogToDigital_Port_6_7; break;
+				case 0:		input->value = ADC12MEM0; break;
+				case 1:		input->value = ADC12MEM1; break;
+				case 2:		input->value = ADC12MEM2; break;
+				case 3:		input->value = ADC12MEM3; break;
+				case 4:		input->value = ADC12MEM4; break;
+				case 5:		input->value = ADC12MEM5; break;
+				case 7:		input->value = ADC12MEM7; break;
 				default: return;
 			}
 			break;
@@ -280,8 +293,8 @@ void readAnalogInput(AnalogInput* input)
 		case 10:
 			switch (input->pin)
 			{
-				case 6:		input->value = AnalogToDigital_Port_10_6; break;
-				case 7:		input->value = AnalogToDigital_Port_10_7; break;
+				case 6:		input->value = ADC12MEM11; break;
+				case 7:		input->value = ADC12MEM10; break;
 				default: return;
 			}
 			break;
