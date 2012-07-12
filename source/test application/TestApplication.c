@@ -39,6 +39,7 @@ void test_SPI_framework(void)
 {
 	#if CDH_PROCESSOR_COMPILE
 		logLine("testing SPI with framework");
+		logLine("    transmitting: Kane is awesome **********");
 		SPI_transmit(&devices.test_SPI_device, 'K');
 		SPI_transmit(&devices.test_SPI_device, 'a');
 		SPI_transmit(&devices.test_SPI_device, 'n');
@@ -57,20 +58,29 @@ void test_SPI_framework(void)
 		SPI_transmit(&devices.test_SPI_device, ' ');
 	
 		int i;
-		for (i = 0; i < 1000; i++)
+		for (i = 0; i < 10; i++)
 		{
 			SPI_transmit(&devices.test_SPI_device, '*');
 		}
 	#else
 		logLine("testing SPI with framework");
+		int i = 0;
 		for (;;)
 		{
 			SPI_receive(&devices.test_SPI_device);
 			char received = devices.test_SPI_device.receiveMessage;
 			if (received != DUMMY_CHAR)
 			{
-				printf("received: %c\r\n", received);
-				fflush(stdout);
+				printf("%c", received);
+			}
+			else
+			{
+				i++;
+				if (i > 1000)
+				{
+					fflush(stdout);
+					i = 0;
+				}
 			}
 		}
 	#endif
