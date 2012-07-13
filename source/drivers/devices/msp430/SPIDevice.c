@@ -41,7 +41,7 @@ bool initialize_SPI_master(SPI_CHANNEL channel)
 			//UCMST (Master mode)               = 1b  ->  Master mode
 			//UCMODEx (USCI mode)               = 00b ->  3-Pin SPI
 			//UCSYNC (Synchronous mode enable)  = 1b  ->  Synchronous mode
-			UCB0CTL0	= 0x29;
+			UCB0CTL0	= 0xA9;
 			//-------------------------------------------------------------------------
 			//-------------------------------------------------------------------------
 			//UCA0CTL1 -> Control Register 1
@@ -57,28 +57,32 @@ bool initialize_SPI_master(SPI_CHANNEL channel)
 			// Data rate = SMCLK/2 ~= 500kHz
 			// UCA0BR1 = 0x00 & UCA0BR0 = 0x02
 			//-------------------------------------------------------------------------
-			UCB0BR0		= 0x02;                           
+			UCB0BR0		= 0x08;                           
 			UCB0BR1		= 0x00;
 			
 			//3) Configure ports
 			P3SEL	   |= 0x0E;				// P3.1,P3.2,P3.3 option select
 			P3DIR	   |= 0x01;				// P3.0 output direction
-			P3DIR	   &= ~0x10;				// P3.4 input
+			P3SEL	   &= ~0x01;			// P3.0 is GPIO!!!!!!!!!!!
+			
+			P3DIR	   &= ~0x10;			// P3.4 input
 			
 			// 4)
-			UCB0CTL1   &= ~UCSWRST;       // **Initialize USCI state machine**
+			UCB0CTL1   &= ~UCSWRST;       	// **Initialize USCI state machine**
 			break;
 		
 		case SPI_CHANNEL_2:
 
-			UCA0CTL1   |= UCSWRST;      // **Initialize USCI registers**
-			UCA0CTL0	= 0x29;
+			UCA0CTL1   |= UCSWRST;      	// **Initialize USCI registers**
+			UCA0CTL0	= 0xA9;
 			UCA0CTL1	= 0x80;
-			UCA0BR0		= 0x02;
+			UCA0BR0		= 0x08;
 			UCA0BR1		= 0x00;
 			
 			P7SEL	   |= 0x0E;
 			P7DIR	   |= 0x01;
+			P7SEL	   &= ~0x01;
+			
 			P7DIR	   &= ~0x10;
 			
 			UCA0CTL1   &= ~UCSWRST;
@@ -114,7 +118,7 @@ bool initialize_SPI_slave(SPI_CHANNEL channel)
 			//UCMST (Master mode)               = 0b  ->  Slave mode
 			//UCMODEx (USCI mode)               = 00b ->  3-Pin SPI
 			//UCSYNC (Synchronous mode enable)  = 1b  ->  Synchronous mode
-			UCB0CTL0	= 0x21;
+			UCB0CTL0	= 0xA1;
 			//-------------------------------------------------------------------------
 			//-------------------------------------------------------------------------
 			//UCA0CTL1 -> Control Register 1
@@ -130,7 +134,7 @@ bool initialize_SPI_slave(SPI_CHANNEL channel)
 			// Data rate = SMCLK/2 ~= 500kHz
 			// UCA0BR1 = 0x00 & UCA0BR0 = 0x02
 			//-------------------------------------------------------------------------
-			UCB0BR0		= 0x02;                           
+			UCB0BR0		= 0x08;                           
 			UCB0BR1		= 0x00;
 			
 			//3) Configure ports <-BEGIN
@@ -146,9 +150,9 @@ bool initialize_SPI_slave(SPI_CHANNEL channel)
 
 			UCA0CTL1   |= UCSWRST;          // **Initialize USCI registers**
 			
-			UCA0CTL0	= 0x21;
+			UCA0CTL0	= 0xA1;
 			UCA0CTL1	= 0x80;                     
-			UCA0BR0		= 0x02;                           
+			UCA0BR0		= 0x08;                           
 			UCA0BR1		= 0x00;
 			P7SEL	   |= 0x0E;				// P3.1,P3.2,P3.3 option select
 			P7DIR	   &= ~0x01;			// P3.0 input direction
