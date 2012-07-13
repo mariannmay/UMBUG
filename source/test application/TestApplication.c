@@ -136,9 +136,6 @@ void test_SPI(void)
 		bool enabled = ((P3IN | 0xFE) == 0xFE);
 		if (enabled)
 		{
-			//while (halSPITXREADY ==0);   // wait while not ready for TX
-			//halSPI_SEND(0xFF);     // dummy write
-			while (halSPIRXREADY ==0);   // wait for RX buffer (full)
 			char buff = UCB0RXBUF;
 			printf("recieved: %c\n", buff);
 			
@@ -148,8 +145,6 @@ void test_SPI(void)
 	  
 	#endif
 	
-	//printf("    COM test complete\r\n");
-	//fflush(stdout);
 }
 
 ///////////////////////////////////////////////////////////////////
