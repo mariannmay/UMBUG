@@ -9,6 +9,7 @@
 //I am using the 'B0' USCI module
 
 #include "SPIDevice.h"
+#include <stdio.h>
 
 // functions //////////////////////////////////
 
@@ -267,12 +268,17 @@ void SPI_transmit(SPI_Device* device, const Byte data)
 
 void SPI_receive(SPI_Device* device)
 {
+	
+	device->receiveMessage = DUMMY_CHAR;
+	
 	if (device->type == SPI_TYPE_Master)
 	{
 		SPI_transmit(device, DUMMY_CHAR);
 	}
 	else if (device->type == SPI_TYPE_Slave)
 	{
+		int timeout = 0;
+		
 		if (device->channel == SPI_CHANNEL_1)
 		{
 			UCB0CTL1 |= UCSWRST;
@@ -282,13 +288,25 @@ void SPI_receive(SPI_Device* device)
 		  	while(device->chipSelect.in->state == low)		// wait for chip select
 		  	{
 		  		readDigitalInput(device->chipSelect.in);
+		  		timeout++;
+		  		if (timeout > 10000) return;
 		  	}
 		  	
-		  	while((P3IN & 0x01) == 0x01);					// wait for slave transmit enable
+		  	while((P3IN & 0x01) == 0x01)					// wait for slave transmit enable
+		  	{
+		  		timeout++;
+		  		if (timeout > 10000) return;
+		  	}
+		  	
 		  	bool enabled = ((P3IN | 0xFE) == 0xFE);
 			if (enabled)
 			{
-				while ((UC0IFG & UCB0RXIFG) == 0);			// wait for RX buffer (full)
+				
+				while ((UC0IFG & UCB0RXIFG) == 0)			// wait for RX buffer (full)
+				{
+					timeout++;
+		  			if (timeout > 10000) return;
+				}
 				char buff = UCB0RXBUF;
 				device->receiveMessage = buff;
 			}
