@@ -64,8 +64,8 @@ void test_SPI_framework(void)
 		}
 	#else
 		logLine("testing SPI with framework");
-		int i = 0;
-		for (;;)
+		int i;
+		for (i = 0; i < 200; i++)
 		{
 			SPI_receive(&devices.test_SPI_device);
 			char received = devices.test_SPI_device.receiveMessage;
@@ -73,16 +73,9 @@ void test_SPI_framework(void)
 			{
 				printf("%c", received);
 			}
-			else
-			{
-				i++;
-				if (i > 1000)
-				{
-					fflush(stdout);
-					i = 0;
-				}
-			}
 		}
+		printf("\r\nfinished receiving\r\n");
+		fflush(stdout);
 	#endif
 }
 
@@ -180,3 +173,4 @@ void test_digitalToAnalog(void)
 ///////////////////////////////////////////////////////////////////
 
 // put other tests here
+
