@@ -10,14 +10,19 @@
 #include "../drivers/devices/msp430/TimerA.h"
 #include <stdio.h>
 
-Time_ms systemTimer;
+Time systemTime;
 
 //////////////////////////////////////////////////////////////////
 
 void system_initialize(void)
 {
 	
-	systemTimer = 0;
+	systemTime.seconds	= 0;
+	systemTime.minutes	= 0;
+	systemTime.hours	= 0;
+	systemTime.date		= 0;
+	systemTime.month	= 0;
+	systemTime.year		= 0;
 	
 	drivers_initialize();
 	

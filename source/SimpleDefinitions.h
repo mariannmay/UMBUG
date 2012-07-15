@@ -42,4 +42,15 @@ UL32 MultiByte4(Byte b1, Byte b2, Byte b3, Byte b4);
 typedef UL32 Time_ms;
 #define OneSecond 1000
 
+typedef struct
+{
+	Byte	seconds;
+	Byte	minutes; 
+	Byte	hours; 
+	Byte	date; 
+	Byte	month; 
+	Byte	year; 
+}
+Time;
+
 #endif

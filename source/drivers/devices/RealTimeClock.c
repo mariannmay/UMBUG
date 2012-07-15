@@ -12,21 +12,10 @@
 
 void realTimeClock_initialize(RealTimeClock* clock)
 {
-	// TODO
-}
-
-Time_ms realTimeClock_timeSinceLastCheck(RealTimeClock* RTC)
-{
-	Time_ms returnValue = RTC->timeSinceLastCheck;
-	RTC->timeSinceLastCheck = 0;
+	realTimeClock_reset(clock);
+	initialize_SPI(&clock->SPI);
 	
-	// TODO TEMP UNTIL IT IS FIXED PROPERLY
-	returnValue = 1;
-	//returnValue = 0;	// actually use this one if you have an RTC
 	
-	SPI_transmit(&RTC->SPI, DUMMY_CHAR);
-	
-	return returnValue;
 }
 
 void realTimeClock_update(RealTimeClock* clock)
@@ -36,7 +25,16 @@ void realTimeClock_update(RealTimeClock* clock)
 
 void realTimeClock_reset(RealTimeClock* clock)
 {
-	// TODO
+	clock->currentTime.seconds	= 0;
+	clock->currentTime.minutes	= 0;
+	clock->currentTime.hours	= 0;
+	clock->currentTime.date		= 0;
+	clock->currentTime.month	= 0;
+	clock->currentTime.year		= 0;
+	
+	clock->alarm0 = clock->currentTime;
+	clock->alarm1 = clock->currentTime;
+	
 }
 
 

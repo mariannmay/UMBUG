@@ -26,7 +26,7 @@
 typedef struct
 {
 	Watchdog		systemWatchdog;
-	RealTimeClock	systemClock;
+	RealTimeClock	realTimeClock;
 	DigitalOutput*	systemStatusLED;
 	//Battery			mainBattery;
 	Thermocouple	testThermocouple;

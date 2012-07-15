@@ -68,7 +68,7 @@ void test_SPI_framework(void)
 		for (i = 0; i < 200; i++)
 		{
 			SPI_receive(&devices.test_SPI_device);
-			char received = devices.test_SPI_device.receiveMessage;
+			char received = devices.test_SPI_device.receiveMessage[0];
 			if (received != DUMMY_CHAR)
 			{
 				printf("%c", received);

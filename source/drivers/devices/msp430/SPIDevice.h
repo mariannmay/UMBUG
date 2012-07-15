@@ -38,6 +38,9 @@ SPI_CHANNEL;
 #define SPI_TX_DONE				(UCB0STAT & UCBUSY)
 #define SPI_RX_READY			(UC0IFG & UCB0RXIFG)
 
+#define SPI_RX_BUFFER_SIZE		8
+#define SPI_TX_BUFFER_SIZE		8
+
 // structures /////////////////////////////////
 
 typedef struct
@@ -45,8 +48,8 @@ typedef struct
 	SPI_TYPE					type;
 	SPI_CHANNEL					channel;
 		
-	Byte						transmitMessage;
-	Byte						receiveMessage;
+	Byte						transmitMessage[SPI_TX_BUFFER_SIZE];
+	Byte						receiveMessage[SPI_RX_BUFFER_SIZE];
 	
 	union
 	{
@@ -61,6 +64,7 @@ SPI_Device;
 
 bool initialize_SPI(SPI_Device* device);		// returns true if OK
 void SPI_transmit(SPI_Device* device, const Byte data);
+void SPI_transmitStream(SPI_Device* device, Byte* const data, UI8 length);
 void SPI_receive(SPI_Device* device);
 
 #endif
