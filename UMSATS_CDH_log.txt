@@ -1,4 +1,6 @@
 Test application start -----------------
 == DEBUG MODE ==
+recieved: €
+recieved: ÿ
     COM test complete
 All tests complete! --------------------

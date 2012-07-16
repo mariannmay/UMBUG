@@ -238,7 +238,7 @@ unsigned char spiSendFrame(unsigned char* pBuffer, unsigned int size)
  * read_eeprom()
  * Description: Read a byte from the specified address.
  **/
-unsigned char read_eeprom(int EEPROM_address)
+unsigned char* read_eeprom(int EEPROM_address, int size)
 {
 	//opcodes
 	#define WREN  6
@@ -248,34 +248,112 @@ unsigned char read_eeprom(int EEPROM_address)
 	#define READ  3
 	#define WRITE 2
 	
-  	unsigned char data;
-  	UCB0CTL1 |= UCSWRST;
-	UCB0CTL1 &= ~UCSWRST; 
-  	// Select device
-  	P8OUT &= ~0x01;
-  	// Send READ command
-  	spiSendByte(READ); //transmit read opcode
-  	// Send address of where to read from
-  	UCB0CTL1 |= UCSWRST;
-	UCB0CTL1 &= ~UCSWRST; 
-  	spiSendByte((char)(EEPROM_address>>8));   //send MSByte address first
-  	UCB0CTL1 |= UCSWRST;
-	UCB0CTL1 &= ~UCSWRST;  
-  	spiSendByte((char)(EEPROM_address));      //send LSByte address
-  	// Send dummy write to sync clock
-  	UCB0CTL1 |= UCSWRST;
-	UCB0CTL1 &= ~UCSWRST; 
-	int y;
-	int z=4;
-	for(y=0;y<10;y++)
+	unsigned char* data;	
+	
+	long address = 0;
+	for(address = EEPROM_address; address <size; address+=32)
 	{
-		z++;
+
+	  	UCB0CTL1 |= UCSWRST;
+		UCB0CTL1 &= ~UCSWRST; 
+	  	// Select device
+	  	P8OUT &= ~0x01;
+	  	// Send READ command
+	  	spiSendByte(READ); //transmit read opcode
+	  	// Send address of where to read from
+	  	UCB0CTL1 |= UCSWRST;
+		UCB0CTL1 &= ~UCSWRST; 
+	  	spiSendByte((char)(address>>8));   //send MSByte address first
+	  	UCB0CTL1 |= UCSWRST;
+		UCB0CTL1 &= ~UCSWRST;  
+	  	spiSendByte((char)(address));      //send LSByte address
+	  	// Send dummy write to sync clock
+	  	UCB0CTL1 |= UCSWRST;
+		UCB0CTL1 &= ~UCSWRST; 
+		int y;
+		int z=4;
+		for(y=0;y<10;y++)
+		{
+			z++;
+		}
+		int i;
+		for(i=0; i<32; i++)
+		{
+	  		data[i+address] = spiSendByte(0xFF); //get data byte
+		}
+	  	// Deselect device
+	  	P8OUT |= 0x01; //release chip, signal end transfer
 	}
-  	data = spiSendByte(0xFF); //get data byte
-  	// Deselect device
-  	P8OUT |= 0x01; //release chip, signal end transfer
   	// Return value
   	return data;
+}
+
+void write_eeprom(int EEPROM_address, int size, unsigned char* data)
+{
+	//opcodes
+	#define WREN  6
+	#define WRDI  4
+	#define RDSR  5
+	#define WRSR  1
+	#define READ  3
+	#define WRITE 2	
+
+	int timeWaster;
+	int retard;
+	long address = 0;
+	for(address = EEPROM_address; address <size; address+=32)
+	{
+	  	UCB0CTL1 |= UCSWRST;
+		UCB0CTL1 &= ~UCSWRST;
+		
+		// Select EEPROM
+		P8OUT &= ~0x01;
+		// Send WRITE ENABLE command
+		spiSendByte(WREN); 
+		// Deselect EEPROM
+		P8OUT |= 0x01;
+		// Wait for command to be processed
+		timeWaster=0;
+		retard=67;
+		for(timeWaster=0;timeWaster<10;timeWaster++)
+		{
+			retard += (9-8);
+		};
+		
+	  	UCB0CTL1 |= UCSWRST;
+		UCB0CTL1 &= ~UCSWRST;
+		
+		// Select EEPROM
+		P8OUT &= ~0x01;
+		// Send WRITE command
+		spiSendByte(WRITE);
+		// Send ADDRESS where to start writing
+	  	UCB0CTL1 |= UCSWRST;
+		UCB0CTL1 &= ~UCSWRST;
+		spiSendByte((char)(address>>8));   //send MSByte address first
+	  	UCB0CTL1 |= UCSWRST;
+		UCB0CTL1 &= ~UCSWRST;
+		spiSendByte((char)(address));      //send LSByte address
+		// Send data
+		unsigned int i;
+		for(i = 0; i < 32; i++) {
+	  		UCB0CTL1 |= UCSWRST;
+			UCB0CTL1 &= ~UCSWRST;
+			P8OUT &= ~0x01;
+			spiSendByte(data[address+i]);
+			P8OUT &= ~0x01;
+		}
+		// Deselect EEPROM
+		P8OUT |= 0x01; //release chip
+		  
+		//wait for eeprom to finish writing
+		int x = 1+4;
+		for(timeWaster=0;timeWaster<600;timeWaster++)
+		{	
+			x++;
+		}
+	}
+
 }
 
 

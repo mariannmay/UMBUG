@@ -74,7 +74,8 @@ void test_COM(void)
 		#if EEPROM_CONNECTED
 
 			long timeWaster;
-			int retard=67;		
+			int retard=67;	
+			char RX;	
 						
 			//opcodes
 			#define WREN  6
@@ -91,38 +92,21 @@ void test_COM(void)
 			P8OUT &= ~0x01;
 			// Send WRITE ENABLE command
 			spiSendByte(RDSR);
-			P8OUT &= ~0x01;
-			spiSendByte(0xFF);  
-			// Deselect EEPROM
-			P8OUT |= 0x01;
-
-		  	UCB0CTL1 |= UCSWRST;
-  			UCB0CTL1 &= ~UCSWRST;
-
-			// Select EEPROM
-			P8OUT &= ~0x01;
-			// Send WRITE ENABLE command
-			spiSendByte(WRSR);
-			P8OUT &= ~0x01;
-			spiSendByte(0x00);  
-			// Deselect EEPROM
-			P8OUT |= 0x01;
-
-		  	UCB0CTL1 |= UCSWRST;
-  			UCB0CTL1 &= ~UCSWRST;
-
-			// Select EEPROM
-			P8OUT &= ~0x01;
-			// Send WRITE ENABLE command
-			spiSendByte(RDSR);
-			P8OUT &= ~0x01;
-			spiSendByte(0xFF);  
-			// Deselect EEPROM
-			P8OUT |= 0x01;
 			
+			timeWaster=0;
+			retard=67;
+			for(timeWaster=0;timeWaster<10;timeWaster++)
+			{
+				retard += (9-8);
+			};
+			RX = spiSendByte(0xFF);  
+			printf("recieved: %c\n", RX);
+			// Deselect EEPROM
+			P8OUT |= 0x01;
+
 		  	UCB0CTL1 |= UCSWRST;
   			UCB0CTL1 &= ~UCSWRST;
-			
+
 			// Select EEPROM
 			P8OUT &= ~0x01;
 			// Send WRITE ENABLE command
@@ -130,53 +114,136 @@ void test_COM(void)
 			// Deselect EEPROM
 			P8OUT |= 0x01;
 			// Wait for command to be processed
-			timeWaster;
+			timeWaster=0;
 			retard=67;
 			for(timeWaster=0;timeWaster<10;timeWaster++)
 			{
 				retard += (9-8);
 			};
 			
-		  	UCB0CTL1 |= UCSWRST;
+			UCB0CTL1 |= UCSWRST;
   			UCB0CTL1 &= ~UCSWRST;
-			
+
 			// Select EEPROM
 			P8OUT &= ~0x01;
-			// Send WRITE command
-			spiSendByte(WRITE);
-			// Send ADDRESS where to start writing
-			long address = 0;
-		  	UCB0CTL1 |= UCSWRST;
-  			UCB0CTL1 &= ~UCSWRST;
-			spiSendByte((char)(address>>8));   //send MSByte address first
-		  	UCB0CTL1 |= UCSWRST;
-  			UCB0CTL1 &= ~UCSWRST;
-			spiSendByte((char)(address));      //send LSByte address
-			// Send data
-			unsigned int i;
-			for(i = 0; i < 512; i++) {
-		  		UCB0CTL1 |= UCSWRST;
-  				UCB0CTL1 &= ~UCSWRST;
-  				P8OUT &= ~0x01;
-				spiSendByte(i);
-				P8OUT &= ~0x01;
-			}
+			// Send WRITE ENABLE command
+			spiSendByte(WRSR);
+			P8OUT &= ~0x01;
+			timeWaster=0;
+			retard=67;
+			for(timeWaster=0;timeWaster<10;timeWaster++)
+			{
+				retard += (9-8);
+			};
+			spiSendByte(0x80);  
 			// Deselect EEPROM
-			P8OUT |= 0x01; //release chip
-			  
-			//wait for eeprom to finish writing
-			int x = 1+4;
-			for(timeWaster=0;timeWaster<30000;timeWaster++)
-			{	
-				x++;
+			P8OUT |= 0x01;
+
+			timeWaster=0;
+			retard=67;
+			for(timeWaster=0;timeWaster<100;timeWaster++)
+			{
+				retard += (9-8);
+			};
+
+		  	UCB0CTL1 |= UCSWRST;
+  			UCB0CTL1 &= ~UCSWRST;
+
+			// Select EEPROM
+			P8OUT &= ~0x01;
+			spiSendByte(WRDI);
+			P8OUT &= ~0x01;
+			timeWaster=0;
+			retard=67;
+			for(timeWaster=0;timeWaster<10;timeWaster++)
+			{
+				retard += (9-8);
+			};
+			// Deselect EEPROM
+			P8OUT |= 0x01;
+
+		  	UCB0CTL1 |= UCSWRST;
+  			UCB0CTL1 &= ~UCSWRST;
+  			
+			// Select EEPROM
+			P8OUT &= ~0x01;
+			spiSendByte(RDSR);
+			P8OUT &= ~0x01;
+			timeWaster=0;
+			retard=67;
+			for(timeWaster=0;timeWaster<10;timeWaster++)
+			{
+				retard += (9-8);
+			};
+			RX = spiSendByte(0xFF);  
+			printf("recieved: %c\n", RX);  
+			// Deselect EEPROM
+			P8OUT |= 0x01;
+			
+			fflush(stdout);
+			
+
+			
+			long address = 0;
+			for(address = 0; address <512; address+=32)
+			{
+			  	UCB0CTL1 |= UCSWRST;
+	  			UCB0CTL1 &= ~UCSWRST;
+				
+				// Select EEPROM
+				P8OUT &= ~0x01;
+				// Send WRITE ENABLE command
+				spiSendByte(WREN); 
+				// Deselect EEPROM
+				P8OUT |= 0x01;
+				// Wait for command to be processed
+				timeWaster=0;
+				retard=67;
+				for(timeWaster=0;timeWaster<10;timeWaster++)
+				{
+					retard += (9-8);
+				};
+				
+			  	UCB0CTL1 |= UCSWRST;
+	  			UCB0CTL1 &= ~UCSWRST;
+				
+				// Select EEPROM
+				P8OUT &= ~0x01;
+				// Send WRITE command
+				spiSendByte(WRITE);
+				// Send ADDRESS where to start writing
+			  	UCB0CTL1 |= UCSWRST;
+	  			UCB0CTL1 &= ~UCSWRST;
+				spiSendByte((char)(address>>8));   //send MSByte address first
+			  	UCB0CTL1 |= UCSWRST;
+	  			UCB0CTL1 &= ~UCSWRST;
+				spiSendByte((char)(address));      //send LSByte address
+				// Send data
+				unsigned int i;
+				for(i = 0; i < 32; i++) {
+			  		UCB0CTL1 |= UCSWRST;
+	  				UCB0CTL1 &= ~UCSWRST;
+	  				P8OUT &= ~0x01;
+					spiSendByte(address);
+					P8OUT &= ~0x01;
+				}
+				// Deselect EEPROM
+				P8OUT |= 0x01; //release chip
+				  
+				//wait for eeprom to finish writing
+				int x = 1+4;
+				for(timeWaster=0;timeWaster<600;timeWaster++)
+				{	
+					x++;
+				}
 			}
 			
 			//read the EEPROM back to confirm
-			unsigned char data = 0;
-			for(i = 0; i < 512; i++) {
-		   		data = read_eeprom(i); 
+			unsigned char* receive = 0;
+			//for(i = 0; i < 512; i++) {
+		   		receive = read_eeprom(0, 512); 
 				//printf("read: %c\n", data);
-			}
+			//}
 			
 		#endif
 	#else
