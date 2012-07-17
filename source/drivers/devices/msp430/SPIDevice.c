@@ -265,7 +265,15 @@ Byte SPI_READ(SPI_CHANNEL channel)
 	}
 }
 
-
+void SPI_setDummyOutput(SPI_CHANNEL channel)
+{
+	switch (channel)
+	{
+		case SPI_CHANNEL_1: UCB0TXBUF = DUMMY_CHAR;
+		case SPI_CHANNEL_2: UCA0TXBUF = DUMMY_CHAR;
+		default:			return;
+	}
+}
 
 ///////////////////////////////////////////////
 
@@ -296,6 +304,8 @@ void SPI_transmit(SPI_Device* device, const Byte data)
 		SPI_clearInterruptFlag(device->channel);
 		SPI_WRITE(device->channel, device->transmitMessage[0]);
 		device->receiveMessage[0] = SPI_READ(device->channel);
+		int waitTimer;
+		for (waitTimer = 256; waitTimer > 0; waitTimer--){ ; }	// just a time killing loop
 	}
 }
 
@@ -313,14 +323,15 @@ void SPI_receive(SPI_Device* device)
 	{
 		int timeout = 0;
 		SPI_reset(device->channel);
+		SPI_setDummyOutput(device->channel);
+		while(device->chipSelect.in->state == low)		// wait for chip select
+	  	{
+	  		readDigitalInput(device->chipSelect.in);
+	  		if (timeout++ > 10000) return;
+	  	}
+		
 		if (device->channel == SPI_CHANNEL_1)
-		{
-		  	UCB0TXBUF = DUMMY_CHAR;
-		  	while(device->chipSelect.in->state == low)		// wait for chip select
-		  	{
-		  		readDigitalInput(device->chipSelect.in);
-		  		if (timeout++ > 10000) return;
-		  	}
+		{	
 		  	while((P3IN & 0x01) == 0x01)					// wait for slave transmit enable
 		  	{
 		  		if (timeout++ > 10000) return;
@@ -336,13 +347,17 @@ void SPI_receive(SPI_Device* device)
 		}
 		else if (device->channel == SPI_CHANNEL_2)
 		{
-		  	UCA0TXBUF = DUMMY_CHAR;
-		  	while(device->chipSelect.in->state == low);		// wait for chip select
-		  	while((P7IN & 0x01) == 0x01);					// wait for slave transmit enable
+		  	while((P7IN & 0x01) == 0x01)					// wait for slave transmit enable
+		  	{
+		  		if (timeout++ > 10000) return;
+		  	}
 		  	bool enabled = ((P7IN | 0xFE) == 0xFE);
 			if (enabled)
 			{
-				while ((UC0IFG & UCA0RXIFG) == 0);			// wait for RX buffer (full)
+				while ((UC0IFG & UCB0RXIFG) == 0)			// wait for RX buffer (full)
+				{
+		  			if (timeout++ > 10000) return;
+				}
 			}
 		}
 		device->receiveMessage[0] = SPI_READ(device->channel);
@@ -385,6 +400,8 @@ void SPI_transmitStream(SPI_Device* device, const Byte* data, UI8 length)
 			device->transmitMessage[index] = data[index];
 			SPI_WRITE(device->channel, device->transmitMessage[index]);
 			device->receiveMessage[index] = SPI_READ(device->channel);
+			int waitTimer;
+			for (waitTimer = 256; waitTimer > 0; waitTimer--){ ; }	// just a time killing loop
 		}
 	}
 }
