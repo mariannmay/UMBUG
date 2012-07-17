@@ -27,6 +27,7 @@ void test_application_main(void)
 	//test_analogToDigital();
 	//test_digitalToAnalog();
 	test_SPI_framework();
+	test_SPI_framework_2();
 	
 	printf("All tests complete! --------------------\r\n");
 	fflush(stdout);
@@ -65,7 +66,35 @@ void test_SPI_framework(void)
 	#else
 		logLine("testing SPI with framework");
 		int i;
-		for (i = 0; i < 800; i++)
+		for (i = 0; i < 200; i++)
+		{
+			SPI_receive(&devices.test_SPI_device);
+			char received = devices.test_SPI_device.receiveMessage[0];
+			if (received != DUMMY_CHAR)
+			{
+				printf("%c", received);
+			}
+		}
+		printf("\r\nfinished receiving\r\n");
+		fflush(stdout);
+	#endif
+}
+
+// test 2
+
+void test_SPI_framework_2(void)
+{
+		#if CDH_PROCESSOR_COMPILE
+		logLine("testing SPI with framework (2)");
+		logLine("    transmitting: Kane is awesome **********");
+		logLine("    with one TX");
+		const Byte array[8] = {'p','w','n','a','g','e','<','-'};
+		SPI_transmitStream(&devices.test_SPI_device, array, 8);
+	
+	#else
+		logLine("testing SPI with framework");
+		int i;
+		for (i = 0; i < 200; i++)
 		{
 			SPI_receive(&devices.test_SPI_device);
 			char received = devices.test_SPI_device.receiveMessage[0];
