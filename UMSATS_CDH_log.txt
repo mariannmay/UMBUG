@@ -2,4 +2,7 @@
 
 testing SPI with framework
     transmitting: Kane is awesome **********
+testing SPI with framework (2)
+    transmitting: Kane is awesome **********
+    with one TX
 All tests complete! --------------------

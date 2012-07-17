@@ -39,7 +39,7 @@ void test_application_main(void)
 void test_SPI_framework(void)
 {
 	#if CDH_PROCESSOR_COMPILE
-		logLine("testing SPI with framework");
+		logLine("testing CDH SPI with framework");
 		logLine("    transmitting: Kane is awesome **********");
 		SPI_transmit(&devices.test_SPI_device, 'K');
 		SPI_transmit(&devices.test_SPI_device, 'a');
@@ -63,10 +63,14 @@ void test_SPI_framework(void)
 		{
 			SPI_transmit(&devices.test_SPI_device, '*');
 		}
+		
+		SPI_transmit(&devices.test_SPI_device, '\r');
+		SPI_transmit(&devices.test_SPI_device, '\n');
+		
 	#else
-		logLine("testing SPI with framework");
+		logLine("testing COM SPI with framework");
 		int i;
-		for (i = 0; i < 200; i++)
+		for (i = 0; i < 50; i++)
 		{
 			SPI_receive(&devices.test_SPI_device);
 			char received = devices.test_SPI_device.receiveMessage[0];
@@ -85,16 +89,19 @@ void test_SPI_framework(void)
 void test_SPI_framework_2(void)
 {
 		#if CDH_PROCESSOR_COMPILE
-		logLine("testing SPI with framework (2)");
-		logLine("    transmitting: Kane is awesome **********");
+		logLine("testing CDH SPI with framework (2)");
+		logLine("    transmitting: pwnage<-");
 		logLine("    with one TX");
 		Byte array[8] = {'p','w','n','a','g','e','<','-'};
 		SPI_transmitStream(&devices.test_SPI_device, array, 8);
+		
+		SPI_transmit(&devices.test_SPI_device, '\r');
+		SPI_transmit(&devices.test_SPI_device, '\n');
 	
 	#else
-		logLine("testing SPI with framework");
+		logLine("testing COM SPI with framework (2)");
 		int i;
-		for (i = 0; i < 200; i++)
+		for (i = 0; i < 50; i++)
 		{
 			SPI_receive(&devices.test_SPI_device);
 			char received = devices.test_SPI_device.receiveMessage[0];
