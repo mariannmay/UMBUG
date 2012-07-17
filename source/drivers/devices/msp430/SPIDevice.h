@@ -64,7 +64,7 @@ SPI_Device;
 
 bool initialize_SPI(SPI_Device* device);		// returns true if OK
 void SPI_transmit(SPI_Device* device, const Byte data);
-void SPI_transmitStream(SPI_Device* device, Byte* const data, UI8 length);
+void SPI_transmitStream(SPI_Device* device, const Byte* data, UI8 length);
 void SPI_receive(SPI_Device* device);
 
 #endif

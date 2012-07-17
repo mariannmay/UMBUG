@@ -349,7 +349,7 @@ void SPI_receive(SPI_Device* device)
 	}
 }
 
-void SPI_transmitStream(SPI_Device* device, Byte* const data, UI8 length)
+void SPI_transmitStream(SPI_Device* device, const Byte* data, UI8 length)
 {
 	if (length > SPI_RX_BUFFER_SIZE || length > SPI_TX_BUFFER_SIZE) return;	// error
 	

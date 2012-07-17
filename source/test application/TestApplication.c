@@ -88,7 +88,7 @@ void test_SPI_framework_2(void)
 		logLine("testing SPI with framework (2)");
 		logLine("    transmitting: Kane is awesome **********");
 		logLine("    with one TX");
-		const Byte array[8] = {'p','w','n','a','g','e','<','-'};
+		Byte array[8] = {'p','w','n','a','g','e','<','-'};
 		SPI_transmitStream(&devices.test_SPI_device, array, 8);
 	
 	#else
