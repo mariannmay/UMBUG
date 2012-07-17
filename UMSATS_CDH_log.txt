@@ -1,4 +1,5 @@
 == DEBUG MODE ==
 
 testing SPI with framework
+    transmitting: Kane is awesome **********
 All tests complete! --------------------
