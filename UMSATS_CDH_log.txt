@@ -1,8 +1,5 @@
 == DEBUG MODE ==
 
-testing CDH SPI with framework
-    transmitting: Kane is awesome **********
-testing CDH SPI with framework (2)
-    transmitting: pwnage<-
-    with one TX
+testing real time clock
+
 All tests complete! --------------------

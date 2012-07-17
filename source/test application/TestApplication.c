@@ -26,11 +26,12 @@ void test_application_main(void)
 	//test_SPI();
 	//test_analogToDigital();
 	//test_digitalToAnalog();
-	test_SPI_framework();
-	test_SPI_framework_2();
+	//test_SPI_framework();
+	//test_SPI_framework_2();
+	test_realTimeClock();
 	
-	printf("All tests complete! --------------------\r\n");
-	fflush(stdout);
+	logLine("");
+	logLine("All tests complete! --------------------");
 	system_abort();
 }
 
@@ -204,6 +205,33 @@ void test_digitalToAnalog(void)
 			//logCombo("read analog in on P6.5 ", devices.test_AtoD->value);
 		}
 	}
+}
+
+///////////////////////////////////////////////////////////////////
+
+void test_realTimeClock(void)
+{
+	logLine("testing real time clock");
+	
+	// each transaction with the rtc must be a burst of at least
+	// 2 bytes.  The first byte, you tell it what address to use
+	// in the following byte.
+	// On a read, the second byte will come to you from rtc.
+	// On a write, the second byte must be sent to the rtc.
+	
+	// Poll the status register
+	Byte toRTC[2];
+	toRTC[0] = RTC_WRITE_CONTROL_REGISTER;
+	toRTC[1] = RTC_DISABLE_WRITE_PROTECT;
+	SPI_transmitStream(&devices.realTimeClock.SPI, toRTC, 2);
+	
+	toRTC[0] = RTC_READ_CONTROL_REGISTER;
+	toRTC[1] = EMPTY_CHAR;
+	SPI_transmitStream(&devices.realTimeClock.SPI, toRTC, 2);
+	
+	// should have read the byte you just wrote (RTC_DISABLE_WRITE_PROTECT)
+	printf("control register: %h", devices.realTimeClock.SPI.receiveMessage[1]);
+	fflush(stdout);
 }
 
 ///////////////////////////////////////////////////////////////////

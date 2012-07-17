@@ -19,6 +19,9 @@
 #ifndef DUMMY_CHAR
 #define DUMMY_CHAR 				0xFF
 #endif
+#ifndef EMPTY_CHAR
+#define EMPTY_CHAR				0x00
+#endif
 
 typedef enum
 {
