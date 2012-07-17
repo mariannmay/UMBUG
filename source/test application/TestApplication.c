@@ -101,7 +101,7 @@ void test_SPI_framework_2(void)
 	#else
 		logLine("testing COM SPI with framework (2)");
 		int i;
-		for (i = 0; i < 50; i++)
+		for (i = 0; i < 10; i++)
 		{
 			SPI_receive(&devices.test_SPI_device);
 			char received = devices.test_SPI_device.receiveMessage[0];
