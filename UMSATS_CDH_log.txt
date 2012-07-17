@@ -1,8 +1,8 @@
 == DEBUG MODE ==
 
-testing SPI with framework
+testing CDH SPI with framework
     transmitting: Kane is awesome **********
-testing SPI with framework (2)
-    transmitting: Kane is awesome **********
+testing CDH SPI with framework (2)
+    transmitting: pwnage<-
     with one TX
 All tests complete! --------------------

@@ -281,7 +281,7 @@ void SPI_transmit(SPI_Device* device, const Byte data)
 		SPI_WRITE(device->channel, device->transmitMessage[0]);
 		device->receiveMessage[0] = SPI_READ(device->channel);
 		int waitTimer;
-		for (waitTimer = 20000; waitTimer > 0; waitTimer--){ ; }	// just a time killing loop
+		for (waitTimer = 256; waitTimer > 0; waitTimer--){ ; }	// just a time killing loop
 		SPI_slaveDisable(device->channel);
 		clearDigitalOutput(device->chipSelect.out);
 	}
@@ -364,6 +364,8 @@ void SPI_transmitStream(SPI_Device* device, const Byte* data, UI8 length)
 			device->transmitMessage[index] = data[index];
 			SPI_WRITE(device->channel, device->transmitMessage[index]);
 			device->receiveMessage[index] = SPI_READ(device->channel);
+			int waitTimer;
+			for (waitTimer = 256; waitTimer > 0; waitTimer--){ ; }	// just a time killing loop
 		}
 		SPI_slaveDisable(device->channel);
 		clearDigitalOutput(device->chipSelect.out);

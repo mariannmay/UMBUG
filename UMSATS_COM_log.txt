@@ -1,9 +1,9 @@
 == DEBUG MODE ==
 
-testing SPI with framework
-Kane is awesome **********p
+testing COM SPI with framework
+
 finished receiving
-testing SPI with framework
+testing COM SPI with framework (2)
 
 finished receiving
 All tests complete! --------------------
