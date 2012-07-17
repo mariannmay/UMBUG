@@ -86,7 +86,7 @@ void test_SPI_framework_2(void)
 {
 		#if CDH_PROCESSOR_COMPILE
 		logLine("testing SPI with framework (2)");
-		logLine("    transmitting: Kane is awesome **********");
+		logLine("    transmitting: pwnage<-");
 		logLine("    with one TX");
 		Byte array[8] = {'p','w','n','a','g','e','<','-'};
 		SPI_transmitStream(&devices.test_SPI_device, array, 8);
