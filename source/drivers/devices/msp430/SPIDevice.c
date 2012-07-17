@@ -177,6 +177,8 @@ bool initialize_SPI(SPI_Device* device)
 	
 	if (device->type == SPI_TYPE_Master)
 	{
+		if (device->activeHigh) clearDigitalOutput(device->chipSelect.out);
+		else setDigitalOutput(device->chipSelect.out);
 		return initialize_SPI_master(device->channel);
 	}
 	else if (device->type == SPI_TYPE_Slave)
@@ -283,7 +285,9 @@ void SPI_transmit(SPI_Device* device, const Byte data)
 	
 	if (device->type == SPI_TYPE_Master)
 	{
-		setDigitalOutput(device->chipSelect.out);
+		if (device->activeHigh == true) setDigitalOutput(device->chipSelect.out);
+		else clearDigitalOutput(device->chipSelect.out);
+		
 		SPI_reset(device->channel);
 		SPI_slaveEnable(device->channel);
 		SPI_WRITE(device->channel, device->transmitMessage[0]);
@@ -291,7 +295,9 @@ void SPI_transmit(SPI_Device* device, const Byte data)
 		int waitTimer;
 		for (waitTimer = 256; waitTimer > 0; waitTimer--){ ; }	// just a time killing loop
 		SPI_slaveDisable(device->channel);
-		clearDigitalOutput(device->chipSelect.out);
+		
+		if (device->activeHigh == true) clearDigitalOutput(device->chipSelect.out);
+		else setDigitalOutput(device->chipSelect.out);
 	}
 	else if (device->type == SPI_TYPE_Slave)
 	{
@@ -370,7 +376,9 @@ void SPI_transmitStream(SPI_Device* device, const Byte* data, UI8 length)
 	
 	if (device->type == SPI_TYPE_Master)
 	{
-		setDigitalOutput(device->chipSelect.out);
+		if (device->activeHigh == true) setDigitalOutput(device->chipSelect.out);
+		else clearDigitalOutput(device->chipSelect.out);
+		
 		SPI_slaveEnable(device->channel);
 		int index;
 		for (index = 0; index < length; index++)
@@ -383,7 +391,9 @@ void SPI_transmitStream(SPI_Device* device, const Byte* data, UI8 length)
 			for (waitTimer = 256; waitTimer > 0; waitTimer--){ ; }	// just a time killing loop
 		}
 		SPI_slaveDisable(device->channel);
-		clearDigitalOutput(device->chipSelect.out);
+		
+		if (device->activeHigh == true) clearDigitalOutput(device->chipSelect.out);
+		else setDigitalOutput(device->chipSelect.out);
 	}
 	else if (device->type == SPI_TYPE_Slave)
 	{

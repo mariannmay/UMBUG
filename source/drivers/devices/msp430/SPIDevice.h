@@ -41,8 +41,8 @@ SPI_CHANNEL;
 #define SPI_TX_DONE				(UCB0STAT & UCBUSY)
 #define SPI_RX_READY			(UC0IFG & UCB0RXIFG)
 
-#define SPI_RX_BUFFER_SIZE		8
-#define SPI_TX_BUFFER_SIZE		8
+#define SPI_RX_BUFFER_SIZE		32
+#define SPI_TX_BUFFER_SIZE		32
 
 // structures /////////////////////////////////
 
@@ -53,6 +53,8 @@ typedef struct
 		
 	Byte						transmitMessage[SPI_TX_BUFFER_SIZE];
 	Byte						receiveMessage[SPI_RX_BUFFER_SIZE];
+	
+	bool						activeHigh;
 	
 	union
 	{

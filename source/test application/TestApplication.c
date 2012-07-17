@@ -125,7 +125,7 @@ void test_SPI(void)
 	P5DIR |= BIT1;                // P5.1 as output
   	P5OUT |= BIT1;                // P5.1 set high
 
-	//testing SPI
+	// testing SPI
 
 	#if CDH_PROCESSOR_COMPILE
 		P3OUT &= ~0x01;		// slave enable
@@ -138,11 +138,11 @@ void test_SPI(void)
 			UCB0CTL1 &= ~UCSWRST;
 			if (nextCharToSend == ':') nextCharToSend = '1';
 			
-			P3OUT &= ~0x01; //set STE low for slave enable
+			P3OUT &= ~0x01;  // set STE low for slave enable
 			char buff = spiSendByte(nextCharToSend);
 			printf("recieved: %c\n", buff);
 			
-			P3OUT |= 0x01; //set STE high for slave disable
+			P3OUT |= 0x01; // set STE high for slave disable
 			
 			// just a time killing loop
 			int waitTimer;
@@ -162,7 +162,7 @@ void test_SPI(void)
 		UCB0CTL1 |= UCSWRST;
 		UCB0CTL1 &= ~UCSWRST;
 	  	UCB0TXBUF = 'C';
-		while((P3IN & 0x01) == 0x01);	//wait for enable
+		while((P3IN & 0x01) == 0x01);	// wait for enable
 		bool enabled = ((P3IN | 0xFE) == 0xFE);
 		if (enabled)
 		{

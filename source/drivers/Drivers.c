@@ -31,6 +31,7 @@ void drivers_initialize(void)
 	devices.realTimeClock.SPI.chipSelect.out	= &msp430.PORT_10.digitalOutput[4];
 	devices.realTimeClock.SPI.channel			= SPI_CHANNEL_1;
 	devices.realTimeClock.SPI.type				= SPI_TYPE_Master;
+	devices.realTimeClock.SPI.activeHigh		= true;
 	realTimeClock_initialize(&devices.realTimeClock);
 	
 	// TEST SPI FRAMEWORK ONLY ///////////////////////////////////
