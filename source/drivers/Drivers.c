@@ -28,27 +28,29 @@ void drivers_initialize(void)
 		
 	// system clock //////////////////////////////////////////////
 	
-	devices.realTimeClock.SPI.chipSelect.out	= &msp430.PORT_10.digitalOutput[4];
-	devices.realTimeClock.SPI.channel			= SPI_CHANNEL_1;
-	devices.realTimeClock.SPI.type				= SPI_TYPE_Master;
-	devices.realTimeClock.SPI.activeHigh		= true;
-	realTimeClock_initialize(&devices.realTimeClock);
+	//devices.realTimeClock.SPI.chipSelect.out	= &msp430.PORT_10.digitalOutput[4];
+	//devices.realTimeClock.SPI.channel			= SPI_CHANNEL_1;
+	//devices.realTimeClock.SPI.type				= SPI_TYPE_Master;
+	//devices.realTimeClock.SPI.activeHigh		= true;
+	//realTimeClock_initialize(&devices.realTimeClock);
 	
 	// TEST SPI FRAMEWORK ONLY ///////////////////////////////////
 	
-	/*
+	
 	#if CDH_PROCESSOR_COMPILE
 		devices.test_SPI_device.chipSelect.out	= &msp430.PORT_10.digitalOutput[4];
 		devices.test_SPI_device.channel			= SPI_CHANNEL_1;
 		devices.test_SPI_device.type			= SPI_TYPE_Master;
+		devices.test_SPI_device.activeHigh		= true;
 	#else
 		devices.test_SPI_device.chipSelect.in	= &msp430.PORT_1.digitalInput[5];
 		devices.test_SPI_device.channel			= SPI_CHANNEL_1;
 		devices.test_SPI_device.type			= SPI_TYPE_Slave;
+		devices.test_SPI_device.activeHigh		= true;
 	#endif
 	
 	initialize_SPI(&devices.test_SPI_device);
-	*/
+	
 	
 	// system status LED /////////////////////////////////////////
 	
