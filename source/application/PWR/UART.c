@@ -45,17 +45,20 @@ void InitUART(void){
  // printf("start of UART initization");
   volatile unsigned int i;
 
+  //FLL_CTL1 &= ~SELS;						//Tell SMCLK to use DCOCLK, which SHOULD be 1MHz
   WDTCTL = WDTPW + WDTHOLD;                 // Stop WDT
   FLL_CTL0 |= XCAP14PF;                     // Configure load caps
+  //FLL_CTL1 &= ~LFXT1DIG;
 
   
   P4SEL |= 0x03;                            // P4.1,0 = USART1 TXD/RXD
   ME2 |= UTXE1 + URXE1;                     // Enable USART1 TXD/RXD
   U1CTL |= CHAR;                            // 8-bit character
-  U1TCTL |= SSEL1;                          // UCLK = ACLK
-  U1BR0 = 0x41;                             // 32k/9600 - 3.41
-  U1BR1 = 0x03;                             //
-  U1MCTL = 0x09;                            // Modulation
+  U1TCTL |= SSEL1 + SSEL0;                          // UCLK = ACLK
+  //UCA0CTL1 |= UCSSEL0;				// use SMCLK hopefully.
+  U1BR0 = 0xF2;                             // 
+  U1BR1 = 0x00;                             // 
+  U1MCTL = 0x29;                            // Modulation
   U1CTL &= ~SWRST;                          // Initialize USART state machine
   IE2 |= URXIE1;                            // Enable USART1 RX interrupt
 
@@ -64,7 +67,7 @@ void InitUART(void){
 
   
  IFG2&=~UTXIFG1;
-  TXBUF1 = 0x54;}                          // RXBUF1 to TXBUF1
+  TXBUF1 = 0xAC;}                          // RXBUF1 to TXBUF1
 
                                              }
    
