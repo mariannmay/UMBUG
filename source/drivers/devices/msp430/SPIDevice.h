@@ -44,6 +44,9 @@ SPI_CHANNEL;
 #define SPI_RX_BUFFER_SIZE		32
 #define SPI_TX_BUFFER_SIZE		32
 
+#define SPI_TIME_BETWEEN_BYTES	256
+#define SPI_BIT_RATE_REGISTER	0x04
+
 // structures /////////////////////////////////
 
 typedef struct
@@ -55,6 +58,10 @@ typedef struct
 	Byte						receiveMessage[SPI_RX_BUFFER_SIZE];
 	
 	bool						activeHigh;
+	
+	// TODO bit rate register
+	
+	// TODO control register
 	
 	union
 	{

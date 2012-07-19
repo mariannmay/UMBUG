@@ -1,5 +1,5 @@
 == DEBUG MODE ==
 
-testing real time clock
+Testing the SD card
 
 All tests complete! --------------------

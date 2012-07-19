@@ -28,8 +28,16 @@ void test_application_main(void)
 	//test_digitalToAnalog();
 	//test_SPI_framework();
 	//test_SPI_framework_2();
-	test_realTimeClock();
-	
+	//int i;
+	//for (i = 0;i < 10000;i++)
+	//{
+	//	test_realTimeClock();
+	//}
+	//int i;
+	//for (i = 0;i < 10000;i++)
+	//{
+		test_sdCard();
+	//}
 	logLine("");
 	logLine("All tests complete! --------------------");
 	system_abort();
@@ -224,14 +232,55 @@ void test_realTimeClock(void)
 	toRTC[0] = RTC_WRITE_CONTROL_REGISTER;
 	toRTC[1] = RTC_DISABLE_WRITE_PROTECT;
 	SPI_transmitStream(&devices.realTimeClock.SPI, toRTC, 2);
+	printf("transmission: %x\r\n", (devices.realTimeClock.SPI.transmitMessage[0]));
+	printf("transmission: %x\r\n", (devices.realTimeClock.SPI.transmitMessage[1]));
 	
 	toRTC[0] = RTC_READ_CONTROL_REGISTER;
 	toRTC[1] = EMPTY_CHAR;
 	SPI_transmitStream(&devices.realTimeClock.SPI, toRTC, 2);
+	printf("transmission: %x\r\n", (devices.realTimeClock.SPI.transmitMessage[0]));
+	printf("transmission: %x\r\n", (devices.realTimeClock.SPI.transmitMessage[1]));
 	
 	// should have read the byte you just wrote (RTC_DISABLE_WRITE_PROTECT)
-	printf("control register: %h", devices.realTimeClock.SPI.receiveMessage[1]);
+	printf("read control register: %h\r\n\r\n", (devices.realTimeClock.SPI.receiveMessage[1]));
 	fflush(stdout);
+}
+
+///////////////////////////////////////////////////////////////////
+
+void test_sdCard(void)
+{
+	logLine("Testing the SD card");
+	
+	// only defined on COM processor
+	#if COM_PROCESSOR_COMPILE
+	
+		long i;
+		for(i = 0; i < 10000000; i++)
+		{
+			;	// wait
+		}
+	
+		Byte toSD[32];
+		toSD[0] = 0x40;
+		toSD[1] = EMPTY_CHAR;
+		toSD[2] = EMPTY_CHAR;
+		toSD[3] = EMPTY_CHAR;
+		toSD[4] = EMPTY_CHAR;
+		toSD[5] = 0x95;
+		toSD[6] = DUMMY_CHAR;
+		SPI_transmitStream(&devices.sdCard.SPI, toSD, 7);
+		/*
+		printf("transmitted: %x\r\n", devices.sdCard.SPI.transmitMessage[0]);
+		printf("transmitted: %x\r\n", devices.sdCard.SPI.transmitMessage[1]);
+		printf("transmitted: %x\r\n", devices.sdCard.SPI.transmitMessage[2]);
+		printf("transmitted: %x\r\n", devices.sdCard.SPI.transmitMessage[3]);
+		printf("transmitted: %x\r\n", devices.sdCard.SPI.transmitMessage[4]);
+		printf("transmitted: %x\r\n", devices.sdCard.SPI.transmitMessage[5]);
+		printf("transmitted: %x\r\n", devices.sdCard.SPI.transmitMessage[6]);
+		fflush(stdout);
+		*/
+	#endif
 }
 
 ///////////////////////////////////////////////////////////////////

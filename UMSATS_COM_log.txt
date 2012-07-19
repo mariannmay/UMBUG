@@ -1,10 +1,3 @@
 == DEBUG MODE ==
 
-testing COM SPI with framework
-Kane is awesome **********
-finished receiving
-testing COM SPI with framework (2)
-pwnage<-
-
-finished receiving
-All tests complete! --------------------
+Testing the SD card

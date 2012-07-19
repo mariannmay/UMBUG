@@ -58,7 +58,7 @@ bool initialize_SPI_master(SPI_CHANNEL channel)
 			// Data rate = SMCLK/2 ~= 500kHz
 			// UCA0BR1 = 0x00 & UCA0BR0 = 0x02
 			//-------------------------------------------------------------------------
-			UCB0BR0		= 0x08;
+			UCB0BR0		= SPI_BIT_RATE_REGISTER;
 			UCB0BR1		= 0x00;
 			
 			//3) Configure ports
@@ -77,7 +77,7 @@ bool initialize_SPI_master(SPI_CHANNEL channel)
 			UCA0CTL1   |= UCSWRST;      	// **Initialize USCI registers**
 			UCA0CTL0	= 0xA9;
 			UCA0CTL1	= 0x80;
-			UCA0BR0		= 0x08;
+			UCA0BR0		= SPI_BIT_RATE_REGISTER;
 			UCA0BR1		= 0x00;
 			
 			P7SEL	   |= 0x0E;
@@ -135,7 +135,7 @@ bool initialize_SPI_slave(SPI_CHANNEL channel)
 			// Data rate = SMCLK/2 ~= 500kHz
 			// UCA0BR1 = 0x00 & UCA0BR0 = 0x02
 			//-------------------------------------------------------------------------
-			UCB0BR0		= 0x08;                           
+			UCB0BR0		= SPI_BIT_RATE_REGISTER;                           
 			UCB0BR1		= 0x00;
 			
 			//3) Configure ports <-BEGIN
@@ -153,7 +153,7 @@ bool initialize_SPI_slave(SPI_CHANNEL channel)
 			
 			UCA0CTL0	= 0xA1;
 			UCA0CTL1	= 0x80;
-			UCA0BR0		= 0x08;
+			UCA0BR0		= SPI_BIT_RATE_REGISTER;
 			UCA0BR1		= 0x00;
 			P7SEL	   |= 0x0E;				// P3.1,P3.2,P3.3 option select
 			P7DIR	   &= ~0x01;			// P3.0 input direction
@@ -293,7 +293,7 @@ void SPI_transmit(SPI_Device* device, const Byte data)
 		SPI_WRITE(device->channel, device->transmitMessage[0]);
 		device->receiveMessage[0] = SPI_READ(device->channel);
 		int waitTimer;
-		for (waitTimer = 256; waitTimer > 0; waitTimer--){ ; }	// just a time killing loop
+		for (waitTimer = SPI_TIME_BETWEEN_BYTES; waitTimer > 0; waitTimer--){ ; }	// just a time killing loop
 		SPI_slaveDisable(device->channel);
 		
 		if (device->activeHigh == true) clearDigitalOutput(device->chipSelect.out);
@@ -311,7 +311,7 @@ void SPI_transmit(SPI_Device* device, const Byte data)
 		SPI_WRITE(device->channel, device->transmitMessage[0]);
 		device->receiveMessage[0] = SPI_READ(device->channel);
 		int waitTimer;
-		for (waitTimer = 256; waitTimer > 0; waitTimer--){ ; }	// just a time killing loop
+		for (waitTimer = SPI_TIME_BETWEEN_BYTES; waitTimer > 0; waitTimer--){ ; }	// just a time killing loop
 	}
 }
 
@@ -379,6 +379,7 @@ void SPI_transmitStream(SPI_Device* device, const Byte* data, UI8 length)
 		if (device->activeHigh == true) setDigitalOutput(device->chipSelect.out);
 		else clearDigitalOutput(device->chipSelect.out);
 		
+		SPI_reset(device->channel);
 		SPI_slaveEnable(device->channel);
 		int index;
 		for (index = 0; index < length; index++)
@@ -387,8 +388,13 @@ void SPI_transmitStream(SPI_Device* device, const Byte* data, UI8 length)
 			device->transmitMessage[index] = data[index];
 			SPI_WRITE(device->channel, device->transmitMessage[index]);
 			device->receiveMessage[index] = SPI_READ(device->channel);
+			// TODO REMOVE
+			//if (device->receiveMessage[index] != DUMMY_CHAR)
+			//{
+			//	printf("incoming byte at index %d: %x\r\n", index, (device->receiveMessage[index]));
+			//}
 			int waitTimer;
-			for (waitTimer = 256; waitTimer > 0; waitTimer--){ ; }	// just a time killing loop
+			for (waitTimer = SPI_TIME_BETWEEN_BYTES; waitTimer > 0; waitTimer--){ ; }	// just a time killing loop
 		}
 		SPI_slaveDisable(device->channel);
 		
@@ -411,7 +417,7 @@ void SPI_transmitStream(SPI_Device* device, const Byte* data, UI8 length)
 			SPI_WRITE(device->channel, device->transmitMessage[index]);
 			device->receiveMessage[index] = SPI_READ(device->channel);
 			int waitTimer;
-			for (waitTimer = 256; waitTimer > 0; waitTimer--){ ; }	// just a time killing loop
+			for (waitTimer = SPI_TIME_BETWEEN_BYTES; waitTimer > 0; waitTimer--){ ; }	// just a time killing loop
 		}
 	}
 }

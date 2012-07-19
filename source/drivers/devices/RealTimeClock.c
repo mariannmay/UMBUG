@@ -15,7 +15,6 @@ void realTimeClock_initialize(RealTimeClock* clock)
 	realTimeClock_reset(clock);
 	initialize_SPI(&clock->SPI);
 	
-	
 }
 
 void realTimeClock_update(RealTimeClock* clock)

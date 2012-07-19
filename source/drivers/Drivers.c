@@ -28,15 +28,24 @@ void drivers_initialize(void)
 		
 	// system clock //////////////////////////////////////////////
 	
-	//devices.realTimeClock.SPI.chipSelect.out	= &msp430.PORT_10.digitalOutput[4];
-	//devices.realTimeClock.SPI.channel			= SPI_CHANNEL_1;
-	//devices.realTimeClock.SPI.type				= SPI_TYPE_Master;
-	//devices.realTimeClock.SPI.activeHigh		= true;
-	//realTimeClock_initialize(&devices.realTimeClock);
+	devices.realTimeClock.SPI.chipSelect.out	= &msp430.PORT_10.digitalOutput[4];
+	devices.realTimeClock.SPI.channel			= SPI_CHANNEL_1;
+	devices.realTimeClock.SPI.type				= SPI_TYPE_Master;
+	devices.realTimeClock.SPI.activeHigh		= true;
+	realTimeClock_initialize(&devices.realTimeClock);
+	
+	// SD card ///////////////////////////////////////////////////
+	#if COM_PROCESSOR_COMPILE
+		devices.sdCard.SPI.chipSelect.out		= &msp430.PORT_10.digitalOutput[3];
+		devices.sdCard.SPI.channel				= SPI_CHANNEL_2;
+		devices.sdCard.SPI.type					= SPI_TYPE_Master;
+		devices.sdCard.SPI.activeHigh			= false;
+		sdCard_initialize(&devices.sdCard);
+	#endif
 	
 	// TEST SPI FRAMEWORK ONLY ///////////////////////////////////
 	
-	
+	/*
 	#if CDH_PROCESSOR_COMPILE
 		devices.test_SPI_device.chipSelect.out	= &msp430.PORT_10.digitalOutput[4];
 		devices.test_SPI_device.channel			= SPI_CHANNEL_1;
@@ -50,7 +59,7 @@ void drivers_initialize(void)
 	#endif
 	
 	initialize_SPI(&devices.test_SPI_device);
-	
+	*/
 	
 	// system status LED /////////////////////////////////////////
 	
@@ -58,7 +67,8 @@ void drivers_initialize(void)
 	
 	// operating mode to fully active ////////////////////////////
 	
-	_bic_SR_register(LPM4_bits);
+	// correct me if I'm wrong but I think this enters low power mode 4
+	//_bic_SR_register(LPM4_bits);
 	
 	// smclk clock setup /////////////////////////////////////////
 	

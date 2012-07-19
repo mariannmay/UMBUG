@@ -123,7 +123,7 @@ void initialize_msp430_IO_ports(void)
 	initializeDigitalOutput(	&msp430.PORT_10.digitalOutput[0],	10,	0	);	//  				/
 	initializeDigitalOutput(	&msp430.PORT_10.digitalOutput[1],	10,	1	);	//  				/
 	initializeDigitalOutput(	&msp430.PORT_10.digitalOutput[2],	10,	2	);	//  				/
-	initializeDigitalOutput(	&msp430.PORT_10.digitalOutput[3],	10,	3	);	//  				/
+	initializeDigitalOutput(	&msp430.PORT_10.digitalOutput[3],	10,	3	);	//  				/ SD card enable
 	initializeDigitalOutput(	&msp430.PORT_10.digitalOutput[4],	10,	4	);	// RTC chip enable	/
 	initializeDigitalOutput(	&msp430.PORT_10.digitalOutput[5],	10,	5	);	// watchdog WDI		/
 	initializeAnalogInput  (	&msp430.PORT_10.analogInput[0],		10,	6	);	//  				/
