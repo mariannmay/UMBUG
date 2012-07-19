@@ -9,7 +9,7 @@
 //******************************************************************************* 	
 
 
-#include "msp430.h"
+#include <msp430fg4619.h> 
 //#include "main.h"
 #include "UART.h"
 #include <stdio.h>
@@ -37,39 +37,43 @@
 * @param none                                                   
 * @return none                                                    
 */     
+
+
 void InitUART(void){ 
-  U1CTL=BIT0;	
 
-  P4SEL |= 0x03;                            // P4.1,0 = USART1 TXD/RXD 
-  ME2 |= UTXE1 + URXE1;                     // Enable USART0 TXD/RXD
+	
+ // printf("start of UART initization");
+  volatile unsigned int i;
+
+  WDTCTL = WDTPW + WDTHOLD;                 // Stop WDT
+  FLL_CTL0 |= XCAP14PF;                     // Configure load caps
+
+  
+  P4SEL |= 0x03;                            // P4.1,0 = USART1 TXD/RXD
+  ME2 |= UTXE1 + URXE1;                     // Enable USART1 TXD/RXD
   U1CTL |= CHAR;                            // 8-bit character
-  
-  U1TCTL |= SSEL1;                          // UCLK = ACLK = 32.768kHz
-  U1BR0 = 0x03;                             // 32.768kHz/9600 - 3.41
-  U1BR1 = 0x00;
- U1MCTL = 0x4A;                            // Modulation
- U1CTL =0x10;                          // Initialize USART state machine
-  IE2 &=~URXIE1 + UTXIE1;                   // Enable USART0 RX/TX interrupt	          
- 
-  	printf("test1\n");
-   
+  U1TCTL |= SSEL1;                          // UCLK = ACLK
+  U1BR0 = 0x41;                             // 32k/9600 - 3.41
+  U1BR1 = 0x03;                             //
+  U1MCTL = 0x09;                            // Modulation
+  U1CTL &= ~SWRST;                          // Initialize USART state machine
+  IE2 |= URXIE1;                            // Enable USART1 RX interrupt
+
+ for (;;){
+  while (!(IFG2 & UTXIFG1));                // USART1 TX buffer ready?
 
   
-   int ii;                                        // No parity, Two stops bits,8 bits data, Idle line// 
+ IFG2&=~UTXIFG1;
+  TXBUF1 = 0x54;}                          // RXBUF1 to TXBUF1
 
-  
-  for( ii = 0; ii < 1000; ii++){ U1TXBUF = 10;
- while (!(IFG2 & UTXIFG1)); // USART0 TX buffer ready?
- }
+                                             }
    
    
 
     
 /* **************End of INITIALIZATION OF THE UART*****************************/
-printf(" end of initialization");
-
-}  
 
 
+  
 
 
