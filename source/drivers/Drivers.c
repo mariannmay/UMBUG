@@ -86,7 +86,12 @@ void drivers_initialize(void)
 	SCFQCTL = SCFQ_1M;
 	
 	// Digital to analog conversion //////////////////////////////
-	devices.radio.microphone				= &msp430.PORT_6.analogOutput;
+	#if COM_PROCESSOR_COMPILE
+		// TODO UNCOMMENT AFTER TEST OUTPUT DONE
+		//devices.radio.microphone				= &msp430.PORT_6.analogOutput;
+		devices.testPSK							= &msp430.PORT_6.analogOutput;
+		
+	#endif
 	
 	// for debug purposes
 	// TODO REMOVE

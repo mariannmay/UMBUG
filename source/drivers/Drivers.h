@@ -50,6 +50,7 @@ typedef struct
 	
 	
 	AnalogInput*	test_AtoD;
+	AnalogOutput*	testPSK;
 	SPI_Device		test_SPI_device;
 }
 AllDevices;
