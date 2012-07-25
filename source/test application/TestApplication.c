@@ -256,12 +256,23 @@ void test_sdCard(void)
 	#if COM_PROCESSOR_COMPILE
 	
 		long i;
-		for(i = 0; i < 10000000; i++)
+		for(i = 0; i < 10000; i++)
 		{
 			;	// wait
 		}
 	
 		Byte toSD[32];
+		
+		toSD[0] = DUMMY_CHAR;
+		toSD[1] = DUMMY_CHAR;
+		toSD[2] = DUMMY_CHAR;
+		toSD[3] = DUMMY_CHAR;
+		toSD[4] = DUMMY_CHAR;
+		toSD[5] = DUMMY_CHAR;
+		toSD[6] = DUMMY_CHAR;
+		toSD[7] = DUMMY_CHAR;
+		SPI_transmitStream(&devices.sdCard.SPI, toSD, 8);
+
 		toSD[0] = 0x40;
 		toSD[1] = EMPTY_CHAR;
 		toSD[2] = EMPTY_CHAR;
@@ -269,7 +280,20 @@ void test_sdCard(void)
 		toSD[4] = EMPTY_CHAR;
 		toSD[5] = 0x95;
 		toSD[6] = DUMMY_CHAR;
-		SPI_transmitStream(&devices.sdCard.SPI, toSD, 7);
+		toSD[7] = DUMMY_CHAR;
+		toSD[8] = DUMMY_CHAR;
+		SPI_transmitStream(&devices.sdCard.SPI, toSD, 9);
+		
+		toSD[0] = 0x40;
+		toSD[1] = EMPTY_CHAR;
+		toSD[2] = EMPTY_CHAR;
+		toSD[3] = EMPTY_CHAR;
+		toSD[4] = 0x0D;
+		toSD[5] = DUMMY_CHAR;
+		toSD[6] = DUMMY_CHAR;
+		toSD[7] = DUMMY_CHAR;
+		toSD[8] = DUMMY_CHAR;
+		SPI_transmitStream(&devices.sdCard.SPI, toSD, 9);
 		/*
 		printf("transmitted: %x\r\n", devices.sdCard.SPI.transmitMessage[0]);
 		printf("transmitted: %x\r\n", devices.sdCard.SPI.transmitMessage[1]);

@@ -1,3 +1,5 @@
 == DEBUG MODE ==
 
 Testing the SD card
+
+All tests complete! --------------------
