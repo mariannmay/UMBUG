@@ -12,7 +12,6 @@
 // includes ///////////////////////////////////
 
 #include "../../DriversConfig.h"
-#include "./sdCardLibrary/MMC_lib/hal_SPI.h"
 
 // definitions ////////////////////////////////
 
