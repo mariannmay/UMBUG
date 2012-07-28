@@ -28,11 +28,11 @@
 
 
 #if SPI_SER_INTF == SER_INTF_USART0
- #define halSPIRXBUF  U0RXBUF
- #define halSPI_SEND(x) U0TXBUF=x
- #define halSPITXREADY  (IFG1&UTXIFG0)         /* Wait for TX to be ready */
+ #define halSPIRXBUF  UCA0RXBUF
+ #define halSPI_SEND(x) UCA0RXBUF=x
+ #define halSPITXREADY  (UC0IFG & UCA0TXIFG)         /* Wait for TX to be ready */
  #define halSPITXDONE  (U0TCTL&TXEPT)          /* Wait for TX to finish */
- #define halSPIRXREADY (IFG1&URXIFG0)          /* Wait for TX to be ready */
+ #define halSPIRXREADY (UC0IFG & UCA0RXIFG)          /* Wait for TX to be ready */
  #define halSPIRXFG_CLR IFG1 &= ~URXIFG0
  #define halSPI_PxIN  SPI_USART0_PxIN
  #define halSPI_SOMI  SPI_USART0_SOMI
@@ -48,9 +48,9 @@
  #define halSPI_SOMI  SPI_USART1_SOMI
 
  #elif SPI_SER_INTF == SER_INTF_USCIA0
- #define halSPIRXBUF  U0RXBUF
- #define halSPI_SEND(x) U0TXBUF=x
- #define halSPITXREADY  (IFG1&UTXIFG0)         /* Wait for TX to be ready */
+ #define halSPIRXBUF  UCA0RXBUF
+ #define halSPI_SEND(x) UCA0RXBUF=x
+ #define halSPITXREADY  (IFG1&UTXIFG1)         /* Wait for TX to be ready */
  #define halSPITXDONE  (UCA0STAT&UCBUSY)       /* Wait for TX to finish */
  #define halSPIRXREADY (IFG1&URXIFG0)          /* Wait for TX to be ready */
  #define halSPIRXFG_CLR IFG1 &= ~URXIFG0
@@ -58,9 +58,9 @@
  #define halSPI_SOMI  SPI_USART0_SOMI
 
  #elif SPI_SER_INTF == SER_INTF_USCIA1
- #define halSPIRXBUF  U0RXBUF
- #define halSPI_SEND(x) U0TXBUF=x
- #define halSPITXREADY  (IFG1&UTXIFG0)         /* Wait for TX to be ready */
+ #define halSPIRXBUF  UCA0RXBUF
+ #define halSPI_SEND(x) UCA0RXBUF=x
+ #define halSPITXREADY  (IFG1&UTXIFG1)         /* Wait for TX to be ready */
  #define halSPITXDONE  (UCA1STAT&UCBUSY)       /* Wait for TX to finish */
  #define halSPIRXREADY (IFG1&URXIFG0)          /* Wait for TX to be ready */
  #define halSPIRXFG_CLR IFG1 &= ~URXIFG0
@@ -78,9 +78,9 @@
  #define halSPI_SOMI  SPI_USART0_SOMI
 
  #elif SPI_SER_INTF == SER_INTF_USCIB1
- #define halSPIRXBUF  U0RXBUF
- #define halSPI_SEND(x) U0TXBUF=x
- #define halSPITXREADY  (IFG1&UTXIFG0)         /* Wait for TX to be ready */
+ #define halSPIRXBUF  UCA0RXBUF
+ #define halSPI_SEND(x) UCA0RXBUF=x
+ #define halSPITXREADY  (IFG1&UTXIFG1)         /* Wait for TX to be ready */
  #define halSPIRXREADY (IFG1&URXIFG0)          /* Wait for TX to be ready */
  #define halSPIRXFG_CLR IFG1 &= ~URXIFG0
  #define halSPI_PxIN  SPI_USART0_PxIN

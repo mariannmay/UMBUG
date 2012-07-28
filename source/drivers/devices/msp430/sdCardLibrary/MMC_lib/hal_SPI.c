@@ -112,6 +112,7 @@
 //---------------------------------------------------------------
 #include "hal_SPI.h"
 #include "hal_hardware_board.h"
+#include "../../../../../System/Log.h"
 
 //#define withDMA
 
@@ -150,6 +151,7 @@ void halSPISetup(void)
 
 void halSPISetup(void)
 {
+  logLine("halSPISetup SPI_SER_INTF == SER_INTF_USCIA0");
   UCA0CTL0 = UCMST+UCCKPL+UCMSB+UCSYNC;     // 3-pin, 8-bit SPI master
   UCA0CTL1 = UCSSEL_2 + UCSWRST;            // SMCLK
   UCA0BR0 |= 0x02;                          // UCLK/2
@@ -173,6 +175,7 @@ void halSPISetup(void)
 #elif SPI_SER_INTF == SER_INTF_USCIB0
 
 void halSPISetup(void)
+
 {
   UCB0CTL0 = UCMST+UCCKPL+UCMSB+UCSYNC;     // 3-pin, 8-bit SPI master
   UCB0CTL1 = UCSSEL_2+UCSWRST;              // SMCLK
@@ -283,9 +286,9 @@ unsigned char spi_bitbang_inout(unsigned char value)
 //Send one byte via SPI
 unsigned char spiSendByte(const unsigned char data)
 {
-  while (halSPITXREADY ==0);    // wait while not ready for TX
+  //while (halSPITXREADY ==0) logLine("waiting1");    // wait while not ready for TX
   halSPI_SEND(data);            // write
-  while (halSPIRXREADY ==0);    // wait for RX buffer (full)
+  //while (halSPIRXREADY ==0) logLine("waiting2");    // wait for RX buffer (full)
   return (halSPIRXBUF);
 }
 

@@ -76,6 +76,7 @@
 #include "mmc.h"
 #include "hal_SPI.h"
 #include "hal_hardware_board.h"
+#include "../../../../../System/Log.h"
 
 //#define withDMA
 
@@ -115,19 +116,22 @@ char mmcInit(void)
 
   // Card Detect
   MMC_CD_PxDIR &=  ~MMC_CD;
-  
+  logLine("5885_ This happens");
   // Init SPI Module
   halSPISetup();
 
   // Enable secondary function
 #if SPI_SER_INTF != SER_INTF_BITBANG
+  logLine("5886_ Should Happen if not bitbanging");
   MMC_PxSEL |= MMC_SIMO + MMC_SOMI + MMC_UCLK;
 #endif  
   
   //initialization sequence on PowerUp
   CS_HIGH();
-  for(i=0;i<=9;i++)
+  for(i=0;i<=9;i++){
+  	logLine("sending dummy byte");
     spiSendByte(DUMMY_CHAR);
+  }
 
   return (mmcGoIdle());
 }
@@ -136,23 +140,29 @@ char mmcInit(void)
 // set MMC in Idle mode
 char mmcGoIdle()
 {
+  logLine("mmcGoIdle_1234");
   char response=0x01;
   CS_LOW();
 
   //Send Command 0 to put MMC in SPI mode
   mmcSendCmd(MMC_GO_IDLE_STATE,0,0x95);
   //Now wait for READY RESPONSE
-  if(mmcGetResponse()!=0x01)
+  logLine("waiting for ready response");
+  if(mmcGetResponse()!=0x01){
+  	logLine("mmc didnt get response");
     return MMC_INIT_ERROR;
+  }
 
   while(response==0x01)
   {
+  	logLine("response==0x01");
     CS_HIGH();
     spiSendByte(DUMMY_CHAR);
     CS_LOW();
     mmcSendCmd(MMC_SEND_OP_COND,0x00,0xff);
     response=mmcGetResponse();
   }
+  logLine("end of while(response==0x01)");
   CS_HIGH();
   spiSendByte(DUMMY_CHAR);
   return (MMC_SUCCESS);
@@ -506,8 +516,12 @@ unsigned long mmcReadCardSize(void)
 char mmcPing(void)
 {
   if (!(MMC_CD_PxIN & MMC_CD))
+  	//printf("MMC_SUCCESS");
+  	//fflush(stdout);
     return (MMC_SUCCESS);
   else
+  	//printf("MMC_INIT_ERROR");
+  	//fflush(stdout);
     return (MMC_INIT_ERROR);
 }
 

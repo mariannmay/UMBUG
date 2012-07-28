@@ -13,6 +13,7 @@
 
 #include "../system/System.h"
 #include "../application/ApplicationConfig.h"
+#include "../drivers/devices/msp430/sdCardLibrary/MMC_lib/MMC.h"
 #include <assert.h>
 #include <stdio.h>
 
@@ -23,6 +24,7 @@ void test_realTimeClock(void);
 void test_analogToDigital(void);
 void test_digitalToAnalog(void);
 void test_sdCard(void);
+void test_sdCard_newlib(void);
 
 //////////////////////////////////
 

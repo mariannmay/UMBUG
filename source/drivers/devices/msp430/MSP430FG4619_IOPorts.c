@@ -86,7 +86,7 @@ void initialize_msp430_IO_ports(void)
 	initializeAnalogInput  (	&msp430.PORT_6.analogInput[6],		6,	7	);	//  				/
 	
 	// PORT_7																		CDH					COM
-	P7DIR = 0xF3; // 1111 0011
+	P7DIR = 0xFF; // 1111 0011
 	initializeSerialOutput (	&msp430.PORT_7.serialOutput[0],		7,	0	);	//  				/
 	initializeSerialOutput (	&msp430.PORT_7.serialOutput[1],		7,	1	);	//  				/
 	initializeSerialInput  (	&msp430.PORT_7.serialInput[0],		7,	2	);	//  				/

@@ -41,19 +41,22 @@
 #include "msp430fg4619.h"              // Adjust this according to the
                                      // MSP430 device being used.
 // SPI port definitions              // Adjust the values for the chosen
-#define SPI_PxSEL         P5SEL      // interfaces, according to the pin
-#define SPI_PxDIR         P5DIR      // assignments indicated in the
-#define SPI_PxIN          P5IN       // chosen MSP430 device datasheet.
-#define SPI_PxOUT         P5OUT
+#define SPI_PxSEL         P7SEL      // interfaces, according to the pin
+#define SPI_PxDIR         P7DIR      // assignments indicated in the
+#define SPI_PxIN          P7IN       // chosen MSP430 device datasheet.
+#define SPI_PxOUT         P7OUT
 #define SPI_SIMO          0x02
 #define SPI_SOMI          0x04
 #define SPI_UCLK          0x08
+
+#define URXIFG0			  UCA0RXIFG
 
 //----------------------------------------------------------------------------
 // SPI/UART port selections.  Select which port will be used for the interface 
 //----------------------------------------------------------------------------
 //#define SPI_SER_INTF      SER_INTF_USART1  // Interface to MMC
-#define SPI_SER_INTF      SER_INTF_BITBANG  // Interface to MMC
+//#define SPI_SER_INTF      SER_INTF_BITBANG  // Interface to MMC
+#define SPI_SER_INTF      SER_INTF_USCIA0
 
 
 /*
@@ -87,9 +90,9 @@
 #define MMC_UCLK          SPI_UCLK
 
 // Chip Select
-#define MMC_CS_PxOUT      P5OUT
-#define MMC_CS_PxDIR      P5DIR
-#define MMC_CS            0x01
+#define MMC_CS_PxOUT      P10OUT
+#define MMC_CS_PxDIR      P10DIR
+#define MMC_CS            0x03
 
 // Card Detect
 #define MMC_CD_PxIN       P5IN
@@ -109,6 +112,6 @@
 */
 
 #define CS_LOW()    MMC_CS_PxOUT &= ~MMC_CS               // Card Select
-#define CS_HIGH()   while(!halSPITXDONE); MMC_CS_PxOUT |= MMC_CS  // Card Deselect
+#define CS_HIGH()   /*while(!halSPITXDONE);*/ MMC_CS_PxOUT |= MMC_CS  // Card Deselect
 
 #define DUMMY_CHAR 0xFF

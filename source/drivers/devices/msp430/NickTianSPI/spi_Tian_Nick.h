@@ -28,17 +28,17 @@
 	/**
 	 * Include commonly used definitions
 	 **/
-	#include <common.h>
+	//#include <common.h>
 
 	/**
 	 * Include error codes
 	 **/
-	#include <error_codes.h>
+	//#include <error_codes.h>
 
 	/**
 	 * Include crc generating routines
 	 */
-	#include <crc.h>
+	//#include <crc.h>
 
 	/************************************************************ 
 	 * Global Constants

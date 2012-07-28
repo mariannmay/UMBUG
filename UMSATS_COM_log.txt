@@ -1,5 +1,18 @@
 == DEBUG MODE ==
 
-Testing the SD card
-
-All tests complete! --------------------
+initialisation of the SD-card
+inside loop.
+5885_ This happens
+halSPISetup SPI_SER_INTF == SER_INTF_USCIA0
+5886_ Should Happen if not bitbanging
+sending dummy byte
+sending dummy byte
+sending dummy byte
+sending dummy byte
+sending dummy byte
+sending dummy byte
+sending dummy byte
+sending dummy byte
+sending dummy byte
+sending dummy byte
+mmcGoIdle_1234
