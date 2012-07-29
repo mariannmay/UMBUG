@@ -22,7 +22,9 @@ void test_SPI_framework_2(void);
 void test_realTimeClock(void);
 void test_analogToDigital(void);
 void test_digitalToAnalog(void);
+void test_thermocouple(void);
 void test_sdCard(void);
+void test_radio(void);
 
 //////////////////////////////////
 

@@ -88,28 +88,16 @@ void drivers_initialize(void)
 	// Digital to analog conversion //////////////////////////////
 	#if COM_PROCESSOR_COMPILE
 		// TODO UNCOMMENT AFTER TEST OUTPUT DONE
-		//devices.radio.microphone				= &msp430.PORT_6.analogOutput;
-		devices.testPSK							= &msp430.PORT_6.analogOutput;
+		devices.radio.microphone				= &msp430.PORT_6.analogOutput;
+		devices.test_AtoD						= &msp430.PORT_5.analogInput;
+		//devices.testPSK							= &msp430.PORT_6.analogOutput;
 		
 	#endif
 	
 	// for debug purposes
 	// TODO REMOVE
-	devices.test_AtoD						= &msp430.PORT_6.analogInput[5]; // P6.5, pin #4
+	devices.testThermocouple.voltageInput		= &msp430.PORT_6.analogInput[5]; // P6.5, pin #4
 	
-	
-	
-	// SPI bus
-	// note: this code is redundant.  The SPI library will take care
-	//       of writing to these pins for us.  They are shown here
-	//		 simply for clarification, and so nobody else uses the pins.
-	// TODO verify and claim the proper pin numbers
-	//devices.spiBus.clock					= &msp430.PORT_3.serialInput[1];	// P3.2
-	//devices.spiBus.slaveInMasterOut			= &msp430.PORT_3.serialOutput[1];	// P3.0
-	//devices.spiBus.slaveOutMasterIn			= &msp430.PORT_3.serialInput[0];	// P3.3
-	//initialize_SPI(1);
-	//initialize_SPI(2); //TODO: fix this ?? Should there be two?
-						//... yes, COM needs 2
 	
 	// SD card
 	//devices.sdCard.SPI.bus					= &devices.spiBus;
@@ -124,41 +112,7 @@ void drivers_initialize(void)
 	//devices.multiplexerSelectLines.S1		= &msp430.PORT_8.digitalOutput[2];
 	//devices.multiplexerSelectLines.S2		= &msp430.PORT_8.digitalOutput[3];
 	
-	// digital input multiplexer 0
-	//devices.digitalInputMUX0.selectLines	= &devices.multiplexerSelectLines;
-	//devices.digitalInputMUX0.currentInput	= &msp430.PORT_2.digitalInput[0];
 	
-	// digital input multiplexer 1
-	//devices.digitalInputMUX1.selectLines	= &devices.multiplexerSelectLines;
-	//devices.digitalInputMUX1.currentInput	= &msp430.PORT_2.digitalInput[1];
-	
-	// digital input multiplexer 2
-	//devices.digitalInputMUX2.selectLines	= &devices.multiplexerSelectLines;
-	//devices.digitalInputMUX2.currentInput	= &msp430.PORT_2.digitalInput[2];
-	
-	// analog input multiplexer 0
-	//devices.analogInputMUX0.selectLines		= &devices.multiplexerSelectLines;
-	//devices.analogInputMUX0.currentInput	= &msp430.PORT_6.analogInput[0];
-	
-	// analog input multiplexer 1
-	//devices.analogInputMUX1.selectLines		= &devices.multiplexerSelectLines;
-	//devices.analogInputMUX1.currentInput	= &msp430.PORT_6.analogInput[1];
-	
-	// analog input multiplexer 2
-	//devices.analogInputMUX2.selectLines		= &devices.multiplexerSelectLines;
-	//devices.analogInputMUX2.currentInput	= &msp430.PORT_6.analogInput[2];
-	
-	// digital output multiplexer 0
-	//devices.digitalOutputMUX0.selectLines	= &devices.multiplexerSelectLines;
-	//devices.digitalOutputMUX0.currentOutput	= &msp430.PORT_8.digitalOutput[4];
-	
-	// digital output multiplexer 1
-	//devices.digitalOutputMUX1.selectLines	= &devices.multiplexerSelectLines;
-	//devices.digitalOutputMUX1.currentOutput	= &msp430.PORT_8.digitalOutput[5];
-	
-	// digital output multiplexer 2
-	//devices.digitalOutputMUX2.selectLines	= &devices.multiplexerSelectLines;
-	//devices.digitalOutputMUX2.currentOutput	= &msp430.PORT_8.digitalOutput[6];
 }
 
 //////////////////////////////////////////////////////////////////
