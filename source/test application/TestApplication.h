@@ -14,6 +14,7 @@
 #include "../system/System.h"
 #include "../application/ApplicationConfig.h"
 #include "../application/PWR/UART.h"
+#include "../application/PWR/Test_valve.h"
 #include <assert.h>
 #include <stdio.h>
 

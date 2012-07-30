@@ -1,3 +1,4 @@
+
 //////////////////////////////////////////////////////////////////
 //                                                              //
 //    TestApplication source                                    //
@@ -12,7 +13,8 @@
 
 void test_application_initialize(void)
 {
-     InitUART();
+    // InitUART();
+     testvalve();
 	logLine("Test application start -----------------\r\n");
      
 	logLine("testdone");
