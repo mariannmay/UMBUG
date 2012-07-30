@@ -31,4 +31,3 @@
  
  
 #endif // __BATTERYCHARGER_H__
- 

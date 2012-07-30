@@ -19,6 +19,3 @@
 #define POWERMANAGEMENT_DEBUG		1
  
 
- 
- 
-#endif // __POWERMANAGEMENT_H__
