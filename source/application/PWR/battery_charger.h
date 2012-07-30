@@ -11,7 +11,7 @@
 #ifndef __BATTERYCHARGER_H__
 #define __BATTERYCHARGER_H__
  
-#include <msp430xxxx.h>
+#include <msp430fg4619.h>
 
  
 /**

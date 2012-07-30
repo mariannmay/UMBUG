@@ -10,7 +10,7 @@
 #ifndef __POWERMANAGEMENT_H__
 #define __POWERMANAGEMENT_H__
  
-#include <msp430xxxx.h>
+#include <msp430fg4619.h>
 
  
 /**

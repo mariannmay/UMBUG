@@ -5,8 +5,8 @@
 //
 //******************************************************************************
  
-// Kane commented it out because the file doesn't exist
-//#include <Power_Management.h>
+ 
+#include "Power_Management.h"
 #include <msp430fg4619.h>
 //#include <Power_Switching_Function.h>
  
