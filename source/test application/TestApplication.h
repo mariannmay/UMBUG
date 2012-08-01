@@ -23,6 +23,7 @@ void test_realTimeClock(void);
 void test_analogToDigital(void);
 void test_digitalToAnalog(void);
 void test_sdCard(void);
+void test_COMmain(void);
 
 //////////////////////////////////
 

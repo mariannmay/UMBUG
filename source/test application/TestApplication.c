@@ -36,8 +36,11 @@ void test_application_main(void)
 	//int i;
 	//for (i = 0;i < 10000;i++)
 	//{
-		test_sdCard();
+		//test_sdCard();
 	//}
+	
+	test_COMmain();
+	
 	logLine("");
 	logLine("All tests complete! --------------------");
 	system_abort();
@@ -271,7 +274,9 @@ void test_sdCard(void)
 		toSD[5] = DUMMY_CHAR;
 		toSD[6] = DUMMY_CHAR;
 		toSD[7] = DUMMY_CHAR;
-		SPI_transmitStream(&devices.sdCard.SPI, toSD, 8);
+		toSD[8] = DUMMY_CHAR;
+		toSD[9] = DUMMY_CHAR;
+		SPI_transmitStream(&devices.sdCard.SPI, toSD, 10);
 
 		toSD[0] = 0x40;
 		toSD[1] = EMPTY_CHAR;
@@ -280,9 +285,57 @@ void test_sdCard(void)
 		toSD[4] = EMPTY_CHAR;
 		toSD[5] = 0x95;
 		toSD[6] = DUMMY_CHAR;
+		SPI_transmitStream(&devices.sdCard.SPI, toSD, 7); //CMD0
+		
+		toSD[0] = DUMMY_CHAR;
+		toSD[1] = DUMMY_CHAR;
+		toSD[2] = DUMMY_CHAR;
+		toSD[3] = DUMMY_CHAR;
+		toSD[4] = DUMMY_CHAR;
+		toSD[5] = DUMMY_CHAR;
+		toSD[6] = DUMMY_CHAR;
 		toSD[7] = DUMMY_CHAR;
 		toSD[8] = DUMMY_CHAR;
-		SPI_transmitStream(&devices.sdCard.SPI, toSD, 9);
+		toSD[9] = DUMMY_CHAR;
+		SPI_transmitStream(&devices.sdCard.SPI, toSD, 10);
+		
+		toSD[0] = 0x40;
+		toSD[1] = EMPTY_CHAR;
+		toSD[2] = EMPTY_CHAR;
+		toSD[3] = EMPTY_CHAR;
+		toSD[4] = 0x37; //0011 0111
+		toSD[5] = DUMMY_CHAR;
+		toSD[6] = DUMMY_CHAR;
+		SPI_transmitStream(&devices.sdCard.SPI, toSD, 7); //CMD55
+		
+		toSD[0] = 0x40;
+		toSD[1] = EMPTY_CHAR;
+		toSD[2] = EMPTY_CHAR;
+		toSD[3] = EMPTY_CHAR;
+		toSD[4] = 0x29; //0010 1001
+		toSD[5] = DUMMY_CHAR;
+		toSD[6] = DUMMY_CHAR;
+		SPI_transmitStream(&devices.sdCard.SPI, toSD, 7); //ACMD41
+
+		toSD[0] = 0x40;
+		toSD[1] = EMPTY_CHAR;
+		toSD[2] = EMPTY_CHAR;
+		toSD[3] = EMPTY_CHAR;
+		toSD[4] = 0x11;
+		toSD[5] = DUMMY_CHAR;
+		toSD[6] = DUMMY_CHAR;
+		SPI_transmitStream(&devices.sdCard.SPI, toSD, 7); //CMD17
+		
+		int count;
+		int num;
+		for(num=0;num<16;num++)
+		{
+			for(count=0;count<32;count++)
+			{
+				toSD[count] = DUMMY_CHAR;
+			}
+			SPI_transmitStream(&devices.sdCard.SPI, toSD, 32); //DUMMY x 512
+		}		
 		
 		toSD[0] = 0x40;
 		toSD[1] = EMPTY_CHAR;
@@ -291,19 +344,17 @@ void test_sdCard(void)
 		toSD[4] = 0x0D;
 		toSD[5] = DUMMY_CHAR;
 		toSD[6] = DUMMY_CHAR;
-		toSD[7] = DUMMY_CHAR;
-		toSD[8] = DUMMY_CHAR;
-		SPI_transmitStream(&devices.sdCard.SPI, toSD, 9);
-		/*
-		printf("transmitted: %x\r\n", devices.sdCard.SPI.transmitMessage[0]);
-		printf("transmitted: %x\r\n", devices.sdCard.SPI.transmitMessage[1]);
-		printf("transmitted: %x\r\n", devices.sdCard.SPI.transmitMessage[2]);
-		printf("transmitted: %x\r\n", devices.sdCard.SPI.transmitMessage[3]);
-		printf("transmitted: %x\r\n", devices.sdCard.SPI.transmitMessage[4]);
-		printf("transmitted: %x\r\n", devices.sdCard.SPI.transmitMessage[5]);
-		printf("transmitted: %x\r\n", devices.sdCard.SPI.transmitMessage[6]);
-		fflush(stdout);
-		*/
+		SPI_transmitStream(&devices.sdCard.SPI, toSD, 7); //CMD13
+
+	#endif
+}
+
+void test_COMmain(void)
+{
+	#if COM_PROCESSOR_COMPILE
+	
+	//nvm im just gonna put this straight into  a real com main
+	
 	#endif
 }
 
