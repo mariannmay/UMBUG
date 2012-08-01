@@ -19,11 +19,7 @@ void sendAnalogOutput(AnalogOutput* output)
 {
 	if ((output->portNum == 6) && (output->pin == 6))
 	{
-		startNewDigitalToAnalogConversion(output->value, 0);
-	}
-	else if ((output->portNum == 6) && (output->pin == 7))
-	{
-		startNewDigitalToAnalogConversion(output->value, 1);
+		startNewDigitalToAnalogConversion(output->value);
 	}
 }
 

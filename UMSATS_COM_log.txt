@@ -1,5 +1,3 @@
 == DEBUG MODE ==
 
-Testing the SD card
-
-All tests complete! --------------------
+testing output to radio

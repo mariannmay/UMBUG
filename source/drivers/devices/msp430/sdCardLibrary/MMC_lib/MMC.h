@@ -10,20 +10,6 @@
 #ifndef _MMCLIB_H
 #define _MMCLIB_H
 
-// Chip Select
-#define MMC_CS_PxOUT      P8OUT
-#define MMC_CS_PxDIR      P8DIR
-#define MMC_CS            0x01
-
-// Card Detect
-#define MMC_CD_PxIN       P3IN
-#define MMC_CD_PxDIR      P3DIR
-#define MMC_CD            0x08
-
-#define SDCARD_CS_LOW()    MMC_CS_PxOUT &= ~MMC_CS               		// Card Select
-#define SDCARD_CS_HIGH()   while(!halSPITXDONE); MMC_CS_PxOUT |= MMC_CS	// Card Deselect
-
-#define DUMMY_CHAR 0xFF
 
 // macro defines
 #define HIGH(a) ((a>>8)&0xFF)               // high byte from word

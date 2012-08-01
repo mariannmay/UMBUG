@@ -30,9 +30,8 @@ typedef struct
 	RealTimeClock	realTimeClock;
 	DigitalOutput*	systemStatusLED;
 	//Battery			mainBattery;
+	
 	Thermocouple	testThermocouple;
-	
-	
 	AnalogInput*	test_AtoD;
 	SPI_Device		test_SPI_device;
 }
@@ -50,12 +49,14 @@ typedef struct
 	
 	
 	AnalogInput*	test_AtoD;
+	AnalogOutput*	testPSK;
 	SPI_Device		test_SPI_device;
 }
 AllDevices;
 #endif
 
 extern AllDevices devices;
+
 
 //////////////////////////////////////////////////////////////////
 

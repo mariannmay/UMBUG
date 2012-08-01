@@ -17,7 +17,7 @@ void thermocouple_initialize(void)
 
 Word thermocouple_read(Thermocouple* thermocouple)
 {
-	// TODO
-	return 0x0000;
+	readAnalogInput(thermocouple->voltageInput);
+	return thermocouple->voltageInput->value;
 }
 

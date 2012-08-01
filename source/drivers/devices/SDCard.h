@@ -82,7 +82,6 @@
 #define SDCARD_H
 
 #include "../DriversConfig.h"
-#include "./msp430/sdCardLibrary/MMC_lib/hal_SPI.h"				// this is the library
 
 // definitions
 #define SDCARD_UNINITIALIZED 1

@@ -25,7 +25,7 @@ void test_application_main(void)
 {
 	//test_SPI();
 	//test_analogToDigital();
-	//test_digitalToAnalog();
+
 	//test_SPI_framework();
 	//test_SPI_framework_2();
 	//int i;
@@ -39,7 +39,13 @@ void test_application_main(void)
 		//test_sdCard();
 	//}
 	
-	test_COMmain();
+
+	//test_COMmain();
+
+	//test_thermocouple();
+	
+	//test_digitalToAnalog();
+	test_radio();
 	
 	logLine("");
 	logLine("All tests complete! --------------------");
@@ -139,6 +145,10 @@ void test_SPI(void)
 	// testing SPI
 
 	#if CDH_PROCESSOR_COMPILE
+	
+		// TODO uncomment and test
+		/*
+	
 		P3OUT &= ~0x01;		// slave enable
 		
 		char nextCharToSend = '1';
@@ -160,8 +170,10 @@ void test_SPI(void)
 			for (waitTimer = 10000; waitTimer > 0; waitTimer--){ ; }
 	
 		}
+		*/
 	#else		// SLAVE
-		
+		// TODO uncomment
+		/*
 		printf("    COM Slave Initialize\r\n");
 		printf("Searching for: %c\n", 'C');
 		fflush(stdout);
@@ -183,7 +195,7 @@ void test_SPI(void)
 		}
 		
 	  }
-	  
+	  */
 	#endif
 	
 }
@@ -194,6 +206,17 @@ void test_analogToDigital(void)
 {
 	// TODO
 	logLine("testing A to D conversion");
+}
+
+void test_thermocouple(void)
+{
+	logLine("Testing thermocouple");
+	Word raw;
+	for (;;)
+	{
+		raw = thermocouple_read(&devices.testThermocouple);
+		logCombo("raw voltage: ", raw);
+	}
 }
 
 ///////////////////////////////////////////////////////////////////
@@ -208,14 +231,47 @@ void test_digitalToAnalog(void)
 		int i;
 		for (i = 0; i < 0xFFF; i++)
 		{
-			devices.radio.microphone->value = i;
-			startNewDigitalToAnalogConversion(devices.radio.microphone->value, 0);
-			//logCombo("set digital out on P6.6", i);
-			
-			readAnalogInput(devices.test_AtoD);
-			//logCombo("read analog in on P6.5 ", devices.test_AtoD->value);
+			#if COM_PROCESSOR_COMPILE
+				devices.radio.microphone->value = i;
+				
+				startNewDigitalToAnalogConversion(devices.radio.microphone->value);
+				
+				// commented out to make it go faster
+				// uncomment to print to file
+				//logCombo("set digital out on pin 5", i);
+				
+				readAnalogInput(devices.test_AtoD);
+				//logCombo("read analog in on pin 13", devices.test_AtoD->value);
+			#endif
 		}
 	}
+}
+
+//////////////////////////////////////////////////////////////
+
+void test_radio(void)
+{
+	#if COM_PROCESSOR_COMPILE
+		logLine("testing output to radio");
+		
+		// 500 mV / 3.3 V = 620 / 4096
+		#define radio_high 620
+		#define radio_low 0
+		
+		bool toggle = low;
+		
+		for (;;)
+		{
+			toggle = toggle ? low : high;
+			devices.radio.microphone->value = toggle ? radio_high : radio_low;
+			startNewDigitalToAnalogConversion(devices.radio.microphone->value);
+			int i;
+			for (i = 0; i < 12000; i++) ; // wait
+		}
+		
+		#undef radio_high
+		#undef radio_low
+	#endif
 }
 
 ///////////////////////////////////////////////////////////////////

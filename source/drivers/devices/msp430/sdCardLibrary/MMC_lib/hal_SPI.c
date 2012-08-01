@@ -120,97 +120,170 @@
 #endif
 
 // SPI port functions
-void halSPISetup(int master)
+#if SPI_SER_INTF == SER_INTF_USART0
+
+void halSPISetup(void)
 {
-	// 1)
-	UCB0CTL1 |= UCSWRST;                     // **Initialize USCI registers**
-	
-	if(master==1)
-	{
-		  //2) -> Initialize all USCI registers Set <- BEGIN
-		  // CONTROL REGISTERS
-		  //UCB0CTL0 -> Control Register 0
-		  //  7   |  6  |  5  |  4   |  3  |  2-1   |  0   | 
-		  //-------------------------------------------------------------------------
-		  //UCCKPH|UCCKPL|UCMSB|UC7BIT|UCMST|UCMODEx|UCSYNC|
-		  //UCCKPH (Clock phase)              = 0b  ->  Data is changed on the first UCLK edge and captured on the following edge.
-		  //UCCKPL (Clock polarity)           = 0b  ->  The inactive state is low
-		  //UCMSB (MSB first select)          = 1b  ->  MSB first
-		  //UC7BIT (Character length)         = 0b  ->  8-bit data
-		  //UCMST (Master mode)               = 1b  ->  Master mode
-		  //UCMODEx (USCI mode)               = 00b ->  3-Pin SPI
-		  //UCSYNC (Synchronous mode enable)  = 1b  ->  Synchronous mode
-		  UCB0CTL0 = 0x29;
-		  //-------------------------------------------------------------------------
-		  //-------------------------------------------------------------------------
-		  //UCA0CTL1 -> Control Register 1
-		  //   6-7  |   5   |   4   |   3  |   2    |   1   |    0  |
-		  //---------------------------------------------------------
-		  //UCSSELx |                  Unused               |UCSWRST|
-		  //---------------------------------------------------------
-		  //UCSSELx (USCI clock source select)= 10b ->  SMCLK
-		  //UCSWRST (Software reset)          = 1b  ->  normally set by a PUC
-		  UCB0CTL1 = 0x80;                     
-		  //-------------------------------------------------------------------------
-		  // DATA RATE
-		  // Data rate = SMCLK/2 ~= 500kHz
-		  // UCA0BR1 = 0x00 & UCA0BR0 = 0x02
-		  //-------------------------------------------------------------------------
-		  UCB0BR0 = 0x02;                           
-		  UCB0BR1 = 0x00;
-		  //3) Configure ports <-BEGIN
-		  P3SEL |= 0x0E; // P3.1,P3.2,P3.3 option select
-		  P3DIR |= 0x01; // P3.0 output direction
-		  P3DIR &= ~0x10; //P3.4 input
-	}else
-	{
-		  //2) -> Initialize all USCI registers Set <- BEGIN
-		  // CONTROL REGISTERS
-		  //UCB0CTL0 -> Control Register 0
-		  //  7   |  6  |  5  |  4   |  3  |  2-1   |  0   | 
-		  //-------------------------------------------------------------------------
-		  //UCCKPH|UCCKPL|UCMSB|UC7BIT|UCMST|UCMODEx|UCSYNC|
-		  //UCCKPH (Clock phase)              = 0b  ->  Data is changed on the first UCLK edge and captured on the following edge.
-		  //UCCKPL (Clock polarity)           = 0b  ->  The inactive state is low
-		  //UCMSB (MSB first select)          = 1b  ->  MSB first
-		  //UC7BIT (Character length)         = 0b  ->  8-bit data
-		  //UCMST (Master mode)               = 0b  ->  Slave mode
-		  //UCMODEx (USCI mode)               = 00b ->  3-Pin SPI
-		  //UCSYNC (Synchronous mode enable)  = 1b  ->  Synchronous mode
-		  UCB0CTL0 = 0x21;
-		  //-------------------------------------------------------------------------
-		  //-------------------------------------------------------------------------
-		  //UCA0CTL1 -> Control Register 1
-		  //   6-7  |   5   |   4   |   3  |   2    |   1   |    0  |
-		  //---------------------------------------------------------
-		  //UCSSELx |                  Unused               |UCSWRST|
-		  //---------------------------------------------------------
-		  //UCSSELx (USCI clock source select)= 10b ->  SMCLK
-		  //UCSWRST (Software reset)          = 1b  ->  normally set by a PUC
-		  UCB0CTL1 = 0x80;                     
-		  //-------------------------------------------------------------------------
-		  // DATA RATE
-		  // Data rate = SMCLK/2 ~= 500kHz
-		  // UCA0BR1 = 0x00 & UCA0BR0 = 0x02
-		  //-------------------------------------------------------------------------
-		  UCB0BR0 = 0x02;                           
-		  UCB0BR1 = 0x00;
-		  //3) Configure ports <-BEGIN
-		  P3SEL |= 0x0E; // P3.1,P3.2,P3.3 option select
-		  P3DIR &= ~0x01; // P3.0 input direction
-		  P3DIR |= 0x10; //P3.4 output	
-	}
-	
-	// 4)
-	UCB0CTL1 &= ~UCSWRST;                     // **Initialize USCI state machine**
-	
+  UCTL0 = CHAR + SYNC + MM + SWRST;         // 8-bit SPI Master **SWRST**
+  UTCTL0 = CKPL + SSEL1 + SSEL0 + STC;      // SMCLK, 3-pin mode
+  UBR00 = 0x02;                             // UCLK/2
+  UBR10 = 0x00;                             // 0
+  UMCTL0 = 0x00;                            // No modulation
+  ME1 |= USPIE0;                            // Enable USART0 SPI mode
+  UCTL0 &= ~SWRST;                          // Initialize USART state machine
 }
+
+#elif SPI_SER_INTF == SER_INTF_USART1
+
+void halSPISetup(void)
+{
+  UCTL1 = CHAR + SYNC + MM + SWRST;         // 8-bit SPI Master **SWRST**
+  UTCTL1 = CKPL + SSEL1 + SSEL0 + STC;      // SMCLK, 3-pin mode
+  UBR01 = 0x02;                             // UCLK/2
+  UBR11 = 0x00;                             // 0
+  UMCTL1 = 0x00;                            // No modulation
+  ME2 |= USPIE1;                            // Enable USART1 SPI mode
+  UCTL1 &= ~SWRST;                          // Initialize USART state machine
+}
+
+#elif SPI_SER_INTF == SER_INTF_USCIA0
+
+void halSPISetup(void)
+{
+  UCA0CTL0 = UCMST+UCCKPL+UCMSB+UCSYNC;     // 3-pin, 8-bit SPI master
+  UCA0CTL1 = UCSSEL_2 + UCSWRST;            // SMCLK
+  UCA0BR0 |= 0x02;                          // UCLK/2
+  UCA0BR1 = 0;
+  UCA0MCTL = 0;
+  UCA0CTL1 &= ~UCSWRST;                     // **Initialize USCI state machine**
+}
+
+#elif SPI_SER_INTF == SER_INTF_USCIA1
+
+void halSPISetup(void)
+{
+  UCA1CTL0 = UCMST+UCCKPL+UCMSB+UCSYNC;     // 3-pin, 8-bit SPI master
+  UCA1CTL1 = UCSSEL_2 + UCSWRST;            // SMCLK
+  UCA1BR0 |= 0x02;                          // UCLK/2
+  UCA1BR1 = 0;
+  UCA1MCTL = 0;
+  UCA1CTL1 &= ~UCSWRST;                     // **Initialize USCI state machine**
+}
+
+#elif SPI_SER_INTF == SER_INTF_USCIB0
+
+void halSPISetup(void)
+{
+  UCB0CTL0 = UCMST+UCCKPL+UCMSB+UCSYNC;     // 3-pin, 8-bit SPI master
+  UCB0CTL1 = UCSSEL_2+UCSWRST;              // SMCLK
+  UCB0BR0 |= 0x02;                          // UCLK/2
+  UCB0BR1 = 0;
+  //UCB0MCTL = 0;
+  UCB0CTL1 &= ~UCSWRST;                     // **Initialize USCI state machine**
+}
+
+#elif SPI_SER_INTF == SER_INTF_USCIB1
+
+void halSPISetup(void)
+{
+  UCB1CTL0 = UCMST+UCCKPL+UCMSB+UCSYNC;     // 3-pin, 8-bit SPI master
+  UCB1CTL1 = UCSSEL_2+UCSWRST;              // SMCLK
+  UCB1BR0 |= 0x02;                          // UCLK/2
+  UCB1BR1 = 0;
+  UCB1MCTL = 0;
+  UCB1CTL1 &= ~UCSWRST;                     // **Initialize USCI state machine**
+}
+
+#elif SPI_SER_INTF == SER_INTF_USI
+
+void halSPISetup(void)
+{
+  USICTL0 = USIPE7+USIPE6+USIPE5+USIMST+USIOE+UCSWRST; // Port, SPI master
+  USICKCTL = USISSEL_2 + USICKPL;           // SCLK = SMCLK
+  USICTL0 &= ~USISWRST;                     // USI released for operation
+
+  USISRL = 0x00;                            // Ensure SDO low instead of high,
+  USICNT = 1;                               // to avoid conflict with CCxxxx
+}
+
+#elif SPI_SER_INTF == SER_INTF_BITBANG
+
+void spi_bitbang_out(unsigned char);
+unsigned char spi_bitbang_in();
+unsigned char spi_bitbang_in_data;
+
+void halSPISetup(void)
+{
+}
+
+// Output eight-bit value using selected bit-bang pins
+void spi_bitbang_out(unsigned char value)
+{
+  char x;
+
+  for(x=8;x>0;x--)
+  {
+
+    if(value & 0x80)                        // If bit is high...
+      MMC_PxOUT |= MMC_SIMO;// Set SIMO high...
+    else
+      MMC_PxOUT &= ~MMC_SIMO;//Set SIMO low...
+    value = value << 1;                     // Rotate bits
+
+    MMC_PxOUT &= ~MMC_UCLK; // Set clock low
+    MMC_PxOUT |= MMC_UCLK;  // Set clock high
+  }
+}
+
+// Input eight-bit value using selected bit-bang pins
+unsigned char spi_bitbang_in()
+{
+  char x=0;
+  int y;
+
+  for(y=8;y>0;y--)
+  {
+    MMC_PxOUT &= ~MMC_UCLK; // Set clock low
+    MMC_PxOUT |= MMC_UCLK;  // Set clock high
+
+    x = x << 1;                             // Rotate bits
+    if(MMC_PxIN & MMC_SOMI)                 // If bit is high...
+      x |= 0x01;                            // input bit high
+  }
+  spi_bitbang_in_data = x;
+  return(x);
+}
+// Input eight-bit value using selected bit-bang pins
+unsigned char spi_bitbang_inout(unsigned char value)
+{
+  char x=0;
+  int y;
+
+  for(y=8;y>0;y--)
+  {
+    if(value & 0x80)                        // If bit is high...
+      MMC_PxOUT |= MMC_SIMO;// Set SIMO high...
+    else
+      MMC_PxOUT &= ~MMC_SIMO;//Set SIMO low...
+    value = value << 1;                     // Rotate bits
+
+    MMC_PxOUT &= ~MMC_UCLK; // Set clock low
+    MMC_PxOUT |= MMC_UCLK;  // Set clock high
+
+    x = x << 1;                             // Rotate bits
+    if(MMC_PxIN & MMC_SOMI)                 // If bit is high...
+      x |= 0x01;                            // input bit high
+  }
+  spi_bitbang_in_data = x;
+  return(x);
+}
+#endif
+
 
 //Send one byte via SPI
 unsigned char spiSendByte(const unsigned char data)
 {
   while (halSPITXREADY ==0);    // wait while not ready for TX
-  IFG2 &= ~UCB0RXIFG;
   halSPI_SEND(data);            // write
   while (halSPIRXREADY ==0);    // wait for RX buffer (full)
   return (halSPIRXBUF);
