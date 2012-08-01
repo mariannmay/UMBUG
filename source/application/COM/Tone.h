@@ -12,6 +12,8 @@
 // includes //////////////////////////////////////////////////
 #include "./SineArray.h"
 
+extern const UI16 ToneIndexPositionsPerDegreePhase;
+
 Word getToneValueAt(UI16 time);
 
 #endif

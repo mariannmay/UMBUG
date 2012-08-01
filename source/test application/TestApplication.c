@@ -46,7 +46,8 @@ void test_application_main(void)
 	
 	//test_digitalToAnalog();
 	//test_radio();
-	test_toneGenerator();
+	test_PSK();
+	//test_toneGenerator();
 	
 	logLine("");
 	logLine("All tests complete! --------------------");
@@ -418,41 +419,43 @@ void test_COMmain(void)
 
 ///////////////////////////////////////////////////////////////////
 
-UI16 currentToneIndex = 0;
-bool toggle = high;
-volatile Word micValue = 0;
-
-#pragma vector=TIMERA0_VECTOR
-__interrupt void timerA0int(){
-
-	//disableInterrupts();
-	if(TAIV && TAIV_TACCR1)	//if capture compare reg 1 interrupt
-	{
-		if (currentToneIndex >= SINE_LENGTH)
-		{
-			currentToneIndex = 0;
-			//toggleStatusLED();
-		}
-		micValue = getToneValueAt(currentToneIndex);
-		currentToneIndex += 100;
-	}
-	else
-	{
-		printf("wrong interrupt?!\r\n");
-		fflush(stdout);
-	}
-	//enableInterrupts();
-}
-
 void test_toneGenerator(void)
 {
 	for (;;)
 	{
-		startNewDigitalToAnalogConversion(micValue);
+		startNewDigitalToAnalogConversion(devices.radio.microphone->value);
 		
 		//UI16 wait;
 		//for (wait = 6000; wait --> 0;) { }
 	}
+}
+
+///////////////////////////////////////////////////////////////////
+
+void test_PSK(void)
+{
+	logLine("Testing PSK");
+
+	Byte data[8];
+	data[0] = 0xFF;
+	data[1] = 0xFF;
+	data[2] = 0xA1;
+	data[3] = 0x2C;
+	data[4] = 0xB6;
+	data[5] = 0x10;
+	data[6] = 0x00;
+	data[7] = 0x89;
+	
+	printf("data: ");
+	int i;
+	for(i = 0; i < 8; i++)
+	{
+		printf(" %x\t", data[i]);
+	}
+	fflush(stdout);
+	
+	convertBinaryToPSK(data,8);
+	fflush(stdout);
 }
 
 ///////////////////////////////////////////////////////////////////

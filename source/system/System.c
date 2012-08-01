@@ -59,6 +59,11 @@ void system_main(void)
 void system_abort(void)
 {
 	// infinite loop
+	#if DebugMode
+		logLine("");
+		logLine("SYSTEM ABORT --------------");
+	#endif
+	
 	for(;;)	{ }
 }
 

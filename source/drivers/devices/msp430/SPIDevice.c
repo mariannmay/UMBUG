@@ -292,7 +292,7 @@ void SPI_transmit(SPI_Device* device, const Byte data)
 		SPI_slaveEnable(device->channel);
 		SPI_WRITE(device->channel, device->transmitMessage[0]);
 		device->receiveMessage[0] = SPI_READ(device->channel);
-		int waitTimer;
+		//int waitTimer;
 		//for (waitTimer = SPI_TIME_BETWEEN_BYTES; waitTimer > 0; waitTimer--){ ; }	// just a time killing loop
 		SPI_slaveDisable(device->channel);
 		

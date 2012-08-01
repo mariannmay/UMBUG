@@ -11,11 +11,10 @@
 
 #include "../../system/Packet.h"//includes the Packet struct
 #include "../../drivers/IOTypes.h"//includes the IOType struct
-
+#include "../COM/Tone.h"
 
 
 void convertBinaryToPSK(Byte data[], int size);
-void testPSK(void);
 Word phaseChange(int digital[]);
  
 

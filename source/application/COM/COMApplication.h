@@ -13,6 +13,7 @@
 #include "../../system/System.h"
 #include "../../system/Log.h"
 #include "../../drivers/devices/msp430/TimerA.h"
+#include "../COM/Tone.h"
 
 void COM_application_main(void);
 void COMMainScheduleLoop(void);

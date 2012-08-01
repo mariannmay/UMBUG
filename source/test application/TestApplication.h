@@ -14,6 +14,7 @@
 #include "../system/System.h"
 #include "../application/ApplicationConfig.h"
 #include "../application/COM/Tone.h"
+#include "../application/COM/PSK.h"
 #include <assert.h>
 #include <stdio.h>
 
@@ -28,6 +29,7 @@ void test_sdCard(void);
 void test_COMmain(void);
 void test_radio(void);
 void test_toneGenerator(void);
+void test_PSK(void);
 
 //////////////////////////////////
 
