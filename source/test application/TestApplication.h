@@ -25,6 +25,7 @@ void test_analogToDigital(void);
 void test_digitalToAnalog(void);
 void test_thermocouple(void);
 void test_sdCard(void);
+void test_COMmain(void);
 void test_radio(void);
 void test_toneGenerator(void);
 
