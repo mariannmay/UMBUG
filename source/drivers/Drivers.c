@@ -73,17 +73,17 @@ void drivers_initialize(void)
 	// smclk clock setup /////////////////////////////////////////
 	
 	FLL_CTL0 |= DCOPLUS + XTS_FLL;
-	FLL_CTL1 &= ~(SELS + SELM0 + SELM1 + SMCLKOFF + FLL_DIV0 + FLL_DIV0);
+	FLL_CTL1 &= ~(SELS + SELM0 + SELM1 + SMCLKOFF + FLL_DIV0 + FLL_DIV1);
 	FLL_CTL1 |= XT2OFF;
 	
 	// System Clock Frequency Integrator 0 ///////////////////////
 	
 	SCFI0 &= ~(FLLD0 + FLLD1);
-	SCFI0 |= FN_2; //FLL_DIV_1 |
+	SCFI0 |= FN_8; //FLL_DIV_1 |
 	 
 	// System Clock Frequency Control ////////////////////////////
 	
-	SCFQCTL = SCFQ_1M;
+	SCFQCTL = SCFQ_2M;
 	
 	// Digital to analog conversion //////////////////////////////
 	#if COM_PROCESSOR_COMPILE

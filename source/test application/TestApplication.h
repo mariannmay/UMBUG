@@ -13,6 +13,7 @@
 
 #include "../system/System.h"
 #include "../application/ApplicationConfig.h"
+#include "../application/COM/Tone.h"
 #include <assert.h>
 #include <stdio.h>
 
@@ -25,6 +26,7 @@ void test_digitalToAnalog(void);
 void test_thermocouple(void);
 void test_sdCard(void);
 void test_radio(void);
+void test_toneGenerator(void);
 
 //////////////////////////////////
 

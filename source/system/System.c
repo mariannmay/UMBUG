@@ -28,7 +28,7 @@ void system_initialize(void)
 	
 	StopMSP430WatchdogTimer;
 	initTimerA();
-	//enableInterrupts();
+	enableInterrupts();
 	
 	#if DebugMode
 		test_application_initialize();

@@ -42,7 +42,8 @@ void test_application_main(void)
 	//test_thermocouple();
 	
 	//test_digitalToAnalog();
-	test_radio();
+	//test_radio();
+	test_toneGenerator();
 	
 	logLine("");
 	logLine("All tests complete! --------------------");
@@ -271,6 +272,7 @@ void test_radio(void)
 	#endif
 }
 
+
 ///////////////////////////////////////////////////////////////////
 
 void test_realTimeClock(void)
@@ -361,6 +363,45 @@ void test_sdCard(void)
 		fflush(stdout);
 		*/
 	#endif
+}
+
+///////////////////////////////////////////////////////////////////
+
+UI16 currentToneIndex = 0;
+bool toggle = high;
+volatile Word micValue = 0;
+
+#pragma vector=TIMERA0_VECTOR
+__interrupt void timerA0int(){
+
+	//disableInterrupts();
+	if(TAIV && TAIV_TACCR1)	//if capture compare reg 1 interrupt
+	{
+		if (currentToneIndex >= SINE_LENGTH)
+		{
+			currentToneIndex = 0;
+			//toggleStatusLED();
+		}
+		micValue = getToneValueAt(currentToneIndex);
+		currentToneIndex += 100;
+	}
+	else
+	{
+		printf("wrong interrupt?!\r\n");
+		fflush(stdout);
+	}
+	//enableInterrupts();
+}
+
+void test_toneGenerator(void)
+{
+	for (;;)
+	{
+		startNewDigitalToAnalogConversion(micValue);
+		
+		//UI16 wait;
+		//for (wait = 6000; wait --> 0;) { }
+	}
 }
 
 ///////////////////////////////////////////////////////////////////
