@@ -14,6 +14,7 @@
 #include "../../system/Log.h"
 #include "../../drivers/devices/msp430/TimerA.h"
 #include "../COM/Tone.h"
+#include "../COM/PSK.h"
 
 void COM_application_main(void);
 void COMMainScheduleLoop(void);

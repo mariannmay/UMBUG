@@ -12,30 +12,17 @@
 
 ///////////////////////////////////////////////////////////////////
 
-UI16 currentToneIndex = 0;
-bool toggle = high;
-
-#if COM_PROCESSOR_COMPILE
-	#pragma vector=TIMERA0_VECTOR
-	__interrupt void timerA0int()
-	{
-	
-		if(TAIV && TAIV_TACCR1)	//if capture compare reg 1 interrupt
-		{
-			if (currentToneIndex >= SINE_LENGTH)
-			{
-				currentToneIndex = (currentToneIndex % SINE_LENGTH);
-			}
-			devices.radio.microphone->value = getToneValueAt(currentToneIndex);
-			currentToneIndex += 100;
-			startNewDigitalToAnalogConversion(devices.radio.microphone->value);
-		}
-		else
-		{
-		}
-	}
-#endif
-
+UI8 currentPhaseShiftIndex;
+UI8 phaseShifts[PhaseShiftHistoryLength];
+//	  0.00	 11.25	 22.50	 34.75	 45.00	 56.25	 67.50	 78.75
+//	 90.00	101.25	112.50	123.75	135.00	146.25	157.50	168.75
+//	180.00	191.23	202.50	213.75	225.00	236.25	247.50	258.75
+//	270.00	281.25	292.50	303.75	315.00	326.23	337.50	348.75
+const Word phaseAngles[M_PSK] =
+	{	  0,	 11,	 22,	 35,	 45,	 56,	 68,	 79,
+	 	 90,	101,	112,	124,	135,	146,	158,	169,
+	 	180,	191,	202,	214,	225,	236,	248,	259,
+	 	270,	281,	292,	304,	315,	326,	338,	349};
 
 ///////////////////////////////////////////////////////////////////
 
@@ -46,9 +33,19 @@ bool toggle = high;
 	#define PRINT_PSK_TRACE 0
 #endif
 
-Word phaseChange(int digital[])
+void initializePSKBuffer()
 {
-	UI16 i, final = 0;
+	for (currentPhaseShiftIndex = 0; currentPhaseShiftIndex < PhaseShiftHistoryLength; currentPhaseShiftIndex++)
+	{
+		phaseShifts[currentPhaseShiftIndex] = 0;
+	}
+	currentPhaseShiftIndex = 0;	
+}
+
+UI8 phaseChange(int digital[])
+{
+	UI8 i;
+	UI16 final = 0;
 	
 	#if PRINT_PSK_TRACE
 		printf(" Word phaseChange(int digital[]) ...\n");
@@ -73,42 +70,43 @@ Word phaseChange(int digital[])
 		printf(" searching switch statement...\n");
 	#endif
 	
-	float temp_dChange = 0.0;
+	UI8 temp_dChange = 0.0;
 	
 	switch(final)
 	{
-		case     0: temp_dChange = 0.0;		break;
-		case     1: temp_dChange = 11.25;	break;
-		case    10: temp_dChange = 33.75;	break;
-		case    11: temp_dChange = 22.50;	break;
-		case   100: temp_dChange = 78.75;	break;
-		case   101: temp_dChange = 67.50;	break;
-		case   110: temp_dChange = 45.00;	break;
-		case   111: temp_dChange = 56.25;	break;
-		case  1000: temp_dChange = 168.75;	break;
-		case  1001: temp_dChange = 157.50;	break;
-		case  1010: temp_dChange = 135.00;	break;
-		case  1011: temp_dChange = 146.25;	break;
-		case  1100: temp_dChange = 90.00;	break;
-		case  1101: temp_dChange = 101.25;	break;
-		case  1110: temp_dChange = 123.75;	break;
-		case  1111: temp_dChange = 112.50;	break;
-		case 10000: temp_dChange = 348.75;	break;
-		case 10001: temp_dChange = 337.50;	break;
-		case 10010: temp_dChange = 315.00;	break;
-		case 10011: temp_dChange = 326.25;	break;
-		case 10100: temp_dChange = 270.00;	break;
-		case 10101: temp_dChange = 281.25;	break;
-		case 10110: temp_dChange = 303.75;	break;
-		case 10111: temp_dChange = 292.50;	break;
-		case 11000: temp_dChange = 180.00;	break;
-		case 11001: temp_dChange = 191.25;	break;
-		case 11010: temp_dChange = 213.75;	break;
-		case 11011: temp_dChange = 202.50;	break;
-		case 11100: temp_dChange = 258.75;	break;
-		case 11101: temp_dChange = 247.50;	break;
-		case 11110: temp_dChange = 225.00;	break;
-		case 11111: temp_dChange = 236.25;	break;
+														// DEGREES
+		case     0: temp_dChange = 0;		break;		// 0.0
+		case     1: temp_dChange = 1;		break;		// 11.25
+		case    10: temp_dChange = 3;		break;		// 33.75
+		case    11: temp_dChange = 2;		break;		// 22.5
+		case   100: temp_dChange = 7;		break;		// 78.75
+		case   101: temp_dChange = 6;		break;		// 67.5
+		case   110: temp_dChange = 4;		break;		// 45
+		case   111: temp_dChange = 5;		break;		// 56.25
+		case  1000: temp_dChange = 15;		break;		// 168.75
+		case  1001: temp_dChange = 14;		break;		// 157.5
+		case  1010: temp_dChange = 12;		break;		// 135
+		case  1011: temp_dChange = 13;		break;		// 146.25
+		case  1100: temp_dChange = 8;		break;		// 90
+		case  1101: temp_dChange = 9;		break;		// 101.25
+		case  1110: temp_dChange = 11;		break;		// 123.75
+		case  1111: temp_dChange = 10;		break;		// 112.5
+		case 10000: temp_dChange = 31;		break;		// 348.75
+		case 10001: temp_dChange = 30;		break;		// 337.5
+		case 10010: temp_dChange = 28;		break;		// 315
+		case 10011: temp_dChange = 29;		break;		// 326.25
+		case 10100: temp_dChange = 24;		break;		// 270
+		case 10101: temp_dChange = 25;		break;		// 281.25
+		case 10110: temp_dChange = 27;		break;		// 303.75
+		case 10111: temp_dChange = 26;		break;		// 292.5
+		case 11000: temp_dChange = 16;		break;		// 180
+		case 11001: temp_dChange = 17;		break;		// 191.25
+		case 11010: temp_dChange = 19;		break;		// 213.75
+		case 11011: temp_dChange = 18;		break;		// 202.5
+		case 11100: temp_dChange = 23;		break;		// 258.75
+		case 11101: temp_dChange = 22;		break;		// 247.5
+		case 11110: temp_dChange = 20;		break;		// 225
+		case 11111: temp_dChange = 21;		break;		// 236.25
 		default:	
 					#if PRINT_PSK_TRACE
 						printf("\n\n\nfailure in PSK.c: Word phaseChange(int digital[])\n    variable final: %d\n", final);
@@ -117,7 +115,7 @@ Word phaseChange(int digital[])
 					
 					system_abort();
 	}
-	Word degreeChange = (unsigned int)temp_dChange;
+	UI8 degreeChange = temp_dChange;
     #if PRINT_PSK_TRACE
     	printf("     degreeChange: %d\n",degreeChange);
     #endif
@@ -292,7 +290,12 @@ void convertBinaryToPSK(Byte data[], int size)
             front = (front + 5) % 14;
             
             // find the phase change!
-        	currentToneIndex += (ToneIndexPositionsPerDegreePhase * phaseChange(phase));
+        	phaseShifts[currentPhaseShiftIndex] += (ToneIndexPositionsPerDegreePhase * phaseChange(phase));
+        	currentPhaseShiftIndex++;
+        	if (currentPhaseShiftIndex >= PhaseShiftHistoryLength)
+        	{
+        		currentPhaseShiftIndex = 0;
+        	}
 		    
 		    #if PRINT_PSK_TRACE
 		    	printf("\n");
@@ -339,7 +342,12 @@ void convertBinaryToPSK(Byte data[], int size)
             	phase[k] = 0;
             }
 
-        	currentToneIndex += (ToneIndexPositionsPerDegreePhase * phaseChange(phase));
+        	phaseShifts[currentPhaseShiftIndex] += (ToneIndexPositionsPerDegreePhase * phaseChange(phase));
+        	currentPhaseShiftIndex++;
+        	if (currentPhaseShiftIndex >= PhaseShiftHistoryLength)
+        	{
+        		currentPhaseShiftIndex = 0;
+        	}
         	
 		    #if PRINT_PSK_TRACE
             	printf(" Number of Occupy: %d\n", occupyNo);
