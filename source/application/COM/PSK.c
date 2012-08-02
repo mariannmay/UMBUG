@@ -9,6 +9,7 @@
 #include "String.h"
 #include "PSK.h"
 #include "Math.h"
+#include <stdio.h>
 
 Word phaseChange(int digital[])
 {

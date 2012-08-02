@@ -42,7 +42,7 @@ void initTimerA(){
 	#endif
 	#if COM_PROCESSOR_COMPILE
 		logLine("timerACOMinit\n");
-		TACCR0 = 1024;
+		TACCR0 = 1;
 		timerAInt_taccr1 = &runRadio;
 	#endif	
 	
@@ -62,12 +62,11 @@ __interrupt void timerA0int(){
 	
 	//see which interrupt was actually fired:
 	//toggleStatusLED();
-	logLine("interrupt!!");
+	
 	
 	//printf("TEst\n");
 	if(TAIV && TAIV_TACCR1)	//if capture compare reg 1 interrupt
 	{
-		logLine("interrupt!!");
 		timerAInt_taccr1();
 		
 	}

@@ -8,6 +8,8 @@
 
 #include "COMApplication.h"
 
+unsigned int x=0;
+
 void COM_application_main(void)
 {
 
@@ -25,6 +27,7 @@ void COMMainScheduleLoop(void)
 
 void runRadio(void)
 {
-	logLine("running radio\n");	
+	x++;
+	printf("running radio %d\n", x);	
 	fflush(stdout);
 }
