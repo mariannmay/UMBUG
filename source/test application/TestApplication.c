@@ -18,9 +18,6 @@ void test_application_initialize(void)
 	#else
 		logLine("running test on COM processor");
 		logLine("please check UMSATS_COM_log.txt");
-		
-		// TODO REMOVE
-		disableInterrupts();
 	#endif
 }
 
