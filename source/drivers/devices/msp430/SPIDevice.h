@@ -58,9 +58,12 @@ typedef struct
 	
 	bool						activeHigh;
 	
-	// TODO bit rate register
+	Byte						controlRegister0;
+	Byte						controlRegister1;
+	Byte						bitRateRegister0;
+	Byte						bitRateRegister1;
 	
-	// TODO control register
+	// TODO use the above 4 bytes in the SPI initialization routine.
 	
 	union
 	{

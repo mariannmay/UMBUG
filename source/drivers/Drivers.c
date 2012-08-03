@@ -32,6 +32,10 @@ void drivers_initialize(void)
 	devices.realTimeClock.SPI.channel			= SPI_CHANNEL_1;
 	devices.realTimeClock.SPI.type				= SPI_TYPE_Master;
 	devices.realTimeClock.SPI.activeHigh		= true;
+	devices.realTimeClock.SPI.controlRegister0	= 0x29;
+	devices.realTimeClock.SPI.controlRegister1	= 0x80;
+	devices.realTimeClock.SPI.bitRateRegister0	= 0x08;
+	devices.realTimeClock.SPI.bitRateRegister1	= 0x00;
 	realTimeClock_initialize(&devices.realTimeClock);
 	
 	// SD card ///////////////////////////////////////////////////
@@ -40,6 +44,10 @@ void drivers_initialize(void)
 		devices.sdCard.SPI.channel				= SPI_CHANNEL_2;
 		devices.sdCard.SPI.type					= SPI_TYPE_Master;
 		devices.sdCard.SPI.activeHigh			= false;
+		devices.sdCard.SPI.controlRegister0		= 0xA9;
+		devices.sdCard.SPI.controlRegister1		= 0x80;
+		devices.sdCard.SPI.bitRateRegister0		= 0x04;
+		devices.sdCard.SPI.bitRateRegister1		= 0x00;
 		sdCard_initialize(&devices.sdCard);
 	#endif
 	
@@ -47,15 +55,23 @@ void drivers_initialize(void)
 	
 	/*
 	#if CDH_PROCESSOR_COMPILE
-		devices.test_SPI_device.chipSelect.out	= &msp430.PORT_10.digitalOutput[4];
-		devices.test_SPI_device.channel			= SPI_CHANNEL_1;
-		devices.test_SPI_device.type			= SPI_TYPE_Master;
-		devices.test_SPI_device.activeHigh		= true;
+		devices.test_SPI_device.chipSelect.out		= &msp430.PORT_10.digitalOutput[4];
+		devices.test_SPI_device.channel				= SPI_CHANNEL_1;
+		devices.test_SPI_device.type				= SPI_TYPE_Master;
+		devices.test_SPI_device.activeHigh			= true;
+		devices.test_SPI_device.controlRegister0	= 0xA9;
+		devices.test_SPI_device.controlRegister1	= 0x80;
+		devices.test_SPI_device.bitRateRegister0	= 0x04;
+		devices.test_SPI_device.bitRateRegister1	= 0x00;
 	#else
-		devices.test_SPI_device.chipSelect.in	= &msp430.PORT_1.digitalInput[5];
-		devices.test_SPI_device.channel			= SPI_CHANNEL_1;
-		devices.test_SPI_device.type			= SPI_TYPE_Slave;
-		devices.test_SPI_device.activeHigh		= true;
+		devices.test_SPI_device.chipSelect.in		= &msp430.PORT_1.digitalInput[5];
+		devices.test_SPI_device.channel				= SPI_CHANNEL_1;
+		devices.test_SPI_device.type				= SPI_TYPE_Slave;
+		devices.test_SPI_device.activeHigh			= true;
+		devices.test_SPI_device.controlRegister0	= 0xA1;
+		devices.test_SPI_device.controlRegister1	= 0x80;
+		devices.test_SPI_device.bitRateRegister0	= 0x04;
+		devices.test_SPI_device.bitRateRegister1	= 0x00;
 	#endif
 	
 	initialize_SPI(&devices.test_SPI_device);
