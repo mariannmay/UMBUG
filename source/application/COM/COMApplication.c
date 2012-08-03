@@ -13,20 +13,12 @@
 UI16 currentToneIndex = 0;
 bool toggle = high;
 
-#if COM_PROCESSOR_COMPILE
-	#pragma vector=TIMERA0_VECTOR
-	__interrupt void timerA0int()
-	{
-	
-		if(TAIV && TAIV_TACCR1)	//if capture compare reg 1 interrupt
-		{
-			runRadio();
-		}
-		else
-		{
-		}
-	}
-#endif
+///////////////////////////////////////////////////////////////////
+
+void COM_timerA_ISR(void)
+{
+	runRadio();
+}
 
 ///////////////////////////////////////////////////////////////////
 
@@ -47,34 +39,35 @@ void COMMainScheduleLoop(void)
 
 void runRadio(void)
 {
-	bool timeToChangePhase = false;
-	
-	/*if (timeToChangePhase == true)
-	{
-		UI8 currentPhaseChangeOutOf32 = phaseShifts[currentPhaseShiftIndex];
-		phaseShifts[currentPhaseShiftIndex] = 0;
-		currentPhaseShiftIndex++;
-		if (currentPhaseShiftIndex >= PhaseShiftHistoryLength)
+	#if COM_PROCESSOR_COMPILE
+		bool timeToChangePhase = false;
+		
+		if (timeToChangePhase == true)
 		{
-			currentPhaseShiftIndex = 0;
+			UI8 currentPhaseChangeOutOf32 = phaseShifts[currentPhaseShiftIndex];
+			phaseShifts[currentPhaseShiftIndex] = 0;
+			currentPhaseShiftIndex++;
+			if (currentPhaseShiftIndex >= PhaseShiftHistoryLength)
+			{
+				currentPhaseShiftIndex = 0;
+			}
+			UI16 degreesChange = phaseAngles[currentPhaseChangeOutOf32];
+			UI16 toneIndexChange = ToneIndexPositionsPerDegreePhase * degreesChange;
+			currentToneIndex += toneIndexChange;
 		}
-		UI16 degreesChange = phaseAngles[currentPhaseChangeOutOf32];
-		UI16 toneIndexChange = ToneIndexPositionsPerDegreePhase * degreesChange;
-		currentToneIndex += toneIndexChange;
-	}
-	else
-	{*/
-		currentToneIndex += 100;	
-	//}
-	
-	if (currentToneIndex >= SINE_LENGTH)
-	{
-		currentToneIndex = (currentToneIndex % SINE_LENGTH);
-	}
-	
-	devices.radio.microphone->value = getToneValueAt(currentToneIndex);
-	startNewDigitalToAnalogConversion(devices.radio.microphone->value);
-	
+		else
+		{
+			currentToneIndex += 100;	
+		}
+		
+		if (currentToneIndex >= SINE_LENGTH)
+		{
+			currentToneIndex = (currentToneIndex % SINE_LENGTH);
+		}
+		
+		devices.radio.microphone->value = getToneValueAt(currentToneIndex);
+		startNewDigitalToAnalogConversion(devices.radio.microphone->value);
+	#endif
 	
 }
 

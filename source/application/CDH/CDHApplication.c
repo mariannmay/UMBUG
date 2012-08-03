@@ -8,6 +8,16 @@
 
 #include "CDHApplication.h"
 
+
+///////////////////////////////////////////////////////////////////
+
+void CDH_timerA_ISR(void)
+{
+	kickTheDog(&devices.systemWatchdog);
+}
+
+///////////////////////////////////////////////////////////////////
+
 void CDH_application_main(void)
 {
 	// TODO: This will be where the scheduler is started, and before that, the timer to 

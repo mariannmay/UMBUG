@@ -28,11 +28,11 @@ void test_application_main(void)
 
 	//test_SPI_framework();
 	//test_SPI_framework_2();
-	//int i;
-	//for (i = 0;i < 10000;i++)
-	//{
-	//	test_realTimeClock();
-	//}
+	int i;
+	for (i = 0;i < 10000;i++)
+	{
+		test_realTimeClock();
+	}
 	//int i;
 	//for (i = 0;i < 10000;i++)
 	//{
@@ -46,7 +46,7 @@ void test_application_main(void)
 	
 	//test_digitalToAnalog();
 	//test_radio();
-	test_PSK();
+	//test_PSK();
 	//test_toneGenerator();
 	
 	logLine("");
@@ -421,13 +421,15 @@ void test_COMmain(void)
 
 void test_toneGenerator(void)
 {
-	for (;;)
-	{
-		startNewDigitalToAnalogConversion(devices.radio.microphone->value);
-		
-		//UI16 wait;
-		//for (wait = 6000; wait --> 0;) { }
-	}
+	#if COM_PROCESSOR_COMPILE
+		for (;;)
+		{
+			startNewDigitalToAnalogConversion(devices.radio.microphone->value);
+			
+			//UI16 wait;
+			//for (wait = 6000; wait --> 0;) { }
+		}
+	#endif
 }
 
 ///////////////////////////////////////////////////////////////////
@@ -435,10 +437,6 @@ void test_toneGenerator(void)
 void test_PSK(void)
 {
 	logLine("Testing PSK");
-
-	enableInterrupts();
-	long x;
-	for(x=0; x<100000;x++){;}
 	
 	disableInterrupts();
 
@@ -452,37 +450,18 @@ void test_PSK(void)
 	data[6] = 0x00;
 	data[7] = 0x89;
 	
-	//printf("data: ");
+	printf("data: ");
 	int i;
-	//for(i = 0; i < 8; i++)
-	//{
-	//	printf(" %x\t", data[i]);
-	//}
-	//fflush(stdout);
+	for(i = 0; i < 8; i++)
+	{
+		printf(" %x\t", data[i]);
+	}
+	fflush(stdout);
 	
-	//convertBinaryToPSK(data,8);
-	for(x=0; x<100000;x++){;}
+	convertBinaryToPSK(data,8);
+	
 	enableInterrupts();
 	
-	disableInterrupts();
-	for(x=0; x<100000;x++){;}
-	enableInterrupts();
-	for(x=0; x<100000;x++){;}
-	disableInterrupts();
-	for(x=0; x<100000;x++){;}
-	enableInterrupts();
-	for(x=0; x<100000;x++){;}
-	disableInterrupts();
-	for(x=0; x<100000;x++){;}
-	enableInterrupts();
-	for(x=0; x<100000;x++){;}
-	disableInterrupts();
-	for(x=0; x<100000;x++){;}
-	enableInterrupts();
-	for(x=0; x<100000;x++){;}
-	disableInterrupts();
-	for(x=0; x<100000;x++){;}
-	enableInterrupts();
 }
 
 ///////////////////////////////////////////////////////////////////

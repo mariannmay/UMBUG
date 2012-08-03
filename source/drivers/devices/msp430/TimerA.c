@@ -77,29 +77,28 @@ void changeTimerAInterrupt((*pt2func)(void)){
 	timerAInt_taccr1 = pt2func;	
 }
 */
-/*
+
 #pragma vector=TIMERA0_VECTOR
-__interrupt void timerA0int(){
-	
-	//see which interrupt was actually fired:
-	//toggleStatusLED();
-	
-	
-	//printf("TEst\n");
+__interrupt void timerA0int()
+{
 	if(TAIV && TAIV_TACCR1)	//if capture compare reg 1 interrupt
 	{
-		timerAInt_taccr1();
+		#if CDH_PROCESSOR_COMPILE
+			CDH_timerA_ISR();
+		#endif
+		
+		#if COM_PROCESSOR_COMPILE
+			COM_timerA_ISR();
+		#endif
 		
 	}
 	
 	
-//	
-//	if (TAIV && TAIV_TACCR2) //if capture compare reg 2 interrupt
-//	{
-//		
-//	}
+	if (TAIV && TAIV_TACCR2) //if capture compare reg 2 interrupt
+	{
+		
+	}
 	return;
 	
 }
-*/
 

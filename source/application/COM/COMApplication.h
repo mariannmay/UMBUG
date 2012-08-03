@@ -16,6 +16,8 @@
 #include "../COM/Tone.h"
 #include "../COM/PSK.h"
 
+void COM_timerA_ISR(void);
+
 void COM_application_main(void);
 void COMMainScheduleLoop(void);
 void runRadio(void);

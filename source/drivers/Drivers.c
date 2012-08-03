@@ -79,11 +79,18 @@ void drivers_initialize(void)
 	// System Clock Frequency Integrator 0 ///////////////////////
 	
 	SCFI0 &= ~(FLLD0 + FLLD1);
-	SCFI0 |= FN_8; //FLL_DIV_1 |
+	
+	#if CDH_PROCESSOR_COMPILE
+		SCFI0 |= FN_2; //FLL_DIV_1 |
+	#endif
+	
+	#if COM_PROCESSOR_COMPILE
+		SCFI0 |= FN_8; //FLL_DIV_1 |
+	#endif
 	 
 	// System Clock Frequency Control ////////////////////////////
 	
-	SCFQCTL = SCFQ_2M;
+	SCFQCTL = SCFQ_1M;
 	
 	// Digital to analog conversion //////////////////////////////
 	#if COM_PROCESSOR_COMPILE
