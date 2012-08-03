@@ -49,7 +49,7 @@ void runRadio(void)
 {
 	bool timeToChangePhase = false;
 	
-	if (timeToChangePhase == true)
+	/*if (timeToChangePhase == true)
 	{
 		UI8 currentPhaseChangeOutOf32 = phaseShifts[currentPhaseShiftIndex];
 		phaseShifts[currentPhaseShiftIndex] = 0;
@@ -62,6 +62,10 @@ void runRadio(void)
 		UI16 toneIndexChange = ToneIndexPositionsPerDegreePhase * degreesChange;
 		currentToneIndex += toneIndexChange;
 	}
+	else
+	{*/
+		currentToneIndex += 100;	
+	//}
 	
 	if (currentToneIndex >= SINE_LENGTH)
 	{
@@ -71,7 +75,6 @@ void runRadio(void)
 	devices.radio.microphone->value = getToneValueAt(currentToneIndex);
 	startNewDigitalToAnalogConversion(devices.radio.microphone->value);
 	
-	currentToneIndex += 100;
 	
 }
 

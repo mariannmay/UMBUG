@@ -18,6 +18,9 @@ void test_application_initialize(void)
 	#else
 		logLine("running test on COM processor");
 		logLine("please check UMSATS_COM_log.txt");
+		
+		// TODO REMOVE
+		disableInterrupts();
 	#endif
 }
 
@@ -436,6 +439,12 @@ void test_PSK(void)
 {
 	logLine("Testing PSK");
 
+	enableInterrupts();
+	long x;
+	for(x=0; x<100000;x++){;}
+	
+	disableInterrupts();
+
 	Byte data[8];
 	data[0] = 0xFF;
 	data[1] = 0xFF;
@@ -446,16 +455,37 @@ void test_PSK(void)
 	data[6] = 0x00;
 	data[7] = 0x89;
 	
-	printf("data: ");
+	//printf("data: ");
 	int i;
-	for(i = 0; i < 8; i++)
-	{
-		printf(" %x\t", data[i]);
-	}
-	fflush(stdout);
+	//for(i = 0; i < 8; i++)
+	//{
+	//	printf(" %x\t", data[i]);
+	//}
+	//fflush(stdout);
 	
-	convertBinaryToPSK(data,8);
-	fflush(stdout);
+	//convertBinaryToPSK(data,8);
+	for(x=0; x<100000;x++){;}
+	enableInterrupts();
+	
+	disableInterrupts();
+	for(x=0; x<100000;x++){;}
+	enableInterrupts();
+	for(x=0; x<100000;x++){;}
+	disableInterrupts();
+	for(x=0; x<100000;x++){;}
+	enableInterrupts();
+	for(x=0; x<100000;x++){;}
+	disableInterrupts();
+	for(x=0; x<100000;x++){;}
+	enableInterrupts();
+	for(x=0; x<100000;x++){;}
+	disableInterrupts();
+	for(x=0; x<100000;x++){;}
+	enableInterrupts();
+	for(x=0; x<100000;x++){;}
+	disableInterrupts();
+	for(x=0; x<100000;x++){;}
+	enableInterrupts();
 }
 
 ///////////////////////////////////////////////////////////////////
