@@ -5,761 +5,2400 @@ transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
 
-testing real time clock
 transmission: 8f
 transmission: 4
 transmission: f
 transmission: 0
-read control register: 
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
+
+transmission: 8f
+transmission: 4
+transmission: f
+transmission: 0
+read control register: 0
+read control register: 4
 

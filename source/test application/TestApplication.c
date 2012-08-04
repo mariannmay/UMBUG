@@ -28,11 +28,7 @@ void test_application_main(void)
 
 	//test_SPI_framework();
 	//test_SPI_framework_2();
-	int i;
-	for (i = 0;i < 10000;i++)
-	{
-		test_realTimeClock();
-	}
+	test_realTimeClock();
 	//int i;
 	//for (i = 0;i < 10000;i++)
 	//{
@@ -282,6 +278,11 @@ void test_radio(void)
 void test_realTimeClock(void)
 {
 	logLine("testing real time clock");
+	if (!initialize_SPI(&devices.realTimeClock.SPI))
+	{
+		logLine("Could not initialize SPI\r\n");
+		return;
+	}
 	
 	// each transaction with the rtc must be a burst of at least
 	// 2 bytes.  The first byte, you tell it what address to use
@@ -289,23 +290,28 @@ void test_realTimeClock(void)
 	// On a read, the second byte will come to you from rtc.
 	// On a write, the second byte must be sent to the rtc.
 	
-	// Poll the status register
-	Byte toRTC[2];
-	toRTC[0] = RTC_WRITE_CONTROL_REGISTER;
-	toRTC[1] = RTC_DISABLE_WRITE_PROTECT;
-	SPI_transmitStream(&devices.realTimeClock.SPI, toRTC, 2);
-	printf("transmission: %x\r\n", (devices.realTimeClock.SPI.transmitMessage[0]));
-	printf("transmission: %x\r\n", (devices.realTimeClock.SPI.transmitMessage[1]));
-	
-	toRTC[0] = RTC_READ_CONTROL_REGISTER;
-	toRTC[1] = EMPTY_CHAR;
-	SPI_transmitStream(&devices.realTimeClock.SPI, toRTC, 2);
-	printf("transmission: %x\r\n", (devices.realTimeClock.SPI.transmitMessage[0]));
-	printf("transmission: %x\r\n", (devices.realTimeClock.SPI.transmitMessage[1]));
-	
-	// should have read the byte you just wrote (RTC_DISABLE_WRITE_PROTECT)
-	printf("read control register: %h\r\n\r\n", (devices.realTimeClock.SPI.receiveMessage[1]));
-	fflush(stdout);
+	for (;;)
+	{
+		
+		// Poll the status register
+		Byte toRTC[2];
+		toRTC[0] = RTC_WRITE_CONTROL_REGISTER;
+		toRTC[1] = RTC_DISABLE_WRITE_PROTECT;
+		SPI_transmitStream(&devices.realTimeClock.SPI, toRTC, 2);
+		printf("transmission: %x\r\n", (devices.realTimeClock.SPI.transmitMessage[0]));
+		printf("transmission: %x\r\n", (devices.realTimeClock.SPI.transmitMessage[1]));
+		
+		toRTC[0] = RTC_READ_CONTROL_REGISTER;
+		toRTC[1] = EMPTY_CHAR;
+		SPI_transmitStream(&devices.realTimeClock.SPI, toRTC, 2);
+		printf("transmission: %x\r\n", (devices.realTimeClock.SPI.transmitMessage[0]));
+		printf("transmission: %x\r\n", (devices.realTimeClock.SPI.transmitMessage[1]));
+		
+		// should have read the byte you just wrote (RTC_DISABLE_WRITE_PROTECT)
+		printf("read control register: %x\r\n", (devices.realTimeClock.SPI.receiveMessage[0]));
+		printf("read control register: %x\r\n\r\n", (devices.realTimeClock.SPI.receiveMessage[1]));
+		fflush(stdout);
+	}
 }
 
 ///////////////////////////////////////////////////////////////////

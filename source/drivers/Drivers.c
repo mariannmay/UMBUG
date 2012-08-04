@@ -34,7 +34,7 @@ void drivers_initialize(void)
 	devices.realTimeClock.SPI.activeHigh		= true;
 	devices.realTimeClock.SPI.controlRegister0	= 0x29;
 	devices.realTimeClock.SPI.controlRegister1	= 0x80;
-	devices.realTimeClock.SPI.bitRateRegister0	= 0x08;
+	devices.realTimeClock.SPI.bitRateRegister0	= 0x20;
 	devices.realTimeClock.SPI.bitRateRegister1	= 0x00;
 	realTimeClock_initialize(&devices.realTimeClock);
 	
