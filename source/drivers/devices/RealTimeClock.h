@@ -87,5 +87,6 @@ RealTimeClock;
 void realTimeClock_initialize(RealTimeClock* clock);
 void realTimeClock_update(RealTimeClock* clock);
 void realTimeClock_reset(RealTimeClock* clock);
+bool realTimeClock_set(RealTimeClock* clock, Time* t);
 
 #endif

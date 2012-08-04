@@ -13,7 +13,8 @@
 
 #include "../userConfig.h"
 #include "../drivers/Drivers.h"
-#include "SystemConfig.h"
+#include "../system/SystemConfig.h"
+#include "../system/BinaryCodedDecimal.h"
 #include <stdlib.h>
 
 #if DebugMode
@@ -21,6 +22,9 @@
 	#include "stdio.h"
 	#include "assert.h"
 	#include "./Log.h"
+
+	extern void test_application_initialize(void);
+	extern void test_application_main(void);
 #endif
 
 //////////////////////////////////
@@ -39,7 +43,6 @@ void disableInterrupts(void);
 
 extern void application_main(void);
 extern void application_initialize(void);
-extern void test_application_initialize(void);
-extern void test_application_main(void);
+
 
 #endif

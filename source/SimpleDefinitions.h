@@ -45,9 +45,10 @@ typedef UL32 Time_ms;
 typedef struct
 {
 	Byte	seconds;
-	Byte	minutes; 
-	Byte	hours; 
-	Byte	date; 
+	Byte	minutes;
+	Byte	hours;
+	Byte	day;
+	Byte	date;
 	Byte	month; 
 	Byte	year; 
 }

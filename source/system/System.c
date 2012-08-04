@@ -6,7 +6,7 @@
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "System.h"
+#include "../system/System.h"
 #include "../drivers/devices/msp430/TimerA.h"
 #include <stdio.h>
 
@@ -28,7 +28,6 @@ void system_initialize(void)
 	
 	StopMSP430WatchdogTimer;
 	initTimerA();
-	//enableInterrupts();
 	
 	#if DebugMode
 		test_application_initialize();
@@ -37,17 +36,18 @@ void system_initialize(void)
 		application_initialize();
 	#endif
 	
-	
 }
 
 //////////////////////////////////////////////////////////////////
 
 // 	main has an infinite loop which calls this function every time
 void system_main(void)
-{	
+{
+	enableInterrupts();
+	
 	// run the program
 	#if DebugMode
-		logLine("== DEBUG MODE ==\r\n");
+		logLine("== DEBUG MODE ==");
 		test_application_main();
 	#else
 		application_main();
