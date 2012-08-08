@@ -54,9 +54,11 @@ void InitUART(void){
   P4SEL |= 0x03;                            // P4.1,0 = USART1 TXD/RXD
   ME2 |= UTXE1 + URXE1;                     // Enable USART1 TXD/RXD
   U1CTL |= CHAR;                            // 8-bit character
-  U1TCTL |= SSEL1 + SSEL0;                          // UCLK = ACLK
-  //UCA0CTL1 |= UCSSEL0;				// use SMCLK hopefully.
-  U1BR0 = 0xF2;                             // 
+  U1TCTL |= SSEL0;                          // UCLK = ACLK
+  U1TCTL &= ~SSEL1;
+  U1TCTL &= ~CKPL;
+  U1RCTL |= SSEL1 + SSEL0;
+  U1BR0 = 0x03;                             // 
   U1BR1 = 0x00;                             // 
   U1MCTL = 0x29;                            // Modulation
   U1CTL &= ~SWRST;                          // Initialize USART state machine
@@ -65,7 +67,7 @@ void InitUART(void){
  for (;;){
   while (!(IFG2 & UTXIFG1));                // USART1 TX buffer ready?
 
-  
+
  IFG2&=~UTXIFG1;
   TXBUF1 = 0xAC;}                          // RXBUF1 to TXBUF1
 
