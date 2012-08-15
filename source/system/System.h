@@ -15,6 +15,7 @@
 #include "../drivers/Drivers.h"
 #include "../system/SystemConfig.h"
 #include "../system/BinaryCodedDecimal.h"
+#include "../system/UMSAT_Math/NaturalLogarithm.h"
 #include <stdlib.h>
 
 #if DebugMode

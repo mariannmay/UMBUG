@@ -6,14 +6,15 @@
 //														//
 //////////////////////////////////////////////////////////
 
-
 #ifndef THM_H
 #define THM_H
 
-#include <stdio.h>
+// includes //////////////////////////////////////////////
 
-void setupADC(void);
-void getThermalSensor(void);
+#include "../../system/System.h"
 
+// external interface ////////////////////////////////////
+
+void THM_application_main(void);
 
 #endif

@@ -10,6 +10,7 @@
 #define REALTIMECLOCK_H
 
 #include "../DriversConfig.h"
+#include "../../system/BinaryCodedDecimal.h"
 
 // address space (for DS1306) /////////////////
 

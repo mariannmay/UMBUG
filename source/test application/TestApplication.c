@@ -53,8 +53,10 @@ void test_application_main(void)
 			test_realTimeClock();
 		#endif
 		test_BinaryCodedDecimal();
+		test_NaturalLogarithm();
 		
 		
+		logLine("");
 		logLine("");
 		logLine("All tests complete! --------------------");
 		system_abort();
@@ -222,13 +224,7 @@ void test_application_main(void)
 	
 	void test_thermocouple(void)
 	{
-		logLine("Testing thermocouple");
-		Word raw;
-		for (;;)
-		{
-			raw = thermocouple_read(&devices.testThermocouple);
-			logCombo("raw voltage: ", raw);
-		}
+		// TODO
 	}
 	
 	///////////////////////////////////////////////////////////////////
@@ -549,6 +545,67 @@ void test_application_main(void)
 		
 		logLine("    BCD is OK");
 		
+	}
+	
+	///////////////////////////////////////////////////////////////////
+	
+	void test_NaturalLogarithm(void)
+	{
+		logLine("\r\nTesting custom natural logarithm method");
+		
+		float testValue;
+		float testResult;
+		
+		testValue = 0; testResult = naturalLog(testValue);
+		printf("    ln(%f) = %f\r\n", testValue, testResult);
+		
+		testValue = 0.1; testResult = naturalLog(testValue);
+		printf("    ln(%f) = %f\r\n", testValue, testResult);
+		
+		testValue = 0.2; testResult = naturalLog(testValue);
+		printf("    ln(%f) = %f\r\n", testValue, testResult);
+		
+		testValue = 0.3; testResult = naturalLog(testValue);
+		printf("    ln(%f) = %f\r\n", testValue, testResult);
+		
+		testValue = 0.4; testResult = naturalLog(testValue);
+		printf("    ln(%f) = %f\r\n", testValue, testResult);
+		
+		testValue = 0.5; testResult = naturalLog(testValue);
+		printf("    ln(%f) = %f\r\n", testValue, testResult);
+		
+		testValue = 0.6; testResult = naturalLog(testValue);
+		printf("    ln(%f) = %f\r\n", testValue, testResult);
+		
+		testValue = 0.7; testResult = naturalLog(testValue);
+		printf("    ln(%f) = %f\r\n", testValue, testResult);
+		
+		testValue = 0.8; testResult = naturalLog(testValue);
+		printf("    ln(%f) = %f\r\n", testValue, testResult);
+		
+		testValue = 0.9; testResult = naturalLog(testValue);
+		printf("    ln(%f) = %f\r\n", testValue, testResult);
+		
+		testValue = 1; testResult = naturalLog(testValue);
+		printf("    ln(%f) = %f\r\n", testValue, testResult);
+		
+		testValue = 1.1; testResult = naturalLog(testValue);
+		printf("    ln(%f) = %f\r\n", testValue, testResult);
+		
+		testValue = 2; testResult = naturalLog(testValue);
+		printf("    ln(%f) = %f\r\n", testValue, testResult);
+		
+		testValue = 2.71; testResult = naturalLog(testValue);
+		printf("    ln(%f) = %f\r\n", testValue, testResult);
+		
+		testValue = 3; testResult = naturalLog(testValue);
+		printf("    ln(%f) = %f\r\n", testValue, testResult);
+		
+		testValue = 10; testResult = naturalLog(testValue);
+		printf("    ln(%f) = %f\r\n", testValue, testResult);
+		
+		testValue = 200; testResult = naturalLog(testValue);
+		printf("    ln(%f) = %f\r\n", testValue, testResult);
 	}
 	
 	///////////////////////////////////////////////////////////////////

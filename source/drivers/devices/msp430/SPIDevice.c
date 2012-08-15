@@ -148,20 +148,45 @@ void SPI_clearInterruptFlag(SPI_CHANNEL channel)
 
 void SPI_WRITE(SPI_CHANNEL channel, Byte byte)
 {
+	int timeout = 0;
 	switch (channel)
 	{
 		case SPI_CHANNEL_1:
-			while ((UC0IFG & UCB0TXIFG) == 0);						// wait while not ready for TX
+			while ((UC0IFG & UCB0TXIFG) == 0)						// wait while not ready for TX
+			{
+				if (timeout++ > 8000)
+				{
+					return;
+				}
+			}
 			SPI_clearInterruptFlag(channel);
 			UCB0TXBUF	 = byte;									// write
-			while ((UC0IFG & UCB0RXIFG) == 0);						// wait for RX buffer (full)
+			while ((UC0IFG & UCB0RXIFG) == 0)						// wait for RX buffer (full)
+			{
+				if (timeout++ > 8000)
+				{
+					return;
+				}
+			}
 			break;
 			
 		case SPI_CHANNEL_2:
-			while ((UC0IFG & UCA0TXIFG) == 0);						// wait while not ready for TX
+			while ((UC0IFG & UCA0TXIFG) == 0)						// wait while not ready for TX
+			{
+				if (timeout++ > 8000)
+				{
+					return;
+				}
+			}
 			SPI_clearInterruptFlag(channel);
 			UCA0TXBUF	 = byte;									// write
-			while ((UC0IFG & UCA0RXIFG) == 0);						// wait for RX buffer (full)
+			while ((UC0IFG & UCA0RXIFG) == 0)						// wait for RX buffer (full)
+			{
+				if (timeout++ > 8000)
+				{
+					return;
+				}
+			}
 			break;
 		
 		default:

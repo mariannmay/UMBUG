@@ -40,6 +40,7 @@ void test_application_main(void);
 		void test_toneGenerator(void);
 		void test_PSK(void);
 		void test_BinaryCodedDecimal(void);
+		void test_NaturalLogarithm(void);
 		
 		//////////////////////////////////
 	

@@ -31,7 +31,7 @@ typedef struct
 	DigitalOutput*	systemStatusLED;
 	//Battery			mainBattery;
 	
-	Thermocouple	testThermocouple;
+	Thermocouple	tardigradeTemperatureSensor;
 	AnalogInput*	test_AtoD;
 	SPI_Device		test_SPI_device;
 }
@@ -43,7 +43,7 @@ typedef struct
 	RealTimeClock	realTimeClock;
 	DigitalOutput*	systemStatusLED;
 	//Battery			mainBattery;
-	Thermocouple	testThermocouple;
+	Thermocouple	tardigradeTemperatureSensor;
 	Radio			radio;
 	SDCard			sdCard;
 	

@@ -8,6 +8,9 @@
 
 #include "Drivers.h"
 
+// TODO remove
+#include <stdio.h>
+
 // global variable ///////////////////////////////////////////////
 AllDevices devices;
 
@@ -16,6 +19,9 @@ AllDevices devices;
 void drivers_initialize(void)
 {
 	initialize_msp430_IO_ports();
+
+	printf("drivers_initialize()\r\n");
+	fflush(stdout);
 	
 	// refer to the msp430 spreadsheet on google docs for
 	// where to put your pins... when you use up a pin,
@@ -34,7 +40,7 @@ void drivers_initialize(void)
 	devices.realTimeClock.SPI.activeHigh		= true;
 	devices.realTimeClock.SPI.controlRegister0	= 0x29;
 	devices.realTimeClock.SPI.controlRegister1	= 0x80;
-	devices.realTimeClock.SPI.bitRateRegister0	= 0x20;
+	devices.realTimeClock.SPI.bitRateRegister0	= 0x04;
 	devices.realTimeClock.SPI.bitRateRegister1	= 0x00;
 	realTimeClock_initialize(&devices.realTimeClock);
 	
@@ -97,7 +103,7 @@ void drivers_initialize(void)
 	SCFI0 &= ~(FLLD0 + FLLD1);
 	
 	#if CDH_PROCESSOR_COMPILE
-		SCFI0 |= FN_2; //FLL_DIV_1 |
+		SCFI0 |= FN_8; //FLL_DIV_1 |
 	#endif
 	
 	#if COM_PROCESSOR_COMPILE
@@ -111,15 +117,17 @@ void drivers_initialize(void)
 	// Digital to analog conversion //////////////////////////////
 	#if COM_PROCESSOR_COMPILE
 		// TODO UNCOMMENT AFTER TEST OUTPUT DONE
-		devices.radio.microphone				= &msp430.PORT_6.analogOutput;
-		devices.test_AtoD						= &msp430.PORT_5.analogInput;
-		//devices.testPSK							= &msp430.PORT_6.analogOutput;
+		devices.radio.microphone						= &msp430.PORT_6.analogOutput;
+		devices.test_AtoD								= &msp430.PORT_5.analogInput;
+		//devices.testPSK								= &msp430.PORT_6.analogOutput;
 		
 	#endif
 	
-	// for debug purposes
-	// TODO REMOVE
-	devices.testThermocouple.voltageInput		= &msp430.PORT_6.analogInput[5]; // P6.5, pin #4
+	
+	
+	// Tardigrade temperature sensor
+	thermocouple_initialize(&devices.tardigradeTemperatureSensor);
+	devices.tardigradeTemperatureSensor.voltageInput	= &msp430.PORT_6.analogInput[5]; // P6.5, pin #4
 	
 	
 	// SD card

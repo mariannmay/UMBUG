@@ -49,6 +49,7 @@ void CDHMainScheduleLoop(void)
 		// read the current time (second precision)
 		realTimeClock_update(&devices.realTimeClock);
 		
+		
 		bool oneSecondHasPassed = (devices.realTimeClock.currentTime.seconds > systemTime.seconds);
 		bool oneMinuteHasPassed = (devices.realTimeClock.currentTime.minutes > systemTime.minutes);
 		bool oneHourHasPassed	= (devices.realTimeClock.currentTime.hours   > systemTime.hours);
@@ -78,6 +79,7 @@ void CDHMainScheduleLoop(void)
 			
 		}
 		
+		THM_application_main();
 	
 		//Freeze, criminal! >:|
 		

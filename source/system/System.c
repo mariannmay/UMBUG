@@ -16,18 +16,22 @@ Time systemTime;
 
 void system_initialize(void)
 {
-	
-	systemTime.seconds	= 0;
-	systemTime.minutes	= 0;
-	systemTime.hours	= 0;
-	systemTime.date		= 0;
-	systemTime.month	= 0;
-	systemTime.year		= 0;
-	
-	drivers_initialize();
+	systemTime.seconds	= 0x00;
+	systemTime.minutes	= 0x00;
+	systemTime.hours	= 0x00;
+	systemTime.day		= 0x01;
+	systemTime.date		= 0x01;
+	systemTime.month	= 0x01;
+	systemTime.year		= 0x12;
 	
 	StopMSP430WatchdogTimer;
-	initTimerA();
+	
+	// TODO remove
+	printf("system_initialize()\r\n");
+	fflush(stdout);
+	
+	drivers_initialize();
+
 	
 	#if DebugMode
 		test_application_initialize();

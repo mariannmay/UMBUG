@@ -24,11 +24,25 @@ void realTimeClock_initialize(RealTimeClock* clock)
 	realTimeClock_reset(clock);
 	initialize_SPI(&clock->SPI);
 	realTimeClock_unprotect(clock);
+	realTimeClock_set(clock, &clock->currentTime);
 }
 
 void realTimeClock_update(RealTimeClock* clock)
 {
-	// TODO
+	// read the time
+	Byte fromRTC[8] =  {	DUMMY_CHAR, DUMMY_CHAR, DUMMY_CHAR, DUMMY_CHAR,
+		  					DUMMY_CHAR, DUMMY_CHAR, DUMMY_CHAR, DUMMY_CHAR	};
+	fromRTC[0] = RTC_READ_SECONDS;
+	SPI_transmitStream(&clock->SPI, fromRTC, 8);
+	
+	// copy in
+	clock->currentTime.seconds	= clock->SPI.receiveMessage[1];
+	clock->currentTime.minutes	= clock->SPI.receiveMessage[2];
+	clock->currentTime.hours	= clock->SPI.receiveMessage[3];
+	clock->currentTime.day		= clock->SPI.receiveMessage[4];
+	clock->currentTime.date		= clock->SPI.receiveMessage[5];
+	clock->currentTime.month	= clock->SPI.receiveMessage[6];
+	clock->currentTime.year		= clock->SPI.receiveMessage[7];
 }
 
 void realTimeClock_reset(RealTimeClock* clock)
@@ -36,9 +50,10 @@ void realTimeClock_reset(RealTimeClock* clock)
 	clock->currentTime.seconds	= 0;
 	clock->currentTime.minutes	= 0;
 	clock->currentTime.hours	= 0;
-	clock->currentTime.date		= 0;
-	clock->currentTime.month	= 0;
-	clock->currentTime.year		= 0;
+	clock->currentTime.day		= BCD_SUNDAY;
+	clock->currentTime.date		= 0x01;
+	clock->currentTime.month	= 0x01;
+	clock->currentTime.year		= 0x12;
 	
 	clock->alarm0 = clock->currentTime;
 	clock->alarm1 = clock->currentTime;
