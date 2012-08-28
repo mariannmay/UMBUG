@@ -191,14 +191,17 @@ void SPI_setDummyOutput(SPI_CHANNEL channel)
 
 ///////////////////////////////////////////////
 
-void SPI_transmit(SPI_Device* device, const Byte data)
+void SPI_transmit(SPI_Device* device, const Byte data, bool useChipSelect)
 {
 	device->transmitMessage[0] = data;
 	
 	if (device->type == SPI_TYPE_Master)
 	{
-		if (device->activeHigh == true) setDigitalOutput(device->chipSelect.out);
-		else clearDigitalOutput(device->chipSelect.out);
+		if (useChipSelect)
+		{
+			if (device->activeHigh == true) setDigitalOutput(device->chipSelect.out);
+			else clearDigitalOutput(device->chipSelect.out);
+		}
 		
 		SPI_reset(device->channel);
 		SPI_slaveEnable(device->channel);
@@ -208,8 +211,11 @@ void SPI_transmit(SPI_Device* device, const Byte data)
 		//for (waitTimer = SPI_TIME_BETWEEN_BYTES; waitTimer > 0; waitTimer--){ ; }	// just a time killing loop
 		SPI_slaveDisable(device->channel);
 		
-		if (device->activeHigh == true) clearDigitalOutput(device->chipSelect.out);
-		else setDigitalOutput(device->chipSelect.out);
+		if (useChipSelect)
+		{
+			if (device->activeHigh == true) clearDigitalOutput(device->chipSelect.out);
+			else setDigitalOutput(device->chipSelect.out);
+		}
 	}
 	else if (device->type == SPI_TYPE_Slave)
 	{
@@ -235,7 +241,7 @@ void SPI_receive(SPI_Device* device)
 	
 	if (device->type == SPI_TYPE_Master)
 	{
-		SPI_transmit(device, DUMMY_CHAR);
+		SPI_transmit(device, DUMMY_CHAR, true);
 	}
 	else if (device->type == SPI_TYPE_Slave)
 	{
@@ -282,14 +288,17 @@ void SPI_receive(SPI_Device* device)
 	}
 }
 
-void SPI_transmitStream(SPI_Device* device, const Byte* data, UI8 length)
+void SPI_transmitStream(SPI_Device* device, const Byte* data, UI8 length, bool controlSelect)
 {
 	if (length > SPI_RX_BUFFER_SIZE || length > SPI_TX_BUFFER_SIZE) return;	// error
 	
 	if (device->type == SPI_TYPE_Master)
 	{
-		if (device->activeHigh == true) setDigitalOutput(device->chipSelect.out);
-		else clearDigitalOutput(device->chipSelect.out);
+		if (controlSelect)
+		{
+			if (device->activeHigh == true) setDigitalOutput(device->chipSelect.out);
+			else clearDigitalOutput(device->chipSelect.out);
+		}
 		
 		SPI_reset(device->channel);
 		SPI_slaveEnable(device->channel);
@@ -310,8 +319,11 @@ void SPI_transmitStream(SPI_Device* device, const Byte* data, UI8 length)
 		}
 		SPI_slaveDisable(device->channel);
 		
-		if (device->activeHigh == true) clearDigitalOutput(device->chipSelect.out);
-		else setDigitalOutput(device->chipSelect.out);
+		if (controlSelect)
+		{
+			if (device->activeHigh == true) clearDigitalOutput(device->chipSelect.out);
+			else setDigitalOutput(device->chipSelect.out);
+		}
 	}
 	else if (device->type == SPI_TYPE_Slave)
 	{

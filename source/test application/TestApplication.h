@@ -10,6 +10,9 @@
 #define TESTAPPLICATION_H
 
 #include "../userConfig.h"
+#include "../drivers/devices/msp430/NickTianSPI/sd_card.h"
+#include "../drivers/devices/msp430/NickTianSPI/error_codes.h"
+#include <stdio.h>
 
 ////////////////////////////////
 

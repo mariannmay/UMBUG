@@ -16,8 +16,8 @@
 // or the COM encoding controller
 // IMPORTANT: only one of these should be defined as 1.
 // NOT BOTH OF THEM
-#define CDH_PROCESSOR_COMPILE 1
-#define COM_PROCESSOR_COMPILE 0
+#define CDH_PROCESSOR_COMPILE 0
+#define COM_PROCESSOR_COMPILE 1
 
 #if CDH_PROCESSOR_COMPILE
 	//SUBSYSTEMS CONNECTED TO CDH
@@ -32,7 +32,7 @@
 #endif
 
 // devices connected processor
-#define RTC_CONNECTED 1
+#define RTC_CONNECTED 0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 

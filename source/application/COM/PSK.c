@@ -50,7 +50,7 @@ UI8 phaseChange(int digital[])
 	#if PRINT_PSK_TRACE
 		printf(" Word phaseChange(int digital[]) ...\n");
 		printf(" digital = ");
-		for (i = 0; i < 5; i++)
+		for (i = 0; i < 5; i++) // why 5? -DS
 		{
 			printf("%d ", digital[i]);
 		}
@@ -115,11 +115,11 @@ UI8 phaseChange(int digital[])
 					
 					system_abort();
 	}
-	UI8 degreeChange = temp_dChange;
-    #if PRINT_PSK_TRACE
-    	printf("     degreeChange: %d\n",degreeChange);
+
+    #if PRINT_PSK_TRACE || 1
+    	printf("     degreeChange: %d\n",temp_dChange);
     #endif
-	return degreeChange;
+	return temp_dChange;
 }
 
 void convertBinaryToPSK(Byte data[], int size)
@@ -290,8 +290,8 @@ void convertBinaryToPSK(Byte data[], int size)
             front = (front + 5) % 14;
             
             // find the phase change!
-        	phaseShifts[currentPhaseShiftIndex] += (ToneIndexPositionsPerDegreePhase * phaseChange(phase));
-        	currentPhaseShiftIndex++;
+        	phaseShifts[currentPhaseShiftIndex++] += phaseChange(phase);
+        	printf(" currentPhaseShiftIndex=%d phaseChange(phase)=%d\n", currentPhaseShiftIndex, phaseChange(phase));
         	if (currentPhaseShiftIndex >= PhaseShiftHistoryLength)
         	{
         		currentPhaseShiftIndex = 0;
@@ -342,8 +342,9 @@ void convertBinaryToPSK(Byte data[], int size)
             	phase[k] = 0;
             }
 
-        	phaseShifts[currentPhaseShiftIndex] += (ToneIndexPositionsPerDegreePhase * phaseChange(phase));
-        	currentPhaseShiftIndex++;
+        	// find the phase change!
+        	phaseShifts[currentPhaseShiftIndex++] += phaseChange(phase);
+        	printf(" currentPhaseShiftIndex=%d phaseChange(phase)=%d\n", currentPhaseShiftIndex, phaseChange(phase));
         	if (currentPhaseShiftIndex >= PhaseShiftHistoryLength)
         	{
         		currentPhaseShiftIndex = 0;
@@ -359,6 +360,20 @@ void convertBinaryToPSK(Byte data[], int size)
         }
         
 	}
+	
+	//for(i = 0; i < 8; i++)
+	//{
+	//	phaseShifts[i] = i;
+	//}
+	//printf("FIXED VALUES\n");
+	//phaseShifts[0] = 0;
+	//phaseShifts[1] = 1;
+	//phaseShifts[2] = 2;
+	//phaseShifts[3] = 3;
+	//phaseShifts[4] = 4;
+	//phaseShifts[5] = 5;
+	//phaseShifts[6] = 6;
+	//phaseShifts[7] = 7;
 }
 
 ///////////////////////////////////////////////////////////////////

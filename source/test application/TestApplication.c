@@ -42,7 +42,7 @@ void test_application_main(void)
 		
 		//test_digitalToAnalog();
 		//test_radio();
-		//test_PSK();
+		test_PSK();
 		//test_toneGenerator();
 		
 		// don't comment out the ones below, please
@@ -71,31 +71,31 @@ void test_application_main(void)
 		#if CDH_PROCESSOR_COMPILE
 			logLine("testing CDH SPI with framework");
 			logLine("    transmitting: Kane is awesome **********");
-			SPI_transmit(&devices.test_SPI_device, 'K');
-			SPI_transmit(&devices.test_SPI_device, 'a');
-			SPI_transmit(&devices.test_SPI_device, 'n');
-			SPI_transmit(&devices.test_SPI_device, 'e');
-			SPI_transmit(&devices.test_SPI_device, ' ');
-			SPI_transmit(&devices.test_SPI_device, 'i');
-			SPI_transmit(&devices.test_SPI_device, 's');
-			SPI_transmit(&devices.test_SPI_device, ' ');
-			SPI_transmit(&devices.test_SPI_device, 'a');
-			SPI_transmit(&devices.test_SPI_device, 'w');
-			SPI_transmit(&devices.test_SPI_device, 'e');
-			SPI_transmit(&devices.test_SPI_device, 's');
-			SPI_transmit(&devices.test_SPI_device, 'o');
-			SPI_transmit(&devices.test_SPI_device, 'm');
-			SPI_transmit(&devices.test_SPI_device, 'e');
-			SPI_transmit(&devices.test_SPI_device, ' ');
+			SPI_transmit(&devices.test_SPI_device, 'K', true);
+			SPI_transmit(&devices.test_SPI_device, 'a', true);
+			SPI_transmit(&devices.test_SPI_device, 'n', true);
+			SPI_transmit(&devices.test_SPI_device, 'e', true);
+			SPI_transmit(&devices.test_SPI_device, ' ', true);
+			SPI_transmit(&devices.test_SPI_device, 'i', true);
+			SPI_transmit(&devices.test_SPI_device, 's', true);
+			SPI_transmit(&devices.test_SPI_device, ' ', true);
+			SPI_transmit(&devices.test_SPI_device, 'a', true);
+			SPI_transmit(&devices.test_SPI_device, 'w', true);
+			SPI_transmit(&devices.test_SPI_device, 'e', true);
+			SPI_transmit(&devices.test_SPI_device, 's', true);
+			SPI_transmit(&devices.test_SPI_device, 'o', true);
+			SPI_transmit(&devices.test_SPI_device, 'm', true);
+			SPI_transmit(&devices.test_SPI_device, 'e', true);
+			SPI_transmit(&devices.test_SPI_device, ' ', true);
 		
 			int i;
 			for (i = 0; i < 10; i++)
 			{
-				SPI_transmit(&devices.test_SPI_device, '*');
+				SPI_transmit(&devices.test_SPI_device, '*', true);
 			}
 			
-			SPI_transmit(&devices.test_SPI_device, '\r');
-			SPI_transmit(&devices.test_SPI_device, '\n');
+			SPI_transmit(&devices.test_SPI_device, '\r', true);
+			SPI_transmit(&devices.test_SPI_device, '\n', true);
 			
 		#else
 			logLine("testing COM SPI with framework");
@@ -123,10 +123,10 @@ void test_application_main(void)
 			logLine("    transmitting: pwnage<-");
 			logLine("    with one TX");
 			Byte array[8] = {'p','w','n','a','g','e','<','-'};
-			SPI_transmitStream(&devices.test_SPI_device, array, 8);
+			SPI_transmitStream(&devices.test_SPI_device, array, 8, true);
 			
-			SPI_transmit(&devices.test_SPI_device, '\r');
-			SPI_transmit(&devices.test_SPI_device, '\n');
+			SPI_transmit(&devices.test_SPI_device, '\r', true);
+			SPI_transmit(&devices.test_SPI_device, '\n', true);
 		
 		#else
 			logLine("testing COM SPI with framework (2)");
@@ -316,7 +316,7 @@ void test_application_main(void)
 		Byte toRTC[2];
 		toRTC[0] = RTC_READ_CONTROL_REGISTER;
 		toRTC[1] = EMPTY_CHAR;
-		SPI_transmitStream(&devices.realTimeClock.SPI, toRTC, 2);
+		SPI_transmitStream(&devices.realTimeClock.SPI, toRTC, 2, true);
 		//printf("transmission: %x\r\n", (devices.realTimeClock.SPI.transmitMessage[0]));
 		//printf("transmission: %x\r\n", (devices.realTimeClock.SPI.transmitMessage[1]));
 		
@@ -351,7 +351,7 @@ void test_application_main(void)
 		
 		// only defined on COM processor
 		#if COM_PROCESSOR_COMPILE
-		
+		/*
 			long i;
 			for(i = 0; i < 10000; i++)
 			{
@@ -370,7 +370,7 @@ void test_application_main(void)
 			toSD[7] = DUMMY_CHAR;
 			toSD[8] = DUMMY_CHAR;
 			toSD[9] = DUMMY_CHAR;
-			SPI_transmitStream(&devices.sdCard.SPI, toSD, 10);
+			SPI_transmitStream(&devices.sdCard.SPI, toSD, 10, true);
 	
 			toSD[0] = 0x40;
 			toSD[1] = EMPTY_CHAR;
@@ -379,7 +379,7 @@ void test_application_main(void)
 			toSD[4] = EMPTY_CHAR;
 			toSD[5] = 0x95;
 			toSD[6] = DUMMY_CHAR;
-			SPI_transmitStream(&devices.sdCard.SPI, toSD, 7); //CMD0
+			SPI_transmitStream(&devices.sdCard.SPI, toSD, 7, true); //CMD0
 			
 			toSD[0] = DUMMY_CHAR;
 			toSD[1] = DUMMY_CHAR;
@@ -391,7 +391,7 @@ void test_application_main(void)
 			toSD[7] = DUMMY_CHAR;
 			toSD[8] = DUMMY_CHAR;
 			toSD[9] = DUMMY_CHAR;
-			SPI_transmitStream(&devices.sdCard.SPI, toSD, 10);
+			SPI_transmitStream(&devices.sdCard.SPI, toSD, 10, true);
 			
 			toSD[0] = 0x40;
 			toSD[1] = EMPTY_CHAR;
@@ -400,7 +400,7 @@ void test_application_main(void)
 			toSD[4] = 0x37; //0011 0111
 			toSD[5] = DUMMY_CHAR;
 			toSD[6] = DUMMY_CHAR;
-			SPI_transmitStream(&devices.sdCard.SPI, toSD, 7); //CMD55
+			SPI_transmitStream(&devices.sdCard.SPI, toSD, 7, true); //CMD55
 			
 			toSD[0] = 0x40;
 			toSD[1] = EMPTY_CHAR;
@@ -409,7 +409,7 @@ void test_application_main(void)
 			toSD[4] = 0x29; //0010 1001
 			toSD[5] = DUMMY_CHAR;
 			toSD[6] = DUMMY_CHAR;
-			SPI_transmitStream(&devices.sdCard.SPI, toSD, 7); //ACMD41
+			SPI_transmitStream(&devices.sdCard.SPI, toSD, 7, true); //ACMD41
 	
 			toSD[0] = 0x40;
 			toSD[1] = EMPTY_CHAR;
@@ -418,7 +418,7 @@ void test_application_main(void)
 			toSD[4] = 0x11;
 			toSD[5] = DUMMY_CHAR;
 			toSD[6] = DUMMY_CHAR;
-			SPI_transmitStream(&devices.sdCard.SPI, toSD, 7); //CMD17
+			SPI_transmitStream(&devices.sdCard.SPI, toSD, 7, true); //CMD17
 			
 			int count;
 			int num;
@@ -428,7 +428,7 @@ void test_application_main(void)
 				{
 					toSD[count] = DUMMY_CHAR;
 				}
-				SPI_transmitStream(&devices.sdCard.SPI, toSD, 32); //DUMMY x 512
+				SPI_transmitStream(&devices.sdCard.SPI, toSD, 32, true); //DUMMY x 512
 			}		
 			
 			toSD[0] = 0x40;
@@ -438,7 +438,43 @@ void test_application_main(void)
 			toSD[4] = 0x0D;
 			toSD[5] = DUMMY_CHAR;
 			toSD[6] = DUMMY_CHAR;
-			SPI_transmitStream(&devices.sdCard.SPI, toSD, 7); //CMD13
+			SPI_transmitStream(&devices.sdCard.SPI, toSD, 7, true); //CMD13
+		*/
+		
+		enableInterrupts();				// Enable Interrupts
+	
+	int error = NO_ERROR;
+	
+	
+        error = sd_init();					// Power up the SD card
+        
+	if(error)
+		printf("Error: init_sd()\n");
+	
+	printf("Init done\n");
+	
+	  int i = 0;
+	  char tx[512] = {0};
+	  char rx[512] = {0};
+
+        //generate test data
+        for (i = 0; i < 10; i++)
+        {  tx[i] = i%0xff;
+        }
+
+        error = sd_write(tx,10, 1);       
+        
+        error = sd_read(rx, 10,1);
+        
+        
+        //verify the data...
+        for (i = 0; i < 10; i++)
+          printf("0x%02x ", rx[i]);
+      
+	
+	error = sd_power_down();			// Power down the SD card
+	if(error)
+		printf("Error: power_down_sd()\n");
 	
 		#endif
 	}
@@ -494,6 +530,13 @@ void test_application_main(void)
 		fflush(stdout);
 		
 		convertBinaryToPSK(data,8);
+		
+		printf("\n\nPhase Shift History: ");
+		for(i = 0; i < PhaseShiftHistoryLength; i++)
+		{
+			printf("%d, ", phaseShifts[i]);
+		}
+		printf("\n");
 		
 		enableInterrupts();
 		

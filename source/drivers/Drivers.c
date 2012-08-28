@@ -40,7 +40,7 @@ void drivers_initialize(void)
 	
 	// SD card ///////////////////////////////////////////////////
 	#if COM_PROCESSOR_COMPILE
-		devices.sdCard.SPI.chipSelect.out		= &msp430.PORT_10.digitalOutput[3];
+		devices.sdCard.SPI.chipSelect.out		= &msp430.PORT_8.digitalOutput[0];
 		devices.sdCard.SPI.channel				= SPI_CHANNEL_2;
 		devices.sdCard.SPI.type					= SPI_TYPE_Master;
 		devices.sdCard.SPI.activeHigh			= false;
@@ -106,7 +106,7 @@ void drivers_initialize(void)
 	 
 	// System Clock Frequency Control ////////////////////////////
 	
-	SCFQCTL = SCFQ_1M;
+	SCFQCTL = SCFQ_2M;
 	
 	// Digital to analog conversion //////////////////////////////
 	#if COM_PROCESSOR_COMPILE
@@ -122,13 +122,6 @@ void drivers_initialize(void)
 	devices.testThermocouple.voltageInput		= &msp430.PORT_6.analogInput[5]; // P6.5, pin #4
 	
 	
-	// SD card
-	//devices.sdCard.SPI.bus					= &devices.spiBus;
-	//devices.sdCard.SPI.enable				= &msp430.PORT_8.digitalOutput[0];
-	//devices.sdCard.SPI.enable->state		= high;
-	//devices.sdCard.cardPresence				= &msp430.PORT_5.digitalInput[3];
-	//devices.sdCard.status					= SDCARD_UNINITIALIZED;
-	//sdCard_initialize(&devices.sdCard);
 	
 	// master multiplexer select lines... used for all multiplexed I/O
 	//devices.multiplexerSelectLines.S0		= &msp430.PORT_8.digitalOutput[1];
