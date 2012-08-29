@@ -42,17 +42,17 @@ void test_application_main(void)
 		
 		//test_digitalToAnalog();
 		//test_radio();
-		test_PSK();
-		//test_toneGenerator();
+		//test_PSK();
+		test_toneGenerator();
 		
 		// don't comment out the ones below, please
 		// if need be, change the #define in user_config.h
 		// KA
 		
-		#if RTC_CONNECTED
-			test_realTimeClock();
-		#endif
-		test_BinaryCodedDecimal();
+		//#if RTC_CONNECTED
+		//	test_realTimeClock();
+		//#endif
+		//test_BinaryCodedDecimal();
 		
 		
 		logLine("");
@@ -492,10 +492,12 @@ void test_application_main(void)
 	
 	void test_toneGenerator(void)
 	{
+		enableInterrupts();
+		
 		#if COM_PROCESSOR_COMPILE
 			for (;;)
 			{
-				startNewDigitalToAnalogConversion(devices.radio.microphone->value);
+				//startNewDigitalToAnalogConversion(devices.radio.microphone->value);
 				
 				//UI16 wait;
 				//for (wait = 6000; wait --> 0;) { }
