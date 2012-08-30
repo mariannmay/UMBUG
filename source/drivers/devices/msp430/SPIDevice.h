@@ -78,8 +78,8 @@ SPI_Device;
 
 bool initialize_SPI(SPI_Device* device);		// returns true if OK
 void SPI_transmit(SPI_Device* device, const Byte data, bool useChipSelect);
-void SPI_transmitStream(SPI_Device* device, const Byte* data, UI8 length, bool controlSelect);
-void SPI_receive(SPI_Device* device);
+void SPI_transmitStream(SPI_Device* device, const Byte* data, UI8 length, bool useChipSelect);
+void SPI_receive(SPI_Device* device, bool useChipSelect);
 
 #endif
 

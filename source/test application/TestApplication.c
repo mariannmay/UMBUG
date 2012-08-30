@@ -102,7 +102,7 @@ void test_application_main(void)
 			int i;
 			for (i = 0; i < 28; i++)
 			{
-				SPI_receive(&devices.test_SPI_device);
+				SPI_receive(&devices.test_SPI_device, true);
 				char received = devices.test_SPI_device.receiveMessage[0];
 				if (received != DUMMY_CHAR)
 				{
@@ -133,7 +133,7 @@ void test_application_main(void)
 			int i;
 			for (i = 0; i < 10; i++)
 			{
-				SPI_receive(&devices.test_SPI_device);
+				SPI_receive(&devices.test_SPI_device, true);
 				char received = devices.test_SPI_device.receiveMessage[0];
 				if (received != DUMMY_CHAR)
 				{

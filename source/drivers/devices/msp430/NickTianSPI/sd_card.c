@@ -161,7 +161,7 @@ int sd_cmd(char cmd, long args, char resp, char* response)
 	do
 	{
 		//error |= rx_spi(response);
-		SPI_receive(&devices.sdCard.SPI);
+		SPI_receive(&devices.sdCard.SPI, false);
                 i++;
                 //printf("0x%02x ", response[0]);
 

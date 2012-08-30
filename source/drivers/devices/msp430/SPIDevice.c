@@ -191,6 +191,7 @@ void SPI_setDummyOutput(SPI_CHANNEL channel)
 
 ///////////////////////////////////////////////
 
+
 void SPI_transmit(SPI_Device* device, const Byte data, bool useChipSelect)
 {
 	device->transmitMessage[0] = data;
@@ -207,8 +208,6 @@ void SPI_transmit(SPI_Device* device, const Byte data, bool useChipSelect)
 		SPI_slaveEnable(device->channel);
 		SPI_WRITE(device->channel, device->transmitMessage[0]);
 		device->receiveMessage[0] = SPI_READ(device->channel);
-		//int waitTimer;
-		//for (waitTimer = SPI_TIME_BETWEEN_BYTES; waitTimer > 0; waitTimer--){ ; }	// just a time killing loop
 		SPI_slaveDisable(device->channel);
 		
 		if (useChipSelect)
@@ -228,20 +227,18 @@ void SPI_transmit(SPI_Device* device, const Byte data, bool useChipSelect)
 		SPI_clearInterruptFlag(device->channel);
 		SPI_WRITE(device->channel, device->transmitMessage[0]);
 		device->receiveMessage[0] = SPI_READ(device->channel);
-		int waitTimer;
-		for (waitTimer = SPI_TIME_BETWEEN_BYTES; waitTimer > 0; waitTimer--){ ; }	// just a time killing loop
 	}
 }
 
 ///////////////////////////////////////////////
 
-void SPI_receive(SPI_Device* device)
+void SPI_receive(SPI_Device* device, bool useChipSelect)
 {
 	device->receiveMessage[0] = DUMMY_CHAR;
 	
 	if (device->type == SPI_TYPE_Master)
 	{
-		SPI_transmit(device, DUMMY_CHAR, true);
+		SPI_transmit(device, DUMMY_CHAR, useChipSelect);
 	}
 	else if (device->type == SPI_TYPE_Slave)
 	{
@@ -288,13 +285,13 @@ void SPI_receive(SPI_Device* device)
 	}
 }
 
-void SPI_transmitStream(SPI_Device* device, const Byte* data, UI8 length, bool controlSelect)
+void SPI_transmitStream(SPI_Device* device, const Byte* data, UI8 length, bool useChipSelect)
 {
 	if (length > SPI_RX_BUFFER_SIZE || length > SPI_TX_BUFFER_SIZE) return;	// error
 	
 	if (device->type == SPI_TYPE_Master)
 	{
-		if (controlSelect)
+		if (useChipSelect)
 		{
 			if (device->activeHigh == true) setDigitalOutput(device->chipSelect.out);
 			else clearDigitalOutput(device->chipSelect.out);
@@ -309,17 +306,10 @@ void SPI_transmitStream(SPI_Device* device, const Byte* data, UI8 length, bool c
 			device->transmitMessage[index] = data[index];
 			SPI_WRITE(device->channel, device->transmitMessage[index]);
 			device->receiveMessage[index] = SPI_READ(device->channel);
-			// TODO REMOVE
-			//if (device->receiveMessage[index] != DUMMY_CHAR)
-			//{
-			//	printf("incoming byte at index %d: %x\r\n", index, (device->receiveMessage[index]));
-			//}
-			int waitTimer;
-			for (waitTimer = SPI_TIME_BETWEEN_BYTES; waitTimer > 0; waitTimer--){ ; }	// just a time killing loop
 		}
 		SPI_slaveDisable(device->channel);
 		
-		if (controlSelect)
+		if (useChipSelect)
 		{
 			if (device->activeHigh == true) clearDigitalOutput(device->chipSelect.out);
 			else setDigitalOutput(device->chipSelect.out);
@@ -340,8 +330,6 @@ void SPI_transmitStream(SPI_Device* device, const Byte* data, UI8 length, bool c
 			device->transmitMessage[index] = data[index];
 			SPI_WRITE(device->channel, device->transmitMessage[index]);
 			device->receiveMessage[index] = SPI_READ(device->channel);
-			int waitTimer;
-			for (waitTimer = SPI_TIME_BETWEEN_BYTES; waitTimer > 0; waitTimer--){ ; }	// just a time killing loop
 		}
 	}
 }
