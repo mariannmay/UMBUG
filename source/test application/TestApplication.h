@@ -15,6 +15,7 @@
 #include "../application/ApplicationConfig.h"
 #include "../application/COM/Tone.h"
 #include "../application/COM/PSK.h"
+#include "../application/COM/PacketGrabber.h"
 #include <assert.h>
 #include <stdio.h>
 
@@ -30,6 +31,7 @@ void test_COMmain(void);
 void test_radio(void);
 void test_toneGenerator(void);
 void test_PSK(void);
+void test_packetGrabbing(void);
 
 //////////////////////////////////
 

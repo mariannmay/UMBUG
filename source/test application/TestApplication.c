@@ -28,11 +28,11 @@ void test_application_main(void)
 
 	//test_SPI_framework();
 	//test_SPI_framework_2();
-	int i;
-	for (i = 0;i < 10000;i++)
-	{
-		test_realTimeClock();
-	}
+	//int i;
+	//for (i = 0;i < 10000;i++)
+	//{
+	//	test_realTimeClock();
+	//}
 	//int i;
 	//for (i = 0;i < 10000;i++)
 	//{
@@ -48,6 +48,8 @@ void test_application_main(void)
 	//test_radio();
 	//test_PSK();
 	//test_toneGenerator();
+	
+	test_packetGrabbing();
 	
 	logLine("");
 	logLine("All tests complete! --------------------");
@@ -437,10 +439,10 @@ void test_toneGenerator(void)
 void test_PSK(void)
 {
 	logLine("Testing PSK");
-	
+	/*
 	disableInterrupts();
 
-	Byte data[8];
+	Byte data[32];
 	data[0] = 0xFF;
 	data[1] = 0xFF;
 	data[2] = 0xA1;
@@ -449,6 +451,30 @@ void test_PSK(void)
 	data[5] = 0x10;
 	data[6] = 0x00;
 	data[7] = 0x89;
+	data[8] = 0xFF;
+	data[9] = 0xFF;
+	data[10] = 0xA1;
+	data[11] = 0x2C;
+	data[12] = 0xB6;
+	data[13] = 0x10;
+	data[14] = 0x00;
+	data[15] = 0x89;
+	data[16] = 0xFF;
+	data[17] = 0xFF;
+	data[18] = 0xA1;
+	data[19] = 0x2C;
+	data[20] = 0xB6;
+	data[21] = 0x10;
+	data[22] = 0x00;
+	data[23] = 0x89;
+	data[24] = 0xFF;
+	data[25] = 0xFF;
+	data[26] = 0xA1;
+	data[27] = 0x2C;
+	data[28] = 0xB6;
+	data[29] = 0x10;
+	data[30] = 0x00;
+	data[31] = 0x89;
 	
 	printf("data: ");
 	int i;
@@ -458,10 +484,22 @@ void test_PSK(void)
 	}
 	fflush(stdout);
 	
-	convertBinaryToPSK(data,8);
+	///convertBinaryToPSK(data,32);
 	
 	enableInterrupts();
+	*/
+}
+
+void test_packetGrabbing(void)
+{
+
+	UI8 one = 0x7E;
+	UI8 two = 0x00;
+	unsigned int pos = findAX25Flag(one, two, 0, 8);
 	
+	printf("found at %d\n", pos);
+	fflush(stdout);
+
 }
 
 ///////////////////////////////////////////////////////////////////

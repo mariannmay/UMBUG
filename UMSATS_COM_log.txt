@@ -1,5 +1,7 @@
 == DEBUG MODE ==
 
-Testing PSK
+found at -1
 
 All tests complete! --------------------
+
+SYSTEM ABORT --------------

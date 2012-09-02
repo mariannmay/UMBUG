@@ -88,7 +88,7 @@ __interrupt void timerA0int()
 		#endif
 		
 		#if COM_PROCESSOR_COMPILE
-			COM_timerA_ISR();
+			//COM_timerA_ISR();
 		#endif
 		
 	}
