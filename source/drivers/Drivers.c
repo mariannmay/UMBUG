@@ -32,10 +32,10 @@ void drivers_initialize(void)
 	devices.realTimeClock.SPI.channel			= SPI_CHANNEL_1;
 	devices.realTimeClock.SPI.type				= SPI_TYPE_Master;
 	devices.realTimeClock.SPI.activeHigh		= true;
-	devices.realTimeClock.SPI.controlRegister0	= 0x29;
-	devices.realTimeClock.SPI.controlRegister1	= 0x80;
-	devices.realTimeClock.SPI.bitRateRegister0	= 0x20;
-	devices.realTimeClock.SPI.bitRateRegister1	= 0x00;
+	devices.realTimeClock.SPI.controlRegister0	= 0x29;	// 0010 1001
+	devices.realTimeClock.SPI.controlRegister1	= 0x80; // 1000 0000
+	devices.realTimeClock.SPI.bitRateRegister0	= 0x20; // 0010 0000
+	devices.realTimeClock.SPI.bitRateRegister1	= 0x00; // 0000 0000
 	realTimeClock_initialize(&devices.realTimeClock);
 	
 	// SD card ///////////////////////////////////////////////////
@@ -43,11 +43,12 @@ void drivers_initialize(void)
 		devices.sdCard.SPI.chipSelect.out		= &msp430.PORT_8.digitalOutput[0];
 		devices.sdCard.SPI.channel				= SPI_CHANNEL_2;
 		devices.sdCard.SPI.type					= SPI_TYPE_Master;
-		devices.sdCard.SPI.activeHigh			= true;
-		devices.sdCard.SPI.controlRegister0		= 0x29;
-		devices.sdCard.SPI.controlRegister1		= 0x80;
-		devices.sdCard.SPI.bitRateRegister0		= 0x20;
-		devices.sdCard.SPI.bitRateRegister1		= 0x00;
+		devices.sdCard.SPI.activeHigh			= false;
+		devices.sdCard.SPI.controlRegister0		= 0x29; // 0010 1001
+		devices.sdCard.SPI.controlRegister1		= 0x80; // 1000 0000
+		devices.sdCard.SPI.bitRateRegister0		= 0x20; // 0010 0000
+		devices.sdCard.SPI.bitRateRegister1		= 0x00; // 0000 0000
+		setDigitalOutput(devices.sdCard.SPI.chipSelect.out);
 		//sdCard_initialize(&devices.sdCard);
 	#endif
 	

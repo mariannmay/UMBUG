@@ -350,12 +350,13 @@ void test_application_main(void)
 	
 	#if COM_PROCESSOR_COMPILE
 		
+		extern void sdCard_sendCommand(Byte cmd, long args, UI8 responseSize, SDCard* card);
 		
 		void test_sdCard_initialization(void)
 		{
 			logLine("    test SD card initialization");
 			
-			clearDigitalOutput(devices.sdCard.SPI.chipSelect.out);
+			setDigitalOutput(devices.sdCard.SPI.chipSelect.out);
 			logLine("        sending FF 10 times... card requires 74 clock cycles");
 			// Send 80 clocks, SD card require at least 74 clock cycles
 			int i;
@@ -364,14 +365,57 @@ void test_application_main(void)
 				SPI_transmit(&devices.sdCard.SPI, 0xFF, false);
 			}
 		    // Assert CS before issuing any commands
-		    logLine("        CS high");
-			setDigitalOutput(devices.sdCard.SPI.chipSelect.out);
+		    logLine("        CS low");
+			clearDigitalOutput(devices.sdCard.SPI.chipSelect.out);
 			
 			//CMD0 - Begin the initialization procedure
+			logLine("");
 			logLine("        sending CMD0");
-			sdCard_sendCommand(CMD0, 0, CMD0_R, &devices.sdCard);
+			sdCard_sendCommand(CMD0, SD_EMPTY_ARGS, CMD0_R, &devices.sdCard);
 			
-			//sdCard_initialize(&devices.sdCard);			// Initialize the SD card
+			//CMD8 - Send the interface conditions, mandatory for SDHC cards
+			logLine("");
+			logLine("        sending CMD8");
+			sdCard_sendCommand(CMD8, (SD_VS << 8) + SD_CHECK, CMD8_R, &devices.sdCard);
+			
+			//CMD59 to indicate that CRC is used for SD card
+			logLine("");
+			logLine("        sending CMD59");
+			sdCard_sendCommand(CMD59, 1, CMD59_R, &devices.sdCard);
+			// ignore illegal
+			if(devices.sdCard.SPI.receiveMessage[0] & R1_ILLEGAL)
+			{
+				devices.sdCard.SPI.receiveMessage[0] &= ~R1_ILLEGAL;
+			}
+			
+			//CMD55 indicate that the next command is an application specific command
+        	//ACMD41 starts the internal initialization routine for SD card, 
+        	//when its response is 0 then the init is done
+			i = 0;
+			do
+			{
+				logLine("");
+				logLine("        sending CMD55");
+				sdCard_sendCommand(CMD55, SD_EMPTY_ARGS, CMD55_R, &devices.sdCard);
+				
+				logLine("");
+				logLine("        sending ACMD41");
+				sdCard_sendCommand(ACMD41, 0x40000000, ACMD41_R, &devices.sdCard);
+
+				i++;
+			    SPI_receive(&devices.sdCard.SPI, false);
+			}
+			while( ((devices.sdCard.SPI.receiveMessage[0] & R1_IDLE) == R1_IDLE) && (i < SD_TIMEOUT) );
+			
+			assert(i < SD_TIMEOUT);
+	           
+	    
+			//CMD58 read OCR, is used to check SD card accepted voltage level and initialization status
+			//use this CMD to verify that the specific SD card is okay to use
+			sdCard_sendCommand(CMD58, 1, CMD58_R, &devices.sdCard);
+	    	assert(!(devices.sdCard.SPI.receiveMessage[0] & R1_ERR));
+	    	
+	    	setDigitalOutput(devices.sdCard.SPI.chipSelect.out);
 			logLine("    SD initialization OK");
 		}
 		

@@ -3,24 +3,115 @@ Testing the SD card
     making sure SPI is initialized
     test SD card initialization
         sending FF 10 times... card requires 74 clock cycles
-        CS high
+        CS low
+
         sending CMD0
-        sending command to SD card
-            CMD: 0
-            args: 0
+            CMD: 0x0
+            args: 0x0
             expected response size: 1
-            CRC: 95
+            CRC: 0x95
             tx command...
-                40
-                0
-                0
-                0
-                0
-                ff
-                95
+                0x40
+                0x0
+                0x0
+                0x0
+                0x0
+                0x95
             tx done
             getting response...
-                7f
+                0x0
+        done sending CMD0
+
+        sending CMD8
+            CMD: 0x8
+            args: 0x1aa
+            expected response size: 5
+            CRC: 0x87
+            tx command...
+                0x48
+                0x0
+                0x0
+                0x1
+                0xaa
+                0x87
+            tx done
+            getting response...
+                0x0
+                0x0
+                0x0
+                0x0
+                0x0
+        done sending CMD8
+
+        sending CMD59
+            CMD: 0x3b
+            args: 0x1
+            expected response size: 1
+            CRC: 0x83
+            tx command...
+                0x7b
+                0x0
+                0x0
+                0x0
+                0x1
+                0x83
+            tx done
+            getting response...
+                0x0
+        done sending CMD3b
+
+        sending CMD55
+            CMD: 0x37
+            args: 0x0
+            expected response size: 1
+            CRC: 0x65
+            tx command...
+                0x77
+                0x0
+                0x0
+                0x0
+                0x0
+                0x65
+            tx done
+            getting response...
+                0x0
+        done sending CMD37
+
+        sending ACMD41
+            CMD: 0x29
+            args: 0x0
+            expected response size: 1
+            CRC: 0x77
+            tx command...
+                0x69
+                0x40
+                0x0
+                0x0
+                0x0
+                0x77
+            tx done
+            getting response...
+                0x0
+        done sending CMD29
+            CMD: 0x3a
+            args: 0x1
+            expected response size: 5
+            CRC: 0xef
+            tx command...
+                0x7a
+                0x0
+                0x0
+                0x0
+                0x1
+                0xef
+            tx done
+            getting response...
+                0x0
+                0x0
+                0x0
+                0x0
+                0x0
+        done sending CMD3a
     SD initialization OK
 
 All tests complete! --------------------

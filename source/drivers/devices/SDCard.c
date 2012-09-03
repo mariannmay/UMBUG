@@ -17,15 +17,15 @@
 void sdCard_sendCommand(Byte cmd, long args, UI8 responseSize, SDCard* card)
 {
 	#if DebugMode
-		logLine("        sending command to SD card");
 		printf("            CMD: 0x%x\r\n", cmd);
 		printf("            args: 0x%x\r\n", args);
 		logCombo("            expected response size", responseSize);
 	#endif
 	
-	int i;
+	int i = 0;
 	char crc;
-	Byte command[SD_MAX_RESP_LENGTH+2];
+	Byte command[SD_MAX_RESP_LENGTH+1];
+	Byte response[SD_MAX_RESP_LENGTH+1];
 
 	// Set the transmission bit in the command byte
 	command[0] = (cmd & CMD_MASK) | CMD_BITS;
@@ -34,29 +34,17 @@ void sdCard_sendCommand(Byte cmd, long args, UI8 responseSize, SDCard* card)
 	command[2] = args >> 16;
 	command[3] = args >> 8;
 	command[4] = args;
-	command[5] = DUMMY_CHAR;
 
 	// Generate the CRC and set the end bit
     crc = (make_crc7(&command[0], CMD_LENGTH, CRC7_POLY) << 1) | BIT0;
     
-	command[6] = crc;
+	command[5] = crc;
     
     #if DebugMode
-    	printf("            CRC: 0x%x\r\n", command[6]);
+    	printf("            CRC: 0x%x\r\n", command[5]);
     #endif
       
 	// Send the command and the first arguments and the CRC
-	// TODO is there a dummy char in byte 5?
-	/*
-	Byte data[7];
-	data[0] = command[0];
-	data[1] = command[1];
-	data[2] = command[2];
-	data[3] = command[3];
-	data[4] = command[4];
-	data[5] = DUMMY_CHAR;
-	data[6] = crc;
-	*/
 	
 	#if DebugMode
 		logLine("            tx command...");
@@ -66,28 +54,20 @@ void sdCard_sendCommand(Byte cmd, long args, UI8 responseSize, SDCard* card)
 		printf("                0x%x\r\n", command[3]);
 		printf("                0x%x\r\n", command[4]);
 		printf("                0x%x\r\n", command[5]);
-		printf("                0x%x\r\n", command[6]);
 	#endif
 	
-	SPI_transmitStream(&card->SPI, command, 7, false);
+	SPI_transmitStream(&card->SPI, command, SD_MAX_RESP_LENGTH+1, false);
     
     #if DebugMode
     	logLine("            tx done");
     #endif
     
+    i = 0;
 	// Receive bytes until the first bit of an incoming byte is 0
-	i = 0;
-    
 	do
 	{
-		
 		SPI_receive(&card->SPI, false);
         i++;
-        
-		#if DebugMode
-			logLine("            getting response...");
-		#endif
-
 	}
 	while( ((card->SPI.receiveMessage[0] & BIT7) == BIT7) && (i < SD_TIMEOUT));
 
@@ -99,29 +79,44 @@ void sdCard_sendCommand(Byte cmd, long args, UI8 responseSize, SDCard* card)
 		#endif
 		return;
 	}
-	else if (responseSize > 1)
+	else
 	{
-		// Otherwise receive the appropriate number of additional bytes for the response
-		Byte response[SD_MAX_RESP_LENGTH];
+		#if DebugMode
+			logLine("            getting response...");
+		#endif
 		
-		// starting at 1 because the first byte was already received above
-		for (i = 1; i < responseSize; i++)
+		// copy first part of response
+		response[0] = card->SPI.receiveMessage[0];
+		
+		if (responseSize > 1)
 		{
-			SPI_receive(&card->SPI, false);
-			response[i] = card->SPI.receiveMessage[0];
+			// receive the appropriate number of additional bytes for the response
+			// starting at 1 because the first byte was already received above
+			for (i = 1; i < responseSize; i++)
+			{
+				SPI_receive(&card->SPI, false);
+				response[i] = card->SPI.receiveMessage[0];
+			}
 		}
-		for (i = 1; i < responseSize; i++)
-		{
-			card->SPI.receiveMessage[i] = response[i];
-		} 
 		
+		// receive the CRC in the last byte
+		SPI_receive(&card->SPI, false);
+		response[SD_MAX_RESP_LENGTH] = card->SPI.receiveMessage[0];
+	
 	}
 	
+	
+	for (i = 0; i < responseSize+1; i++)
+	{
+		card->SPI.receiveMessage[i] = response[i];
+	} 
+		
 	#if DebugMode
 		for (i = 0; i < responseSize; i++)
 		{
-			printf("                %x\r\n", card->SPI.receiveMessage[i]);
+			printf("                0x%x\r\n", card->SPI.receiveMessage[i]);
 		}
+		printf("        done sending CMD%x\r\n", cmd);
 	#endif
 }
 
@@ -131,53 +126,46 @@ void sdCard_initialize(SDCard* card)
 {
 	initialize_SPI(&card->SPI);
 
-	int i;
-        
-    //!!!!!!!!!!!!HARDWARE AND BUS INITIALIZAITON!!!!
-    
-    clearDigitalOutput(card->SPI.chipSelect.out);
-					
-	// Set the SPI speed to about 80KHz for initialization
-	//spi_set_speed(HFXTCLK/80000);
+	setDigitalOutput(card->SPI.chipSelect.out);
+
 	// Send 80 clocks, SD card require at least 74 clock cycles
+	int i;
 	for(i = 0; i < 10; i++)
 	{
 		SPI_transmit(&card->SPI, 0xFF, false);
 	}
     // Assert CS before issuing any commands
-	setDigitalOutput(card->SPI.chipSelect.out);
-    
-    //!!!!!!!!!!!!!SENDING SD CARD COMMAND NOW!!!!!!
-        
+	clearDigitalOutput(card->SPI.chipSelect.out);
+	
 	//CMD0 - Begin the initialization procedure
-	sdCard_sendCommand(CMD0, 0, CMD0_R, card);
-                 
+	sdCard_sendCommand(CMD0, SD_EMPTY_ARGS, CMD0_R, card);
+	
 	//CMD8 - Send the interface conditions, mandatory for SDHC cards
-	sdCard_sendCommand(CMD8,(SD_VS << 8) + SD_CHECK, CMD8_R, card);    
-        
+	sdCard_sendCommand(CMD8, (SD_VS << 8) + SD_CHECK, CMD8_R, card);
+	
 	//CMD59 to indicate that CRC is used for SD card
 	sdCard_sendCommand(CMD59, 1, CMD59_R, card);
-        
+	// ignore illegal
+	if(card->SPI.receiveMessage[0] & R1_ILLEGAL)
+	{
+		card->SPI.receiveMessage[0] &= ~R1_ILLEGAL;
+	}
+	
 	//CMD55 indicate that the next command is an application specific command
-    //ACMD41 starts the internal initialization routine for SD card, 
-    //when its response is 0 then the init is done
+	//ACMD41 starts the internal initialization routine for SD card, 
+	//when its response is 0 then the init is done
 	i = 0;
 	do
 	{
-		sdCard_sendCommand(CMD55, 0, CMD55_R, card);
-		// we have to send CMD55 before every ACMD
-           
+		sdCard_sendCommand(CMD55, SD_EMPTY_ARGS, CMD55_R, card);
 		sdCard_sendCommand(ACMD41, 0x40000000, ACMD41_R, card);
 
 		i++;
-		SPI_receive(&card->SPI, false);
+	    SPI_receive(&card->SPI, false);
 	}
-	while( ((*(card->SPI.receiveMessage) & R1_IDLE) == R1_IDLE) && (i < SD_TIMEOUT) ); 
+	while( ((card->SPI.receiveMessage[0] & R1_IDLE) == R1_IDLE) && (i < SD_TIMEOUT) );
 	
-	if(i >= SD_TIMEOUT)
-	{
-		// put error code here if req'd
-	}
+	setDigitalOutput(card->SPI.chipSelect.out);
 
 }
 

@@ -167,6 +167,8 @@
 
 #define SD_MAX_RESP_LENGTH      5
 
+#define SD_EMPTY_ARGS	0
+
 // struct //////////////////////////////////
 
 typedef struct
@@ -182,8 +184,7 @@ typedef struct
 }
 SDCard;
 
-// extended functionality
-void sdCard_sendCommand(Byte cmd, long args, UI8 responseSize, SDCard* card);
+// external interface
 void sdCard_initialize(SDCard* card);
 void sdCard_read(long blockAddress, SDCard* card);
 void sdCard_write(long blockAddress, SDCard* card);
