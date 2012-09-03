@@ -28,15 +28,37 @@ void set_subsystem_power(SubsystemsToControlPowerTo subs, SubsBool ONoff)
 	switch(subs)
 	{
 		case COM :
-			//cut power to COM
+			//cut or apply power to COM
+			//  set pin which controls COM power to be SubsBool
+			if (ONoff)
+			{
+				//set pin 
+				devices.pwrControllerCOM
+			}else{
+				//reset pin
+			}
 			break;
 			
 		case PLD1 :
-			//cut power to PLD1
+			//cut or apply power to PLD1
+			//  set pin which controls PLD1 power to be SubsBool
+			if (ONoff)
+			{
+				//set pin 
+			}else{
+				//reset pin
+			}
 			break;
 			
 		case PLD2 :
-			//cut power to PLD2
+			//cut or apply power to PLD2
+			//  set pin which controls PLD2 power to be SubsBool
+			if (ONoff)
+			{
+				//set pin 
+			}else{
+				//reset pin
+			}
 			break;
 			
 		default	  : ;

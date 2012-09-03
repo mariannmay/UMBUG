@@ -101,9 +101,9 @@ void initialize_msp430_IO_ports(void)
 	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[0],	8,	0	);	// 					/
 	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[1],	8,	1	);	// MUX select 0		/
 	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[2],	8,	2	);	// MUX select 1		/
-	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[3],	8,	3	);	// MUX select 2		/
-	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[4],	8,	4	);	// digitalMUXOut0	/
-	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[5],	8,	5	);	// digitalMUXOut1	/
+	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[3],	8,	3	);	// COM power enable	/
+	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[4],	8,	4	);	// PLD2 power enable/
+	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[5],	8,	5	);	// PLD1 power enable/
 	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[6],	8,	6	);	// digitalMUXOut2	/
 	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[7],	8,	7	);	//  				/
 	

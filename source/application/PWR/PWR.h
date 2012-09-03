@@ -34,5 +34,5 @@ void pwr_routine(void);
 void set_power_from_subsystem(SubsystemsToControlPowerTo, SubsBool);
 void cut_power_from_subsystem(SubsystemsToControlPowerTo);
 void add_power_to_subsystem(SubsystemsToControlPowerTo);
-#endif
 
+#endif /*PWR_H*/
