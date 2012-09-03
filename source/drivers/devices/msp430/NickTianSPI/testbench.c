@@ -27,7 +27,7 @@ int main()
 		printf("Error: enable_i2c()\n");
 	
 	a = timing_read();
-        error = sd_init();					// Power up the SD card
+        error = sd_initialize();					// Power up the SD card
         b = timing_read();
         //printf("%f\n", (b-a));	
         

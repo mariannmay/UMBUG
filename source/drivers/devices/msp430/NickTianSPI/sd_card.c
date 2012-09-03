@@ -44,10 +44,10 @@
 // SD Card command set
 #define CMD0			0		// GO_IDLE_STATE
 #define CMD0_R			R1
-#define CMD1                    1
-#define CMD1_R                  R1
-#define CMD2                    2
-#define CMD2_R                  R2
+#define CMD1            1
+#define CMD1_R          R1
+#define CMD2            2
+#define CMD2_R          R2
 #define CMD8			8		// SEND_IF_COND
 #define CMD8_R			R7
 #define CMD9			9		// SEND_IF_COND
@@ -58,8 +58,8 @@
 #define CMD16_R			R1
 #define CMD17			17		// READ_SINGLE_BLOCK
 #define CMD17_R			R1
-#define CMD18                   18
-#define CMD18_R                 R1
+#define CMD18           18
+#define CMD18_R         R1
 #define CMD24			24		// WRITE_BLOCK
 #define CMD24_R			R1
 #define CMD55			55		// APP_CMD
@@ -113,12 +113,11 @@ int sd_reset_bus(void);
  *              - must be large enough to fit the response
  * OUT: char - error code
  **/
-int sd_cmd(char cmd, long args, char resp, char* response)
+v sd_cmd(char cmd, long args, char resp, char* response)
 {
 	int error = NO_ERROR;
 	int i;
 	char crc;
-        //char crc_check;
 	char command[SD_MAX_RESP_LENGTH];
 
 	// Set the transmission bit in the command byte
@@ -130,7 +129,7 @@ int sd_cmd(char cmd, long args, char resp, char* response)
 	command[4] = args;
 
 	// Generate the CRC and set the end bit
-        crc = (make_crc7(&command[0], CMD_LENGTH, CRC7_POLY) << 1) | BIT0;
+    crc = (make_crc7(&command[0], CMD_LENGTH, CRC7_POLY) << 1) | BIT0;
       
 	// Send the command and the first arguments and the CRC
 	//error = spi_tx(command[0]);
@@ -141,13 +140,14 @@ int sd_cmd(char cmd, long args, char resp, char* response)
         //error |= spi_tx(0xff);
 	//error |= spi_tx(crc);
 	
-	Byte data[6];
-	data[0] = ((cmd & CMD_MASK) | CMD_BITS);
-	data[1] = args >> 24;
-	data[2] = args >> 16;
-	data[3] = args >> 8;
-	data[4] = args;
-	data[5] = crc;
+	Byte data[7];
+	data[0] = command[0];
+	data[1] = command[1];
+	data[2] = command[2];
+	data[3] = command[3];
+	data[4] = command[4];
+	data[5] = DUMMY_CHAR;
+	data[6] = crc;
 	
 	SPI_transmitStream(&devices.sdCard.SPI, data, 6, false);
 
@@ -194,7 +194,7 @@ int sd_cmd(char cmd, long args, char resp, char* response)
  * IN: void
  * OUT: int - error code (FALSE if no error)
  **/
-int sd_init(void)
+int sd_initialize(void)
 {
 	int i;
 	char response[MAX_R];

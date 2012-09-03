@@ -43,7 +43,8 @@ void test_application_main(void)
 		//test_digitalToAnalog();
 		//test_radio();
 		//test_PSK();
-		test_toneGenerator();
+		//test_toneGenerator();
+		test_sdCard();
 		
 		// don't comment out the ones below, please
 		// if need be, change the #define in user_config.h
@@ -441,43 +442,35 @@ void test_application_main(void)
 			SPI_transmitStream(&devices.sdCard.SPI, toSD, 7, true); //CMD13
 		*/
 		
-		enableInterrupts();				// Enable Interrupts
+			//enableInterrupts();				// Enable Interrupts
 	
-	int error = NO_ERROR;
-	
-	
-        error = sd_init();					// Power up the SD card
-        
-	if(error)
-		printf("Error: init_sd()\n");
-	
-	printf("Init done\n");
-	
-	  int i = 0;
-	  char tx[512] = {0};
-	  char rx[512] = {0};
+			sdCard_initialize(&devices.sdCard);			// Initialize the SD card
 
-        //generate test data
-        for (i = 0; i < 10; i++)
-        {  tx[i] = i%0xff;
-        }
-
-        error = sd_write(tx,10, 1);       
-        
-        error = sd_read(rx, 10,1);
-        
-        
-        //verify the data...
-        for (i = 0; i < 10; i++)
-          printf("0x%02x ", rx[i]);
-      
+			printf("SD card init done\n");
 	
-	error = sd_power_down();			// Power down the SD card
-	if(error)
-		printf("Error: power_down_sd()\n");
+			int i = 0;
+
+    		//generate test data
+    		for (i = 0; i < 10; i++)
+			{
+				devices.sdCard.TX_blockBuffer[i] = i%0xff;
+			}
+
+			sdCard_write(1, &devices.sdCard);  
+        
+			sdCard_read(1, &devices.sdCard);
+        
+        
+			//verify the data...
+			for (i = 0; i < 10; i++)
+			{
+				printf("0x%02x ", devices.sdCard.RX_blockBuffer[i]);
+			}
 	
 		#endif
 	}
+	
+	///////////////////////////////////////////////////////////////////
 	
 	void test_COMmain(void)
 	{

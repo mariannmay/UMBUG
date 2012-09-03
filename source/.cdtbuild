@@ -34,10 +34,12 @@
 <listOptionValue builtIn="false" value="&quot;C:\Users\Kane\Project-Cheesecake\source\drivers\devices&quot;"/>
 <listOptionValue builtIn="false" value="&quot;C:\Users\Kane\Project-Cheesecake\source\system&quot;"/>
 </option>
+<option id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.compilerID.SINGLE_INLINE.2040228089" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.compilerID.SINGLE_INLINE" value="false" valueType="boolean"/>
+<option id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.compilerID.REMOVE_HOOKS_WHEN_INLINING.2126319512" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.compilerID.REMOVE_HOOKS_WHEN_INLINING" value="false" valueType="boolean"/>
 </tool>
 <tool id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.linkerDebug.2024658675" name="MSP430 Linker" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.linkerDebug">
-<option id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.HEAP_SIZE.1764502941" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.HEAP_SIZE" value="0x400" valueType="string"/>
-<option id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.STACK_SIZE.1116675264" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.STACK_SIZE" value="0x400" valueType="string"/>
+<option id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.HEAP_SIZE.1764502941" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.HEAP_SIZE" value="0x200" valueType="string"/>
+<option id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.STACK_SIZE.1116675264" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.STACK_SIZE" value="0x200" valueType="string"/>
 <option id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.USE_HW_MPY.429558314" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.USE_HW_MPY" value="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.USE_HW_MPY.16" valueType="enumerated"/>
 <option id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.OUTPUT_FILE.1814804313" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.OUTPUT_FILE" value="&quot;Project-Cheesecake.out&quot;" valueType="string"/>
 <option id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.MAP_FILE.1124220020" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.MAP_FILE" value="&quot;Project-Cheesecake.map&quot;" valueType="string"/>
@@ -81,6 +83,9 @@
 </resourceConfiguration>
 <resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/drivers/devices/msp430/NickTianSPI/spi.c" name="spi.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/drivers/devices/msp430/NickTianSPI/spi.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1415143171./Project-Cheesecake/drivers/devices/msp430/NickTianSPI/spi.c">
 <tool id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1415143171./Project-Cheesecake/drivers/devices/msp430/NickTianSPI/spi.c" name="MSP430 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1415143171"/>
+</resourceConfiguration>
+<resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/drivers/devices/msp430/NickTianSPI/sd_card.c" name="sd_card.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/drivers/devices/msp430/NickTianSPI/sd_card.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1415143171./Project-Cheesecake/drivers/devices/msp430/NickTianSPI/sd_card.c">
+<tool id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1415143171./Project-Cheesecake/drivers/devices/msp430/NickTianSPI/sd_card.c" name="MSP430 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1415143171"/>
 </resourceConfiguration>
 </configuration>
 <configuration artifactExtension="out" artifactName="Project-Cheesecake" description="" id="com.ti.ccstudio.buildDefinitions.MSP430.Release.1524506253" name="Release" parent="com.ti.ccstudio.buildDefinitions.MSP430.Release">
@@ -126,5 +131,6 @@
 </tool>
 </toolChain>
 </configuration>
+<macros/>
 </project>
 </ManagedProjectBuildInfo>
