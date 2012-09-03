@@ -14,7 +14,7 @@
 
 /////////////////////////////////////////////////////////////
 
-#include <msp430fg4619.h>
+#include <msp430fg4618.h>
 #include "../SPIDevice.h"
 #include "./common.h"
 #include "./error_codes.h"

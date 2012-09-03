@@ -43,12 +43,12 @@ void drivers_initialize(void)
 		devices.sdCard.SPI.chipSelect.out		= &msp430.PORT_8.digitalOutput[0];
 		devices.sdCard.SPI.channel				= SPI_CHANNEL_2;
 		devices.sdCard.SPI.type					= SPI_TYPE_Master;
-		devices.sdCard.SPI.activeHigh			= false;
-		devices.sdCard.SPI.controlRegister0		= 0xA9;
+		devices.sdCard.SPI.activeHigh			= true;
+		devices.sdCard.SPI.controlRegister0		= 0x29;
 		devices.sdCard.SPI.controlRegister1		= 0x80;
-		devices.sdCard.SPI.bitRateRegister0		= 0x04;
+		devices.sdCard.SPI.bitRateRegister0		= 0x20;
 		devices.sdCard.SPI.bitRateRegister1		= 0x00;
-		sdCard_initialize(&devices.sdCard);
+		//sdCard_initialize(&devices.sdCard);
 	#endif
 	
 	// TEST SPI FRAMEWORK ONLY ///////////////////////////////////

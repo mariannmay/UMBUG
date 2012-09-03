@@ -24,6 +24,7 @@ void COM_timerA_ISR(void)
 
 void COM_application_main(void)
 {
+	sdCard_initialize(&devices.sdCard);
 	initializePSKBuffer();
 	logLine("COM scheduler initialized");
 	for(;;)

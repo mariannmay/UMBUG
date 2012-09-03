@@ -9,7 +9,7 @@
 #ifndef IOTYPES_H
 #define IOTYPES_H
 
-#include <msp430fg4619.h>
+#include <msp430fg4618.h>
 #include "../SimpleDefinitions.h"
 #include "./devices/msp430/AnalogToDigitalConverter.h"
 #include "./devices/msp430/DigitalToAnalogConverter.h"

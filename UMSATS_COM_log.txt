@@ -1,1 +1,28 @@
 == DEBUG MODE ==
+Testing the SD card
+    making sure SPI is initialized
+    test SD card initialization
+        sending FF 10 times... card requires 74 clock cycles
+        CS high
+        sending CMD0
+        sending command to SD card
+            CMD: 0
+            args: 0
+            expected response size: 1
+            CRC: 95
+            tx command...
+                40
+                0
+                0
+                0
+                0
+                ff
+                95
+            tx done
+            getting response...
+                7f
+    SD initialization OK
+
+All tests complete! --------------------
+
+SYSTEM ABORT --------------

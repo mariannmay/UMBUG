@@ -9,7 +9,7 @@
 #ifndef PHOTODIODES_H
 #define PHOTODIODES_H
 
-#include <msp430fg4619.h>
+#include <msp430fg4618.h>
 #include "../DriversConfig.h"
 
 //structures////////////////////////////////

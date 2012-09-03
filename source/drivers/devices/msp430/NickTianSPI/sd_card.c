@@ -149,7 +149,7 @@ v sd_cmd(char cmd, long args, char resp, char* response)
 	data[5] = DUMMY_CHAR;
 	data[6] = crc;
 	
-	SPI_transmitStream(&devices.sdCard.SPI, data, 6, false);
+	SPI_transmitStream(&devices.sdCard.SPI, data, 7, false);
 
 	// If there was an error here at all, return it
 	//if(error)

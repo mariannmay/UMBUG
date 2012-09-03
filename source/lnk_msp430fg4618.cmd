@@ -1,5 +1,5 @@
 /******************************************************************************/
-/* lnk_msp430fg4619.cmd - LINKER COMMAND FILE FOR LINKING MSP430FG4619 PROGRAMS     */
+/* lnk_msp430fg4618.cmd - LINKER COMMAND FILE FOR LINKING MSP430FG4618 PROGRAMS     */
 /*                                                                            */
 /*   Usage:  lnk430 <obj files...>    -o <out file> -m <map file> lnk.cmd     */
 /*           cl430  <src files...> -z -o <out file> -m <map file> lnk.cmd     */
@@ -125,5 +125,5 @@ SECTIONS
 /* INCLUDE PERIPHERALS MEMORY MAP                                           */
 /****************************************************************************/
 
--l msp430fg4619.cmd
+-l msp430fg4618.cmd
 

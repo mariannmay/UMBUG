@@ -9,12 +9,12 @@
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#ifndef MSP430FG4619PINS_H
-#define MSP430FG4619PINS_H
+#ifndef MSP430FG4618PINS_H
+#define MSP430FG4618PINS_H
 
 //////////////////////////////////////////////////////////////////
 
-#include <msp430fg4619.h>
+#include <msp430fg4618.h>
 #include "../../../application/ApplicationConfig.h"
 #include "../../IOTypes.h"
 #include "./AnalogToDigitalConverter.h"
@@ -61,11 +61,11 @@ typedef struct
 	SerialInput										  TDO;
 	
 }
-MSP430FG4619;
+MSP430FG4618;
 
 //////////////////////////////////////////////////////////////
 
-extern MSP430FG4619 msp430;
+extern MSP430FG4618 msp430;
 
 //////////////////////////////////////////////////////////////
 

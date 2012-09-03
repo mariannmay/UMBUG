@@ -346,126 +346,84 @@ void test_application_main(void)
 	
 	///////////////////////////////////////////////////////////////////
 	
-	void test_sdCard(void)
-	{
-		logLine("Testing the SD card");
+	// breakdown of the the sd card tests
+	
+	#if COM_PROCESSOR_COMPILE
 		
-		// only defined on COM processor
-		#if COM_PROCESSOR_COMPILE
-		/*
-			long i;
-			for(i = 0; i < 10000; i++)
+		
+		void test_sdCard_initialization(void)
+		{
+			logLine("    test SD card initialization");
+			
+			clearDigitalOutput(devices.sdCard.SPI.chipSelect.out);
+			logLine("        sending FF 10 times... card requires 74 clock cycles");
+			// Send 80 clocks, SD card require at least 74 clock cycles
+			int i;
+			for(i = 0; i < 10; i++)
 			{
-				;	// wait
+				SPI_transmit(&devices.sdCard.SPI, 0xFF, false);
 			}
+		    // Assert CS before issuing any commands
+		    logLine("        CS high");
+			setDigitalOutput(devices.sdCard.SPI.chipSelect.out);
+			
+			//CMD0 - Begin the initialization procedure
+			logLine("        sending CMD0");
+			sdCard_sendCommand(CMD0, 0, CMD0_R, &devices.sdCard);
+			
+			//sdCard_initialize(&devices.sdCard);			// Initialize the SD card
+			logLine("    SD initialization OK");
+		}
 		
-			Byte toSD[32];
+		void test_sdCard_commands(void)
+		{
+			logLine("    test SD card commands (SPI)");
 			
-			toSD[0] = DUMMY_CHAR;
-			toSD[1] = DUMMY_CHAR;
-			toSD[2] = DUMMY_CHAR;
-			toSD[3] = DUMMY_CHAR;
-			toSD[4] = DUMMY_CHAR;
-			toSD[5] = DUMMY_CHAR;
-			toSD[6] = DUMMY_CHAR;
-			toSD[7] = DUMMY_CHAR;
-			toSD[8] = DUMMY_CHAR;
-			toSD[9] = DUMMY_CHAR;
-			SPI_transmitStream(&devices.sdCard.SPI, toSD, 10, true);
-	
-			toSD[0] = 0x40;
-			toSD[1] = EMPTY_CHAR;
-			toSD[2] = EMPTY_CHAR;
-			toSD[3] = EMPTY_CHAR;
-			toSD[4] = EMPTY_CHAR;
-			toSD[5] = 0x95;
-			toSD[6] = DUMMY_CHAR;
-			SPI_transmitStream(&devices.sdCard.SPI, toSD, 7, true); //CMD0
-			
-			toSD[0] = DUMMY_CHAR;
-			toSD[1] = DUMMY_CHAR;
-			toSD[2] = DUMMY_CHAR;
-			toSD[3] = DUMMY_CHAR;
-			toSD[4] = DUMMY_CHAR;
-			toSD[5] = DUMMY_CHAR;
-			toSD[6] = DUMMY_CHAR;
-			toSD[7] = DUMMY_CHAR;
-			toSD[8] = DUMMY_CHAR;
-			toSD[9] = DUMMY_CHAR;
-			SPI_transmitStream(&devices.sdCard.SPI, toSD, 10, true);
-			
-			toSD[0] = 0x40;
-			toSD[1] = EMPTY_CHAR;
-			toSD[2] = EMPTY_CHAR;
-			toSD[3] = EMPTY_CHAR;
-			toSD[4] = 0x37; //0011 0111
-			toSD[5] = DUMMY_CHAR;
-			toSD[6] = DUMMY_CHAR;
-			SPI_transmitStream(&devices.sdCard.SPI, toSD, 7, true); //CMD55
-			
-			toSD[0] = 0x40;
-			toSD[1] = EMPTY_CHAR;
-			toSD[2] = EMPTY_CHAR;
-			toSD[3] = EMPTY_CHAR;
-			toSD[4] = 0x29; //0010 1001
-			toSD[5] = DUMMY_CHAR;
-			toSD[6] = DUMMY_CHAR;
-			SPI_transmitStream(&devices.sdCard.SPI, toSD, 7, true); //ACMD41
-	
-			toSD[0] = 0x40;
-			toSD[1] = EMPTY_CHAR;
-			toSD[2] = EMPTY_CHAR;
-			toSD[3] = EMPTY_CHAR;
-			toSD[4] = 0x11;
-			toSD[5] = DUMMY_CHAR;
-			toSD[6] = DUMMY_CHAR;
-			SPI_transmitStream(&devices.sdCard.SPI, toSD, 7, true); //CMD17
-			
-			int count;
-			int num;
-			for(num=0;num<16;num++)
-			{
-				for(count=0;count<32;count++)
-				{
-					toSD[count] = DUMMY_CHAR;
-				}
-				SPI_transmitStream(&devices.sdCard.SPI, toSD, 32, true); //DUMMY x 512
-			}		
-			
-			toSD[0] = 0x40;
-			toSD[1] = EMPTY_CHAR;
-			toSD[2] = EMPTY_CHAR;
-			toSD[3] = EMPTY_CHAR;
-			toSD[4] = 0x0D;
-			toSD[5] = DUMMY_CHAR;
-			toSD[6] = DUMMY_CHAR;
-			SPI_transmitStream(&devices.sdCard.SPI, toSD, 7, true); //CMD13
-		*/
+		}
 		
-			//enableInterrupts();				// Enable Interrupts
-	
-			sdCard_initialize(&devices.sdCard);			// Initialize the SD card
-
-			printf("SD card init done\n");
-	
+		void test_sdCard_write(void)
+		{
 			int i = 0;
-
-    		//generate test data
-    		for (i = 0; i < 10; i++)
+	
+			//generate test data
+			for (i = 0; i < 10; i++)
 			{
 				devices.sdCard.TX_blockBuffer[i] = i%0xff;
 			}
-
+	
 			sdCard_write(1, &devices.sdCard);  
-        
+		}
+		
+		void test_sdCard_read(void)
+		{
 			sdCard_read(1, &devices.sdCard);
-        
-        
-			//verify the data...
+	    
+	    	int i;
 			for (i = 0; i < 10; i++)
 			{
 				printf("0x%02x ", devices.sdCard.RX_blockBuffer[i]);
 			}
+		}
+	
+	#endif
+	
+	///////////////////////////////////////////////////////////////////
+	
+	void test_sdCard(void)
+	{
+		logLine("Testing the SD card");
+		disableInterrupts();
+		
+		// only defined on COM processor
+		#if COM_PROCESSOR_COMPILE
+		
+			logLine("    making sure SPI is initialized");
+			initialize_SPI(&devices.sdCard.SPI);
+			
+			test_sdCard_initialization();
+			//test_sdCard_commands();
+			//test_sdCard_write();
+			//test_sdCard_read();
 	
 		#endif
 	}

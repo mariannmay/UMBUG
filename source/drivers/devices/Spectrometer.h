@@ -2,15 +2,15 @@
 //                                                              //
 //    Spectrometer header                                      	//
 //    last edited by: Kane Anderson                             //
-//    date: January 12, 2012 
-//	  edited last by : Hossain Al Masroor                                   //
+//    date: January 12, 2012 									//
+//	  edited last by : Hossain Al Masroor                       //
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
 #ifndef SPECTROMETER_H
 #define SPECTROMETER_H
 
-#include <msp430fg4619.h>
+#include <msp430fg4618.h>
 #include "../DriversConfig.h"
 
 ///////////////////////////////////////////////
