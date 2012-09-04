@@ -365,21 +365,17 @@ void test_application_main(void)
 				SPI_transmit(&devices.sdCard.SPI, 0xFF, false);
 			}
 		    // Assert CS before issuing any commands
-		    logLine("        CS low");
 			clearDigitalOutput(devices.sdCard.SPI.chipSelect.out);
 			
 			//CMD0 - Begin the initialization procedure
-			logLine("");
 			logLine("        sending CMD0");
 			sdCard_sendCommand(CMD0, SD_EMPTY_ARGS, CMD0_R, &devices.sdCard);
 			
 			//CMD8 - Send the interface conditions, mandatory for SDHC cards
-			logLine("");
 			logLine("        sending CMD8");
 			sdCard_sendCommand(CMD8, (SD_VS << 8) + SD_CHECK, CMD8_R, &devices.sdCard);
 			
 			//CMD59 to indicate that CRC is used for SD card
-			logLine("");
 			logLine("        sending CMD59");
 			sdCard_sendCommand(CMD59, 1, CMD59_R, &devices.sdCard);
 			// ignore illegal
@@ -394,11 +390,9 @@ void test_application_main(void)
 			i = 0;
 			do
 			{
-				logLine("");
 				logLine("        sending CMD55");
 				sdCard_sendCommand(CMD55, SD_EMPTY_ARGS, CMD55_R, &devices.sdCard);
 				
-				logLine("");
 				logLine("        sending ACMD41");
 				sdCard_sendCommand(ACMD41, 0x40000000, ACMD41_R, &devices.sdCard);
 
@@ -417,36 +411,52 @@ void test_application_main(void)
 	    	
 	    	setDigitalOutput(devices.sdCard.SPI.chipSelect.out);
 			logLine("    SD initialization OK");
+			logLine("");
 		}
 		
-		void test_sdCard_commands(void)
+		void test_sdCard_write_and_read(void)
 		{
-			logLine("    test SD card commands (SPI)");
-			
-		}
-		
-		void test_sdCard_write(void)
-		{
+			logLine("    test SD card write");
 			int i = 0;
-	
+			
 			//generate test data
 			for (i = 0; i < 10; i++)
 			{
 				devices.sdCard.TX_blockBuffer[i] = i%0xff;
 			}
-	
-			sdCard_write(1, &devices.sdCard);  
-		}
-		
-		void test_sdCard_read(void)
-		{
-			sdCard_read(1, &devices.sdCard);
-	    
-	    	int i;
+			
+			// print to log
+			printf("        data: ");
 			for (i = 0; i < 10; i++)
 			{
-				printf("0x%02x ", devices.sdCard.RX_blockBuffer[i]);
+				if (i < 9) printf("%x, ", devices.sdCard.TX_blockBuffer[i]);
+				else       printf("%x\r\n", devices.sdCard.TX_blockBuffer[i]);
 			}
+			
+			UI16 SD_Write_Location = 1;
+			sdCard_write(SD_Write_Location, &devices.sdCard);
+			
+			logCombo("        data written to block", SD_Write_Location);
+			logLine("    SD write OK");
+			logLine("");
+			
+			//
+			
+			logLine("    test SD card read");
+			sdCard_read(SD_Write_Location, &devices.sdCard);
+			logCombo("        data was read from block", SD_Write_Location);
+			
+			// print to log
+			printf("        data: ");
+			for (i = 0; i < 10; i++)
+			{
+				if (i < 9) printf("%x, ", devices.sdCard.RX_blockBuffer[i]);
+				else       printf("%x\r\n", devices.sdCard.RX_blockBuffer[i]);
+				//assert(devices.sdCard.RX_blockBuffer[i] == devices.sdCard.TX_blockBuffer[i]);
+			}
+			
+			logLine("    SD read OK");
+			logLine("");
 		}
 	
 	#endif
@@ -465,9 +475,7 @@ void test_application_main(void)
 			initialize_SPI(&devices.sdCard.SPI);
 			
 			test_sdCard_initialization();
-			//test_sdCard_commands();
-			//test_sdCard_write();
-			//test_sdCard_read();
+			test_sdCard_write_and_read();
 	
 		#endif
 	}

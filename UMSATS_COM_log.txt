@@ -3,8 +3,6 @@ Testing the SD card
     making sure SPI is initialized
     test SD card initialization
         sending FF 10 times... card requires 74 clock cycles
-        CS low
-
         sending CMD0
             CMD: 0x0
             args: 0x0
@@ -21,7 +19,6 @@ Testing the SD card
             getting response...
                 0x0
         done sending CMD0
-
         sending CMD8
             CMD: 0x8
             args: 0x1aa
@@ -42,7 +39,6 @@ Testing the SD card
                 0x0
                 0x0
         done sending CMD8
-
         sending CMD59
             CMD: 0x3b
             args: 0x1
@@ -58,8 +54,7 @@ Testing the SD card
             tx done
             getting response...
                 0x0
-        done sending CMD3b
-
+        done sending CMD59
         sending CMD55
             CMD: 0x37
             args: 0x0
@@ -75,8 +70,7 @@ Testing the SD card
             tx done
             getting response...
                 0x0
-        done sending CMD37
-
+        done sending CMD55
         sending ACMD41
             CMD: 0x29
             args: 0x0
@@ -92,7 +86,7 @@ Testing the SD card
             tx done
             getting response...
                 0x0
-        done sending CMD29
+        done sending CMD41
             CMD: 0x3a
             args: 0x1
             expected response size: 5
@@ -111,8 +105,52 @@ Testing the SD card
                 0x0
                 0x0
                 0x0
-        done sending CMD3a
+        done sending CMD58
     SD initialization OK
+
+    test SD card write
+        data: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+            CMD: 0x18
+            args: 0x1
+            expected response size: 1
+            CRC: 0x7d
+            tx command...
+                0x58
+                0x0
+                0x0
+                0x0
+                0x1
+                0x7d
+            tx done
+            getting response...
+                0x0
+        done sending CMD24
+        it worked! write to sd card successful
+        data written to block: 1
+    SD write OK
+
+    test SD card read
+            CMD: 0x11
+            args: 0x1
+            expected response size: 1
+            CRC: 0x47
+            tx command...
+                0x51
+                0x0
+                0x0
+                0x0
+                0x1
+                0x47
+            tx done
+            getting response...
+                0x0
+        done sending CMD17
+        read failed! got token error!
+            error: OTHER a80
+        data was read from block: 1
+        data: 57, 9b, 9c, 2d, 80, b0, 80, 57, 11, 1d
+    SD read OK
+
 
 All tests complete! --------------------
 
