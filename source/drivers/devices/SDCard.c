@@ -114,7 +114,7 @@ void sdCard_sendCommand(Byte cmd, long args, UI8 responseSize, SDCard* card)
 	} 
 		
 	#if DebugSD
-		for (i = 0; i < responseSize; i++)
+		for (i = 0; i < responseSize+1; i++)
 		{
 			printf("                0x%x\r\n", card->SPI.receiveMessage[i]);
 		}
@@ -126,12 +126,20 @@ void sdCard_sendCommand(Byte cmd, long args, UI8 responseSize, SDCard* card)
 
 void sdCard_initialize(SDCard* card)
 {
+	int i;
+	
 	initialize_SPI(&card->SPI);
-
+	
+	// clear the buffers
+	for (i = 0; i < SDCARD_BLOCK_SIZE; i++)
+	{
+		card->RX_blockBuffer[i] = 0;
+		card->TX_blockBuffer[i] = 0;
+	}
+	
 	setDigitalOutput(card->SPI.chipSelect.out);
 
 	// Send 80 clocks, SD card require at least 74 clock cycles
-	int i;
 	for(i = 0; i < 10; i++)
 	{
 		SPI_transmit(&card->SPI, 0xFF, false);
@@ -250,6 +258,7 @@ void sdCard_read(long blockAddress, SDCard* card)
 	{
 		#if DebugSD
 			printf("        read failed! got token error!\r\n");
+			printf("        response: %x\r\n", card->SPI.receiveMessage[0]);
 			fflush(stdout);
 			// Check for errors indicated in the token
 			if(card->SPI.receiveMessage[0] & TOK_ERR_ECC)
@@ -321,13 +330,25 @@ void sdCard_write(long blockAddress, SDCard* card)
     
     SPI_receive(&card->SPI, false);
     
-    #if DebugSD
-	    if ((card->SPI.receiveMessage[0] & 0x1F) != 0x05)	// it worked!
-	    {
-			printf("        it worked! write to sd card successful\r\n");
-			fflush(stdout);
-	    }
-	#endif
+    if ((card->SPI.receiveMessage[0] & 0x1F) != 0x05)
+    {
+    	#if DebugSD
+		    if ((card->SPI.receiveMessage[0] & 0x1F) != 0x05)
+		    {
+				printf("        write to sd card FAILED\r\n");
+				printf("            response: %x\r\n", card->SPI.receiveMessage[0]);
+				printf("            needed: (%x & 0x1F) == 0x05\r\n", card->SPI.receiveMessage[0]);
+				fflush(stdout);
+		    }
+		#endif
+    }
+    
+	do
+    {
+    	SPI_receive(&card->SPI, false);
+    	i++;
+    }
+    while (card->SPI.receiveMessage[0] != 0xff & i < SD_TIMEOUT);
     
     setDigitalOutput(card->SPI.chipSelect.out);
     

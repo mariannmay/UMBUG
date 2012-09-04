@@ -81,18 +81,18 @@
 	// Module identifiers
 	#define MODULE_I2C				0x0700
 	#define MODULE_SPI				0x0800
-	#define MODULE_SMBUS			        0x0900
+	#define MODULE_SMBUS			0x0900
 	#define MODULE_SD				0x0A00
-	#define MODULE_EEPROM			        0x0B00
+	#define MODULE_EEPROM			0x0B00
 
 	// Error codes
 	#define ERR_CRC					0x0001		// CRC check failed
 	#define ERR_TIMEOUT				0x0002		// Timed out of operation
-	#define ERR_BUS_BUSY			        0x0004		// Bus was busy
+	#define ERR_BUS_BUSY			0x0004		// Bus was busy
 	#define ERR_FLOW				0x0008		// Underflow/Overrun
 	#define ERR_ADDR				0x0010		// Attempted to leave buffer or bad address
 	#define ERR_NACK				0x0020		// No ACK (I2C specific)
-	#define ERR_ARB_LOST			        0x0040		// Arbitration lost (I2C specific)
+	#define ERR_ARB_LOST			0x0040		// Arbitration lost (I2C specific)
 	#define ERR_ECC					0x0020		// ECC error (SD specific)
 	#define ERR_OTHER				0x0080		// Some other error
 
@@ -101,45 +101,45 @@
 	// Found in ECC driver	 		 	 //
 	// 0x06xx to 0x06xx				 	 //
 	//***********************************//
-		#define MODULE_ECC        			0x0600		//Unable to decode data block (too many errors to correct)
-        #define ECC_DECODE_ERR                          0x0001
+		#define MODULE_ECC        	0x0600		//Unable to decode data block (too many errors to correct)
+        #define ECC_DECODE_ERR      0x0001
 
 	//***********************************//
 	// LOGGER ERRORS
 	// Found in logger driver
 	// 0x0Cxx to 0x0Cxx
 	//***********************************//
-        #define MODULE_LOGGER                           0x0C00
-        //#define LOG_OTHER                             0x0080
-        #define LOG_INVALID_COMMAND                     0x0001
+        #define MODULE_LOGGER       0x0C00
+        //#define LOG_OTHER         0x0080
+        #define LOG_INVALID_COMMAND 0x0001
 
 	//***********************************//
-	// STATUS REGISTER(SR) ERRORS
-	// Found in logger driver
-	// 0x0Dxx to 0x0Dxx
+	// STATUS REGISTER(SR) ERRORS		 //
+	// Found in logger driver			 //
+	// 0x0Dxx to 0x0Dxx					 //
 	//***********************************//
-        #define MODULE_SR                               0x0D00
-        #define SR_OTHER                                0x0080
-        #define SR_NO_VALID_SR                          0x0001
-        #define SR_FIRST_FAIL                           0x0002
-        #define SR_SECOND_FAIL                          0x0004
-        #define SR_THIRD_FAIL                           0x0008
+        #define MODULE_SR           0x0D00
+        #define SR_OTHER            0x0080
+        #define SR_NO_VALID_SR      0x0001
+        #define SR_FIRST_FAIL       0x0002
+        #define SR_SECOND_FAIL      0x0004
+        #define SR_THIRD_FAIL       0x0008
 
     //***********************************//
-	// WDT ERRORS
-	// Found in WDT driver
-	// 0x0Exx to 0x0Exx
+	// WDT ERRORS						 //
+	// Found in WDT driver				 //
+	// 0x0Exx to 0x0Exx					 //
 	//***********************************//
-		#define MODULE_WDT								0x0E00
-		#define WDT_RESET								0x0001	// internal WDT was triggered
+		#define MODULE_WDT			0x0E00
+		#define WDT_RESET			0x0001	// internal WDT was triggered
       
-      //***********************************//
-	// POWER management APP ERRORs
-	// 0x0Exx to 0x0Exx
+    //***********************************//
+	// POWER management APP ERRORs		 //
+	// 0x0Exx to 0x0Exx					 //
 	//***********************************//
-        #define MODULE_PM                             0x0F00
-        #define PM_OTHER                              0x0001
-        #define PM_SP_DATA                            0x0002
+        #define MODULE_PM           0x0F00
+        #define PM_OTHER            0x0001
+        #define PM_SP_DATA          0x0002
           
       
 

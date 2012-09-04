@@ -356,10 +356,19 @@ void test_application_main(void)
 		{
 			logLine("    test SD card initialization");
 			
+			int i;
+			
 			setDigitalOutput(devices.sdCard.SPI.chipSelect.out);
 			logLine("        sending FF 10 times... card requires 74 clock cycles");
+			
+			// clear the buffers
+			for (i = 0; i < SDCARD_BLOCK_SIZE; i++)
+			{
+				devices.sdCard.RX_blockBuffer[i] = 0;
+				devices.sdCard.TX_blockBuffer[i] = 0;
+			}
+			
 			// Send 80 clocks, SD card require at least 74 clock cycles
-			int i;
 			for(i = 0; i < 10; i++)
 			{
 				SPI_transmit(&devices.sdCard.SPI, 0xFF, false);
