@@ -4,160 +4,18 @@ Testing the SD card
     test SD card initialization
         sending FF 10 times... card requires 74 clock cycles
         sending CMD0
-            CMD: 0x0
-            args: 0x0
-            expected response size: 1
-            CRC: 0x95
-            tx command...
-                0x40
-                0x0
-                0x0
-                0x0
-                0x0
-                0x95
-            tx done
-            getting response...
-                0x0
-                0x0
-        done sending CMD0
         sending CMD8
-            CMD: 0x8
-            args: 0x1aa
-            expected response size: 5
-            CRC: 0x87
-            tx command...
-                0x48
-                0x0
-                0x0
-                0x1
-                0xaa
-                0x87
-            tx done
-            getting response...
-                0x0
-                0x0
-                0x0
-                0x0
-                0x0
-                0x0
-        done sending CMD8
         sending CMD59
-            CMD: 0x3b
-            args: 0x1
-            expected response size: 1
-            CRC: 0x83
-            tx command...
-                0x7b
-                0x0
-                0x0
-                0x0
-                0x1
-                0x83
-            tx done
-            getting response...
-                0x0
-                0x0
-        done sending CMD59
         sending CMD55
-            CMD: 0x37
-            args: 0x0
-            expected response size: 1
-            CRC: 0x65
-            tx command...
-                0x77
-                0x0
-                0x0
-                0x0
-                0x0
-                0x65
-            tx done
-            getting response...
-                0x0
-                0x0
-        done sending CMD55
         sending ACMD41
-            CMD: 0x29
-            args: 0x0
-            expected response size: 1
-            CRC: 0x77
-            tx command...
-                0x69
-                0x40
-                0x0
-                0x0
-                0x0
-                0x77
-            tx done
-            getting response...
-                0x0
-                0x0
-        done sending CMD41
-            CMD: 0x3a
-            args: 0x1
-            expected response size: 5
-            CRC: 0xef
-            tx command...
-                0x7a
-                0x0
-                0x0
-                0x0
-                0x1
-                0xef
-            tx done
-            getting response...
-                0x0
-                0x0
-                0x0
-                0x0
-                0x0
-                0x0
-        done sending CMD58
     SD initialization OK
 
     test SD card write
         data: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-            CMD: 0x18
-            args: 0x1
-            expected response size: 1
-            CRC: 0x7d
-            tx command...
-                0x58
-                0x0
-                0x0
-                0x0
-                0x1
-                0x7d
-            tx done
-            getting response...
-                0x0
-                0x20
-        done sending CMD24
-        write to sd card FAILED
-            response: 0
-            needed: (0 & 0x1F) == 0x05
         data written to block: 1
     SD write OK
 
     test SD card read
-            CMD: 0x11
-            args: 0x1
-            expected response size: 1
-            CRC: 0x47
-            tx command...
-                0x51
-                0x0
-                0x0
-                0x0
-                0x1
-                0x47
-            tx done
-            getting response...
-                0x0
-                0x1a
-        done sending CMD17
-        read failed! got token error!
-        response: 0
-            error: OTHER a80
         data was read from block: 1
         data: 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     SD read OK

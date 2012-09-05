@@ -419,7 +419,7 @@ void test_application_main(void)
 	    	assert(!(devices.sdCard.SPI.receiveMessage[0] & R1_ERR));
 	    	
 	    	setDigitalOutput(devices.sdCard.SPI.chipSelect.out);
-			logLine("    SD initialization OK");
+			logLine("    SD initialization done");
 			logLine("");
 		}
 		
@@ -446,7 +446,7 @@ void test_application_main(void)
 			sdCard_write(SD_Write_Location, &devices.sdCard);
 			
 			logCombo("        data written to block", SD_Write_Location);
-			logLine("    SD write OK");
+			logLine("    SD write done");
 			logLine("");
 			
 			//
@@ -464,7 +464,7 @@ void test_application_main(void)
 				//assert(devices.sdCard.RX_blockBuffer[i] == devices.sdCard.TX_blockBuffer[i]);
 			}
 			
-			logLine("    SD read OK");
+			logLine("    SD read done");
 			logLine("");
 		}
 	

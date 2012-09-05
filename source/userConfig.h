@@ -12,7 +12,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 #define DebugMode 1
 
-#define DebugSD 1
+#define DebugSD 0
 
 // choose whether to compile code for the CDH redundant controllers
 // or the COM encoding controller
