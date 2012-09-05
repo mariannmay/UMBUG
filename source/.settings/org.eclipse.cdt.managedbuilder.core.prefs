@@ -1,4 +1,6 @@
-#Wed Nov 23 19:49:48 CST 2011
+#Tue Sep 04 20:49:35 CDT 2012
+com.ti.ccstudio.buildDefinitions.MSP430.Debug.1026995138/internalBuilder/enabled=false
+com.ti.ccstudio.buildDefinitions.MSP430.Debug.1026995138/internalBuilder/ignoreErr=true
 com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768/internalBuilder/enabled=false
 com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768/internalBuilder/ignoreErr=true
 com.ti.ccstudio.buildDefinitions.MSP430.Release.1524506253/internalBuilder/enabled=false

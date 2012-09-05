@@ -1,6 +1,21 @@
 == DEBUG MODE ==
 
-found at -1
+found at 0
+found at 1
+found at 2
+found at 3
+found at 4
+found at 5
+found at 6
+found at 7
+byte1 = 7e 
+byte2 = 34 
+ptrRead = 13370 
+byte1[ptrRead] = 89 
+byte2[ptrRead] = 47 
+byte1[0] = 34 
+byte2[1] = c5 
+startingBitOfStartFlag = -1 
 
 All tests complete! --------------------
 

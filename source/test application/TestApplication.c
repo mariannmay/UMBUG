@@ -492,14 +492,42 @@ void test_PSK(void)
 
 void test_packetGrabbing(void)
 {
+	int i;
+	for(i=0;i<8;i++)
+	{
+		UI16 big = 0x7E55>>i;
+		UI8 one = (UI8)(big>>8);
+		UI8 two = (UI8)(big);
+		unsigned int pos = findAX25Flag(one, two, 0, 8);
+		
+		printf("found at %d\n", pos);
+		fflush(stdout);
+	}
 
-	UI8 one = 0x7E;
-	UI8 two = 0x00;
-	unsigned int pos = findAX25Flag(one, two, 0, 8);
+
+	masterInputBuffer[0] = 0x7E;
+	masterInputBuffer[1] = 0x34;
+	masterInputBuffer[2] = 0x34;
+	masterInputBuffer[3] = 0x56;
+	masterInputBuffer[4] = 0x34;
+	masterInputBuffer[5] = 0x34;
+	masterInputBuffer[6] = 0x34;
+	masterInputBuffer[7] = 0x34;
+	masterInputBuffer[8] = 0x56;
+	masterInputBuffer[9] = 0x7E;
+	masterInputBuffer[10] = 0x34;
+	masterInputBuffer[11] = 0x0E;
+	masterInputBuffer[12] = 0x56;
+	masterInputBuffer[13] = 0x34;
 	
-	printf("found at %d\n", pos);
+	ptrRead = 0;
+	ptrWrite = 13;
+	
+	printf("byte1 = %x \n", masterInputBuffer[ptrRead]);
+	printf("byte2 = %x \n", masterInputBuffer[ptrRead+1]);	
+	
+	findPacket(0);
 	fflush(stdout);
-
 }
 
 ///////////////////////////////////////////////////////////////////

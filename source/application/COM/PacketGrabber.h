@@ -16,17 +16,18 @@
  * 
  */
 #include "../../drivers/IOTypes.h"//includes the IOType struct
-#define MAX_RECIEVED_PACKET_SIZE 77//(64 + 13) = 120%
-#define MIN_RECIEVED_PACKET_SIZE 64
-#define MASTER_BUFFER_SIZE 256
+#include <stdio.h>
+#define MAX_RECIEVED_PACKET_SIZE 10//39//(32 + 7) = 120%
+#define MIN_RECIEVED_PACKET_SIZE 8//32
+#define MASTER_BUFFER_SIZE 128 //TODO change to 256
 
-//circular buffer of input
-extern UI8* masterInputBuffer;
-extern int ptrBeenRead;
-extern int ptrWritten;
+//input
+static int ptrRead;
+static int ptrWrite;
+static UI8 masterInputBuffer[MASTER_BUFFER_SIZE];
 
 //output
-extern UI8* retrievedPacket;
+static UI8 retrievedPacket[MIN_RECIEVED_PACKET_SIZE];
 
 //finds a packet in masterInputBuffer and puts it in retrievedPacket
 int findPacket(int* address);
