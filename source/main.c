@@ -17,7 +17,7 @@ extern void system_main(void);
 
 void main(void)
 {
-	
+	// kiral
 	system_initialize();
 	
 	for(;;)
