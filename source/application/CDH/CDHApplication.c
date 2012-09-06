@@ -95,3 +95,19 @@ void CDHMainScheduleLoop(void)
 	}
 	
 }
+
+
+void Packetize(PacketType type, Byte* dataBytes)
+{
+	Packet newPkt;
+	
+	SPI_transmitStream(SPI_Device* device, const Byte* data, UI8 length)
+}
+
+
+
+
+
+
+
+
