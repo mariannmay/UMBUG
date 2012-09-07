@@ -505,8 +505,8 @@ void test_packetGrabbing(void)
 	}
 
 
-	masterInputBuffer[0] = 0x7E;
-	masterInputBuffer[1] = 0x34;
+	masterInputBuffer[0] = 0x55;
+	masterInputBuffer[1] = 0x3E;
 	masterInputBuffer[2] = 0x34;
 	masterInputBuffer[3] = 0x56;
 	masterInputBuffer[4] = 0x34;
@@ -523,10 +523,20 @@ void test_packetGrabbing(void)
 	ptrRead = 0;
 	ptrWrite = 13;
 	
-	printf("byte1 = %x \n", masterInputBuffer[ptrRead]);
-	printf("byte2 = %x \n", masterInputBuffer[ptrRead+1]);	
+	printf("byte0 = %x \n", masterInputBuffer[0]);
+	printf("byte1 = %x \n", masterInputBuffer[1]);
+	printf("byte2 = %x \n", masterInputBuffer[2]);	
 	
-	findPacket(0);
+	//findPacket(0);
+	
+	UI8 possiblePacket[3];
+	removeBitStuffing(0, 0, 2, 1, possiblePacket);
+
+	for(i=0;i<3;i++)
+	{
+		printf("%x ", possiblePacket[i]);
+	}
+	
 	fflush(stdout);
 }
 
