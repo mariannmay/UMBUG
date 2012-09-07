@@ -15,7 +15,7 @@
 //  Built with IAR Embedded Workbench Version: 5.30.1
 //******************************************************************************
 
-#include <crc.h>
+#include "../crc.h"
 
 /**
  * Generates a CRC-8 given a polynomial and a num-byte sequence

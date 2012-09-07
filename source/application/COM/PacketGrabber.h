@@ -16,6 +16,7 @@
  * 
  */
 #include "../../drivers/IOTypes.h"//includes the IOType struct
+#include "../../drivers/devices/msp430/NickTianSPI/crc.h"
 #include <stdio.h>
 
 #define MAX_RECIEVED_PACKET_SIZE 10//39//(32 + 7) = 120%

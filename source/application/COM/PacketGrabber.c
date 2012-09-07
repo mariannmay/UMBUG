@@ -9,6 +9,13 @@ UI8 masterInputBuffer[MASTER_BUFFER_SIZE];
 //output
 UI8* retrievedPacket;
 
+//we expect to find a packet that looks like this
+/*
+ * Bytes		 1		7		  7		  1		1	  1		11	  2	  1
+ * purpose		FLAG DESTINATION SOURCE CONTROL PID COMMAND ZEROS CRC FLAG
+ * 
+ */
+
 //if a packet is found
 //it returns 1 and places the packet in global array "retrievedPacket"
 int findPacket(int* address)
@@ -186,7 +193,9 @@ bool removeBitStuffing(int firstByte, int firstStartBit, int secondByte, int sec
 
 bool checkCRC(UI8* data)
 {
-	return true;
+	UI16 packetCRC = ((UI16)data[16])<<8 + (UI16)data[17];
+	UI16 calculatedCRC = make_crc16(data, MIN_RECIEVED_PACKET_SIZE-4, 3);//CRC the packet minus the flags and the FCS
+	return (packetCRC == calculatedCRC);
 }
 
 bool checkAddresses(UI8* data)
