@@ -14,7 +14,7 @@
 #ifndef __CRC_H__     
 #define __CRC_H__
 
-#include "../../SimpleDefinitions.h"
+#include "../../../../SimpleDefinitions.h"
 
 	/**
 	 * Generates a CRC-7 given a polynomial and an num-byte sequence

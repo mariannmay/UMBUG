@@ -195,20 +195,18 @@ void SPI_setDummyOutput(SPI_CHANNEL channel)
 void SPI_transmit(SPI_Device* device, const Byte data, bool useChipSelect)
 {
 	device->transmitMessage[0] = data;
+	SPI_reset(device->channel);
 	
 	if (device->type == SPI_TYPE_Master)
 	{
-		if (useChipSelect)
-		{
-			if (device->activeHigh == true) setDigitalOutput(device->chipSelect.out);
-			else clearDigitalOutput(device->chipSelect.out);
-		}
-		
-		SPI_reset(device->channel);
-		SPI_slaveEnable(device->channel);
+
+		if (device->activeHigh) setDigitalOutput(device->chipSelect.out);
+		else clearDigitalOutput(device->chipSelect.out);
+
+		//SPI_slaveEnable(device->channel);
 		SPI_WRITE(device->channel, device->transmitMessage[0]);
 		device->receiveMessage[0] = SPI_READ(device->channel);
-		SPI_slaveDisable(device->channel);
+		//SPI_slaveDisable(device->channel);
 		
 		if (useChipSelect)
 		{
@@ -223,7 +221,6 @@ void SPI_transmit(SPI_Device* device, const Byte data, bool useChipSelect)
 		{
 			if (timeout++ > 10000) return;
 		}
-		SPI_reset(device->channel);
 		SPI_clearInterruptFlag(device->channel);
 		SPI_WRITE(device->channel, device->transmitMessage[0]);
 		device->receiveMessage[0] = SPI_READ(device->channel);
@@ -293,23 +290,18 @@ void SPI_transmitStream(SPI_Device* device, const Byte* data, UI8 length, bool u
 	
 	if (device->type == SPI_TYPE_Master)
 	{
-		if (useChipSelect)
-		{
-			if (device->activeHigh == true) setDigitalOutput(device->chipSelect.out);
-			else clearDigitalOutput(device->chipSelect.out);
-		}
-		
-		SPI_reset(device->channel);
-		SPI_slaveEnable(device->channel);
 		int index;
+		
+		if (device->activeHigh == true) setDigitalOutput(device->chipSelect.out);
+		else clearDigitalOutput(device->chipSelect.out);
+		
 		for (index = 0; index < length; index++)
 		{
-			SPI_reset(device->channel);
 			device->transmitMessage[index] = data[index];
 			SPI_WRITE(device->channel, device->transmitMessage[index]);
 			device->receiveMessage[index] = SPI_READ(device->channel);
 		}
-		SPI_slaveDisable(device->channel);
+		//SPI_slaveDisable(device->channel);
 		
 		if (useChipSelect)
 		{

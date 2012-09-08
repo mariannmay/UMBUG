@@ -8,7 +8,7 @@
 
 #include "SDCard.h"
 
-#if DebugSD
+#if DebugSD1
 	#include "Log.h"
 #endif
 
@@ -16,7 +16,7 @@
 
 void sdCard_sendCommand(Byte cmd, long args, UI8 responseSize, SDCard* card)
 {
-	#if DebugSD
+	#if DebugSD1
 		printf("            CMD: 0x%x\r\n", cmd);
 		printf("            args: 0x%x\r\n", args);
 		logCombo("            expected response size", responseSize);
@@ -40,13 +40,13 @@ void sdCard_sendCommand(Byte cmd, long args, UI8 responseSize, SDCard* card)
     
 	command[5] = crc;
     
-    #if DebugSD
+    #if DebugSD1
     	printf("            CRC: 0x%x\r\n", command[5]);
     #endif
       
 	// Send the command and the first arguments and the CRC
 	
-	#if DebugSD
+	#if DebugSD1
 		logLine("            tx command...");
 		printf("                0x%x\r\n", command[0]);
 		printf("                0x%x\r\n", command[1]);
@@ -56,9 +56,11 @@ void sdCard_sendCommand(Byte cmd, long args, UI8 responseSize, SDCard* card)
 		printf("                0x%x\r\n", command[5]);
 	#endif
 	
+	// Assert CS before issuing any commands
+	clearDigitalOutput(card->SPI.chipSelect.out);
 	SPI_transmitStream(&card->SPI, command, SD_MAX_RESP_LENGTH+1, false);
     
-    #if DebugSD
+    #if DebugSD1
     	logLine("            tx done");
     #endif
     
@@ -74,7 +76,7 @@ void sdCard_sendCommand(Byte cmd, long args, UI8 responseSize, SDCard* card)
 	// If there was a time out, then just leave
 	if(i >= SD_TIMEOUT)
 	{
-		#if DebugSD
+		#if DebugSD1
 			logLine("        *** SD card had SPI timeout! ***");
 			printf("            it happened during CMD%x\r\n", cmd);
 			fflush(stdout);
@@ -83,7 +85,7 @@ void sdCard_sendCommand(Byte cmd, long args, UI8 responseSize, SDCard* card)
 	}
 	else
 	{
-		#if DebugSD
+		#if DebugSD1
 			logLine("            getting response...");
 		#endif
 		
@@ -113,7 +115,7 @@ void sdCard_sendCommand(Byte cmd, long args, UI8 responseSize, SDCard* card)
 		card->SPI.receiveMessage[i] = response[i];
 	} 
 		
-	#if DebugSD
+	#if DebugSD1
 		for (i = 0; i < responseSize+1; i++)
 		{
 			printf("                0x%x\r\n", card->SPI.receiveMessage[i]);
@@ -211,7 +213,7 @@ void sdCard_read(long blockAddress, SDCard* card)
 	if(i >= SD_TIMEOUT)
 	{
 		setDigitalOutput(card->SPI.chipSelect.out);
-		#if DebugSD
+		#if DebugSD1
 			printf("        *** SD card timed out in receive method ***\r\n");
 			fflush(stdout);
 		#endif
@@ -221,7 +223,7 @@ void sdCard_read(long blockAddress, SDCard* card)
 	// Check the token received
     if(card->SPI.receiveMessage[0] == TOK_START)
 	{
-		#if DebugSD
+		#if DebugSD1
 			printf("        SD start token received\r\n");
 			fflush(stdout);
 		#endif
@@ -241,14 +243,14 @@ void sdCard_read(long blockAddress, SDCard* card)
 		
 		crc_check = make_crc16_sd(card->RX_blockBuffer, SDCARD_BLOCK_SIZE, CRC16_POLY);
 		//printf("crc read: %d %d\n", crc_check, crc);
-		#if DebugSD
+		#if DebugSD1
 			printf("        CRC: %x, %x\r\n", crc, crc_check);
 			fflush(stdout);
 		#endif
 		
 		if (crc != crc_check)
 		{
-			#if DebugSD
+			#if DebugSD1
 				printf("        *** CRC did not match in SD receive method ***\r\n");
 				fflush(stdout);
 			#endif
@@ -256,7 +258,7 @@ void sdCard_read(long blockAddress, SDCard* card)
 	}
 	else if( (card->SPI.receiveMessage[0] & TOK_ERR_MASK) == 0)
 	{
-		#if DebugSD
+		#if DebugSD1
 			printf("        read failed! got token error!\r\n");
 			printf("        response: %x\r\n", card->SPI.receiveMessage[0]);
 			fflush(stdout);
@@ -284,7 +286,7 @@ void sdCard_read(long blockAddress, SDCard* card)
 	else
 	{
         // did not receive anything we can interperet
-        #if DebugSD
+        #if DebugSD1
         	printf("        read failed!  unintelligible response\r\n");
         	fflush(stdout);
         #endif
@@ -332,7 +334,7 @@ void sdCard_write(long blockAddress, SDCard* card)
     
     if ((card->SPI.receiveMessage[0] & 0x1F) != 0x05)
     {
-    	#if DebugSD
+    	#if DebugSD1
 		    if ((card->SPI.receiveMessage[0] & 0x1F) != 0x05)
 		    {
 				printf("        write to sd card FAILED\r\n");

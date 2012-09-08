@@ -86,9 +86,6 @@
 <resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/drivers/devices/msp430/NickTianSPI/sd_card.c" name="sd_card.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/drivers/devices/msp430/NickTianSPI/sd_card.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1900462296./Project-Cheesecake/drivers/devices/msp430/NickTianSPI/sd_card.c">
 <tool id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1900462296./Project-Cheesecake/drivers/devices/msp430/NickTianSPI/sd_card.c" name="MSP430 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1900462296"/>
 </resourceConfiguration>
-<resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/lnk_msp430fg4619.cmd" name="lnk_msp430fg4619.cmd" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/lnk_msp430fg4619.cmd" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.linkerDebug.1752689173./Project-Cheesecake/lnk_msp430fg4619.cmd">
-<tool id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.linkerDebug.1752689173./Project-Cheesecake/lnk_msp430fg4619.cmd" name="MSP430 Linker" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.linkerDebug.1752689173"/>
-</resourceConfiguration>
 </configuration>
 <configuration artifactExtension="out" artifactName="Project-Cheesecake" description="" id="com.ti.ccstudio.buildDefinitions.MSP430.Release.1524506253" name="Release" parent="com.ti.ccstudio.buildDefinitions.MSP430.Release">
 <toolChain id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.ReleaseToolchain.2022687307" name="TI Code Generation Tools" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.ReleaseToolchain" targetTool="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.linkerRelease.1175538092">

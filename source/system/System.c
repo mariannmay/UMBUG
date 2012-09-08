@@ -16,6 +16,9 @@ Time systemTime;
 
 void system_initialize(void)
 {
+	StopMSP430WatchdogTimer;
+	drivers_initialize();
+	initTimerA();
 	
 	systemTime.seconds	= 0;
 	systemTime.minutes	= 0;
@@ -24,14 +27,9 @@ void system_initialize(void)
 	systemTime.month	= 0;
 	systemTime.year		= 0;
 	
-	drivers_initialize();
-	
-	StopMSP430WatchdogTimer;
-	initTimerA();
 	
 	#if DebugMode
 		test_application_initialize();
-		initializeLogFile();
 	#else
 		application_initialize();
 	#endif
@@ -42,12 +40,9 @@ void system_initialize(void)
 
 // 	main has an infinite loop which calls this function every time
 void system_main(void)
-{
-	enableInterrupts();
-	
+{	
 	// run the program
 	#if DebugMode
-		logLine("== DEBUG MODE ==");
 		test_application_main();
 	#else
 		application_main();

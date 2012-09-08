@@ -1,25 +1,4 @@
-== DEBUG MODE ==
 Testing the SD card
-    making sure SPI is initialized
-    test SD card initialization
-        sending FF 10 times... card requires 74 clock cycles
-        sending CMD0
-        sending CMD8
-        sending CMD59
-        sending CMD55
-        sending ACMD41
-    SD initialization OK
-
-    test SD card write
-        data: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-        data written to block: 1
-    SD write OK
-
-    test SD card read
-        data was read from block: 1
-        data: 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-    SD read OK
-
 
 All tests complete! --------------------
 

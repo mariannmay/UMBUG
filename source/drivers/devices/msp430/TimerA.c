@@ -92,10 +92,17 @@ __interrupt void timerA0int()
 	}
 	
 	
-	if (TAIV && TAIV_TACCR2) //if capture compare reg 2 interrupt
+	else if (TAIV && TAIV_TACCR2) //if capture compare reg 2 interrupt
 	{
 		
 	}
+	
+	
+	else
+	{
+		
+	}
+	
 	return;
 	
 }

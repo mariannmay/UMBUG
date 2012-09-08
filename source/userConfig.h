@@ -12,7 +12,12 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 #define DebugMode 1
 
-#define DebugSD 0
+#define DebugSD1 0
+#define DebugSD2 0
+
+// Delay to give you time for starting a logic analyzer
+// (if you're into that kind of thing)
+#define LogicAnalyzerDelay 1
 
 // choose whether to compile code for the CDH redundant controllers
 // or the COM encoding controller

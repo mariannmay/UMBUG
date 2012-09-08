@@ -11,6 +11,21 @@
 void test_application_initialize(void)
 {
 	#if DebugMode
+		
+		#if LogicAnalyzerDelay
+			printf("time to start logic analyzer... ");
+			fflush(stdout);
+			UL32 wait;
+			UL32 dummy = 0;
+			for (wait = 0; wait < 4999999; wait++)
+			{
+				dummy++;
+			}
+			printf("done! starting test program\r\n");
+			fflush(stdout);
+		#endif
+		
+		// start printing to file
 		#if CDH_PROCESSOR_COMPILE
 			logLine("running test on CDH processor");
 			logLine("please check UMSATS_CDH_log.txt");
@@ -18,12 +33,17 @@ void test_application_initialize(void)
 			logLine("running test on COM processor");
 			logLine("please check UMSATS_COM_log.txt");
 		#endif
+		initializeLogFile();
+		
 	#endif
 }
 
 void test_application_main(void)
 {
 	#if DebugMode
+		
+		
+	
 		//test_SPI();
 		//test_analogToDigital();
 	
@@ -348,18 +368,25 @@ void test_application_main(void)
 	
 	// breakdown of the the sd card tests
 	
+	extern void SPI_WRITE(SPI_CHANNEL channel, Byte byte);
+	
 	#if COM_PROCESSOR_COMPILE
 		
 		extern void sdCard_sendCommand(Byte cmd, long args, UI8 responseSize, SDCard* card);
 		
 		void test_sdCard_initialization(void)
 		{
-			logLine("    test SD card initialization");
+			#if DebugSD2
+				logLine("    test SD card initialization");
+			#endif
 			
 			int i;
 			
 			setDigitalOutput(devices.sdCard.SPI.chipSelect.out);
-			logLine("        sending FF 10 times... card requires 74 clock cycles");
+			
+			#if DebugSD2
+				logLine("        sending FF 10 times... card requires 74 clock cycles");
+			#endif
 			
 			// clear the buffers
 			for (i = 0; i < SDCARD_BLOCK_SIZE; i++)
@@ -371,21 +398,25 @@ void test_application_main(void)
 			// Send 80 clocks, SD card require at least 74 clock cycles
 			for(i = 0; i < 10; i++)
 			{
-				SPI_transmit(&devices.sdCard.SPI, 0xFF, false);
+				SPI_WRITE(devices.sdCard.SPI.channel, 0xFF);
 			}
-		    // Assert CS before issuing any commands
-			clearDigitalOutput(devices.sdCard.SPI.chipSelect.out);
 			
 			//CMD0 - Begin the initialization procedure
-			logLine("        sending CMD0");
+			#if DebugSD2
+				logLine("        sending CMD0");
+			#endif
 			sdCard_sendCommand(CMD0, SD_EMPTY_ARGS, CMD0_R, &devices.sdCard);
 			
 			//CMD8 - Send the interface conditions, mandatory for SDHC cards
-			logLine("        sending CMD8");
+			#if DebugSD2
+				logLine("        sending CMD8");
+			#endif
 			sdCard_sendCommand(CMD8, (SD_VS << 8) + SD_CHECK, CMD8_R, &devices.sdCard);
 			
 			//CMD59 to indicate that CRC is used for SD card
-			logLine("        sending CMD59");
+			#if DebugSD2
+				logLine("        sending CMD59");
+			#endif
 			sdCard_sendCommand(CMD59, 1, CMD59_R, &devices.sdCard);
 			// ignore illegal
 			if(devices.sdCard.SPI.receiveMessage[0] & R1_ILLEGAL)
@@ -399,10 +430,14 @@ void test_application_main(void)
 			i = 0;
 			do
 			{
-				logLine("        sending CMD55");
+				#if DebugSD2
+					logLine("        sending CMD55");
+				#endif
 				sdCard_sendCommand(CMD55, SD_EMPTY_ARGS, CMD55_R, &devices.sdCard);
 				
-				logLine("        sending ACMD41");
+				#if DebugSD2
+					logLine("        sending ACMD41");
+				#endif
 				sdCard_sendCommand(ACMD41, 0x40000000, ACMD41_R, &devices.sdCard);
 
 				i++;
@@ -419,13 +454,18 @@ void test_application_main(void)
 	    	assert(!(devices.sdCard.SPI.receiveMessage[0] & R1_ERR));
 	    	
 	    	setDigitalOutput(devices.sdCard.SPI.chipSelect.out);
-			logLine("    SD initialization done");
-			logLine("");
+	    	#if DebugSD2
+				logLine("    SD initialization done");
+				logLine("");
+			#endif
 		}
 		
 		void test_sdCard_write_and_read(void)
 		{
-			logLine("    test SD card write");
+			#if DebugSD2
+				logLine("    test SD card write");
+			#endif
+			
 			int i = 0;
 			
 			//generate test data
@@ -434,38 +474,51 @@ void test_application_main(void)
 				devices.sdCard.TX_blockBuffer[i] = i%0xff;
 			}
 			
-			// print to log
-			printf("        data: ");
-			for (i = 0; i < 10; i++)
-			{
-				if (i < 9) printf("%x, ", devices.sdCard.TX_blockBuffer[i]);
-				else       printf("%x\r\n", devices.sdCard.TX_blockBuffer[i]);
-			}
+			#if DebugSD2
+				// print to log
+				printf("        data: ");
+				for (i = 0; i < 10; i++)
+				{
+					if (i < 9) printf("%x, ", devices.sdCard.TX_blockBuffer[i]);
+					else       printf("%x\r\n", devices.sdCard.TX_blockBuffer[i]);
+				}
+			#endif
 			
 			UI16 SD_Write_Location = 1;
 			sdCard_write(SD_Write_Location, &devices.sdCard);
 			
-			logCombo("        data written to block", SD_Write_Location);
-			logLine("    SD write done");
-			logLine("");
+			#if DebugSD2
+				logCombo("        data written to block", SD_Write_Location);
+				logLine("    SD write done");
+				logLine("");
 			
-			//
+				//
 			
-			logLine("    test SD card read");
+				logLine("    test SD card read");
+			#endif
+				
 			sdCard_read(SD_Write_Location, &devices.sdCard);
-			logCombo("        data was read from block", SD_Write_Location);
 			
-			// print to log
-			printf("        data: ");
+			#if DebugSD2
+				logCombo("        data was read from block", SD_Write_Location);
+			
+				// print to log
+				printf("        data: ");
+				for (i = 0; i < 10; i++)
+				{
+					if (i < 9) printf("%x, ", devices.sdCard.RX_blockBuffer[i]);
+					else       printf("%x\r\n", devices.sdCard.RX_blockBuffer[i]);
+				}
+				
+				logLine("    SD read done");
+				logLine("");
+			#endif
+			
 			for (i = 0; i < 10; i++)
 			{
-				if (i < 9) printf("%x, ", devices.sdCard.RX_blockBuffer[i]);
-				else       printf("%x\r\n", devices.sdCard.RX_blockBuffer[i]);
 				//assert(devices.sdCard.RX_blockBuffer[i] == devices.sdCard.TX_blockBuffer[i]);
 			}
 			
-			logLine("    SD read done");
-			logLine("");
 		}
 	
 	#endif
@@ -479,8 +532,11 @@ void test_application_main(void)
 		
 		// only defined on COM processor
 		#if COM_PROCESSOR_COMPILE
-		
-			logLine("    making sure SPI is initialized");
+			
+			#if DebugSD2
+				logLine("    making sure SPI is initialized");
+			#endif
+			
 			initialize_SPI(&devices.sdCard.SPI);
 			
 			test_sdCard_initialization();
