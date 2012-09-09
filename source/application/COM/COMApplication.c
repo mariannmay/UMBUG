@@ -17,6 +17,7 @@
 
 ///////////////////////////////////////////////////////////////////
 
+bool timeToChangePhase = false;
 UI16 currentToneIndex = 0;
 bool toggle = high;
 
@@ -60,7 +61,7 @@ void COM_application_main(void)
 	logLine("COM scheduler initialized");
 	for(;;)
 	{
-		COMMainScheduleLoop();
+		//COMMainScheduleLoop();
 	}
 }
 
@@ -146,9 +147,9 @@ void runRadio(void)
 {
 	if(transmitting)
 	{
-		bool timeToChangePhase = false;
 		
-		/*if (timeToChangePhase == true)
+		
+		if (timeToChangePhase == true)
 		{
 			UI8 currentPhaseChangeOutOf32 = phaseShifts[currentPhaseShiftIndex];
 			phaseShifts[currentPhaseShiftIndex] = 0;
@@ -162,7 +163,7 @@ void runRadio(void)
 			currentToneIndex += toneIndexChange;
 		}
 		else
-		{*/
+		{
 			currentToneIndex += 100;	
 		//}
 		
@@ -176,9 +177,9 @@ void runRadio(void)
 		
 	}else //listening
 	{
-		//do AtoD stuff
-		//fill small buffer of 1Byte
+		//use UART on USART1 module to sample and capture bytes from the radio
 		//then add to master circular buffer
+		
 	}
 }
 
