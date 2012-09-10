@@ -18,7 +18,7 @@ void initGroundCommandTask(GroundCommandTask *t, int (*pt2Func)()/*, TimeCounter
 void destroyGroundCommandTask(GroundCommandTask *t)
 {
 	
-	free(t);
+//	free(t);
 	
 }
 int performGroundCommandTask(GroundCommandTask *t){

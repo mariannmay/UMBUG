@@ -1,5 +1,6 @@
 == DEBUG MODE ==
 
+<<<<<<< HEAD
 Testing PSK
 data:  ff	 ff	 a1	 2c	 b6	 10	 0	 89	
 All tests complete! --------------------
@@ -32,3 +33,9 @@ All tests complete! --------------------
 
 Testing PSK
 data:  ff	 ff	 a1	 2c	 b6	 10	 0	 89	
+=======
+A to D test conversions
+-----------------
+All tests complete! --------------------
+
+>>>>>>> origin/UART_TEMP

@@ -16,6 +16,7 @@
 #include "../application/COM/Tone.h"
 #include "../application/COM/PSK.h"
 #include "../application/COM/PacketGrabber.h"
+#include "../application/PWR/UART.h"
 #include <assert.h>
 #include <stdio.h>
 
