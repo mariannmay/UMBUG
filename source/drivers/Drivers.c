@@ -120,7 +120,7 @@ void drivers_initialize(void)
 	
 	// for debug purposes
 	// TODO REMOVE
-	devices.testThermocouple.voltageInput		= &msp430.PORT_6.analogInput[5]; // P6.5, pin #4
+	devices.tardigradeTemperatureSensor.voltageInput		= &msp430.PORT_6.analogInput[5]; // P6.5, pin #4
 	
 	
 	

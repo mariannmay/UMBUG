@@ -104,7 +104,7 @@ void test_application_main(void)
 			int i;
 			for (i = 0; i < 28; i++)
 			{
-				SPI_receive(&devices.test_SPI_device);
+				SPI_receive(&devices.test_SPI_device, true);
 				char received = devices.test_SPI_device.receiveMessage[0];
 				if (received != DUMMY_CHAR)
 				{
@@ -135,7 +135,7 @@ void test_application_main(void)
 			int i;
 			for (i = 0; i < 10; i++)
 			{
-				SPI_receive(&devices.test_SPI_device);
+				SPI_receive(&devices.test_SPI_device, true);
 				char received = devices.test_SPI_device.receiveMessage[0];
 				if (received != DUMMY_CHAR)
 				{
@@ -312,7 +312,7 @@ void test_application_main(void)
 		Byte toRTC[2];
 		toRTC[0] = RTC_READ_CONTROL_REGISTER;
 		toRTC[1] = EMPTY_CHAR;
-		SPI_transmitStream(&devices.realTimeClock.SPI, toRTC, 2);
+		SPI_transmitStream(&devices.realTimeClock.SPI, toRTC, 2, true);
 		//printf("transmission: %x\r\n", (devices.realTimeClock.SPI.transmitMessage[0]));
 		//printf("transmission: %x\r\n", (devices.realTimeClock.SPI.transmitMessage[1]));
 		
@@ -340,7 +340,7 @@ void test_application_main(void)
 	}
 	
 	///////////////////////////////////////////////////////////////////
-	
+	/*
 	void test_sdCard(void)
 	{
 		logLine("Testing the SD card");
@@ -437,7 +437,7 @@ void test_application_main(void)
 			SPI_transmitStream(&devices.sdCard.SPI, toSD, 7); //CMD13
 	
 		#endif
-	}
+	}*/
 	
 	void test_COMmain(void)
 	{

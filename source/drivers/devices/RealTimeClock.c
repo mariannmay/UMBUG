@@ -33,7 +33,7 @@ void realTimeClock_update(RealTimeClock* clock)
 	Byte fromRTC[8] =  {	DUMMY_CHAR, DUMMY_CHAR, DUMMY_CHAR, DUMMY_CHAR,
 		  					DUMMY_CHAR, DUMMY_CHAR, DUMMY_CHAR, DUMMY_CHAR	};
 	fromRTC[0] = RTC_READ_SECONDS;
-	SPI_transmitStream(&clock->SPI, fromRTC, 8);
+	SPI_transmitStream(&clock->SPI, fromRTC, 8, true);
 	
 	// copy in
 	clock->currentTime.seconds	= clock->SPI.receiveMessage[1];
