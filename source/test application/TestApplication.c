@@ -12,6 +12,10 @@
 
 void test_application_initialize(void)
 {
+     InitUART();
+    logLine("Test application start -----------------\r\n");
+    logLine("testdone");
+       
 	#if CDH_PROCESSOR_COMPILE
 		logLine("running test on CDH processor");
 		logLine("please check UMSATS_CDH_log.txt");
@@ -535,6 +539,8 @@ void test_packetGrabbing(void)
 	for(i=0;i<3;i++)
 	{
 		printf("%x ", possiblePacket[i]);
+		//readAnalogInput(devices.testThermocouple.voltageInput);
+		//logCombo("analog input on 6.6", devices.testThermocouple.voltageInput->value);
 	}
 	
 	fflush(stdout);
