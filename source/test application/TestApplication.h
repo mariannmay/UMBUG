@@ -10,6 +10,7 @@
 #define TESTAPPLICATION_H
 
 #include "../userConfig.h"
+#include <stdio.h>
 
 ////////////////////////////////
 

@@ -8,7 +8,7 @@
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include <msp430fg4619.h>
+#include <msp430fg4618.h>
 
 extern void system_initialize(void);
 extern void system_main(void);
@@ -17,7 +17,7 @@ extern void system_main(void);
 
 void main(void)
 {
-	// kiral
+	
 	system_initialize();
 	
 	for(;;)

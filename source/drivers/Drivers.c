@@ -8,9 +8,6 @@
 
 #include "Drivers.h"
 
-// TODO remove
-#include <stdio.h>
-
 // global variable ///////////////////////////////////////////////
 AllDevices devices;
 
@@ -19,9 +16,6 @@ AllDevices devices;
 void drivers_initialize(void)
 {
 	initialize_msp430_IO_ports();
-
-	printf("drivers_initialize()\r\n");
-	fflush(stdout);
 	
 	// refer to the msp430 spreadsheet on google docs for
 	// where to put your pins... when you use up a pin,
@@ -38,23 +32,24 @@ void drivers_initialize(void)
 	devices.realTimeClock.SPI.channel			= SPI_CHANNEL_1;
 	devices.realTimeClock.SPI.type				= SPI_TYPE_Master;
 	devices.realTimeClock.SPI.activeHigh		= true;
-	devices.realTimeClock.SPI.controlRegister0	= 0x29;
-	devices.realTimeClock.SPI.controlRegister1	= 0x80;
-	devices.realTimeClock.SPI.bitRateRegister0	= 0x04;
-	devices.realTimeClock.SPI.bitRateRegister1	= 0x00;
+	devices.realTimeClock.SPI.controlRegister0	= 0x29;	// 0010 1001
+	devices.realTimeClock.SPI.controlRegister1	= 0x80; // 1000 0000
+	devices.realTimeClock.SPI.bitRateRegister0	= 0x20; // 0010 0000
+	devices.realTimeClock.SPI.bitRateRegister1	= 0x00; // 0000 0000
 	realTimeClock_initialize(&devices.realTimeClock);
 	
 	// SD card ///////////////////////////////////////////////////
 	#if COM_PROCESSOR_COMPILE
-		devices.sdCard.SPI.chipSelect.out		= &msp430.PORT_10.digitalOutput[3];
+		devices.sdCard.SPI.chipSelect.out		= &msp430.PORT_8.digitalOutput[0];
 		devices.sdCard.SPI.channel				= SPI_CHANNEL_2;
 		devices.sdCard.SPI.type					= SPI_TYPE_Master;
 		devices.sdCard.SPI.activeHigh			= false;
-		devices.sdCard.SPI.controlRegister0		= 0xA9;
-		devices.sdCard.SPI.controlRegister1		= 0x80;
-		devices.sdCard.SPI.bitRateRegister0		= 0x04;
-		devices.sdCard.SPI.bitRateRegister1		= 0x00;
-		sdCard_initialize(&devices.sdCard);
+		devices.sdCard.SPI.controlRegister0		= 0x29; // 0010 1001
+		devices.sdCard.SPI.controlRegister1		= 0x80; // 1000 0000
+		devices.sdCard.SPI.bitRateRegister0		= 0x30; // 0011 0000
+		devices.sdCard.SPI.bitRateRegister1		= 0x00; // 0000 0000
+		setDigitalOutput(devices.sdCard.SPI.chipSelect.out);
+		initialize_SPI(&devices.sdCard.SPI);
 	#endif
 	
 	// TEST SPI FRAMEWORK ONLY ///////////////////////////////////
@@ -103,7 +98,7 @@ void drivers_initialize(void)
 	SCFI0 &= ~(FLLD0 + FLLD1);
 	
 	#if CDH_PROCESSOR_COMPILE
-		SCFI0 |= FN_8; //FLL_DIV_1 |
+		SCFI0 |= FN_2; //FLL_DIV_1 |
 	#endif
 	
 	#if COM_PROCESSOR_COMPILE
@@ -112,31 +107,22 @@ void drivers_initialize(void)
 	 
 	// System Clock Frequency Control ////////////////////////////
 	
-	SCFQCTL = SCFQ_1M;
+	SCFQCTL = SCFQ_2M;
 	
 	// Digital to analog conversion //////////////////////////////
 	#if COM_PROCESSOR_COMPILE
 		// TODO UNCOMMENT AFTER TEST OUTPUT DONE
-		devices.radio.microphone						= &msp430.PORT_6.analogOutput;
-		devices.test_AtoD								= &msp430.PORT_5.analogInput;
-		//devices.testPSK								= &msp430.PORT_6.analogOutput;
+		devices.radio.microphone				= &msp430.PORT_6.analogOutput;
+		devices.test_AtoD						= &msp430.PORT_5.analogInput;
+		//devices.testPSK							= &msp430.PORT_6.analogOutput;
 		
 	#endif
 	
+	// for debug purposes
+	// TODO REMOVE
+	devices.testThermocouple.voltageInput		= &msp430.PORT_6.analogInput[5]; // P6.5, pin #4
 	
 	
-	// Tardigrade temperature sensor
-	thermocouple_initialize(&devices.tardigradeTemperatureSensor);
-	devices.tardigradeTemperatureSensor.voltageInput	= &msp430.PORT_6.analogInput[5]; // P6.5, pin #4
-	
-	
-	// SD card
-	//devices.sdCard.SPI.bus					= &devices.spiBus;
-	//devices.sdCard.SPI.enable				= &msp430.PORT_8.digitalOutput[0];
-	//devices.sdCard.SPI.enable->state		= high;
-	//devices.sdCard.cardPresence				= &msp430.PORT_5.digitalInput[3];
-	//devices.sdCard.status					= SDCARD_UNINITIALIZED;
-	//sdCard_initialize(&devices.sdCard);
 	
 	// master multiplexer select lines... used for all multiplexed I/O
 	//devices.multiplexerSelectLines.S0		= &msp430.PORT_8.digitalOutput[1];

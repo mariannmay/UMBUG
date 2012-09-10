@@ -6,7 +6,7 @@
 //        Mohamed Temam Nasri
 //******************************************************************************
  
-#include <msp430fg4619.h> 
+#include <msp430fg4618.h> 
 
 // Kane commented it out because this file doesn't exist
 //#include <battery_charger.h>

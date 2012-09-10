@@ -9,7 +9,7 @@
 #ifndef DRIVERSCONFIG_H
 #define DRIVERSCONFIG_H
 
-#include "./devices/msp430/MSP430FG4619_IOPorts.h"
+#include "./devices/msp430/MSP430FG4618_IOPorts.h"
 #include "../userConfig.h"
 
 //////////////////////////////////
