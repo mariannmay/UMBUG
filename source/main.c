@@ -17,7 +17,10 @@ extern void system_main(void);
 
 void main(void)
 {
+	volatile unsigned int i;
+	 
 	
+
 	system_initialize();
 	
 	for(;;)

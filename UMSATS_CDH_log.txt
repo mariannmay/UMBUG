@@ -1,34 +1,6 @@
 == DEBUG MODE ==
 
-Testing PSK
-data:  ff	 ff	 a1	 2c	 b6	 10	 0	 89	
+A to D test conversions
+-----------------
 All tests complete! --------------------
-== DEBUG MODE ==
 
-Testing PSK
-data:  ff	 ff	 a1	 2c	 b6	 10	 0	 89	
-All tests complete! --------------------
-== DEBUG MODE ==
-
-Testing PSK
-data:  ff	 ff	 a1	 2c	 b6	 10	 0	 89	
-All tests complete! --------------------
-== DEBUG MODE ==
-
-Testing PSK
-data:  ff	 ff	 a1	 2c	 b6	 10	 0	 89	
-All tests complete! --------------------
-== DEBUG MODE ==
-
-Testing PSK
-data:  ff	 ff	 a1	 2c	 b6	 10	 0	 89	
-All tests complete! --------------------
-== DEBUG MODE ==
-
-Testing PSK
-data:  ff	 ff	 a1	 2c	 b6	 10	 0	 89	
-All tests complete! --------------------
-== DEBUG MODE ==
-
-Testing PSK
-data:  ff	 ff	 a1	 2c	 b6	 10	 0	 89	

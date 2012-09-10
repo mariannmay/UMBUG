@@ -44,6 +44,23 @@ void drivers_initialize(void)
 	#endif
 	
 	// TEST SPI FRAMEWORK ONLY ///////////////////////////////////
+  // // THIS IS AN OLD WAY OF TRYING TO SET THE CLOCKS AND THINGS.
+	// // //set operating mode to fully active using the status register
+	// // _bic_SR_register(LPM4_bits);
+	// // 
+	// // //smclk clock setup
+	// // FLL_CTL0 |= DCOPLUS + XTS_FLL;
+	// // FLL_CTL1 &= ~(SELM0 + SELM1 + SMCLKOFF + FLL_DIV0 + FLL_DIV1 + LFXT1DIG);
+	// // FLL_CTL1 &= ~XT2OFF;
+	// // FLL_CTL1 |= SELS;
+	// // 
+	// // /* System Clock Frequency Integrator 0 */
+	// // SCFI0 &= ~(FLLD0 + FLLD1);
+	// // SCFI0 |= FN_2; //FLL_DIV_1 | 
+	// // /* System Clock Frequency Integrator 1 */
+	// // //SCFI1 is auto set
+	// // /* System Clock Frequency Control */
+	// // SCFQCTL = SCFQ_1M;
 	
 	/*
 	#if CDH_PROCESSOR_COMPILE
