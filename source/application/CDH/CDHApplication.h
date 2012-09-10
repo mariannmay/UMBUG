@@ -32,6 +32,7 @@ typedef enum
 	PKT_CAMERAHIST,
 	PKT_SUNSENSORS, // there are 12 of them
 	PKT_ADCSALGORITHM, //which one is currently running B-dot and sun-pointing
+	PKT_TORQUERODCURRENTS, //measurements for the torque rods
 	PKT_PEEKDATA, //check the table of values
 	PKT_CDHUPKEEP, //processor load %, micro temp, memory use, watchdog counts
 	PKT_COMUPKEEP, //watchdog timeouts, received callsigns, memory use RX, memory use TX
