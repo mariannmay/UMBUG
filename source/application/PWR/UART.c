@@ -53,20 +53,19 @@ void InitUART(void){
   
   P4SEL |= 0x03;                            // P4.1,0 = USART1 TXD/RXD
   
-  do
-  {
-    IFG1 &= ~OFIFG;                           // Clear OSCFault flag
-    for (i = 0x47FF; i > 0; i--);             // Time for flag to set
-  }while ((IFG1 & OFIFG));                   // OSCFault flag still set?
-  
+  //do
+  //{
+  //  IFG1 &= ~OFIFG;                           // Clear OSCFault flag
+  //  for (i = 0x47FF; i > 0; i--);             // Time for flag to set
+  //}while ((IFG1 & OFIFG));                   // OSCFault flag still set?
   
   
   ME2 |= UTXE1 + URXE1;                     // Enable USART1 TXD/RXD
   U1CTL |= CHAR;                            // 8-bit character
-  U1TCTL |= SSEL0;                          // UCLK = ACLK
-  U1TCTL &= ~SSEL1;
-  U1TCTL &= ~CKPL;
-  U1RCTL |= SSEL1 + SSEL0;
+  //U1TCTL |= SSEL0;                          // UCLK = ACLK
+  //U1TCTL &= ~SSEL1;
+  //U1TCTL &= ~CKPL;
+  //U1RCTL |= SSEL1 + SSEL0;
 //  U1BR0 = 0x03;                             // 
 //  U1BR1 = 0x00;                             // 
 //  U1MCTL = 0x29;                            // Modulation
@@ -84,8 +83,10 @@ void InitUART(void){
     IFG2&=~UTXIFG1;
     TXBUF1 = 0xAC;                            // RXBUF1 to TXBUF1
   }*/
+  
+  IFG2&=~UTXIFG1;
   TXBUF1 = 0xAC;
-  _BIS_SR(LPM0_bits + GIE);                 // Enter LPM0 w/ interrupt
+/*  _BIS_SR(LPM0_bits + GIE);                 // Enter LPM0 w/ interrupt
   
 }
 
@@ -94,9 +95,9 @@ __interrupt void USART1_rx (void)
 {
   while (!(IFG2 & UTXIFG1));                // USART1 TX buffer ready?
   //do an echo whenever we receive data.
-  TXBUF1 = RXBUF1;                          // RXBUF1 to TXBUF1
+  TXBUF1 = RXBUF1;     */                     // RXBUF1 to TXBUF1
 }
-   
+ 
    
 
     
