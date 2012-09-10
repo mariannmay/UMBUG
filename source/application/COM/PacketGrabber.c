@@ -194,7 +194,7 @@ bool removeBitStuffing(int firstByte, int firstStartBit, int secondByte, int sec
 bool checkCRC(UI8* data)
 {
 	UI16 packetCRC = ((UI16)data[16])<<8 + (UI16)data[17];
-	UI16 calculatedCRC = make_crc16(data, MIN_RECIEVED_PACKET_SIZE-4, 3);//CRC the packet minus the flags and the FCS
+	UI16 calculatedCRC = make_crc16(((char *)(data)), MIN_RECIEVED_PACKET_SIZE-4, 3);//CRC the packet minus the flags and the FCS
 	return (packetCRC == calculatedCRC);
 }
 
