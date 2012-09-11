@@ -35,21 +35,15 @@ void initialize_digitalToAnalogConverter(void)
 
 //////////////////////////////////////////////////////////////////
 
-void startNewDigitalToAnalogConversion(Word digital_12_bit_value, int outputNumber)
+void startNewDigitalToAnalogConversion(Word digital_12_bit_value)
 {
 	if (digital_12_bit_value > 0x0FFF)
 	{
 		return;
 	}
-	
-	if (outputNumber == 0)
-	{
-		DAC12_0DAT = digital_12_bit_value;
-	}
-	else if (outputNumber == 1)
-	{
-		DAC12_1DAT = digital_12_bit_value;
-	}
+
+	DAC12_0DAT = digital_12_bit_value;
+
 }
 
 

@@ -28,7 +28,11 @@
 	#define PLD2_CONNECTED 0
 	#define THM_CONNECTED 0
 	#define STR_CONNECTED 0
+	
 #endif
+
+// devices connected processor
+#define RTC_CONNECTED 1
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 

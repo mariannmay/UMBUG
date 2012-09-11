@@ -48,7 +48,7 @@ void initialize_msp430_IO_ports(void)
 	initializeSerialInput  (	&msp430.PORT_3.serialInput[0],		3,	2	);	// SPI_1			/	SPI_1
 	initializeSerialInput  (	&msp430.PORT_3.serialInput[1],		3,	3	);	// SPI_1			/	SPI_1
 	initializeDigitalInput (	&msp430.PORT_3.digitalInput[0],		3,	4	);	//  				/
-	initializeDigitalInput (	&msp430.PORT_3.digitalInput[1],		3,	5	);	//  				/
+	initializeDigitalInput (	&msp430.PORT_3.digitalInput[1],		3,	5	);	//  				/	testInput on radio
 	initializeDigitalInput (	&msp430.PORT_3.digitalInput[2],		3,	6	);	//  				/
 	initializeDigitalInput (	&msp430.PORT_3.digitalInput[3],		3,	7	);	//  				/
 	
@@ -65,7 +65,7 @@ void initialize_msp430_IO_ports(void)
 	
 	// PORT_5																		CDH					COM
 	P5DIR = 0x02; // 0000 0010
-	initializeAnalogInput  (	&msp430.PORT_5.analogInput,			5,	0	);	//  				/
+	initializeAnalogInput  (	&msp430.PORT_5.analogInput,			5,	0	);	//  				/ in from radio
 	initializeDigitalOutput(	&msp430.PORT_5.digitalOutput,		5,	1	);	//  				/
 	initializeDigitalInput (	&msp430.PORT_5.digitalInput[0],		5,	2	);	//  				/
 	initializeDigitalInput (	&msp430.PORT_5.digitalInput[1],		5,	3	);	//  				/
@@ -75,7 +75,7 @@ void initialize_msp430_IO_ports(void)
 	initializeDigitalInput (	&msp430.PORT_5.digitalInput[5],		5,	7	);	//  				/
 	
 	// PORT_6																		CDH					COM
-	P6DIR = 0X00; // 0000 0000
+	P6DIR = 0X40; // 0100 0000
 	initializeAnalogInput  (	&msp430.PORT_6.analogInput[0],		6,	0	);	//  analogMUXIn0	/
 	initializeAnalogInput  (	&msp430.PORT_6.analogInput[1],		6,	1	);	//  analogMUXIn1	/
 	initializeAnalogInput  (	&msp430.PORT_6.analogInput[2],		6,	2	);	//  analogMUXIn2	/
@@ -123,7 +123,7 @@ void initialize_msp430_IO_ports(void)
 	initializeDigitalOutput(	&msp430.PORT_10.digitalOutput[0],	10,	0	);	//  				/
 	initializeDigitalOutput(	&msp430.PORT_10.digitalOutput[1],	10,	1	);	//  				/
 	initializeDigitalOutput(	&msp430.PORT_10.digitalOutput[2],	10,	2	);	//  				/
-	initializeDigitalOutput(	&msp430.PORT_10.digitalOutput[3],	10,	3	);	//  				/
+	initializeDigitalOutput(	&msp430.PORT_10.digitalOutput[3],	10,	3	);	//  				/ SD card enable
 	initializeDigitalOutput(	&msp430.PORT_10.digitalOutput[4],	10,	4	);	// RTC chip enable	/
 	initializeDigitalOutput(	&msp430.PORT_10.digitalOutput[5],	10,	5	);	// watchdog WDI		/
 	initializeAnalogInput  (	&msp430.PORT_10.analogInput[0],		10,	6	);	//  				/
@@ -136,6 +136,7 @@ void initialize_msp430_IO_ports(void)
 	initialize_digitalToAnalogConverter();
 	
 }
+
 
 
 

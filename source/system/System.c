@@ -6,24 +6,35 @@
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "System.h"
+#include "../system/System.h"
 #include "../drivers/devices/msp430/TimerA.h"
 #include <stdio.h>
 
-Time_ms systemTimer;
+Time systemTime;
 
 //////////////////////////////////////////////////////////////////
 
 void system_initialize(void)
 {
+	systemTime.seconds	= 0x00;
+	systemTime.minutes	= 0x00;
+	systemTime.hours	= 0x00;
+	systemTime.day		= 0x01;
+	systemTime.date		= 0x01;
+	systemTime.month	= 0x01;
+	systemTime.year		= 0x12;
 	
-	systemTimer = 0;
+	StopMSP430WatchdogTimer;
 	
-	drivers_initialize();
+	// TODO remove
+	printf("system_initialize()\r\n");
+	fflush(stdout);
 	
 	StopMSP430WatchdogTimer;
 	//initTimerA();
 	//enableInterrupts();
+	drivers_initialize();
+
 	
 	#if DebugMode
 		test_application_initialize();
@@ -32,17 +43,18 @@ void system_initialize(void)
 		application_initialize();
 	#endif
 	
-	
 }
 
 //////////////////////////////////////////////////////////////////
 
 // 	main has an infinite loop which calls this function every time
 void system_main(void)
-{	
+{
+	enableInterrupts();
+	
 	// run the program
 	#if DebugMode
-		logLine("== DEBUG MODE ==\r\n");
+		logLine("== DEBUG MODE ==");
 		test_application_main();
 	#else
 		application_main();
@@ -54,6 +66,11 @@ void system_main(void)
 void system_abort(void)
 {
 	// infinite loop
+	#if DebugMode
+		logLine("");
+		logLine("SYSTEM ABORT --------------");
+	#endif
+	
 	for(;;)	{ }
 }
 

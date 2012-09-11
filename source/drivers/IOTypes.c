@@ -19,11 +19,7 @@ void sendAnalogOutput(AnalogOutput* output)
 {
 	if ((output->portNum == 6) && (output->pin == 6))
 	{
-		startNewDigitalToAnalogConversion(output->value, 0);
-	}
-	else if ((output->portNum == 6) && (output->pin == 7))
-	{
-		startNewDigitalToAnalogConversion(output->value, 1);
+		startNewDigitalToAnalogConversion(output->value);
 	}
 }
 
@@ -265,13 +261,16 @@ void readAnalogInput(AnalogInput* input)
 	
 	//////////////
 	
+	// store the temporary reading 0 -> 4095
+	UI16 temp = 0;
+	
 	switch (input->portNum)
 	{
 		case 5:
 			switch (input->pin)
 			{
-				case 0:		input->value = ADC12MEM9; break;
-				case 1:		input->value = ADC12MEM8; break;
+				case 0:		temp = ADC12MEM9; break;
+				case 1:		temp = ADC12MEM8; break;
 				default: return;
 			}
 			break;
@@ -279,13 +278,13 @@ void readAnalogInput(AnalogInput* input)
 		case 6:
 			switch (input->pin)
 			{
-				case 0:		input->value = ADC12MEM0; break;
-				case 1:		input->value = ADC12MEM1; break;
-				case 2:		input->value = ADC12MEM2; break;
-				case 3:		input->value = ADC12MEM3; break;
-				case 4:		input->value = ADC12MEM4; break;
-				case 5:		input->value = ADC12MEM5; break;
-				case 7:		input->value = ADC12MEM7; break;
+				case 0:		temp = ADC12MEM0; break;
+				case 1:		temp = ADC12MEM1; break;
+				case 2:		temp = ADC12MEM2; break;
+				case 3:		temp = ADC12MEM3; break;
+				case 4:		temp = ADC12MEM4; break;
+				case 5:		temp = ADC12MEM5; break;
+				case 7:		temp = ADC12MEM7; break;
 				default: return;
 			}
 			break;
@@ -293,8 +292,8 @@ void readAnalogInput(AnalogInput* input)
 		case 10:
 			switch (input->pin)
 			{
-				case 6:		input->value = ADC12MEM11; break;
-				case 7:		input->value = ADC12MEM10; break;
+				case 6:		temp = ADC12MEM11; break;
+				case 7:		temp = ADC12MEM10; break;
 				default: return;
 			}
 			break;
@@ -302,6 +301,12 @@ void readAnalogInput(AnalogInput* input)
 		default:
 			return;
 	}
+	
+	// change the raw number 0 -> 4095 into voltage
+	// we are using 3.3V = 3300 mV
+	
+	input->value = (Millivolts)((temp * ThreePointThreeVolts) / highestA2DReading);
+
 }
 
 ///////////////////////////////////////////////

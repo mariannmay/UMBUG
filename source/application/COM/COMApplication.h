@@ -6,24 +6,20 @@
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#ifndef CDHAPPLICATION_H
-#define CDHAPPLICATION_H
-
-//////////////////////////////////////////////////////////////////
+#ifndef COMAPPLICATION_H
+#define COMAPPLICATION_H
 
 #include "../ApplicationConfig.h"
 #include "../../system/System.h"
 #include "../../system/Log.h"
+#include "../../drivers/devices/msp430/TimerA.h"
+#include "../COM/Tone.h"
+#include "../COM/PSK.h"
 
-///
+void COM_timerA_ISR(void);
 
-#include "../THM/THM.h"
-
-//////////////////////////////////////////////////////////////////
-
-void CDH_timerA_ISR(void);
-
-void CDH_application_main(void);
-void CDHMainScheduleLoop(void);
+void COM_application_main(void);
+void COMMainScheduleLoop(void);
+void runRadio(void);
 
 #endif

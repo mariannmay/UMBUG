@@ -8,6 +8,16 @@
 
 #include "CDHApplication.h"
 
+
+///////////////////////////////////////////////////////////////////
+
+void CDH_timerA_ISR(void)
+{
+	kickTheDog(&devices.systemWatchdog);
+}
+
+///////////////////////////////////////////////////////////////////
+
 void CDH_application_main(void)
 {
 	// TODO: This will be where the scheduler is started, and before that, the timer to 
@@ -34,17 +44,42 @@ void CDHMainScheduleLoop(void)
 		
 	for(;;)
 	{
-		kickTheDog(&(devices.systemWatchdog));
+		kickTheDog(&devices.systemWatchdog);
 		
-		// read how much time has passed during the previous loop
-		systemTimer += realTimeClock_timeSinceLastCheck(&(devices.systemClock));
-
-		if (systemTimer >= OneSecond)
+		// read the current time (second precision)
+		realTimeClock_update(&devices.realTimeClock);
+		
+		
+		bool oneSecondHasPassed = (devices.realTimeClock.currentTime.seconds > systemTime.seconds);
+		bool oneMinuteHasPassed = (devices.realTimeClock.currentTime.minutes > systemTime.minutes);
+		bool oneHourHasPassed	= (devices.realTimeClock.currentTime.hours   > systemTime.hours);
+		bool oneDayHasPassed	= (devices.realTimeClock.currentTime.date    > systemTime.date);
+		
+		if (oneSecondHasPassed)
 		{
+			systemTime.seconds	= devices.realTimeClock.currentTime.seconds;
+			
 			toggleStatusLED();
-			systemTimer = 0;
+		}
+		if (oneMinuteHasPassed)
+		{
+			systemTime.minutes	= devices.realTimeClock.currentTime.minutes;
 			
 		}
+		if (oneHourHasPassed)
+		{
+			systemTime.hours	= devices.realTimeClock.currentTime.hours;
+			
+		}
+		if (oneDayHasPassed)
+		{
+			systemTime.date		= devices.realTimeClock.currentTime.date;
+			systemTime.month	= devices.realTimeClock.currentTime.month;
+			systemTime.year		= devices.realTimeClock.currentTime.year;
+			
+		}
+		
+		THM_application_main();
 	
 		//Freeze, criminal! >:|
 		

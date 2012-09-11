@@ -14,21 +14,7 @@
 // functions
 void sdCard_initialize(SDCard* card)
 {
-	
-	// if return is not NULL an error occured and the
-    // SD-card will be initialized again 
-    int timeout = 0;
-	while (card->status != SDCARD_INITIALIZED)
-  	{
-    	//card->status = mmcInit();
-    	timeout++;
-    	if (timeout == 50)                      // Try 50 times until error
-    	{
-      		//printf ("No SD card found!! %x\n", card->status);
-      		break;
-    	}
-  	}
-  	
+	initialize_SPI(&card->SPI);
 }
 
 void readSDCard(SDCard* card, UI8 address)
