@@ -52,7 +52,7 @@ void initialize_analogToDigitalConverter(void)
 void startNewAnalogToDigitalConversion(void)
 {
 	// this involves toggling the ENC bit of the ADC12CTL0 register
-	// see msp430fg4619 user guide page 28-12
+	// see msp430fg4618 user guide page 28-12
 	ADC12CTL0 |= (ENC+ADC12SC);
 	
 	while ((ADC12CTL1 & ADC12BUSY))

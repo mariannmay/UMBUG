@@ -1,5 +1,5 @@
-== DEBUG MODE ==
-
-Testing PSK
+Testing the SD card
 
 All tests complete! --------------------
+
+SYSTEM ABORT --------------

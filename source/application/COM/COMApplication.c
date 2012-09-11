@@ -24,6 +24,7 @@ void COM_timerA_ISR(void)
 
 void COM_application_main(void)
 {
+	sdCard_initialize(&devices.sdCard);
 	initializePSKBuffer();
 	logLine("COM scheduler initialized");
 	for(;;)
@@ -40,9 +41,13 @@ void COMMainScheduleLoop(void)
 void runRadio(void)
 {
 	#if COM_PROCESSOR_COMPILE
-		bool timeToChangePhase = false;
-		
-		if (timeToChangePhase == true)
+	
+		// TODO make this happen sometimes
+		//bool timeToChangePhase = false;
+		//static UI16 weirdTemp = 234;
+		static UI16 phaseOffset = 150/4;
+		static UI16 counter = 0;
+		if (/*timeToChangePhase == true*/false)
 		{
 			UI8 currentPhaseChangeOutOf32 = phaseShifts[currentPhaseShiftIndex];
 			phaseShifts[currentPhaseShiftIndex] = 0;
@@ -55,17 +60,38 @@ void runRadio(void)
 			UI16 toneIndexChange = ToneIndexPositionsPerDegreePhase * degreesChange;
 			currentToneIndex += toneIndexChange;
 		}
-		else
+		//else
+		//{
+			currentToneIndex += 150;
+		//	currentToneIndex = currentToneIndex % SINE_LENGTH;
+			//weirdTemp += 38;
+		//}
+		
+		counter++;
+		if(counter >= SINE_LENGTH/150)
 		{
-			currentToneIndex += 100;	
+			counter = 0;
+			phaseOffset = phaseOffset == 2400 ? 0:2400;
 		}
 		
-		if (currentToneIndex >= SINE_LENGTH)
-		{
-			currentToneIndex = (currentToneIndex % SINE_LENGTH);
-		}
 		
-		devices.radio.microphone->value = getToneValueAt(currentToneIndex);
+		/*if (currentToneIndex%SINE_LENGTH < currentToneIndex)
+		{
+			phaseOffset += 150;	
+		}
+		*/
+		currentToneIndex = currentToneIndex%SINE_LENGTH;
+		phaseOffset = phaseOffset%SINE_LENGTH;
+		
+		
+		/*
+		if (currentToneIndex+phaseOffset >= SINE_LENGTH)
+		{
+			//currentToneIndex += weirdTemp;
+			currentToneIndex = (currentToneIndex % (SINE_LENGTH - phaseOffset));
+		}
+		*/
+		devices.radio.microphone->value = getToneValueAt((currentToneIndex + phaseOffset)%SINE_LENGTH);
 		startNewDigitalToAnalogConversion(devices.radio.microphone->value);
 	#endif
 	

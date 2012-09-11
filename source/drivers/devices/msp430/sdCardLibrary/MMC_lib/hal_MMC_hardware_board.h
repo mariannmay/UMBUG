@@ -38,7 +38,7 @@
 
 
 
-#include "msp430fg4619.h"              // Adjust this according to the
+#include "msp430fg4618.h"              // Adjust this according to the
                                      // MSP430 device being used.
 // SPI port definitions              // Adjust the values for the chosen
 #define SPI_PxSEL         P5SEL      // interfaces, according to the pin

@@ -14,7 +14,7 @@
 void realTimeClock_unprotect(RealTimeClock* clock)
 {
 	Byte toRTC[2] = {RTC_WRITE_CONTROL_REGISTER, RTC_DISABLE_WRITE_PROTECT};
-	SPI_transmitStream(&clock->SPI, toRTC, 2);
+	SPI_transmitStream(&clock->SPI, toRTC, 2, true);
 }
 
 // functions //////////////////////////////////
@@ -33,7 +33,7 @@ void realTimeClock_update(RealTimeClock* clock)
 	Byte fromRTC[8] =  {	DUMMY_CHAR, DUMMY_CHAR, DUMMY_CHAR, DUMMY_CHAR,
 		  					DUMMY_CHAR, DUMMY_CHAR, DUMMY_CHAR, DUMMY_CHAR	};
 	fromRTC[0] = RTC_READ_SECONDS;
-	SPI_transmitStream(&clock->SPI, fromRTC, 8);
+	SPI_transmitStream(&clock->SPI, fromRTC, 8, true);
 	
 	// copy in
 	clock->currentTime.seconds	= clock->SPI.receiveMessage[1];
@@ -74,13 +74,13 @@ bool realTimeClock_set(RealTimeClock* clock, Time* t)
 	toRTC[5] = t->date;
 	toRTC[6] = t->month;
 	toRTC[7] = t->year;
-	SPI_transmitStream(&clock->SPI, toRTC, 8);
+	SPI_transmitStream(&clock->SPI, toRTC, 8, true);
 	
 	// then read it back
 	Byte fromRTC[8] =  {	DUMMY_CHAR, DUMMY_CHAR, DUMMY_CHAR, DUMMY_CHAR,
 		  					DUMMY_CHAR, DUMMY_CHAR, DUMMY_CHAR, DUMMY_CHAR	};
 	fromRTC[0] = RTC_READ_SECONDS;
-	SPI_transmitStream(&clock->SPI, fromRTC, 8);
+	SPI_transmitStream(&clock->SPI, fromRTC, 8, true);
 	
 	// compare (exclude seconds)
 	if (	t->minutes	== clock->SPI.receiveMessage[2] &&
