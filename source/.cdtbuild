@@ -146,9 +146,6 @@
 </tool>
 <macros/>
 </toolChain>
-<resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.MSP430.Release.1524506253./Project-Cheesecake/lnk_msp430fg4619.cmd" name="lnk_msp430fg4619.cmd" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/lnk_msp430fg4619.cmd" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.linkerRelease.16641532./Project-Cheesecake/lnk_msp430fg4619.cmd">
-<tool id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.linkerRelease.16641532./Project-Cheesecake/lnk_msp430fg4619.cmd" name="MSP430 Linker" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.linkerRelease.16641532"/>
-</resourceConfiguration>
 <resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.MSP430.Release.1524506253./Project-Cheesecake/system/TaskList.c" name="TaskList.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/system/TaskList.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerRelease.1731900533./Project-Cheesecake/system/TaskList.c">
 <tool id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerRelease.1731900533./Project-Cheesecake/system/TaskList.c" name="MSP430 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerRelease.1731900533"/>
 </resourceConfiguration>
