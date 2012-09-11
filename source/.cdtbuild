@@ -70,9 +70,6 @@
 <resourceConfiguration exclude="false" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/system/TaskList.c" name="TaskList.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/system/TaskList.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1415143171./Project-Cheesecake/system/TaskList.c">
 <tool id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1415143171./Project-Cheesecake/system/TaskList.c" name="MSP430 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1415143171"/>
 </resourceConfiguration>
-<resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/drivers/devices/msp430/Context.c" name="Context.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/drivers/devices/msp430/Context.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1415143171./Project-Cheesecake/drivers/devices/msp430/Context.c">
-<tool id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1415143171./Project-Cheesecake/drivers/devices/msp430/Context.c" name="MSP430 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1415143171"/>
-</resourceConfiguration>
 <resourceConfiguration exclude="false" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/drivers/devices/msp430/TimerA.c" name="TimerA.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/drivers/devices/msp430/TimerA.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1415143171./Project-Cheesecake/drivers/devices/msp430/TimerA.c">
 <tool id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1415143171./Project-Cheesecake/drivers/devices/msp430/TimerA.c" name="MSP430 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1415143171"/>
 </resourceConfiguration>
@@ -121,7 +118,11 @@
 <listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/include&quot;"/>
 </option>
 </tool>
+<macros/>
 </toolChain>
+<resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.MSP430.Release.1524506253./Project-Cheesecake/drivers/devices/msp430/TimerB.c" name="TimerB.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/drivers/devices/msp430/TimerB.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerRelease.445211581./Project-Cheesecake/drivers/devices/msp430/TimerB.c">
+<tool id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerRelease.445211581./Project-Cheesecake/drivers/devices/msp430/TimerB.c" name="MSP430 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerRelease.445211581"/>
+</resourceConfiguration>
 </configuration>
 </project>
 </ManagedProjectBuildInfo>

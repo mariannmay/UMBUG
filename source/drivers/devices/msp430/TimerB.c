@@ -53,7 +53,7 @@ void cancelTimer()
 	TBCTL &= ~(MC1 | MC0);	//stop timer operation
 	TBR = 0;				//clear the counter as well for a fresh start whenever that happens
 }
-
+/*
 #pragma vector=TIMERB0_VECTOR
 __interrupt void timerB0int(void){
 	
@@ -80,7 +80,7 @@ __interrupt void timerB0int(void){
 	
 	
 }
-
+*/
 
 
 
