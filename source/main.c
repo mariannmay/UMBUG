@@ -21,9 +21,13 @@ void main(void)
 	//volatile unsigned int i;
 	 
 	
-	//system_initialize();
+	system_initialize();
 	InitUART();
-	
+	for(;;)
+	{
+		while (!(IFG2 & UTXIFG1));                // USART1 TX buffer ready?
+  		TXBUF1 = 0xAA;          
+	}
 	//for(;;)
 	//{
 	//	system_main();
