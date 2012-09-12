@@ -10,8 +10,14 @@
 
 
 #include <msp430fg4619.h> 
+#include <stdio.h>
 //#include "main.h"
 #include "UART.h"
+
+#if COM_PROCESSOR_COMPILE
+	#include "../COM/COMApplication.h"
+#endif
+
 /*#include <stdio.h>
 #define USAxCTL		         U1CTL		// USART Control Register  /	
     #define USAxBR0     	 U1BR0			// USART Baud Rate 0 /
@@ -109,6 +115,9 @@ void InitUART(void){
 //   Built with CCE Version: 3.2.0 and IAR Embedded Workbench Version: 3.39 beta
 //******************************************************************************
   volatile unsigned int i;
+  
+  printf("in Uart_init\n");
+  fflush(stdout);
 
   WDTCTL = WDTPW + WDTHOLD;                 // Stop WDT
   //FLL_CTL0 |= XCAP14PF;                     // Configure load caps
@@ -134,13 +143,30 @@ void InitUART(void){
   _BIS_SR(/*LPM0_bits + */GIE);                 // Enter LPM0 w/ interrupt
 }
 
-#pragma vector=USART1RX_VECTOR
-__interrupt void USART1_rx (void)
-{
-  while (!(IFG2 & UTXIFG1));                // USART1 TX buffer ready?
-  TXBUF1 = RXBUF1;                          // RXBUF1 to TXBUF1
-}
-   
+
+#if COM_PROCESSOR_COMPILE
+	#pragma vector=USART1RX_VECTOR
+	__interrupt void USART1_rx (void)
+	{
+	  printf("ptrwrite %d\n", ptrWrite);
+	  fflush(stdout);
+	  if(ptrWrite == MASTER_BUFFER_SIZE-1)
+	  {
+	  	ptrWrite = 0;
+	  }
+	  
+	  masterInputBuffer[ptrWrite++] = (UI8)RXBUF1;
+	}
+#endif
+
+#if CDH_PROCESSOR_COMPILE
+	#pragma vector=USART1RX_VECTOR
+	__interrupt void USART1_rx (void)
+	{
+	  while (!(IFG2 & UTXIFG1));                // USART1 TX buffer ready?
+	  TXBUF1 = RXBUF1;                          // RXBUF1 to TXBUF1
+	}
+#endif
 
     
 /* **************End of INITIALIZATION OF THE UART*****************************/
