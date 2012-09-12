@@ -89,6 +89,21 @@ __interrupt void timerA0int()
 		/*
 		 * Do comparisons here, execute time-tagged and/or immediate commands.
 		 */
+		 
+		 
+		if (functionIsExecuting == 1 && compareTimeCounter(&currentTime,&snapshot) > 0)
+		{//the current task has timed out, call the next function.
+		
+		//do we know that a function is actuall executing? now introducing functionIsRunning
+		
+		/*
+		The mechanism here is that if the stack gets eaten up, then we reset the processor and fuck everyone else.
+		*/
+			_enable_interrupt();
+			performCurrentTask(&tl);
+		}
+		 
+		/*commented out for testler
 		#if CDH_PROCESSOR_COMPILE
 			CDH_timerA_ISR();
 		#endif
@@ -96,7 +111,7 @@ __interrupt void timerA0int()
 		#if COM_PROCESSOR_COMPILE
 			COM_timerA_ISR();
 		#endif
-		
+		*/
 	}
 	
 	

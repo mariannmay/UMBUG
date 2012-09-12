@@ -7,13 +7,16 @@
 /*
  * If i ever catch you playing with this variable I will break your kneecaps -Troy
  */
+UI8 functionIsExecuting;
 int __TaskListIDs = 0;
 /*
  * Perform the current task in the given list.
  * 
  */
-
-
+/*
+	This is the time point at which the current function should be finished.
+*/
+TimeCounter snapshot;
 /*
  * the global holding the current time
  */
@@ -47,10 +50,11 @@ void performCurrentTask(TaskList* tl)
 		
 	
 	//printf("Status register is: %d\n",EEPROM_RESULT);
-	TimeCounter snapshot = copy(&currentTime);
+	snapshot = copy(&currentTime);
 	addShortDurationToTimeCounter(&snapshot,&(tl->tasks[tl->currentTaskIndex]).duration);
+	functionIsExecuting = 1;
 	int result = tl->tasks[tl->currentTaskIndex].func();		//postincrement,increment after accessing.
-	
+	functionIsExecuting = 0;
 	
 	
 	tl->currentTaskIndex = (tl->currentTaskIndex + 1)%tl->numTasks;

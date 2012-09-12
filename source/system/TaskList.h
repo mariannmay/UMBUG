@@ -22,7 +22,7 @@
  */
 #define TASKLIST_MAX_NUM_TASKS 16 //this is just a guess right now.
 
-
+extern UI8 functionIsExecuting;
 extern int __TaskListIDs;
 typedef struct
 {

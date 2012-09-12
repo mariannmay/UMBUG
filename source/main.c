@@ -17,13 +17,12 @@
 #include "system/System.h"
 #include "system/TaskList.h"
 #include "system/TimeCounter.h"
-
+#include "system/TaskListInit.h"
 
 extern void system_initialize(void);
 extern void system_main(void);
 
-//////////////////////////////////////////////////////////////////
-TaskList tl0;
+
 
 /*
  * a simple duration value.
@@ -39,17 +38,17 @@ void main(void)
 	//initTimerA();
 	//enableInterrupts();
 	initTimeCounter(&currentTime);
-	initTaskList(&tl0);
+	initTaskList(&t0);
 	initShortDuration(&duration_1S,1000);
 	//initialize_SPI(1);//1 for master
 	//initTestTasks();
-	bool dumb = addToTaskList(&tl0,&testFunction2,&duration_1S,6);
+	bool dumb = addToTaskList(&t0,&testFunction2,&duration_1S,6);
 	printf("test\n");
 	int i;
 	for(i=0;i<8;i++)
 		{
-		printf("Loading Function %d\n",tl0.numTasks);
-		bool d = addToTaskList(&tl0,&testFunction1,&duration_1S,6);
+		printf("Loading Function %d\n",t0.numTasks);
+		bool d = addToTaskList(&t0,&testFunction1,&duration_1S,6);
 		}
 		
 	
@@ -63,7 +62,7 @@ void main(void)
 	for(;;)
 	{
 		
-		performCurrentTask(&tl0);
+		performCurrentTask(&t0);
 		
 		//printf("Thunderlizards\n");
 	}

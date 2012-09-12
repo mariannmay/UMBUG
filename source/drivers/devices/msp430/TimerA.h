@@ -7,7 +7,7 @@
 #include "msp430fg4619.h"
 #include "../../../application/COM/COMApplication.h"
 #include "../../../application/CDH/CDHApplication.h"
-
+#include <intrinsics.h>
 ////////////////////////////////////////////////////////////////
 
 //pointer to function to call for interrupt.  change this to change interrupt function.
