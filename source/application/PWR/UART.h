@@ -17,7 +17,7 @@
 
 
 
-#define USART_A_MODULE  1     // Select which USCI_A module to use [0-1]
+/*#define USART_A_MODULE  1     // Select which USCI_A module to use [0-1]
 #define UART_BAUDRATE  9600 //Specify baudrate
 #define UART_BAUDRATE_REG  (unsigned short)(MCLK_FREQ/UART_BAUDRATE)
 
@@ -32,7 +32,7 @@
 
 #define UART_RX_PAD    BIT1 // select uart pins To receive data
 #define UART_TX_PAD    BIT0 // select uart pins To select data
-
+*/
 
 //include "TI_USCI_UART_Regs.h"
 //Global Functions
