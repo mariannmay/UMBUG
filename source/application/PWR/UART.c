@@ -124,9 +124,9 @@ void InitUART(void){
   U1CTL |= CHAR;                            // 8-bit character
   //U1TCTL |= SSEL1;                          // UCLK= ACLK
   U1TCTL |= SSEL1 + SSEL0;//SMCLK
-  U1BR0 = 0x01;                             // 1MHz 115200
+  U1BR0 = 0x45;                             // 1MHz 115200
   U1BR1 = 0x00;                             // 1MHz 115200
-  U1MCTL = 0x08;                            // 1MHz 115200 modulation
+  U1MCTL = 0xAA;                            // 1MHz 115200 modulation
   U1CTL &= ~SWRST;                          // Initialize USART state machine
   IE2 |= URXIE1;                            // Enable USART1 RX interrupt
 

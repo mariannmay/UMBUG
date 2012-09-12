@@ -26,7 +26,7 @@ void main(void)
 	for(;;)
 	{
 		while (!(IFG2 & UTXIFG1));                // USART1 TX buffer ready?
-  		TXBUF1 = 0xAA;          
+  		TXBUF1 = 0xAB;          
 	}
 	//for(;;)
 	//{
