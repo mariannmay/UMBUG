@@ -15,9 +15,9 @@
 #include "../../drivers/devices/msp430/TimerA.h"
 #include "../COM/Tone.h"
 #include "../COM/PSK.h"
-//#include "../COM/PacketGrabber.h"
+#include "../COM/PacketGrabber.h"
 
-//void COM_timerA_ISR(void);
+void COM_timerA_ISR(void);
 
 void COM_application_main(void);
 void COMMainScheduleLoop(void);

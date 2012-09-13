@@ -11,43 +11,8 @@ found at 7
 byte0 = 55 
 byte1 = 3e 
 byte2 = 34 
-its a zero 
-its a one 
-oneCount = 1
-its a zero 
-its a one 
-oneCount = 1
-its a zero 
-its a one 
-oneCount = 1
-its a zero 
-its a one 
-oneCount = 1
-its a zero 
-its a zero 
-its a one 
-oneCount = 1
-its a one 
-oneCount = 2
-its a one 
-oneCount = 3
-its a one 
-oneCount = 4
-its a one 
-oneCount = 5
-its a zero 
-its a zero 
-its a one 
-oneCount = 1
-its a one 
-oneCount = 2
-its a zero 
-its a one 
-oneCount = 1
-its a zero 
-its a zero 
-its a zero 
-55 3e 68 
+55 3e 68 
+0x97, 0x90, 0x51, 0x70, 0x30, 0xbe, 0x76, 0xa, 0x18, 0x6b, 0x0, 0x0, 0x18, 0x6b, 0x0, 0x0, 0xe, 0x65, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x64, 0x19, 0x60, 0x18, 0x0, 0x4, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x30, 
 All tests complete! --------------------
 
 SYSTEM ABORT --------------
