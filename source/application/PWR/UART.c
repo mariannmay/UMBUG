@@ -133,14 +133,45 @@ void InitUART(void){
   U1CTL |= CHAR;                            // 8-bit character
   //U1TCTL |= SSEL1;                          // UCLK= ACLK
   U1TCTL |= SSEL1 + SSEL0;//SMCLK
-  U1BR0 = 0x45;                             // 1MHz 115200
+  
+  
+  /*
+  uart calculator: http://mspgcc.sourceforge.net/baudrate.html
+  this program license is at: http://www.fsf.org/licenses/licenses.html#GPL
+  this program is distributed WITHOUT ANY WARRANTY
+
+  clock: 9500000Hz
+  desired baud rate: 115200bps
+  division factor: 82.5
+  effective baud rate: 115152bps
+  maximum error: 0.0489us   0.56%
+
+  time table (microseconds):
+        event      desired effective  error   error%
+    startbit->D0      8.68      8.63  +0.0489  +0.56
+    D0->D1           17.36     17.37  -0.0073  -0.08
+    D1->D2           26.04     26.00  +0.0416  +0.48
+    D2->D3           34.72     34.74  -0.0146  -0.17
+    D3->D4           43.40     43.37  +0.0343  +0.40
+    D4->D5           52.08     52.11  -0.0219  -0.25
+    D5->D6           60.76     60.74   +0.027  +0.31
+    D6->D7           69.44     69.47  -0.0292  -0.34
+    D7->stopbit      78.12     78.11  +0.0197  +0.23
+    end of stopb     86.81     86.84  -0.0365  -0.42
+*/
+//UBR00=0x52; UBR10=0x00; UMCTL0=0xAA; // uart0 9500000Hz 115151bps
+
+
+  U1BR0 = 0x52;//4E;//0x56;//45                             // 9.5MHz 115200
   U1BR1 = 0x00;                             // 1MHz 115200
-  U1MCTL = 0xAA;                            // 1MHz 115200 modulation
+  U1MCTL = 0xAA;//08;//0x7B;    //AA                        // 9.5MHz 115200 modulation
   U1CTL &= ~SWRST;                          // Initialize USART state machine
   IE2 |= URXIE1;                            // Enable USART1 RX interrupt
 
 //LPM is for pussies
   _BIS_SR(/*LPM0_bits + */GIE);                 // Enter LPM0 w/ interrupt
+
+  
 }
 
 

@@ -78,7 +78,7 @@ void drivers_initialize(void)
 	
 	// System Clock Frequency Integrator 0 ///////////////////////
 	
-	SCFI0 &= ~(FLLD0 + FLLD1);
+	//SCFI0 &= ~(FLLD0 + FLLD1);
 	
 	#if CDH_PROCESSOR_COMPILE
 		SCFI0 |= FN_2; //FLL_DIV_1 |
@@ -87,11 +87,17 @@ void drivers_initialize(void)
 	#if COM_PROCESSOR_COMPILE
 		SCFI0 |= FN_8; //FLL_DIV_1 |
 	#endif
-	 
+	
+	SCFI0 &= ~(FLLD0 + FLLD1);
+	
 	// System Clock Frequency Control ////////////////////////////
 	
-	SCFQCTL = SCFQ_1M;
-	
+	SCFQCTL = SCFQ_1M; //modulation is enabled, frequency set to 1MHz
+	_BIC_SR(SCG0);	//enable FLL
+	 
+	//DCOCTL = CALDCO_8MHZ;       // DCO frequency set to 1 MHz
+	//BCSCTL1 = CALBC1_8MHZ;      // DCO range set to 1 MHz
+	 
 	// Digital to analog conversion //////////////////////////////
 	#if COM_PROCESSOR_COMPILE
 		// TODO UNCOMMENT AFTER TEST OUTPUT DONE
