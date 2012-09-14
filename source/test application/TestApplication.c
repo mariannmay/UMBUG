@@ -552,6 +552,9 @@ void test_packetGrabbing(void)
 		
 		printf("0x%x, ", phaseShifts[i]);
 	}
+	
+	enableInterrupts();
+	for(;;){;}
 }
 
 ///////////////////////////////////////////////////////////////////

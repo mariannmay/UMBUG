@@ -27,10 +27,22 @@ int bitPositionInPacket = 0;
 
 ///////////////////////////////////////////////////////////////////
 bool linkEstablished = false;
-UI8* nextPacketGroupToSend;
-UI16 nextSDCardAddress;
+void* nextPacketGroupToSend; //motherfucking voidstar ... wut?!
 bool transmitting = false;
-bool gotAnother64BytesFromRadio = false;
+int listenTimeDivideCounter =0; //used to divide Timer A to listen at 3600 times per second
+bool radioReadingNewest = false;
+bool radioReadingMiddle = false;
+bool radioReadingOldest = false;
+bool listeningSynced = false;
+int bitCountWhileSynced = 0;
+int bitPositionInMasterBuffer = 0x80;
+
+///////////////////////////////////////////////////////////////////
+
+UI16 nextSDCardAddress;
+UI16 lastStoredSDCardAddress;
+UI8 packetsInPhaseFormToSDCard[512];
+UI16 PhaseBufferSize;
 
 //must be generated
 const UI8 stageTwoHandShake[] = { 0x97, 0x90, 0x51, 0x70, 0x30, 0xbe, 0x76, 0x0a, 0x18, 0x6b, 0x00, 0x00, 0x18, 0x6b, 0x00, 0x00, 0x0e, 0x65, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x64, 0x19, 0x60, 0x18, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30 };
@@ -155,7 +167,7 @@ void runRadio(void)
 		else
 		{
 			currentToneIndex += 100;	
-		//}
+		}
 		
 		if (currentToneIndex >= SINE_LENGTH)
 		{
@@ -165,6 +177,74 @@ void runRadio(void)
 		//devices.radio.microphone->value = getToneValueAt(currentToneIndex);
 		startNewDigitalToAnalogConversion(devices.radio.microphone->value);
 		
+	}else //listening
+	{
+		if(listenTimeDivideCounter == 10)
+		{
+			//catch bits
+			
+			//shuffle and get new data
+			radioReadingOldest = radioReadingMiddle;
+			radioReadingMiddle = radioReadingNewest;
+			//radioReadingNewest = ((PxIN & 0x ) == 0x);
+			
+			if(listeningSynced)
+			{
+				if(bitCountWhileSynced==2)//its the third bit in the sequence
+				{
+					//check this bit with its surroundings
+					if((radioReadingMiddle==radioReadingNewest) || (radioReadingMiddle==radioReadingOldest))
+					{
+						if(radioReadingMiddle)//add a one to the buffer
+						{
+							masterInputBuffer[ptrWrite] |= bitPositionInMasterBuffer;
+						}else//add a zero to the buffer
+						{
+							masterInputBuffer[ptrWrite] &= ~bitPositionInMasterBuffer;
+						}
+						
+						if(bitPositionInMasterBuffer==0x01)//increment the bit position
+						{
+							bitPositionInMasterBuffer = 0x80;
+							ptrWrite++;
+						}else
+						{
+							bitPositionInMasterBuffer = bitPositionInMasterBuffer>>1;
+						}						
+					}else
+					{
+						listeningSynced = false;
+					}
+					
+					bitCountWhileSynced =0;
+				}else
+				{
+					bitCountWhileSynced++;
+				}
+			}else
+			{
+				if(radioReadingNewest && radioReadingMiddle)//found the starting of a one
+				{
+					listeningSynced = true; //now synced
+					masterInputBuffer[ptrWrite] |= bitPositionInMasterBuffer;//add a one to the buffer
+					bitCountWhileSynced = 2;
+					
+					if(bitPositionInMasterBuffer==0x01)//increment the bit position
+					{
+						bitPositionInMasterBuffer = 0x80;
+						ptrWrite++;
+					}else
+					{
+						bitPositionInMasterBuffer = bitPositionInMasterBuffer>>1;
+					}
+				}
+			}
+			
+			listenTimeDivideCounter =0;
+		}else
+		{
+			listenTimeDivideCounter++;
+		}
 	}
 }
 

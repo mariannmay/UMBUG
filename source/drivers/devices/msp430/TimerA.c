@@ -33,7 +33,11 @@ void initTimerA(){
 		 */
 		TACCR0 = 0x8F;
 		//TACCR0 = 65535;
-	
+		
+		//interrupt 2 for the listening
+		TACCTL1 = CM_0 | CCIS_3 | CCIE;
+		TACCR1 = 0x45;//TODO 
+		
 		/*
 		 * interrupt call for basic task switching.
 		 */
@@ -88,7 +92,7 @@ __interrupt void timerA0int()
 		#endif
 		
 		#if COM_PROCESSOR_COMPILE
-			//COM_timerA_ISR();
+			COM_timerA_ISR();
 		#endif
 		
 	}
@@ -96,7 +100,10 @@ __interrupt void timerA0int()
 	
 	if (TAIV && TAIV_TACCR2) //if capture compare reg 2 interrupt
 	{
-		
+		#if COM_PROCESSOR_COMPILE
+			//COM_timerA2_ISR();
+			printf("timerA interrupt 2");
+		#endif		
 	}
 	return;
 	
