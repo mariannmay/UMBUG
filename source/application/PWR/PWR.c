@@ -20,21 +20,21 @@ void initialize_pwr(void)
 void pwr_routine(void)
 {
 	//TODO:
-	if (we are not in the middle of something){
-		if (enough time has passed since the last time we ran){
-			set the flag to say we are in the middle of something
-			start UART collecting from the battery monitor thang 1wire thang
-		}else{
-			return;
-		}
-	}else{
-		//continue doing what we were doing:
-		if (we have received all of what we expect){
-			//send the data to the packetizer to be timestamped
-			unset the flag to say we are done with the UART
-			return;
-		}
-	}
+	//if (we are not in the middle of something){
+	//	if (enough time has passed since the last time we ran){
+	//		set the flag to say we are in the middle of something
+	//		start UART collecting from the battery monitor thang 1wire thang
+	//	}else{
+	//		return;
+	//	}
+	//}else{
+	//	//continue doing what we were doing:
+	//	if (we have received all of what we expect){
+	//		//send the data to the packetizer to be timestamped
+	//		unset the flag to say we are done with the UART
+	//		return;
+	//	}
+	//}
 }
 
 // Cut or add power to a subsystem to conserve or stop conserving power.
