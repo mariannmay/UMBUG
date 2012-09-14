@@ -162,42 +162,25 @@ void InitUART(void){
 //UBR00=0x52; UBR10=0x00; UMCTL0=0xAA; // uart0 9500000Hz 115151bps
 
 
-  U1BR0 = 0x52;//4E;//0x56;//45                             // 9.5MHz 115200
+  U1BR0 = 0x2f;//52;//4E;//0x56;//45                             // 5466.666MHz 115200
   U1BR1 = 0x00;                             // 1MHz 115200
   U1MCTL = 0xAA;//08;//0x7B;    //AA                        // 9.5MHz 115200 modulation
   U1CTL &= ~SWRST;                          // Initialize USART state machine
   IE2 |= URXIE1;                            // Enable USART1 RX interrupt
 
-//LPM is for pussies
+//LPM is for hosers
   _BIS_SR(/*LPM0_bits + */GIE);                 // Enter LPM0 w/ interrupt
 
   
 }
 
 
-#if COM_PROCESSOR_COMPILE
-	#pragma vector=USART1RX_VECTOR
-	__interrupt void USART1_rx (void)
-	{
-	  printf("ptrwrite %d\n", ptrWrite);
-	  fflush(stdout);
-	  if(ptrWrite == MASTER_BUFFER_SIZE-1)
-	  {
-	  	ptrWrite = 0;
-	  }
-	  
-	  masterInputBuffer[ptrWrite++] = (UI8)RXBUF1;
-	}
-#endif
-
-#if CDH_PROCESSOR_COMPILE
-	#pragma vector=USART1RX_VECTOR
-	__interrupt void USART1_rx (void)
-	{
-	  while (!(IFG2 & UTXIFG1));                // USART1 TX buffer ready?
-	  TXBUF1 = RXBUF1;                          // RXBUF1 to TXBUF1
-	}
-#endif
+#pragma vector=USART1RX_VECTOR
+__interrupt void USART1_rx (void)
+{
+  while (!(IFG2 & UTXIFG1));                // USART1 TX buffer ready?
+  TXBUF1 = RXBUF1;                          // RXBUF1 to TXBUF1
+}
 
     
 /* **************End of INITIALIZATION OF THE UART*****************************/
