@@ -17,6 +17,7 @@
 #include "../drivers/devices/Multiplexer.h"
 #include "../drivers/devices/RealTimeClock.h"
 #include "../drivers/devices/SDCard.h"
+#include "../drivers/devices/PwrController.h"
 #include "../drivers/devices/Thermocouple.h"
 #include "../drivers/devices/Watchdog.h"
 #include "../drivers/devices/Radio.h"
@@ -46,6 +47,9 @@ typedef struct
 	Thermocouple	testThermocouple;
 	Radio			radio;
 	SDCard			sdCard;
+	pwrController   pwrControllerCOM;
+	pwrController   pwrControllerPLD1;
+	pwrController   pwrControllerPLD2;
 	
 	
 	AnalogInput*	test_AtoD;
