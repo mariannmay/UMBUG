@@ -14,7 +14,11 @@
 //******************************************************************************
 
 
-
+typedef enum{
+    UART_NOT_RESERVED,
+    UART_POWER,
+    UART_CAMorSPEC
+}UART_RESERVE_STATE;
 
 
 /*#define USART_A_MODULE  1     // Select which USCI_A module to use [0-1]
