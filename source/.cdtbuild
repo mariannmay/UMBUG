@@ -18,7 +18,7 @@
 <tool id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895" name="MSP430 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug">
 <option id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.compilerID.SILICON_VERSION.898226697" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.compilerID.SILICON_VERSION" value="com.ti.ccstudio.buildDefinitions.MSP430_4.0.compilerID.SILICON_VERSION.mspx" valueType="enumerated"/>
 <option id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.compilerID.ABI.833000341" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.compilerID.ABI" value="com.ti.ccstudio.buildDefinitions.MSP430_4.0.compilerID.ABI.coffabi" valueType="enumerated"/>
-<option id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.compilerID.OPT_LEVEL.51433419" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.compilerID.OPT_LEVEL" value="com.ti.ccstudio.buildDefinitions.MSP430_4.0.compilerID.OPT_LEVEL.0" valueType="enumerated"/>
+<option id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.compilerID.OPT_LEVEL.51433419" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.compilerID.OPT_LEVEL" value="com.ti.ccstudio.buildDefinitions.MSP430_4.0.compilerID.OPT_LEVEL.2" valueType="enumerated"/>
 <option id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.compilerID.INCLUDE_PATH.20297649" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.compilerID.INCLUDE_PATH" valueType="includePath">
 <listOptionValue builtIn="false" value="&quot;${CCS_INSTALL_ROOT}/msp430/include&quot;"/>
 <listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/include&quot;"/>
@@ -36,12 +36,13 @@
 <option id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.compilerID.DEFINE.1423112330" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.compilerID.DEFINE" valueType="definedSymbols">
 <listOptionValue builtIn="false" value="__MSP430FG4618__"/>
 </option>
+<option id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.compilerID.OPT_FOR_SPEED.1071157922" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.compilerID.OPT_FOR_SPEED" value="com.ti.ccstudio.buildDefinitions.MSP430_4.0.compilerID.OPT_FOR_SPEED.0" valueType="enumerated"/>
 </tool>
 <tool id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.linkerDebug.1316318131" name="MSP430 Linker" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.linkerDebug">
 <option id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.linkerID.OUTPUT_FILE.780885465" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.linkerID.OUTPUT_FILE" value="&quot;Project-Cheesecake.out&quot;" valueType="string"/>
 <option id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.linkerID.MAP_FILE.1012508028" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.linkerID.MAP_FILE" value="&quot;Project-Cheesecake.map&quot;" valueType="string"/>
-<option id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.linkerID.STACK_SIZE.1817964892" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.linkerID.STACK_SIZE" value="80" valueType="string"/>
-<option id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.linkerID.HEAP_SIZE.29885422" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.linkerID.HEAP_SIZE" value="80" valueType="string"/>
+<option id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.linkerID.STACK_SIZE.1817964892" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.linkerID.STACK_SIZE" value="0x200" valueType="string"/>
+<option id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.linkerID.HEAP_SIZE.29885422" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.linkerID.HEAP_SIZE" value="0x200" valueType="string"/>
 <option id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.linkerID.USE_HW_MPY.2009734030" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.linkerID.USE_HW_MPY" value="com.ti.ccstudio.buildDefinitions.MSP430_4.0.linkerID.USE_HW_MPY.16" valueType="enumerated"/>
 <option id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.linkerID.generatedLinkerCommandFiles.1475051566" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.linkerID.generatedLinkerCommandFiles" valueType="libs">
 <listOptionValue builtIn="false" value="&quot;$(GEN_CMDS_QUOTED)&quot;"/>
@@ -61,7 +62,7 @@
 <listOptionValue builtIn="false" value="&quot;libc.a&quot;"/>
 </option>
 </tool>
-<macros/>
+<macros expandEnvironmentMacros="true"/>
 </toolChain>
 <resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/application/ADC/torqure_josh.c" name="torqure_josh.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/application/ADC/torqure_josh.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895./Project-Cheesecake/application/ADC/torqure_josh.c">
 <tool id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895./Project-Cheesecake/application/ADC/torqure_josh.c" name="MSP430 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895"/>
@@ -84,7 +85,7 @@
 <resourceConfiguration exclude="false" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/application/COM/SineArray.c" name="SineArray.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/application/COM/SineArray.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895./Project-Cheesecake/application/COM/SineArray.c">
 <tool id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895./Project-Cheesecake/application/COM/SineArray.c" name="MSP430 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895"/>
 </resourceConfiguration>
-<resourceConfiguration exclude="false" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/application/COM/PSK.c" name="PSK.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/application/COM/PSK.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895./Project-Cheesecake/application/COM/PSK.c">
+<resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/application/COM/PSK.c" name="PSK.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/application/COM/PSK.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895./Project-Cheesecake/application/COM/PSK.c">
 <tool id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895./Project-Cheesecake/application/COM/PSK.c" name="MSP430 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895"/>
 </resourceConfiguration>
 <resourceConfiguration exclude="false" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/application/COM/COMApplication.c" name="COMApplication.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/application/COM/COMApplication.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895./Project-Cheesecake/application/COM/COMApplication.c">
@@ -105,8 +106,32 @@
 <resourceConfiguration exclude="false" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/lnk_msp430fg4618.cmd" name="lnk_msp430fg4618.cmd" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/lnk_msp430fg4618.cmd" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.linkerDebug.1316318131./Project-Cheesecake/lnk_msp430fg4618.cmd">
 <tool id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.linkerDebug.1316318131./Project-Cheesecake/lnk_msp430fg4618.cmd" name="MSP430 Linker" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.linkerDebug.1316318131"/>
 </resourceConfiguration>
-<resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/lnk_msp430fg4619.cmd" name="lnk_msp430fg4619.cmd" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/lnk_msp430fg4619.cmd" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.linkerDebug.1316318131./Project-Cheesecake/lnk_msp430fg4619.cmd">
-<tool id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.linkerDebug.1316318131./Project-Cheesecake/lnk_msp430fg4619.cmd" name="MSP430 Linker" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.linkerDebug.1316318131"/>
+<resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/system/TimeCounter.c" name="TimeCounter.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/system/TimeCounter.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895./Project-Cheesecake/system/TimeCounter.c">
+<tool id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895./Project-Cheesecake/system/TimeCounter.c" name="MSP430 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895"/>
+</resourceConfiguration>
+<resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/system/TestFunctions.c" name="TestFunctions.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/system/TestFunctions.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895./Project-Cheesecake/system/TestFunctions.c">
+<tool id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895./Project-Cheesecake/system/TestFunctions.c" name="MSP430 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895"/>
+</resourceConfiguration>
+<resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/system/Task.c" name="Task.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/system/Task.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895./Project-Cheesecake/system/Task.c">
+<tool id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895./Project-Cheesecake/system/Task.c" name="MSP430 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895"/>
+</resourceConfiguration>
+<resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/application/ADC/algorithm/Matrix.c" name="Matrix.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/application/ADC/algorithm/Matrix.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895./Project-Cheesecake/application/ADC/algorithm/Matrix.c">
+<tool id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895./Project-Cheesecake/application/ADC/algorithm/Matrix.c" name="MSP430 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895"/>
+</resourceConfiguration>
+<resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/application/CDH/CDHApplication.c" name="CDHApplication.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/application/CDH/CDHApplication.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895./Project-Cheesecake/application/CDH/CDHApplication.c">
+<tool id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895./Project-Cheesecake/application/CDH/CDHApplication.c" name="MSP430 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895"/>
+</resourceConfiguration>
+<resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/application/PWR/Power_Management.c" name="Power_Management.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/application/PWR/Power_Management.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895./Project-Cheesecake/application/PWR/Power_Management.c">
+<tool id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895./Project-Cheesecake/application/PWR/Power_Management.c" name="MSP430 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895"/>
+</resourceConfiguration>
+<resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/application/PWR/batttery_charger.c" name="batttery_charger.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/application/PWR/batttery_charger.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895./Project-Cheesecake/application/PWR/batttery_charger.c">
+<tool id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895./Project-Cheesecake/application/PWR/batttery_charger.c" name="MSP430 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895"/>
+</resourceConfiguration>
+<resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/application/THM/THM.c" name="THM.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/application/THM/THM.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895./Project-Cheesecake/application/THM/THM.c">
+<tool id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895./Project-Cheesecake/application/THM/THM.c" name="MSP430 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895"/>
+</resourceConfiguration>
+<resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/drivers/devices/Spectrometer.c" name="Spectrometer.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/drivers/devices/Spectrometer.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895./Project-Cheesecake/drivers/devices/Spectrometer.c">
+<tool id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895./Project-Cheesecake/drivers/devices/Spectrometer.c" name="MSP430 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.compilerDebug.461438895"/>
 </resourceConfiguration>
 </configuration>
 <configuration artifactExtension="out" artifactName="Project-Cheesecake" description="" id="com.ti.ccstudio.buildDefinitions.MSP430.Release.1524506253" name="Release" parent="com.ti.ccstudio.buildDefinitions.MSP430.Release">
@@ -151,11 +176,8 @@
 <listOptionValue builtIn="false" value="&quot;libc.a&quot;"/>
 </option>
 </tool>
-<macros/>
+<macros expandEnvironmentMacros="true"/>
 </toolChain>
-<resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.MSP430.Release.1524506253./Project-Cheesecake/lnk_msp430fg4619.cmd" name="lnk_msp430fg4619.cmd" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/lnk_msp430fg4619.cmd" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.linkerRelease.16641532./Project-Cheesecake/lnk_msp430fg4619.cmd">
-<tool id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.linkerRelease.16641532./Project-Cheesecake/lnk_msp430fg4619.cmd" name="MSP430 Linker" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.linkerRelease.16641532"/>
-</resourceConfiguration>
 <resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.MSP430.Release.1524506253./Project-Cheesecake/system/TaskList.c" name="TaskList.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/system/TaskList.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerRelease.1731900533./Project-Cheesecake/system/TaskList.c">
 <tool id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerRelease.1731900533./Project-Cheesecake/system/TaskList.c" name="MSP430 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerRelease.1731900533"/>
 </resourceConfiguration>
@@ -275,5 +297,6 @@
 <tool id="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.linkerDebug.1111158696.1399511797" name="MSP430 Linker" superClass="com.ti.ccstudio.buildDefinitions.MSP430_4.0.exe.linkerDebug.1863355798"/>
 </resourceConfiguration>
 </configuration>
+<macros/>
 </project>
 </ManagedProjectBuildInfo>

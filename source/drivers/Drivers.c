@@ -44,9 +44,9 @@ void drivers_initialize(void)
 		devices.sdCard.SPI.channel				= SPI_CHANNEL_2;
 		devices.sdCard.SPI.type					= SPI_TYPE_Master;
 		devices.sdCard.SPI.activeHigh			= false;
-		devices.sdCard.SPI.controlRegister0		= 0x29; // 0010 1001
+		devices.sdCard.SPI.controlRegister0		= 0x69; // 0110 1001
 		devices.sdCard.SPI.controlRegister1		= 0x80; // 1000 0000
-		devices.sdCard.SPI.bitRateRegister0		= 0x30; // 0011 0000
+		devices.sdCard.SPI.bitRateRegister0		= 0x24; // 0010 0100
 		devices.sdCard.SPI.bitRateRegister1		= 0x00; // 0000 0000
 		setDigitalOutput(devices.sdCard.SPI.chipSelect.out);
 		initialize_SPI(&devices.sdCard.SPI);

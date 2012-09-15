@@ -17,9 +17,15 @@ void test_application_initialize(void)
 			fflush(stdout);
 			UL32 wait;
 			UL32 dummy = 0;
-			for (wait = 0; wait < 4999999; wait++)
+			for (wait = 0; wait < 80000; wait++)
 			{
 				dummy++;
+				if (dummy > 1000)
+				{
+					printf(".");
+					dummy = 0;
+					fflush(stdout);
+				}
 			}
 			printf("done! starting test program\r\n");
 			fflush(stdout);
@@ -384,6 +390,7 @@ void test_application_main(void)
 			
 			int i;
 			
+			initialize_SPI(&devices.sdCard.SPI);
 			setDigitalOutput(devices.sdCard.SPI.chipSelect.out);
 			
 			#if DebugSD2

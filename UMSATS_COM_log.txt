@@ -1,5 +1,1 @@
 Testing the SD card
-
-All tests complete! --------------------
-
-SYSTEM ABORT --------------
