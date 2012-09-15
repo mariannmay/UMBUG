@@ -24,7 +24,7 @@ Word thermocouple_read(Thermocouple* thermocouple)
 DegreesCelsius rawA2DToDegreesCelsius(Millivolts rawVoltage)
 {
 	// here I am timesing by 10 temporarily as a trick for keeping precision
-	UI16 resistanceOnTheThermistor_times10 = (10 * rawVoltage * ThermocouplePullUpResistor) / (ThreePointThreeVolts - rawVoltage);
+	//UI16 resistanceOnTheThermistor_times10 = (10 * rawVoltage * ThermocouplePullUpResistor) / (ThreePointThreeVolts - rawVoltage);
 	
 	//UI32 denominator_C_x1000000 = 
 	

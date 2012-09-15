@@ -243,6 +243,7 @@ void test_application_main(void)
 	
 	void test_thermocouple(void)
 	{
+		/*
 		logLine("Testing thermocouple");
 		Word raw;
 		for (;;)
@@ -250,6 +251,7 @@ void test_application_main(void)
 			raw = thermocouple_read(&devices.testThermocouple);
 			logCombo("raw voltage: ", raw);
 		}
+		*/
 	}
 	
 	///////////////////////////////////////////////////////////////////
