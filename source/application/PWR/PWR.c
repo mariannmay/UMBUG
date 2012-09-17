@@ -1,11 +1,3 @@
-//////////////////////////////////////////////////////////////////
-//                                                              //
-//    STR source                                                //
-//    last edited by: Matt Woelk                                //
-//    date: 2012                                                //
-//                                                              //
-//////////////////////////////////////////////////////////////////
-
 #include "PWR.h"
 #include "Power_Management.h"
 #include "Power_Switching_Function.h"
@@ -20,9 +12,9 @@ void initialize_pwr(void)
 void pwr_routine(void)
 {
 	//TODO:
-	//if (we are not in the middle-of-something){
+	//if (we are NOT in the middle-of-something){
 	//	if (enough time has passed since the last time we ran){
-	//		set the flag to say we are in the middle of something
+	//		set the UART flag to say we are in the middle of something
 	//		start UART collecting from the battery monitor thang 1wire thang
 	//      return;
 	//	}else{
@@ -31,7 +23,9 @@ void pwr_routine(void)
 	//}else{
 	//	//continue doing what we were doing:
 	//	if (we have received all of what we expect){
-	//    send the data to the packetizer to be timestamped
+	//    if (we are not over the groundstation){
+	//	    send the data to the packetizer to be timestamped
+	//    }
 	//	  unset the flag to say we are done with the UART (the middle-of-something flag)
 	//	  return;
 	//	}else{
