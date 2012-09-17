@@ -8,10 +8,10 @@ This file will be for initializing task lists as well as doing the extern tomfoo
 #define TASKLIST_INIT_H
 #include "TaskList.h"
 
-
+extern TaskList* tc;//current taskList
 extern TaskList t0;
-extern TaskList t1;
-extern TaskList t2;
+//extern TaskList t1;
+//extern TaskList t2;
 
 
 //etc....

@@ -1,6 +1,7 @@
 #include "TimerA.h"
 #include "../../../system/Task.h"
 #include "../../../system/TimeCounter.h"
+#include "../../../system/TaskListInit.h"
 #include <stdio.h>
 /*
  * Refer to this outside of the file with the extern keyword!!
@@ -100,7 +101,7 @@ __interrupt void timerA0int()
 		The mechanism here is that if the stack gets eaten up, then we reset the processor and fuck everyone else.
 		*/
 			_enable_interrupt();
-			performCurrentTask(&tl);
+			performCurrentTask(tc);
 		}
 		 
 		/*commented out for testler

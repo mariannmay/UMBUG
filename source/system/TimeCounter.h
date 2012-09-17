@@ -109,7 +109,7 @@ void initShortDuration(ShortDuration *s, int mS);
 /*
  * copy - used to take a snapshot of a timecounter.  Good for use with the global currentTime
  */
-TimeCounter copy(TimeCounter* tc);
+TimeCounter copy(TimeCounter* t);
 
 //CALL 918-2687 for more info/tongue lashing
 #endif /*TIMECOUNTER_H_*/

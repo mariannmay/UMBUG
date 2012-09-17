@@ -1,13 +1,13 @@
-#include "Drivers.h"
+#include "../Drivers.h"
 #include "Scheduler_EEPROM.h"
-
+#include <stdio.h>
 SPI_Device SchedulerEEPROM;
 
 void writeByte_SCHEEPROM(UI16 address, UI8 data)
 {
 	//write enable before every write is mandator
 	Byte toSCHEEPROM[3] = {SCHEEPROM_WREN,0,0};
-	SPI_transmitStream(&SchedulerEEPROM, toSCHEEPROM, 1, true);
+	SPI_transmitStream(&SchedulerEEPROM, toSCHEEPROM, 1);
 	
 	//IMPORTANT - does chip select go high in this period?  It is mandatory!!! (after every WREN)
 	//Yes it does.
@@ -16,7 +16,7 @@ void writeByte_SCHEEPROM(UI16 address, UI8 data)
 	toSCHEEPROM[0] = SCHEEPROM_WRITE;
 	toSCHEEPROM[1] = address;
 	toSCHEEPROM[2] = data;
-	SPI_transmitStream(&SchedulerEEPROM, toSCHEEPROM, 3, true);
+	SPI_transmitStream(&SchedulerEEPROM, toSCHEEPROM, 3);
 
 }
 
@@ -26,9 +26,11 @@ void writeStatus_SCHEEPROM(UI8 byte)
 }
 UI8 readByte_SCHEEPROM(UI16 address)
 {
-	Byte toSCHEEPROM[2] = {SCHEEPROM_RDSR, adress};
-	SPI_transmitStream(&SchedulerEEPROM, toSCHEEPROM, 2, true);
-	SPI_receive(&SchedulerEEPROM, true);
+	Byte toSCHEEPROM[2];
+	toSCHEEPROM[0] = SCHEEPROM_RDSR;
+	toSCHEEPROM[1] = address;
+	SPI_transmitStream(&SchedulerEEPROM, toSCHEEPROM, 2);
+	SPI_receive(&SchedulerEEPROM);
 	return (UI8)SchedulerEEPROM.receiveMessage[0];
 }
 
@@ -71,7 +73,7 @@ This function has no arguments, because there is only one SPI_DEVICE struct for 
 */
 void init_SCHEEPROM()
 {
-	SchedulerEEPROM.type = SPI_TYPE_MASTER;		//from perspective of processor
+	SchedulerEEPROM.type = SPI_TYPE_Master;		//from perspective of processor
 	SchedulerEEPROM.channel = SPI_CHANNEL_2;	//dont know which to use yet - the one that RTC is _not_ on I assume.........
 
 //Byte	transmitMessage[SPI_TX_BUFFER_SIZE];
@@ -87,7 +89,7 @@ void init_SCHEEPROM()
 	SchedulerEEPROM.controlRegister0 |= 0 << 5; //UCMODEx (USCI mode) = 00b -> 3-Pin SPI
 	SchedulerEEPROM.controlRegister0 |= 0 << 6;
 	SchedulerEEPROM.controlRegister0 |= 1 << 7; //UCSYNC (Synchronous mode enable) = 1b -> Synchronous mode
-	
+	//printf("\n\nconfig: %x\n\n",SchedulerEEPROM.controlRegister0);
 	
 	
 	SchedulerEEPROM.controlRegister1 = 0 << 0; //UCSWRST (Software reset) = 1b -> normally set by a PUC
@@ -98,7 +100,7 @@ void init_SCHEEPROM()
 	SchedulerEEPROM.controlRegister1 |= 0 << 5; 
 	SchedulerEEPROM.controlRegister1 |= 0 << 6; //UCSSELx (USCI clock source select)= 10b -> SMCLK
 	SchedulerEEPROM.controlRegister1 |= 1 << 7; //UCSSELx (USCI clock source select)= 10b -> SMCLK
-	SchedulerEEPROM.bitRateRegister0 = 00x20; // Copied this from RTC config....
+	SchedulerEEPROM.bitRateRegister0 = 0x20; // Copied this from RTC config....
 	SchedulerEEPROM.bitRateRegister1 = 0x00; //  Copied this from RTC config....
 	
 	initialize_SPI(&SchedulerEEPROM);
@@ -119,10 +121,10 @@ void init_SCHEEPROM()
 	*/
 	
 	Byte toSCHEEPROM[2] = {SCHEEPROM_WRSR,0x80};
-	SPI_transmitStream(&SchedulerEEPROM, toSCHEEPROM, 1, true);
+	SPI_transmitStream(&SchedulerEEPROM, toSCHEEPROM, 1);
 	
 //TODO figure out what pin we can stick here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 	//P8.2
-	SchedulerEEPROM.chipSelect = &msp430.PORT_8.digitalOutput[2];;
+	SchedulerEEPROM.chipSelect.out = &msp430.PORT_8.digitalOutput[2];
 }

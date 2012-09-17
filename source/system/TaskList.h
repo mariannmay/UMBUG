@@ -11,6 +11,7 @@
 #include "../SimpleDefinitions.h"
 #include "../drivers/devices/msp430/SPIDevice.h"
 #include "TimeCounter.h"
+#include "../drivers/devices/Scheduler_EEPROM.h"
 #ifndef TASKLIST_H_
 #define TASKLIST_H_
 
@@ -20,10 +21,11 @@
  * If this is changed, the hash fucntion for fudge registers needs to be adjusted.
  * IE right now the algorithm wont support 128 tasks, without some slight changes./
  */
-#define TASKLIST_MAX_NUM_TASKS 16 //this is just a guess right now.
+#define TASKLIST_MAX_NUM_TASKS 8 //this is just a guess right now.
 
 extern UI8 functionIsExecuting;
 extern int __TaskListIDs;
+extern TimeCounter snapshot;
 typedef struct
 {
 	/*

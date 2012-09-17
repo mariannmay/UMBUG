@@ -8,7 +8,7 @@
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include <msp430fg4619.h>
+#include <msp430fg4618.h>
 #include <stdio.h>
 #include "drivers/devices/msp430/TimerA.h"
 
@@ -31,10 +31,21 @@ ShortDuration duration_1S;
 extern TimeCounter currentTime;
 void main(void)
 {
-	//system_initialize();
 	WDTCTL = WDTPW | WDTHOLD;	
-	printf("Start\n");
+	//system_initialize();
 	
+	init_SCHEEPROM();
+	printf("Start\n");
+	UI8 test;
+	UI16 killtime = 0;
+	while(1)
+	{
+		writeByte_SCHEEPROM(0x0000,0x5A);
+		test = readByte_SCHEEPROM(0x0000);
+		SPI_WRITE(SPI_CHANNEL_2, 0x5A);
+		//printf("Read in %d\n",test);
+		for(killtime = 0; killtime < 0xFFFF; killtime++);//kill some time
+	}
 	//initTimerA();
 	//enableInterrupts();
 	initTimeCounter(&currentTime);

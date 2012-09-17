@@ -2,6 +2,7 @@
 
 #include "../SimpleDefinitions.h"
 #include "TimeCounter.h"
+#include "Task.h"
 #include <stdio.h>
 
 /*
@@ -28,17 +29,16 @@ void performCurrentTask(TaskList* tl)
 	
 	//NEED TO WRITE TO THE EEPROM HERE (INCREMENT)
 	/*
-	 * Calculate Address of "Fudge Register" for the current Task
-	 * total 13 bit address.
-	 * bis 0-6 (inclusive) represent the index of the task.
-	 * bits 7-12 (inclusive) represent the ID of the taskList
+	 * Calculate Address of "Fudge Register" by simply using the task ID.  each is unique!
 	 * 
 	 * Therefore, need a 2 byte (16 bit) integer for this.
 	 */
-	UI16 fudgeRegister = (((tl->ID)<<7)&0x3F80)+(tl->currentTaskIndex&0x007F);
-	printf("fudge register: %x\n",fudgeRegister);
-	//read in fudge register - value A
-	UI8 fudgeVal = 0;
+	 
+	UI16 fudgeRegister = tl->tasks[tl->currentTaskIndex].TaskID;
+	printf("fudge register: %x ",fudgeRegister);
+	UI8 fudgeVal = readByte_SCHEEPROM(fudgeRegister);
+	printf("value: %d",fudgeVal);
+	//UI8 fudgeVal = 0;
 	if (fudgeVal > tl->tasks[tl->currentTaskIndex].maxRetries)
 	{
 		//skip
@@ -47,7 +47,8 @@ void performCurrentTask(TaskList* tl)
 	
 	//increment this value - value B
 	//write value B to fudge register
-		
+	
+	writeByte_SCHEEPROM(fudgeRegister,fudgeVal + 1);	
 	
 	//printf("Status register is: %d\n",EEPROM_RESULT);
 	snapshot = copy(&currentTime);
@@ -62,6 +63,8 @@ void performCurrentTask(TaskList* tl)
 	//now, write value A back to the fudge register
 	
 	//kill remaining time.
+	
+	writeByte_SCHEEPROM(fudgeRegister,fudgeVal);
 	
 	while(compareTimeCounter(&currentTime,&snapshot) < 1)
 	{
@@ -95,8 +98,9 @@ bool addToTaskList(TaskList* tl, int (*f)(), ShortDuration* s, UI8 mR)
 		tl->tasks[tl->numTasks].func = f;
 		tl->tasks[tl->numTasks].duration = *s;
 		tl->tasks[tl->numTasks].maxRetries = mR;
+		tl->tasks[tl->numTasks].TaskID = _TASK_IDS++;
 		tl->numTasks = tl->numTasks + 1;
-		
+		writeByte_SCHEEPROM(tl->tasks[tl->numTasks].TaskID,0);
 		return true;
 	} else
 		return false;	

@@ -46,14 +46,18 @@ If the number of "fudge-ups" exceeds a predetermined value, that function does n
 #define TASK_COMPLETE	1
 
 
-
+extern UI16 _TASK_IDS;
 
 
 typedef struct
 {
 	int (*func)();
 	ShortDuration duration;
-	UI16 maxRetries;
+	UI8 maxRetries;
+	/*
+	 * Now using task ID to create fudge register.
+	 */
+	UI16 TaskID;
 	 
 } Task;
 //extern int* previous_SP;
