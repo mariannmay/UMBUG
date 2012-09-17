@@ -23,34 +23,71 @@ void drivers_initialize(void)
 	
 	// system watchdog ///////////////////////////////////////////
 	
-	devices.systemWatchdog.WDI					= &msp430.PORT_10.digitalOutput[5];
+	devices.systemWatchdog.WDI						= &msp430.PORT_10.digitalOutput[5];
 	watchdog_initialize(&devices.systemWatchdog);
 		
 	// system clock //////////////////////////////////////////////
-	
-	devices.realTimeClock.SPI.chipSelect.out	= &msp430.PORT_10.digitalOutput[4];
-	devices.realTimeClock.SPI.channel			= SPI_CHANNEL_1;
-	devices.realTimeClock.SPI.type				= SPI_TYPE_Master;
-	devices.realTimeClock.SPI.activeHigh		= true;
-	devices.realTimeClock.SPI.controlRegister0	= 0x29;	// 0010 1001
-	devices.realTimeClock.SPI.controlRegister1	= 0x80; // 1000 0000
-	devices.realTimeClock.SPI.bitRateRegister0	= 0x20; // 0010 0000
-	devices.realTimeClock.SPI.bitRateRegister1	= 0x00; // 0000 0000
-	realTimeClock_initialize(&devices.realTimeClock);
-	
-	// SD card ///////////////////////////////////////////////////
-	#if COM_PROCESSOR_COMPILE
-		devices.sdCard.SPI.chipSelect.out		= &msp430.PORT_8.digitalOutput[0];
-		devices.sdCard.SPI.channel				= SPI_CHANNEL_2;
-		devices.sdCard.SPI.type					= SPI_TYPE_Master;
-		devices.sdCard.SPI.activeHigh			= false;
-		devices.sdCard.SPI.controlRegister0		= 0x69; // 0110 1001
-		devices.sdCard.SPI.controlRegister1		= 0x80; // 1000 0000
-		devices.sdCard.SPI.bitRateRegister0		= 0x24; // 0010 0100
-		devices.sdCard.SPI.bitRateRegister1		= 0x00; // 0000 0000
-		setDigitalOutput(devices.sdCard.SPI.chipSelect.out);
-		initialize_SPI(&devices.sdCard.SPI);
+	#if RTC_CONNECTED
+		// RTC
+		devices.realTimeClock.SPI.chipSelect.out	= &msp430.PORT_10.digitalOutput[4];
+		devices.realTimeClock.SPI.channel			= SPI_CHANNEL_1;
+		devices.realTimeClock.SPI.type				= SPI_TYPE_Master;
+		devices.realTimeClock.SPI.activeHigh		= true;
+		devices.realTimeClock.SPI.controlRegister0	= 0x29;	// 0010 1001
+		devices.realTimeClock.SPI.controlRegister1	= 0x80; // 1000 0000
+		devices.realTimeClock.SPI.bitRateRegister0	= 0x20; // 0010 0000
+		devices.realTimeClock.SPI.bitRateRegister1	= 0x00; // 0000 0000
+		realTimeClock_initialize(&devices.realTimeClock);
 	#endif
+
+	#if CDH_PROCESSOR_COMPILE
+		
+		// COM
+		devices.COM_Processor.chipSelect.out		= &msp430.PORT_7.digitalOutput[1];
+		devices.COM_Processor.channel				= SPI_CHANNEL_1;
+		devices.COM_Processor.type					= SPI_TYPE_Master;
+		devices.COM_Processor.activeHigh			= false;
+		devices.COM_Processor.controlRegister0		= 0x29; // 0010 0001
+		devices.COM_Processor.controlRegister1		= 0x80; // 1000 0000
+		devices.COM_Processor.bitRateRegister0		= 0x20; // 0010 0000
+		devices.COM_Processor.bitRateRegister1		= 0x00; // 0000 0000		
+		
+	#endif
+	
+	#if COM_PROCESSOR_COMPILE
+		
+		// CDH
+		devices.CDH_Processor.chipSelect.in			= &msp430.PORT_1.digitalInput[0];
+		devices.CDH_Processor.channel				= SPI_CHANNEL_1;
+		devices.CDH_Processor.type					= SPI_TYPE_Slave;
+		devices.CDH_Processor.activeHigh			= false;
+		devices.CDH_Processor.controlRegister0		= 0x21; // 0010 0001
+		devices.CDH_Processor.controlRegister1		= 0x80; // 1000 0000
+		devices.CDH_Processor.bitRateRegister0		= 0x20; // 0010 0000
+		devices.CDH_Processor.bitRateRegister1		= 0x00; // 0000 0000
+		
+		// radio	
+		devices.radio.microphone					= &msp430.PORT_6.analogOutput;
+		
+	#endif
+	
+	#if SD_CONNECTED
+		
+		// SD CARD
+		devices.sdCard.power						= &msp430.PORT_10.digitalOutput[1]; // pin 20
+		devices.sdCard.SPI.chipSelect.out			= &msp430.PORT_8.digitalOutput[0];
+		devices.sdCard.SPI.channel					= SPI_CHANNEL_2;
+		devices.sdCard.SPI.type						= SPI_TYPE_Master;
+		devices.sdCard.SPI.activeHigh				= false;
+		devices.sdCard.SPI.controlRegister0			= 0xA9; // 1010 1001
+		devices.sdCard.SPI.controlRegister1			= 0x80; // 1000 0000
+		devices.sdCard.SPI.bitRateRegister0			= 0x20; // 0010 0000
+		devices.sdCard.SPI.bitRateRegister1			= 0x00; // 0000 0000
+		setDigitalOutput(devices.sdCard.SPI.chipSelect.out);
+		clearDigitalOutput(devices.sdCard.power);
+	
+	#endif
+	
 	
 	// TEST SPI FRAMEWORK ONLY ///////////////////////////////////
 	
@@ -98,7 +135,7 @@ void drivers_initialize(void)
 	SCFI0 &= ~(FLLD0 + FLLD1);
 	
 	#if CDH_PROCESSOR_COMPILE
-		SCFI0 |= FN_2; //FLL_DIV_1 |
+		SCFI0 |= FN_8; //FLL_DIV_1 |
 	#endif
 	
 	#if COM_PROCESSOR_COMPILE
@@ -109,14 +146,6 @@ void drivers_initialize(void)
 	
 	SCFQCTL = SCFQ_2M;
 	
-	// Digital to analog conversion //////////////////////////////
-	#if COM_PROCESSOR_COMPILE
-		// TODO UNCOMMENT AFTER TEST OUTPUT DONE
-		devices.radio.microphone				= &msp430.PORT_6.analogOutput;
-		devices.test_AtoD						= &msp430.PORT_5.analogInput;
-		//devices.testPSK							= &msp430.PORT_6.analogOutput;
-		
-	#endif
 	
 	// for debug purposes
 	// TODO REMOVE

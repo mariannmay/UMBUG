@@ -12,12 +12,16 @@ void test_application_initialize(void)
 {
 	#if DebugMode
 		
+		#if SD_CONENCTED
+			clearDigitalOutput(devices.sdCard.SPI.chipSelect.out);
+		#endif
+		
 		#if LogicAnalyzerDelay
 			printf("time to start logic analyzer... ");
 			fflush(stdout);
 			UL32 wait;
 			UL32 dummy = 0;
-			for (wait = 0; wait < 80000; wait++)
+			for (wait = 0; wait < 60000; wait++)
 			{
 				dummy++;
 				if (dummy > 1000)
@@ -48,38 +52,26 @@ void test_application_main(void)
 {
 	#if DebugMode
 		
+		#if RTC_CONNECTED
+			test_realTimeClock();
+			test_BinaryCodedDecimal();
+		#endif
 		
-	
+		#if SD_CONNECTED
+			test_sdCard();
+		#endif
+		
 		//test_SPI();
 		//test_analogToDigital();
 	
 		//test_SPI_framework();
 		//test_SPI_framework_2();
-		//int i;
-		//for (i = 0;i < 10000;i++)
-		//{
-			//test_sdCard();
-		//}
-		
-	
 		//test_COMmain();
-	
 		//test_thermocouple();
-		
 		//test_digitalToAnalog();
 		//test_radio();
 		//test_PSK();
 		//test_toneGenerator();
-		test_sdCard();
-		
-		// don't comment out the ones below, please
-		// if need be, change the #define in user_config.h
-		// KA
-		
-		//#if RTC_CONNECTED
-		//	test_realTimeClock();
-		//#endif
-		//test_BinaryCodedDecimal();
 		
 		
 		logLine("");
@@ -98,39 +90,39 @@ void test_application_main(void)
 		#if CDH_PROCESSOR_COMPILE
 			logLine("testing CDH SPI with framework");
 			logLine("    transmitting: Kane is awesome **********");
-			SPI_transmit(&devices.test_SPI_device, 'K', true);
-			SPI_transmit(&devices.test_SPI_device, 'a', true);
-			SPI_transmit(&devices.test_SPI_device, 'n', true);
-			SPI_transmit(&devices.test_SPI_device, 'e', true);
-			SPI_transmit(&devices.test_SPI_device, ' ', true);
-			SPI_transmit(&devices.test_SPI_device, 'i', true);
-			SPI_transmit(&devices.test_SPI_device, 's', true);
-			SPI_transmit(&devices.test_SPI_device, ' ', true);
-			SPI_transmit(&devices.test_SPI_device, 'a', true);
-			SPI_transmit(&devices.test_SPI_device, 'w', true);
-			SPI_transmit(&devices.test_SPI_device, 'e', true);
-			SPI_transmit(&devices.test_SPI_device, 's', true);
-			SPI_transmit(&devices.test_SPI_device, 'o', true);
-			SPI_transmit(&devices.test_SPI_device, 'm', true);
-			SPI_transmit(&devices.test_SPI_device, 'e', true);
-			SPI_transmit(&devices.test_SPI_device, ' ', true);
+			SPI_transmit(&devices.COM_Processor, 'K', true);
+			SPI_transmit(&devices.COM_Processor, 'a', true);
+			SPI_transmit(&devices.COM_Processor, 'n', true);
+			SPI_transmit(&devices.COM_Processor, 'e', true);
+			SPI_transmit(&devices.COM_Processor, ' ', true);
+			SPI_transmit(&devices.COM_Processor, 'i', true);
+			SPI_transmit(&devices.COM_Processor, 's', true);
+			SPI_transmit(&devices.COM_Processor, ' ', true);
+			SPI_transmit(&devices.COM_Processor, 'a', true);
+			SPI_transmit(&devices.COM_Processor, 'w', true);
+			SPI_transmit(&devices.COM_Processor, 'e', true);
+			SPI_transmit(&devices.COM_Processor, 's', true);
+			SPI_transmit(&devices.COM_Processor, 'o', true);
+			SPI_transmit(&devices.COM_Processor, 'm', true);
+			SPI_transmit(&devices.COM_Processor, 'e', true);
+			SPI_transmit(&devices.COM_Processor, ' ', true);
 		
 			int i;
 			for (i = 0; i < 10; i++)
 			{
-				SPI_transmit(&devices.test_SPI_device, '*', true);
+				SPI_transmit(&devices.COM_Processor, '*', true);
 			}
 			
-			SPI_transmit(&devices.test_SPI_device, '\r', true);
-			SPI_transmit(&devices.test_SPI_device, '\n', true);
+			SPI_transmit(&devices.COM_Processor, '\r', true);
+			SPI_transmit(&devices.COM_Processor, '\n', true);
 			
 		#else
 			logLine("testing COM SPI with framework");
 			int i;
 			for (i = 0; i < 28; i++)
 			{
-				SPI_receive(&devices.test_SPI_device, true);
-				char received = devices.test_SPI_device.receiveMessage[0];
+				SPI_receive(&devices.CDH_Processor, true);
+				char received = devices.CDH_Processor.receiveMessage[0];
 				if (received != DUMMY_CHAR)
 				{
 					printf("%c", received);
@@ -150,18 +142,18 @@ void test_application_main(void)
 			logLine("    transmitting: pwnage<-");
 			logLine("    with one TX");
 			Byte array[8] = {'p','w','n','a','g','e','<','-'};
-			SPI_transmitStream(&devices.test_SPI_device, array, 8, true);
+			SPI_transmitStream(&devices.COM_Processor, array, 8, true);
 			
-			SPI_transmit(&devices.test_SPI_device, '\r', true);
-			SPI_transmit(&devices.test_SPI_device, '\n', true);
+			SPI_transmit(&devices.COM_Processor, '\r', true);
+			SPI_transmit(&devices.COM_Processor, '\n', true);
 		
 		#else
 			logLine("testing COM SPI with framework (2)");
 			int i;
 			for (i = 0; i < 10; i++)
 			{
-				SPI_receive(&devices.test_SPI_device, true);
-				char received = devices.test_SPI_device.receiveMessage[0];
+				SPI_receive(&devices.CDH_Processor, true);
+				char received = devices.CDH_Processor.receiveMessage[0];
 				if (received != DUMMY_CHAR)
 				{
 					printf("%c", received);
@@ -273,16 +265,10 @@ void test_application_main(void)
 			for (i = 0; i < 0xFFF; i++)
 			{
 				#if COM_PROCESSOR_COMPILE
+				
 					devices.radio.microphone->value = i;
-					
 					startNewDigitalToAnalogConversion(devices.radio.microphone->value);
 					
-					// commented out to make it go faster
-					// uncomment to print to file
-					//logCombo("set digital out on pin 5", i);
-					
-					readAnalogInput(devices.test_AtoD);
-					//logCombo("read analog in on pin 13", devices.test_AtoD->value);
 				#endif
 			}
 		}
@@ -314,245 +300,7 @@ void test_application_main(void)
 			#undef radio_low
 		#endif
 	}
-	
-	
-	///////////////////////////////////////////////////////////////////
-	
-	// private
-	extern void realTimeClock_unprotect(RealTimeClock* clock);
-	
-	void test_realTimeClock(void)
-	{
-		logLine("\r\ntesting real time clock");
-		if (!initialize_SPI(&devices.realTimeClock.SPI))
-		{
-			logLine("    Could not initialize SPI\r\n");
-			return;
-		}
-		
-		// each transaction with the rtc must be a burst of at least
-		// 2 bytes.  The first byte, you tell it what address to use
-		// in the following byte.
-		// On a read, the second byte will come to you from rtc.
-		// On a write, the second byte must be sent to the rtc.
-		
-	
-		// Poll the status register
-		realTimeClock_unprotect(&devices.realTimeClock);
-		//printf("transmission: %x\r\n", (devices.realTimeClock.SPI.transmitMessage[0]));
-		//printf("transmission: %x\r\n", (devices.realTimeClock.SPI.transmitMessage[1]));
-		
-		Byte toRTC[2];
-		toRTC[0] = RTC_READ_CONTROL_REGISTER;
-		toRTC[1] = EMPTY_CHAR;
-		SPI_transmitStream(&devices.realTimeClock.SPI, toRTC, 2, true);
-		//printf("transmission: %x\r\n", (devices.realTimeClock.SPI.transmitMessage[0]));
-		//printf("transmission: %x\r\n", (devices.realTimeClock.SPI.transmitMessage[1]));
-		
-		// should have read the byte you just wrote (RTC_DISABLE_WRITE_PROTECT)
-		//printf("read control register: %x\r\n", (devices.realTimeClock.SPI.receiveMessage[0]));
-		//printf("read control register: %x\r\n\r\n", (devices.realTimeClock.SPI.receiveMessage[1]));
-		assert(devices.realTimeClock.SPI.receiveMessage[1] == RTC_DISABLE_WRITE_PROTECT);
-		logLine("    real time clock test write was successful");
-		
-		// test the time set function
-		Time t;
-		t.seconds	= 0x01;	// 
-		t.minutes	= 0x37; // 
-		t.hours		= 0x20; // 20:37:01
-		t.day		= 0x05; // Friday
-		t.date		= 0x03; // 3rd
-		t.month		= 0x08; // August
-		t.year		= 0x12; // 2012
-		bool timeSetSuccessfully = realTimeClock_set(&devices.realTimeClock, &t);
-		assert(timeSetSuccessfully);
-		logLine("    real time clock successfully set to 8:37 August 3, 2012");
-		
-		fflush(stdout);
-	
-	}
-	
-	///////////////////////////////////////////////////////////////////
-	
-	// breakdown of the the sd card tests
-	
-	extern void SPI_WRITE(SPI_CHANNEL channel, Byte byte);
-	
-	#if COM_PROCESSOR_COMPILE
-		
-		extern void sdCard_sendCommand(Byte cmd, long args, UI8 responseSize, SDCard* card);
-		
-		void test_sdCard_initialization(void)
-		{
-			#if DebugSD2
-				logLine("    test SD card initialization");
-			#endif
-			
-			int i;
-			
-			initialize_SPI(&devices.sdCard.SPI);
-			setDigitalOutput(devices.sdCard.SPI.chipSelect.out);
-			
-			#if DebugSD2
-				logLine("        sending FF 10 times... card requires 74 clock cycles");
-			#endif
-			
-			// clear the buffers
-			for (i = 0; i < SDCARD_BLOCK_SIZE; i++)
-			{
-				devices.sdCard.RX_blockBuffer[i] = 0;
-				devices.sdCard.TX_blockBuffer[i] = 0;
-			}
-			
-			// Send 80 clocks, SD card require at least 74 clock cycles
-			for(i = 0; i < 10; i++)
-			{
-				SPI_WRITE(devices.sdCard.SPI.channel, 0xFF);
-			}
-			
-			//CMD0 - Begin the initialization procedure
-			#if DebugSD2
-				logLine("        sending CMD0");
-			#endif
-			sdCard_sendCommand(CMD0, SD_EMPTY_ARGS, CMD0_R, &devices.sdCard);
-			
-			//CMD8 - Send the interface conditions, mandatory for SDHC cards
-			#if DebugSD2
-				logLine("        sending CMD8");
-			#endif
-			sdCard_sendCommand(CMD8, (SD_VS << 8) + SD_CHECK, CMD8_R, &devices.sdCard);
-			
-			//CMD59 to indicate that CRC is used for SD card
-			#if DebugSD2
-				logLine("        sending CMD59");
-			#endif
-			sdCard_sendCommand(CMD59, 1, CMD59_R, &devices.sdCard);
-			// ignore illegal
-			if(devices.sdCard.SPI.receiveMessage[0] & R1_ILLEGAL)
-			{
-				devices.sdCard.SPI.receiveMessage[0] &= ~R1_ILLEGAL;
-			}
-			
-			//CMD55 indicate that the next command is an application specific command
-        	//ACMD41 starts the internal initialization routine for SD card, 
-        	//when its response is 0 then the init is done
-			i = 0;
-			do
-			{
-				#if DebugSD2
-					logLine("        sending CMD55");
-				#endif
-				sdCard_sendCommand(CMD55, SD_EMPTY_ARGS, CMD55_R, &devices.sdCard);
-				
-				#if DebugSD2
-					logLine("        sending ACMD41");
-				#endif
-				sdCard_sendCommand(ACMD41, 0x40000000, ACMD41_R, &devices.sdCard);
 
-				i++;
-			    SPI_receive(&devices.sdCard.SPI, false);
-			}
-			while( ((devices.sdCard.SPI.receiveMessage[0] & R1_IDLE) == R1_IDLE) && (i < SD_TIMEOUT) );
-			
-			assert(i < SD_TIMEOUT);
-	           
-	    
-			//CMD58 read OCR, is used to check SD card accepted voltage level and initialization status
-			//use this CMD to verify that the specific SD card is okay to use
-			sdCard_sendCommand(CMD58, 1, CMD58_R, &devices.sdCard);
-	    	assert(!(devices.sdCard.SPI.receiveMessage[0] & R1_ERR));
-	    	
-	    	setDigitalOutput(devices.sdCard.SPI.chipSelect.out);
-	    	#if DebugSD2
-				logLine("    SD initialization done");
-				logLine("");
-			#endif
-		}
-		
-		void test_sdCard_write_and_read(void)
-		{
-			#if DebugSD2
-				logLine("    test SD card write");
-			#endif
-			
-			int i = 0;
-			
-			//generate test data
-			for (i = 0; i < 10; i++)
-			{
-				devices.sdCard.TX_blockBuffer[i] = i%0xff;
-			}
-			
-			#if DebugSD2
-				// print to log
-				printf("        data: ");
-				for (i = 0; i < 10; i++)
-				{
-					if (i < 9) printf("%x, ", devices.sdCard.TX_blockBuffer[i]);
-					else       printf("%x\r\n", devices.sdCard.TX_blockBuffer[i]);
-				}
-			#endif
-			
-			UI16 SD_Write_Location = 1;
-			sdCard_write(SD_Write_Location, &devices.sdCard);
-			
-			#if DebugSD2
-				logCombo("        data written to block", SD_Write_Location);
-				logLine("    SD write done");
-				logLine("");
-			
-				//
-			
-				logLine("    test SD card read");
-			#endif
-				
-			sdCard_read(SD_Write_Location, &devices.sdCard);
-			
-			#if DebugSD2
-				logCombo("        data was read from block", SD_Write_Location);
-			
-				// print to log
-				printf("        data: ");
-				for (i = 0; i < 10; i++)
-				{
-					if (i < 9) printf("%x, ", devices.sdCard.RX_blockBuffer[i]);
-					else       printf("%x\r\n", devices.sdCard.RX_blockBuffer[i]);
-				}
-				
-				logLine("    SD read done");
-				logLine("");
-			#endif
-			
-			for (i = 0; i < 10; i++)
-			{
-				//assert(devices.sdCard.RX_blockBuffer[i] == devices.sdCard.TX_blockBuffer[i]);
-			}
-			
-		}
-	
-	#endif
-	
-	///////////////////////////////////////////////////////////////////
-	
-	void test_sdCard(void)
-	{
-		logLine("Testing the SD card");
-		disableInterrupts();
-		
-		// only defined on COM processor
-		#if COM_PROCESSOR_COMPILE
-			
-			#if DebugSD2
-				logLine("    making sure SPI is initialized");
-			#endif
-			
-			initialize_SPI(&devices.sdCard.SPI);
-			
-			test_sdCard_initialization();
-			test_sdCard_write_and_read();
-	
-		#endif
-	}
 	
 	///////////////////////////////////////////////////////////////////
 	
@@ -618,58 +366,6 @@ void test_application_main(void)
 		printf("\n");
 		
 		enableInterrupts();
-		
-	}
-	
-	///////////////////////////////////////////////////////////////////
-	
-	void test_BinaryCodedDecimal(void)
-	{
-		logLine("\r\nTesting conversion of binary coded decimal (BCD) numbers");
-		
-		BCD_Value result;
-		
-		int i;
-		for (i = 0; i < 10; i++)
-		{
-			result = convertDecimalToBinaryCodedDecimal(i);
-			assert(result == i);
-		}
-		
-		result = convertDecimalToBinaryCodedDecimal(10);
-		assert(result == 0x10);
-		
-		result = convertDecimalToBinaryCodedDecimal(12);
-		assert(result == 0x12);
-		
-		result = convertDecimalToBinaryCodedDecimal(23);
-		assert(result == 0x23);
-		
-		result = convertDecimalToBinaryCodedDecimal(33);
-		assert(result == 0x33);
-		
-		result = convertDecimalToBinaryCodedDecimal(50);
-		assert(result == 0x50);
-		
-		result = convertDecimalToBinaryCodedDecimal(62);
-		assert(result == 0x62);
-		
-		result = convertDecimalToBinaryCodedDecimal(87);
-		assert(result == 0x87);
-		
-		result = convertDecimalToBinaryCodedDecimal(99);
-		assert(result == 0x99);
-		
-		result = convertDecimalToBinaryCodedDecimal(100);
-		assert(result == 0x00);
-		
-		result = convertDecimalToBinaryCodedDecimal(159);
-		assert(result == 0x00);
-		
-		result = convertDecimalToBinaryCodedDecimal(255);
-		assert(result == 0x00);
-		
-		logLine("    BCD is OK");
 		
 	}
 	

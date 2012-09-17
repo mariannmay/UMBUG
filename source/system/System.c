@@ -16,6 +16,7 @@ Time systemTime;
 
 void system_initialize(void)
 {
+	disableInterrupts();
 	StopMSP430WatchdogTimer;
 	drivers_initialize();
 	initTimerA();
