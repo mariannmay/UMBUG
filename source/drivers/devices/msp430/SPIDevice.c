@@ -220,7 +220,7 @@ void SPI_setDummyOutput(SPI_CHANNEL channel)
 void SPI_transmit(SPI_Device* device, const Byte data, bool useChipSelect)
 {
 	device->transmitMessage[0] = data;
-	SPI_reset(device->channel);
+	//SPI_reset(device->channel);
 	
 	if (device->type == SPI_TYPE_Master)
 	{
