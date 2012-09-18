@@ -1,11 +1,11 @@
-#include "PLD1.h"
+#include "PLD2.h"
 
-void pld1_routine(void){
+void pld2_routine(void){
   //TODO:
   if (1 /*we are NOT in the middle-of-something AND no one is using the UART*/){
 	if (1 /*enough time has passed since the last time we ran*/){
 	  setUARTState(UART_CAMorSPEC); // set the UART flag to say we are in the middle of something
-	  // start UART collecting from the camera
+	  // start UART collecting from the spectrometer
 	}
   }else{
 	// continue doing what we were doing:
