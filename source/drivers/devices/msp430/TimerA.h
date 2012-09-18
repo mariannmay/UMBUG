@@ -4,7 +4,7 @@
 
 // includes ////////////////////////////////////////////////////
 
-#include "msp430fg4619.h"
+#include "msp430fg4618.h"
 #include "../../../application/COM/COMApplication.h"
 #include "../../../application/CDH/CDHApplication.h"
 #include <intrinsics.h>

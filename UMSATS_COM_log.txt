@@ -1,5 +1,0 @@
-== DEBUG MODE ==
-
-Testing PSK
-
-All tests complete! --------------------

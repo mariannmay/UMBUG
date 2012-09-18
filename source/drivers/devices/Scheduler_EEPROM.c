@@ -7,7 +7,7 @@ void writeByte_SCHEEPROM(UI16 address, UI8 data)
 {
 	//write enable before every write is mandator
 	Byte toSCHEEPROM[3] = {SCHEEPROM_WREN,0,0};
-	SPI_transmitStream(&SchedulerEEPROM, toSCHEEPROM, 1);
+	SPI_transmitStream(&SchedulerEEPROM, toSCHEEPROM, 1,true);
 	
 	//IMPORTANT - does chip select go high in this period?  It is mandatory!!! (after every WREN)
 	//Yes it does.
@@ -16,7 +16,7 @@ void writeByte_SCHEEPROM(UI16 address, UI8 data)
 	toSCHEEPROM[0] = SCHEEPROM_WRITE;
 	toSCHEEPROM[1] = address;
 	toSCHEEPROM[2] = data;
-	SPI_transmitStream(&SchedulerEEPROM, toSCHEEPROM, 3);
+	SPI_transmitStream(&SchedulerEEPROM, toSCHEEPROM, 3,true);
 
 }
 
@@ -29,8 +29,8 @@ UI8 readByte_SCHEEPROM(UI16 address)
 	Byte toSCHEEPROM[2];
 	toSCHEEPROM[0] = SCHEEPROM_RDSR;
 	toSCHEEPROM[1] = address;
-	SPI_transmitStream(&SchedulerEEPROM, toSCHEEPROM, 2);
-	SPI_receive(&SchedulerEEPROM);
+	SPI_transmitStream(&SchedulerEEPROM, toSCHEEPROM, 2,true);
+	SPI_receive(&SchedulerEEPROM,true);
 	return (UI8)SchedulerEEPROM.receiveMessage[0];
 }
 
@@ -121,7 +121,7 @@ void init_SCHEEPROM()
 	*/
 	
 	Byte toSCHEEPROM[2] = {SCHEEPROM_WRSR,0x80};
-	SPI_transmitStream(&SchedulerEEPROM, toSCHEEPROM, 1);
+	SPI_transmitStream(&SchedulerEEPROM, toSCHEEPROM, 1,true);
 	
 //TODO figure out what pin we can stick here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 

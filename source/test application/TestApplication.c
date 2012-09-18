@@ -11,6 +11,31 @@
 void test_application_initialize(void)
 {
 	#if DebugMode
+		
+		#if SD_CONENCTED
+			clearDigitalOutput(devices.sdCard.SPI.chipSelect.out);
+		#endif
+		
+		#if LogicAnalyzerDelay
+			printf("time to start logic analyzer... ");
+			fflush(stdout);
+			UL32 wait;
+			UL32 dummy = 0;
+			for (wait = 0; wait < 60000; wait++)
+			{
+				dummy++;
+				if (dummy > 1000)
+				{
+					printf(".");
+					dummy = 0;
+					fflush(stdout);
+				}
+			}
+			printf("done! starting test program\r\n");
+			fflush(stdout);
+		#endif
+		
+		// start printing to file
 		#if CDH_PROCESSOR_COMPILE
 			logLine("running test on CDH processor");
 			logLine("please check UMSATS_CDH_log.txt");
@@ -18,45 +43,37 @@ void test_application_initialize(void)
 			logLine("running test on COM processor");
 			logLine("please check UMSATS_COM_log.txt");
 		#endif
+		initializeLogFile();
+		
 	#endif
 }
 
 void test_application_main(void)
 {
 	#if DebugMode
+		
+		#if RTC_CONNECTED
+			test_realTimeClock();
+			test_BinaryCodedDecimal();
+		#endif
+		
+		#if SD_CONNECTED
+			test_sdCard();
+		#endif
+		
 		//test_SPI();
 		//test_analogToDigital();
 	
 		//test_SPI_framework();
 		//test_SPI_framework_2();
-		//int i;
-		//for (i = 0;i < 10000;i++)
-		//{
-			//test_sdCard();
-		//}
-		
-	
 		//test_COMmain();
-	
 		//test_thermocouple();
-		
 		//test_digitalToAnalog();
 		//test_radio();
 		//test_PSK();
 		//test_toneGenerator();
 		
-		// don't comment out the ones below, please
-		// if need be, change the #define in user_config.h
-		// KA
 		
-		#if RTC_CONNECTED
-			test_realTimeClock();
-		#endif
-		test_BinaryCodedDecimal();
-		test_NaturalLogarithm();
-		
-		
-		logLine("");
 		logLine("");
 		logLine("All tests complete! --------------------");
 		system_abort();
@@ -73,39 +90,39 @@ void test_application_main(void)
 		#if CDH_PROCESSOR_COMPILE
 			logLine("testing CDH SPI with framework");
 			logLine("    transmitting: Kane is awesome **********");
-			SPI_transmit(&devices.test_SPI_device, 'K');
-			SPI_transmit(&devices.test_SPI_device, 'a');
-			SPI_transmit(&devices.test_SPI_device, 'n');
-			SPI_transmit(&devices.test_SPI_device, 'e');
-			SPI_transmit(&devices.test_SPI_device, ' ');
-			SPI_transmit(&devices.test_SPI_device, 'i');
-			SPI_transmit(&devices.test_SPI_device, 's');
-			SPI_transmit(&devices.test_SPI_device, ' ');
-			SPI_transmit(&devices.test_SPI_device, 'a');
-			SPI_transmit(&devices.test_SPI_device, 'w');
-			SPI_transmit(&devices.test_SPI_device, 'e');
-			SPI_transmit(&devices.test_SPI_device, 's');
-			SPI_transmit(&devices.test_SPI_device, 'o');
-			SPI_transmit(&devices.test_SPI_device, 'm');
-			SPI_transmit(&devices.test_SPI_device, 'e');
-			SPI_transmit(&devices.test_SPI_device, ' ');
+			SPI_transmit(&devices.COM_Processor, 'K', true);
+			SPI_transmit(&devices.COM_Processor, 'a', true);
+			SPI_transmit(&devices.COM_Processor, 'n', true);
+			SPI_transmit(&devices.COM_Processor, 'e', true);
+			SPI_transmit(&devices.COM_Processor, ' ', true);
+			SPI_transmit(&devices.COM_Processor, 'i', true);
+			SPI_transmit(&devices.COM_Processor, 's', true);
+			SPI_transmit(&devices.COM_Processor, ' ', true);
+			SPI_transmit(&devices.COM_Processor, 'a', true);
+			SPI_transmit(&devices.COM_Processor, 'w', true);
+			SPI_transmit(&devices.COM_Processor, 'e', true);
+			SPI_transmit(&devices.COM_Processor, 's', true);
+			SPI_transmit(&devices.COM_Processor, 'o', true);
+			SPI_transmit(&devices.COM_Processor, 'm', true);
+			SPI_transmit(&devices.COM_Processor, 'e', true);
+			SPI_transmit(&devices.COM_Processor, ' ', true);
 		
 			int i;
 			for (i = 0; i < 10; i++)
 			{
-				SPI_transmit(&devices.test_SPI_device, '*');
+				SPI_transmit(&devices.COM_Processor, '*', true);
 			}
 			
-			SPI_transmit(&devices.test_SPI_device, '\r');
-			SPI_transmit(&devices.test_SPI_device, '\n');
+			SPI_transmit(&devices.COM_Processor, '\r', true);
+			SPI_transmit(&devices.COM_Processor, '\n', true);
 			
 		#else
 			logLine("testing COM SPI with framework");
 			int i;
 			for (i = 0; i < 28; i++)
 			{
-				SPI_receive(&devices.test_SPI_device);
-				char received = devices.test_SPI_device.receiveMessage[0];
+				SPI_receive(&devices.CDH_Processor, true);
+				char received = devices.CDH_Processor.receiveMessage[0];
 				if (received != DUMMY_CHAR)
 				{
 					printf("%c", received);
@@ -125,18 +142,18 @@ void test_application_main(void)
 			logLine("    transmitting: pwnage<-");
 			logLine("    with one TX");
 			Byte array[8] = {'p','w','n','a','g','e','<','-'};
-			SPI_transmitStream(&devices.test_SPI_device, array, 8);
+			SPI_transmitStream(&devices.COM_Processor, array, 8, true);
 			
-			SPI_transmit(&devices.test_SPI_device, '\r');
-			SPI_transmit(&devices.test_SPI_device, '\n');
+			SPI_transmit(&devices.COM_Processor, '\r', true);
+			SPI_transmit(&devices.COM_Processor, '\n', true);
 		
 		#else
 			logLine("testing COM SPI with framework (2)");
 			int i;
 			for (i = 0; i < 10; i++)
 			{
-				SPI_receive(&devices.test_SPI_device);
-				char received = devices.test_SPI_device.receiveMessage[0];
+				SPI_receive(&devices.CDH_Processor, true);
+				char received = devices.CDH_Processor.receiveMessage[0];
 				if (received != DUMMY_CHAR)
 				{
 					printf("%c", received);
@@ -224,7 +241,15 @@ void test_application_main(void)
 	
 	void test_thermocouple(void)
 	{
-		// TODO
+		/*
+		logLine("Testing thermocouple");
+		Word raw;
+		for (;;)
+		{
+			raw = thermocouple_read(&devices.testThermocouple);
+			logCombo("raw voltage: ", raw);
+		}
+		*/
 	}
 	
 	///////////////////////////////////////////////////////////////////
@@ -240,16 +265,10 @@ void test_application_main(void)
 			for (i = 0; i < 0xFFF; i++)
 			{
 				#if COM_PROCESSOR_COMPILE
+				
 					devices.radio.microphone->value = i;
-					
 					startNewDigitalToAnalogConversion(devices.radio.microphone->value);
 					
-					// commented out to make it go faster
-					// uncomment to print to file
-					//logCombo("set digital out on pin 5", i);
-					
-					readAnalogInput(devices.test_AtoD);
-					//logCombo("read analog in on pin 13", devices.test_AtoD->value);
 				#endif
 			}
 		}
@@ -281,163 +300,9 @@ void test_application_main(void)
 			#undef radio_low
 		#endif
 	}
-	
-	
-	///////////////////////////////////////////////////////////////////
-	
-	// private
-	extern void realTimeClock_unprotect(RealTimeClock* clock);
-	
-	void test_realTimeClock(void)
-	{
-		logLine("\r\ntesting real time clock");
-		if (!initialize_SPI(&devices.realTimeClock.SPI))
-		{
-			logLine("    Could not initialize SPI\r\n");
-			return;
-		}
-		
-		// each transaction with the rtc must be a burst of at least
-		// 2 bytes.  The first byte, you tell it what address to use
-		// in the following byte.
-		// On a read, the second byte will come to you from rtc.
-		// On a write, the second byte must be sent to the rtc.
-		
-	
-		// Poll the status register
-		realTimeClock_unprotect(&devices.realTimeClock);
-		//printf("transmission: %x\r\n", (devices.realTimeClock.SPI.transmitMessage[0]));
-		//printf("transmission: %x\r\n", (devices.realTimeClock.SPI.transmitMessage[1]));
-		
-		Byte toRTC[2];
-		toRTC[0] = RTC_READ_CONTROL_REGISTER;
-		toRTC[1] = EMPTY_CHAR;
-		SPI_transmitStream(&devices.realTimeClock.SPI, toRTC, 2);
-		//printf("transmission: %x\r\n", (devices.realTimeClock.SPI.transmitMessage[0]));
-		//printf("transmission: %x\r\n", (devices.realTimeClock.SPI.transmitMessage[1]));
-		
-		// should have read the byte you just wrote (RTC_DISABLE_WRITE_PROTECT)
-		//printf("read control register: %x\r\n", (devices.realTimeClock.SPI.receiveMessage[0]));
-		//printf("read control register: %x\r\n\r\n", (devices.realTimeClock.SPI.receiveMessage[1]));
-		assert(devices.realTimeClock.SPI.receiveMessage[1] == RTC_DISABLE_WRITE_PROTECT);
-		logLine("    real time clock test write was successful");
-		
-		// test the time set function
-		Time t;
-		t.seconds	= 0x01;	// 
-		t.minutes	= 0x37; // 
-		t.hours		= 0x20; // 20:37:01
-		t.day		= 0x05; // Friday
-		t.date		= 0x03; // 3rd
-		t.month		= 0x08; // August
-		t.year		= 0x12; // 2012
-		bool timeSetSuccessfully = realTimeClock_set(&devices.realTimeClock, &t);
-		assert(timeSetSuccessfully);
-		logLine("    real time clock successfully set to 8:37 August 3, 2012");
-		
-		fflush(stdout);
-	
-	}
+
 	
 	///////////////////////////////////////////////////////////////////
-	
-	void test_sdCard(void)
-	{
-		logLine("Testing the SD card");
-		
-		// only defined on COM processor
-		#if COM_PROCESSOR_COMPILE
-		
-			long i;
-			for(i = 0; i < 10000; i++)
-			{
-				;	// wait
-			}
-		
-			Byte toSD[32];
-			
-			toSD[0] = DUMMY_CHAR;
-			toSD[1] = DUMMY_CHAR;
-			toSD[2] = DUMMY_CHAR;
-			toSD[3] = DUMMY_CHAR;
-			toSD[4] = DUMMY_CHAR;
-			toSD[5] = DUMMY_CHAR;
-			toSD[6] = DUMMY_CHAR;
-			toSD[7] = DUMMY_CHAR;
-			toSD[8] = DUMMY_CHAR;
-			toSD[9] = DUMMY_CHAR;
-			SPI_transmitStream(&devices.sdCard.SPI, toSD, 10);
-	
-			toSD[0] = 0x40;
-			toSD[1] = EMPTY_CHAR;
-			toSD[2] = EMPTY_CHAR;
-			toSD[3] = EMPTY_CHAR;
-			toSD[4] = EMPTY_CHAR;
-			toSD[5] = 0x95;
-			toSD[6] = DUMMY_CHAR;
-			SPI_transmitStream(&devices.sdCard.SPI, toSD, 7); //CMD0
-			
-			toSD[0] = DUMMY_CHAR;
-			toSD[1] = DUMMY_CHAR;
-			toSD[2] = DUMMY_CHAR;
-			toSD[3] = DUMMY_CHAR;
-			toSD[4] = DUMMY_CHAR;
-			toSD[5] = DUMMY_CHAR;
-			toSD[6] = DUMMY_CHAR;
-			toSD[7] = DUMMY_CHAR;
-			toSD[8] = DUMMY_CHAR;
-			toSD[9] = DUMMY_CHAR;
-			SPI_transmitStream(&devices.sdCard.SPI, toSD, 10);
-			
-			toSD[0] = 0x40;
-			toSD[1] = EMPTY_CHAR;
-			toSD[2] = EMPTY_CHAR;
-			toSD[3] = EMPTY_CHAR;
-			toSD[4] = 0x37; //0011 0111
-			toSD[5] = DUMMY_CHAR;
-			toSD[6] = DUMMY_CHAR;
-			SPI_transmitStream(&devices.sdCard.SPI, toSD, 7); //CMD55
-			
-			toSD[0] = 0x40;
-			toSD[1] = EMPTY_CHAR;
-			toSD[2] = EMPTY_CHAR;
-			toSD[3] = EMPTY_CHAR;
-			toSD[4] = 0x29; //0010 1001
-			toSD[5] = DUMMY_CHAR;
-			toSD[6] = DUMMY_CHAR;
-			SPI_transmitStream(&devices.sdCard.SPI, toSD, 7); //ACMD41
-	
-			toSD[0] = 0x40;
-			toSD[1] = EMPTY_CHAR;
-			toSD[2] = EMPTY_CHAR;
-			toSD[3] = EMPTY_CHAR;
-			toSD[4] = 0x11;
-			toSD[5] = DUMMY_CHAR;
-			toSD[6] = DUMMY_CHAR;
-			SPI_transmitStream(&devices.sdCard.SPI, toSD, 7); //CMD17
-			
-			int count;
-			int num;
-			for(num=0;num<16;num++)
-			{
-				for(count=0;count<32;count++)
-				{
-					toSD[count] = DUMMY_CHAR;
-				}
-				SPI_transmitStream(&devices.sdCard.SPI, toSD, 32); //DUMMY x 512
-			}		
-			
-			toSD[0] = 0x40;
-			toSD[1] = EMPTY_CHAR;
-			toSD[2] = EMPTY_CHAR;
-			toSD[3] = EMPTY_CHAR;
-			toSD[4] = 0x0D;
-			toSD[5] = DUMMY_CHAR;
-			toSD[6] = DUMMY_CHAR;
-			SPI_transmitStream(&devices.sdCard.SPI, toSD, 7); //CMD13
-	
-		#endif
-	}
 	
 	void test_COMmain(void)
 	{
@@ -452,10 +317,12 @@ void test_application_main(void)
 	
 	void test_toneGenerator(void)
 	{
+		enableInterrupts();
+		
 		#if COM_PROCESSOR_COMPILE
 			for (;;)
 			{
-				startNewDigitalToAnalogConversion(devices.radio.microphone->value);
+				//startNewDigitalToAnalogConversion(devices.radio.microphone->value);
 				
 				//UI16 wait;
 				//for (wait = 6000; wait --> 0;) { }
@@ -491,121 +358,15 @@ void test_application_main(void)
 		
 		convertBinaryToPSK(data,8);
 		
+		printf("\n\nPhase Shift History: ");
+		for(i = 0; i < PhaseShiftHistoryLength; i++)
+		{
+			printf("%d, ", phaseShifts[i]);
+		}
+		printf("\n");
+		
 		enableInterrupts();
 		
-	}
-	
-	///////////////////////////////////////////////////////////////////
-	
-	void test_BinaryCodedDecimal(void)
-	{
-		logLine("\r\nTesting conversion of binary coded decimal (BCD) numbers");
-		
-		BCD_Value result;
-		
-		int i;
-		for (i = 0; i < 10; i++)
-		{
-			result = convertDecimalToBinaryCodedDecimal(i);
-			assert(result == i);
-		}
-		
-		result = convertDecimalToBinaryCodedDecimal(10);
-		assert(result == 0x10);
-		
-		result = convertDecimalToBinaryCodedDecimal(12);
-		assert(result == 0x12);
-		
-		result = convertDecimalToBinaryCodedDecimal(23);
-		assert(result == 0x23);
-		
-		result = convertDecimalToBinaryCodedDecimal(33);
-		assert(result == 0x33);
-		
-		result = convertDecimalToBinaryCodedDecimal(50);
-		assert(result == 0x50);
-		
-		result = convertDecimalToBinaryCodedDecimal(62);
-		assert(result == 0x62);
-		
-		result = convertDecimalToBinaryCodedDecimal(87);
-		assert(result == 0x87);
-		
-		result = convertDecimalToBinaryCodedDecimal(99);
-		assert(result == 0x99);
-		
-		result = convertDecimalToBinaryCodedDecimal(100);
-		assert(result == 0x00);
-		
-		result = convertDecimalToBinaryCodedDecimal(159);
-		assert(result == 0x00);
-		
-		result = convertDecimalToBinaryCodedDecimal(255);
-		assert(result == 0x00);
-		
-		logLine("    BCD is OK");
-		
-	}
-	
-	///////////////////////////////////////////////////////////////////
-	
-	void test_NaturalLogarithm(void)
-	{
-		logLine("\r\nTesting custom natural logarithm method");
-		
-		float testValue;
-		float testResult;
-		
-		testValue = 0; testResult = naturalLog(testValue);
-		printf("    ln(%f) = %f\r\n", testValue, testResult);
-		
-		testValue = 0.1; testResult = naturalLog(testValue);
-		printf("    ln(%f) = %f\r\n", testValue, testResult);
-		
-		testValue = 0.2; testResult = naturalLog(testValue);
-		printf("    ln(%f) = %f\r\n", testValue, testResult);
-		
-		testValue = 0.3; testResult = naturalLog(testValue);
-		printf("    ln(%f) = %f\r\n", testValue, testResult);
-		
-		testValue = 0.4; testResult = naturalLog(testValue);
-		printf("    ln(%f) = %f\r\n", testValue, testResult);
-		
-		testValue = 0.5; testResult = naturalLog(testValue);
-		printf("    ln(%f) = %f\r\n", testValue, testResult);
-		
-		testValue = 0.6; testResult = naturalLog(testValue);
-		printf("    ln(%f) = %f\r\n", testValue, testResult);
-		
-		testValue = 0.7; testResult = naturalLog(testValue);
-		printf("    ln(%f) = %f\r\n", testValue, testResult);
-		
-		testValue = 0.8; testResult = naturalLog(testValue);
-		printf("    ln(%f) = %f\r\n", testValue, testResult);
-		
-		testValue = 0.9; testResult = naturalLog(testValue);
-		printf("    ln(%f) = %f\r\n", testValue, testResult);
-		
-		testValue = 1; testResult = naturalLog(testValue);
-		printf("    ln(%f) = %f\r\n", testValue, testResult);
-		
-		testValue = 1.1; testResult = naturalLog(testValue);
-		printf("    ln(%f) = %f\r\n", testValue, testResult);
-		
-		testValue = 2; testResult = naturalLog(testValue);
-		printf("    ln(%f) = %f\r\n", testValue, testResult);
-		
-		testValue = 2.71; testResult = naturalLog(testValue);
-		printf("    ln(%f) = %f\r\n", testValue, testResult);
-		
-		testValue = 3; testResult = naturalLog(testValue);
-		printf("    ln(%f) = %f\r\n", testValue, testResult);
-		
-		testValue = 10; testResult = naturalLog(testValue);
-		printf("    ln(%f) = %f\r\n", testValue, testResult);
-		
-		testValue = 200; testResult = naturalLog(testValue);
-		printf("    ln(%f) = %f\r\n", testValue, testResult);
 	}
 	
 	///////////////////////////////////////////////////////////////////

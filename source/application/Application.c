@@ -15,7 +15,7 @@
 
 void application_initialize(void)
 {
-	initTimerA();
+	// TODO
 }
 
 void application_main(void)
@@ -25,20 +25,11 @@ void application_main(void)
 	// are #defined in ApplicationConfig.h
 	
 	#if CDH_PROCESSOR_COMPILE
-	
-		// the application which will run
-		// on the CDH processor
-		
-		//logLine("__we are the CDH processor__");		// we don't want this to print every loop
 		CDH_application_main();
 	#endif
 
 	#if COM_PROCESSOR_COMPILE
-	
-		// the application which will run
-		// on the COM processor
-		//logLine("__we are the COM processor__\n");		// we don't want this to print every loop
-		COM_application_main(); //TODO: make this function
+		COM_application_main();
 	#endif
 }
 

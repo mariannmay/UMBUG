@@ -27,12 +27,13 @@ extern void system_main(void);
 /*
  * a simple duration value.
  */
+extern SPI_WRITE(SPI_CHANNEL,UI8);
 ShortDuration duration_1S;
 extern TimeCounter currentTime;
 void main(void)
 {
-	WDTCTL = WDTPW | WDTHOLD;	
-	//system_initialize();
+	disableInterrupts();
+	system_initialize();
 	
 	init_SCHEEPROM();
 	printf("Start\n");

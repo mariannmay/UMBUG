@@ -21,7 +21,6 @@ void initTimerA(){
 		 * ID_0 = divide frequency by 1 (2^0)
 		 * 
 		 */
-		//enableInterrupts();
 		TACTL = TASSEL_2 | TAIE | MC_1 | ID_0;
 		
 		/*Timer A Capture/Compare Control 0
@@ -29,7 +28,7 @@ void initTimerA(){
 		 * CCIS_0 = capture compare input (gnd, we not using an input signal.  Clock yes, input no.)
 		 * CCIE = capture compare input enable
 		 */
-		TACCTL0 = CM_0 | CCIS_3 | CCIE;
+		TACCTL0 = CM_0 | CCIS_0 | CCIE;
 		
 		/*Timer A Capture/Compare 0
 		 * period of count - counts up from 0 to TACCR0 and then registers an interrupt.
@@ -49,7 +48,6 @@ void initTimerA(){
 		 * ID_0 = divide frequency by 1 (2^0)
 		 * 
 		 */
-		//enableInterrupts();
 		TACTL = TASSEL_2 | TAIE | MC_1 | ID_0;
 		
 		/*Timer A Capture/Compare Control 0
@@ -57,7 +55,7 @@ void initTimerA(){
 		 * CCIS_0 = capture compare input (gnd, we not using an input signal.  Clock yes, input no.)
 		 * CCIE = capture compare input enable
 		 */
-		TACCTL0 = CM_0 | CCIS_3 | CCIE;
+		TACCTL0 = CM_0 | CCIS_0 | CCIE;
 		
 		/*Timer A Capture/Compare 0
 		 * period of count - counts up from 0 to TACCR0 and then registers an interrupt.
@@ -116,10 +114,17 @@ __interrupt void timerA0int()
 	}
 	
 	
-	if (TAIV && TAIV_TACCR2) //if capture compare reg 2 interrupt
+	else if (TAIV && TAIV_TACCR2) //if capture compare reg 2 interrupt
 	{
 		
 	}
+	
+	
+	else
+	{
+		
+	}
+	
 	return;
 	
 }
