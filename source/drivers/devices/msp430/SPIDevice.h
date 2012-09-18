@@ -71,6 +71,28 @@ typedef struct
 		DigitalInput*			in;
 	}
 	chipSelect;
+	
+	union
+	{
+		SerialOutput*			out;
+		SerialInput*			in;
+	}
+	CLK;
+	
+	union
+	{
+		SerialOutput*			out;
+		SerialInput*			in;
+	}
+	MOSI;
+	
+	union
+	{
+		SerialOutput*			out;
+		SerialInput*			in;
+	}
+	MISO;
+	
 }
 SPI_Device;
 

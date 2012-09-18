@@ -29,8 +29,11 @@ void drivers_initialize(void)
 	// system clock //////////////////////////////////////////////
 	#if RTC_CONNECTED
 		// RTC
-		devices.realTimeClock.SPI.chipSelect.out	= &msp430.PORT_10.digitalOutput[4];
 		devices.realTimeClock.SPI.channel			= SPI_CHANNEL_1;
+		devices.realTimeClock.SPI.chipSelect.out	= &msp430.PORT_10.digitalOutput[4];
+		devices.realTimeClock.SPI.CLK.out			= &msp430.PORT_3.serialOutput[1];
+		devices.realTimeClock.SPI.MISO.in			= &msp430.PORT_3.serialInput[0];
+		devices.realTimeClock.SPI.MOSI.out			= &msp430.PORT_3.serialOutput[0];
 		devices.realTimeClock.SPI.type				= SPI_TYPE_Master;
 		devices.realTimeClock.SPI.activeHigh		= true;
 		devices.realTimeClock.SPI.controlRegister0	= 0x29;	// 0010 1001
@@ -43,8 +46,12 @@ void drivers_initialize(void)
 	#if CDH_PROCESSOR_COMPILE
 		
 		// COM
-		devices.COM_Processor.chipSelect.out		= &msp430.PORT_7.digitalOutput[1];
 		devices.COM_Processor.channel				= SPI_CHANNEL_1;
+		
+		devices.COM_Processor.chipSelect.out		= &msp430.PORT_7.digitalOutput[1];
+		devices.COM_Processor.CLK.out				= &msp430.PORT_3.serialOutput[1];
+		devices.COM_Processor.MISO.in				= &msp430.PORT_3.serialInput[0];
+		devices.COM_Processor.MOSI.out				= &msp430.PORT_3.serialOutput[0];
 		devices.COM_Processor.type					= SPI_TYPE_Master;
 		devices.COM_Processor.activeHigh			= false;
 		devices.COM_Processor.controlRegister0		= 0x29; // 0010 0001
@@ -57,8 +64,11 @@ void drivers_initialize(void)
 	#if COM_PROCESSOR_COMPILE
 		
 		// CDH
-		devices.CDH_Processor.chipSelect.in			= &msp430.PORT_1.digitalInput[0];
 		devices.CDH_Processor.channel				= SPI_CHANNEL_1;
+		devices.CDH_Processor.chipSelect.in			= &msp430.PORT_1.digitalInput[0];
+		devices.CDH_Processor.CLK.in				= &msp430.PORT_3.serialInput[1];
+		devices.CDH_Processor.MISO.out				= &msp430.PORT_3.serialOutput[1];
+		devices.CDH_Processor.MOSI.in				= &msp430.PORT_3.serialInput[0];
 		devices.CDH_Processor.type					= SPI_TYPE_Slave;
 		devices.CDH_Processor.activeHigh			= false;
 		devices.CDH_Processor.controlRegister0		= 0x21; // 0010 0001
@@ -75,8 +85,9 @@ void drivers_initialize(void)
 		
 		// SD CARD
 		devices.sdCard.power						= &msp430.PORT_10.digitalOutput[1]; // pin 20
-		devices.sdCard.SPI.chipSelect.out			= &msp430.PORT_8.digitalOutput[0];
 		devices.sdCard.SPI.channel					= SPI_CHANNEL_2;
+		devices.sdCard.SPI.CLK.out					= 
+		devices.sdCard.SPI.chipSelect.out			= &msp430.PORT_8.digitalOutput[0];
 		devices.sdCard.SPI.type						= SPI_TYPE_Master;
 		devices.sdCard.SPI.activeHigh				= false;
 		devices.sdCard.SPI.controlRegister0			= 0xA9; // 1010 1001

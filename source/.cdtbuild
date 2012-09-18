@@ -39,8 +39,8 @@
 <tool id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.linkerDebug.1642205898" name="MSP430 Linker" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.linkerDebug">
 <option id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.OUTPUT_FILE.1245183788" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.OUTPUT_FILE" value="&quot;Project-Cheesecake.out&quot;" valueType="string"/>
 <option id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.MAP_FILE.1895561304" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.MAP_FILE" value="&quot;Project-Cheesecake.map&quot;" valueType="string"/>
-<option id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.STACK_SIZE.1339201019" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.STACK_SIZE" value="80" valueType="string"/>
-<option id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.HEAP_SIZE.615191178" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.HEAP_SIZE" value="80" valueType="string"/>
+<option id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.STACK_SIZE.1339201019" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.STACK_SIZE" value="0x200" valueType="string"/>
+<option id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.HEAP_SIZE.615191178" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.HEAP_SIZE" value="0x200" valueType="string"/>
 <option id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.USE_HW_MPY.1712528128" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.USE_HW_MPY" value="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.USE_HW_MPY.16" valueType="enumerated"/>
 <option id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.generatedLinkerCommandFiles.1228418717" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.generatedLinkerCommandFiles" valueType="libs">
 <listOptionValue builtIn="false" value="&quot;$(GEN_CMDS_QUOTED)&quot;"/>
@@ -60,7 +60,7 @@
 <listOptionValue builtIn="false" value="&quot;libc.a&quot;"/>
 </option>
 </tool>
-<macros/>
+<macros expandEnvironmentMacros="true"/>
 </toolChain>
 <resourceConfiguration exclude="true" id="com.ti.ccstudio.buildDefinitions.MSP430.Debug.1916742768./Project-Cheesecake/application/ADC/torqure_josh.c" name="torqure_josh.c" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/application/ADC/torqure_josh.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1362411285./Project-Cheesecake/application/ADC/torqure_josh.c">
 <tool id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1362411285./Project-Cheesecake/application/ADC/torqure_josh.c" name="MSP430 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.compilerDebug.1362411285"/>

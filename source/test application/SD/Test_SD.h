@@ -9,6 +9,9 @@
 #ifndef TESTSD_H
 #define TESTSD_H
 
+#define DebugSD1 0
+#define DebugSD2 0
+
 #include "../../userConfig.h"
 
 	#if DebugMode

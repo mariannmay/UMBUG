@@ -205,6 +205,9 @@ void clearDigitalOutput(DigitalOutput* output)
 ///////////////////////////////////////////////
 
 
+void setSerialOutput(SerialOutput* output) { setDigitalOutput((DigitalOutput*)output); }
+void clearSerialOutput(SerialOutput* output) { clearDigitalOutput((DigitalOutput*)output); }
+
 
 
 

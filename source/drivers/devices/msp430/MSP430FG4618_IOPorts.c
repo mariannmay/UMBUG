@@ -42,15 +42,28 @@ void initialize_msp430_IO_ports(void)
 	initializeDigitalInput (	&msp430.PORT_2.digitalInput[5],		2,	7	);	// 	72		|					|
 	
 	// PORT_3																		Pin#		CDH					COM
-	P3DIR = 0x03; // 0000 0011
-	initializeSerialOutput (	&msp430.PORT_3.serialOutput[0],		3,	0	);	// 	71		| 					| 
-	initializeSerialOutput (	&msp430.PORT_3.serialOutput[1],		3,	1	);	// 	70		| SPI_1				| SPI_1
-	initializeSerialInput  (	&msp430.PORT_3.serialInput[0],		3,	2	);	// 	69		| SPI_1				| SPI_1
-	initializeSerialInput  (	&msp430.PORT_3.serialInput[1],		3,	3	);	// 	68		| SPI_1				| SPI_1
-	initializeDigitalInput (	&msp430.PORT_3.digitalInput[0],		3,	4	);	// 	67		|					|
-	initializeDigitalInput (	&msp430.PORT_3.digitalInput[1],		3,	5	);	//  66		|					| testInput on radio
-	initializeDigitalInput (	&msp430.PORT_3.digitalInput[2],		3,	6	);	// 	65		|					|
-	initializeDigitalInput (	&msp430.PORT_3.digitalInput[3],		3,	7	);	// 	64		|					|
+	#if CDH_PROCESSOR_COMPILE
+		P3DIR = 0x0A; // 0000 1010
+		initializeSerialInput  (	&msp430.PORT_3.serialInput[0],		3,	0	);	// 	71		| 					| 
+		initializeSerialOutput (	&msp430.PORT_3.serialOutput[0],		3,	1	);	// 	70		| SPI_1_MOSI		| SPI_1_MOSI
+		initializeSerialInput  (	&msp430.PORT_3.serialInput[0],		3,	2	);	// 	69		| SPI_1_MISO		| SPI_1_MISO
+		initializeSerialOutput (	&msp430.PORT_3.serialOutput[1],		3,	3	);	// 	68		| SPI_1_CLK			| SPI_1_CLK
+		initializeDigitalInput (	&msp430.PORT_3.digitalInput[0],		3,	4	);	// 	67		|					|
+		initializeDigitalInput (	&msp430.PORT_3.digitalInput[1],		3,	5	);	//  66		|					| testInput on radio
+		initializeDigitalInput (	&msp430.PORT_3.digitalInput[2],		3,	6	);	// 	65		|					|
+		initializeDigitalInput (	&msp430.PORT_3.digitalInput[3],		3,	7	);	// 	64		|					|
+		
+	#elif COM_PROCESSOR_COMPILE
+		P3DIR = 0x05; // 0000 0101
+		initializeSerialOutput (	&msp430.PORT_3.serialOutput[0],		3,	0	);	// 	71		| 					| 
+		initializeSerialInput  (	&msp430.PORT_3.serialInput[0],		3,	1	);	// 	70		| SPI_1_MOSI		| SPI_1_MOSI
+		initializeSerialOutput (	&msp430.PORT_3.serialOutput[1],		3,	2	);	// 	69		| SPI_1_MISO		| SPI_1_MISO
+		initializeSerialInput  (	&msp430.PORT_3.serialInput[1],		3,	3	);	// 	68		| SPI_1_CLK			| SPI_1_CLK
+		initializeDigitalInput (	&msp430.PORT_3.digitalInput[0],		3,	4	);	// 	67		|					|
+		initializeDigitalInput (	&msp430.PORT_3.digitalInput[1],		3,	5	);	//  66		|					| testInput on radio
+		initializeDigitalInput (	&msp430.PORT_3.digitalInput[2],		3,	6	);	// 	65		|					|
+		initializeDigitalInput (	&msp430.PORT_3.digitalInput[3],		3,	7	);	// 	64		|					|
+	#endif
 	
 	// PORT_4																		Pin#		CDH					COM
 	P4DIR = 0x4D; // 0100 1101
@@ -86,15 +99,29 @@ void initialize_msp430_IO_ports(void)
 	initializeAnalogInput  (	&msp430.PORT_6.analogInput[6],		6,	7	);	// 	6		|					| 
 	
 	// PORT_7																		Pin#		CDH					COM
-	P7DIR = 0xF3; // 1111 0011
-	initializeSerialOutput (	&msp430.PORT_7.serialOutput[0],		7,	0	);	// 	45		|					| 
-	initializeSerialOutput (	&msp430.PORT_7.serialOutput[1],		7,	1	);	// 	44		|					| SPI_2
-	initializeSerialInput  (	&msp430.PORT_7.serialInput[0],		7,	2	);	// 	43		|					| SPI_2
-	initializeSerialInput  (	&msp430.PORT_7.serialInput[1],		7,	3	);	// 	42		|					| SPI_2
-	initializeDigitalOutput(	&msp430.PORT_7.digitalOutput[0],	7,	4	);	// 	41		|					| 
-	initializeDigitalOutput(	&msp430.PORT_7.digitalOutput[1],	7,	5	);	// 	40		|	COM_SPI_CS		| 
-	initializeDigitalOutput(	&msp430.PORT_7.digitalOutput[2],	7,	6	);	// 	39		|					| 
-	initializeDigitalOutput(	&msp430.PORT_7.digitalOutput[3],	7,	7	);	// 	38		|					| 
+	// YOU ARE HERE
+	#if CDH_PROCESSOR_COMPILE
+		P7DIR = 0xF3; // 1111 0011
+		initializeSerialOutput (	&msp430.PORT_7.serialOutput[0],		7,	0	);	// 	45		|					| 
+		initializeSerialOutput (	&msp430.PORT_7.serialOutput[1],		7,	1	);	// 	44		|					| 
+		initializeSerialInput  (	&msp430.PORT_7.serialInput[0],		7,	2	);	// 	43		|					| 
+		initializeSerialInput  (	&msp430.PORT_7.serialInput[1],		7,	3	);	// 	42		|					| 
+		initializeDigitalOutput(	&msp430.PORT_7.digitalOutput[0],	7,	4	);	// 	41		|					| 
+		initializeDigitalOutput(	&msp430.PORT_7.digitalOutput[1],	7,	5	);	// 	40		|	COM_SPI_CS		| 
+		initializeDigitalOutput(	&msp430.PORT_7.digitalOutput[2],	7,	6	);	// 	39		|					| 
+		initializeDigitalOutput(	&msp430.PORT_7.digitalOutput[3],	7,	7	);	// 	38		|					|
+	
+	#elif COM_PROCESSOR_COMPILE
+		P7DIR = 0xF3; // 1111 0011
+		initializeSerialInput  (	&msp430.PORT_7.serialInput[0],		7,	0	);	// 	45		|					| 
+		initializeSerialOutput (	&msp430.PORT_7.serialOutput[0],		7,	1	);	// 	44		|					| SPI_2
+		initializeSerialInput  (	&msp430.PORT_7.serialInput[1],		7,	2	);	// 	43		|					| SPI_2
+		initializeSerialOutput (	&msp430.PORT_7.serialOutput[1],		7,	3	);	// 	42		|					| SPI_2
+		initializeDigitalOutput(	&msp430.PORT_7.digitalOutput[0],	7,	4	);	// 	41		|					| 
+		initializeDigitalOutput(	&msp430.PORT_7.digitalOutput[1],	7,	5	);	// 	40		|					| 
+		initializeDigitalOutput(	&msp430.PORT_7.digitalOutput[2],	7,	6	);	// 	39		|					| 
+		initializeDigitalOutput(	&msp430.PORT_7.digitalOutput[3],	7,	7	);	// 	38		|					|
+	#endif 
 	
 	// PORT_8																		Pin#		CDH					COM
 	P8DIR = 0xFF; // 1111 1111

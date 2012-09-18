@@ -15,6 +15,25 @@
 	extern void sdCard_sendCommand(Byte cmd, long args, UI8 responseSize, SDCard* card);
 	extern void SPI_WRITE(SPI_CHANNEL channel, Byte byte);
 	
+	//////////////////////////////////////////////////////////////
+
+	void test_sdCard(void)
+	{
+		logLine("");
+		logLine("Testing the SD card");
+		disableInterrupts();
+		
+		#if DebugSD2
+			logLine("    making sure SPI is initialized");
+		#endif
+		
+		test_sdCard_initialization();
+		test_sdCard_write_and_read();	
+
+	}
+
+	//////////////////////////////////////////////////////////////
+	
 	void test_sdCard_initialization(void)
 	{
 		#if DebugSD2
@@ -28,6 +47,8 @@
 			logLine("    Could not initialize SPI\r\n");
 			return;
 		}
+		
+		clearSerialOutput(devices.sdCard.SPI.CLK.out);
 			
 		int i;
 		
@@ -38,13 +59,16 @@
 			devices.sdCard.TX_blockBuffer[i] = 0;
 		}
 		
-		
+		/*
 		setDigitalOutput(devices.sdCard.power);
 		// short delay... card needs at least 1 ms
 		for (i = 0; i < 10; i++)
 		{
-			fflush(stdout);
+			
+			setDigitalOutput(devices.sdCard.SPI.chipSelect);
+			
 		}
+		*/
 		
 		#if DebugSD2
 			logLine("        sending FF 10 times... card requires 74 clock cycles");
@@ -53,6 +77,7 @@
 		// Send 120 clocks, SD card require at least 74 clock cycles
 		for(i = 0; i < 15; i++)
 		{
+			setDigitalOutput(devices.sdCard.power);
 			SPI_WRITE(devices.sdCard.SPI.channel, 0xFF);
 		}
 		
@@ -185,22 +210,7 @@
 		
 	}
 
-	//////////////////////////////////////////////////////////////
-
-	void test_sdCard(void)
-	{
-		logLine("");
-		logLine("Testing the SD card");
-		disableInterrupts();
-		
-		#if DebugSD2
-			logLine("    making sure SPI is initialized");
-		#endif
-		
-		test_sdCard_initialization();
-		test_sdCard_write_and_read();	
-
-	}
+	
 	
 #endif
 	

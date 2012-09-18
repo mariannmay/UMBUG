@@ -67,15 +67,7 @@ void initializeSerialInput(SerialInput* input, char portNum, char pin);
 
 /////////////////////////////////////////////////
 
-typedef struct
-{
-	char portNum;
-	char pin;
-	bool state;
-}
-SerialOutput;
 
-void initializeSerialOutput(SerialOutput* input, char portNum, char pin);
 
 /////////////////////////////////////////////////
 
@@ -90,6 +82,14 @@ DigitalOutput;
 void initializeDigitalOutput(DigitalOutput* output, char portNum, char pin);
 void setDigitalOutput(DigitalOutput* output);
 void clearDigitalOutput(DigitalOutput* output);
+
+/////////////////////////////////////////////////
+
+typedef DigitalOutput SerialOutput;
+
+void initializeSerialOutput(SerialOutput* output, char portNum, char pin);
+void setSerialOutput(SerialOutput* output);
+void clearSerialOutput(SerialOutput* output);
 
 ///////////////////////////////////////////////
 
