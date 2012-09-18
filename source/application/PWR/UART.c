@@ -18,6 +18,8 @@
 	#include "../COM/COMApplication.h"
 #endif
 
+UART_RESERVE_STATE currentUARTUser = UART_NOT_RESERVED;
+
 /*#include <stdio.h>
 #define USAxCTL		         U1CTL		// USART Control Register  /	
     #define USAxBR0     	 U1BR0			// USART Baud Rate 0 /
@@ -43,6 +45,12 @@
 * @param none                                                   
 * @return none                                                    
 */     
+
+
+void setUARTState(UART_RESERVE_STATE res)
+{
+	currentUARTUser = res;
+}
 
 
 void InitUART(void){ 

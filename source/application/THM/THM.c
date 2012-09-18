@@ -1,11 +1,13 @@
 #include "THM.h"
 
 bool currentlyApplyingHeat = false;
-#define thmThresholdLOW 23; //TODO: set as a proper value
-#define thmThresholdHIGH 120; //TODO: set as a proper value
+UI16 thmThresholdLOW = 0x23; //TODO: set as a proper value
+UI16 thmThresholdHIGH = 0x50; //TODO: set as a proper value
 
 UI16 getThermalSensorReading(void){
 	//TODO:
+	UI16 changeThis = 0x00; //TODO: change this
+	return(changeThis);
 }
 
 void startHeating(void){
@@ -20,26 +22,25 @@ void thm_routine(void){
   UI16 currentTemp = 0x00;
   
   //TODO:
-  //if (enough time has passed since the last time we ran){
+  if (1 /*enough time has passed since the last time we ran*/){
     currentTemp = getThermalSensorReading();
     if (!currentlyApplyingHeat){
-      if (currentTemp < thmThresholdLOW){
+      if (currentTemp <= thmThresholdLOW){
 	    currentlyApplyingHeat = true;
 	    startHeating();
-	  }
+      }
     }else{
       //continue doing what we were doing:
-	  if (currentTemp > thmThresholdHIGH){
+      if (currentTemp >= thmThresholdHIGH){
 	    currentlyApplyingHeat = false;
 	    stopHeating();
-	    //if (we are not over the groundstation){
+	    if (1 /*we are not over the groundstation*/){
 	      //send the data to the packetizer to be timestamped
-	    //}else{
+	    }else{
 	      //make a big pile of things to send later? (probably just do abandon the data instead?
-	    //}
+	    }
       }
     }
-  //}
-  
-  return();
+  }
 }
+

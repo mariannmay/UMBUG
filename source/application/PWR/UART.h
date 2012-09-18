@@ -40,7 +40,8 @@ typedef enum{
 
 //include "TI_USCI_UART_Regs.h"
 //Global Functions
- void InitUART(void);
+void InitUART(void);
+void setUARTState(UART_RESERVE_STATE res);
  
 
 
