@@ -7,9 +7,12 @@ UI16 thmThresholdLOW = 0x23; //TODO: set as a proper value
 UI16 thmThresholdHIGH = 0x50; //TODO: set as a proper value
 
 UI16 getThermalSensorReading(void){
-	//TODO:
-	UI16 changeThis = 0x00; //TODO: change this
-	return(changeThis);
+	UI16 sensorValue = 0x00;
+	
+	readAnalogInput(devices.thermister);
+	sensorValue = devices.thermister->value;
+	
+	return(sensorValue);
 }
 
 void startHeating(void){

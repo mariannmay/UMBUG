@@ -47,13 +47,15 @@ void drivers_initialize(void)
 	
 	
 	#if CDH_PROCESSOR_COMPILE
-		devices.pwrControllerCOM.output		    = &msp430.PORT_8.digitalOutput[3];
-		devices.pwrControllerPLD2.output	    = &msp430.PORT_8.digitalOutput[4];
-		devices.pwrControllerPLD1.output	    = &msp430.PORT_8.digitalOutput[5];
+		//devices.pwrControllerCOM.output		    = &msp430.PORT_8.digitalOutput[3];
+		//devices.pwrControllerPLD2.output	    = &msp430.PORT_8.digitalOutput[4];
+		//devices.pwrControllerPLD1.output	    = &msp430.PORT_8.digitalOutput[5];
 		//devices.test_SPI_device.chipSelect.out	= &msp430.PORT_10.digitalOutput[4];
 		//devices.test_SPI_device.channel			= SPI_CHANNEL_1;
 		//devices.test_SPI_device.type			= SPI_TYPE_Master;
 		//devices.test_SPI_device.activeHigh		= true;
+		
+		devices.thermister						= &msp430.PORT_6.analogInput[3];
 	#endif
 	
 		/*

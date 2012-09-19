@@ -35,6 +35,8 @@ typedef struct
 	Thermocouple	testThermocouple;
 	AnalogInput*	test_AtoD;
 	SPI_Device		test_SPI_device;
+	
+	AnalogInput*	thermister;
 }
 AllDevices;
 #else
