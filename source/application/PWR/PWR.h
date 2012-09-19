@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include "../../system/System.h"
+#include "../CDH/CDHApplication.h"
 
 typedef enum{
     COM,

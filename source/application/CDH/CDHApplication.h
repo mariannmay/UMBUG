@@ -22,9 +22,8 @@ typedef enum
 	PKT_TARDIGRADEIMAGEMODE1, //low resolution; more frequent
 	PKT_TARDIGRADEIMAGEMODE2, //higher resolution; less frequent
 	PKT_CAMERAHIST,
-	PKT_SUNSENSORS, // there are 12 of them
+	PKT_ADCSREADINGS, // there are 12 sun sensors, and measurements for the torque rods
 	PKT_ADCSALGORITHM, //which one is currently running B-dot and sun-pointing
-	PKT_TORQUERODCURRENTS, //measurements for the torque rods
 	PKT_PEEKDATA, //check the table of values
 	PKT_CDHUPKEEP, //processor load %, micro temp, memory use, watchdog counts
 	PKT_COMUPKEEP, //watchdog timeouts, received callsigns, memory use RX, memory use TX
@@ -45,5 +44,6 @@ void CDH_timerA_ISR(void);
 
 void CDH_application_main(void);
 void CDHMainScheduleLoop(void);
+void Packetize(PacketType type, Byte* dataBytes, int length);
 
 #endif

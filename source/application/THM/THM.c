@@ -1,5 +1,7 @@
 #include "THM.h"
 
+#define THMBytes 2
+
 bool currentlyApplyingHeat = false;
 UI16 thmThresholdLOW = 0x23; //TODO: set as a proper value
 UI16 thmThresholdHIGH = 0x50; //TODO: set as a proper value
@@ -16,6 +18,15 @@ void startHeating(void){
 
 void stopHeating(void){
 	//TODO:
+}
+
+void sendTHMToPacketizer(UI16 value){
+	Byte bytesToSend[THMBytes];
+	
+	bytesToSend[0] = (int)((value >> 8) & 0xFF);
+	bytesToSend[1] = (int)(value & 0xFF);
+	
+	Packetize(PKT_THERMAL_READINGS, bytesToSend, THMBytes);
 }
 
 void thm_routine(void){
@@ -35,7 +46,7 @@ void thm_routine(void){
 	    currentlyApplyingHeat = false;
 	    stopHeating();
 	    if (1 /*we are not over the groundstation*/){
-	      //send the data to the packetizer to be timestamped
+	      sendTHMToPacketizer(currentTemp); //send the data to the packetizer to be timestamped
 	    }else{
 	      //make a big pile of things to send later? (probably just do abandon the data instead?
 	    }

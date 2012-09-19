@@ -17,7 +17,8 @@
 typedef enum{
     UART_NOT_RESERVED,
     UART_POWER,
-    UART_CAMorSPEC
+    UART_CAMorSPEC,
+    UART_ADCS
 }UART_RESERVE_STATE;
 
 

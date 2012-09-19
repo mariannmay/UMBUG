@@ -2,6 +2,7 @@
 #define PLD1_H_
 
 #include "../PWR/UART.h"
+#include "../CDH/CDHApplication.h"
 
 void pld1_routine(void);
 
