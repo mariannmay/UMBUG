@@ -104,29 +104,24 @@ void drivers_initialize(void)
 	
 	
 	#if CDH_PROCESSOR_COMPILE
-<<<<<<< .merge_file_a11028
 		//devices.pwrControllerCOM.output		    = &msp430.PORT_8.digitalOutput[3];
 		//devices.pwrControllerPLD2.output	    = &msp430.PORT_8.digitalOutput[4];
 		//devices.pwrControllerPLD1.output	    = &msp430.PORT_8.digitalOutput[5];
 		//devices.test_SPI_device.chipSelect.out	= &msp430.PORT_10.digitalOutput[4];
 		//devices.test_SPI_device.channel			= SPI_CHANNEL_1;
 		//devices.test_SPI_device.type			= SPI_TYPE_Master;
-		//devices.test_SPI_device.activeHigh		= true;
+		//devices.test_SPI_device.activeHigh		= true;		devices.test_SPI_device.chipSelect.out		= &msp430.PORT_10.digitalOutput[4];
+
+
+		//devices.test_SPI_device.channel				= SPI_CHANNEL_1;
+		//devices.test_SPI_device.type				= SPI_TYPE_Master;
+		//devices.test_SPI_device.activeHigh			= true;
+		//devices.test_SPI_device.controlRegister0	= 0xA9;
+		//devices.test_SPI_device.controlRegister1	= 0x80;
+		//devices.test_SPI_device.bitRateRegister0	= 0x04;
+		//devices.test_SPI_device.bitRateRegister1	= 0x00;
 		
 		devices.thermister						= &msp430.PORT_6.analogInput[3];
-	#endif
-	
-		/*
-=======
-		devices.test_SPI_device.chipSelect.out		= &msp430.PORT_10.digitalOutput[4];
-		devices.test_SPI_device.channel				= SPI_CHANNEL_1;
-		devices.test_SPI_device.type				= SPI_TYPE_Master;
-		devices.test_SPI_device.activeHigh			= true;
-		devices.test_SPI_device.controlRegister0	= 0xA9;
-		devices.test_SPI_device.controlRegister1	= 0x80;
-		devices.test_SPI_device.bitRateRegister0	= 0x04;
-		devices.test_SPI_device.bitRateRegister1	= 0x00;
->>>>>>> .merge_file_a05788
 	#else
 		devices.test_SPI_device.chipSelect.in		= &msp430.PORT_1.digitalInput[5];
 		devices.test_SPI_device.channel				= SPI_CHANNEL_1;
@@ -138,8 +133,8 @@ void drivers_initialize(void)
 		devices.test_SPI_device.bitRateRegister1	= 0x00;
 	#endif
 	
-	initialize_SPI(&devices.test_SPI_device);
-	*/
+	//initialize_SPI(&devices.test_SPI_device);
+
 	
 	// system status LED /////////////////////////////////////////
 	
