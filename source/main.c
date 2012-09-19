@@ -32,7 +32,7 @@ ShortDuration duration_1S;
 extern TimeCounter currentTime;
 void main(void)
 {
-	disableInterrupts();
+	//disableInterrupts();
 	system_initialize();
 	
 	init_SCHEEPROM();

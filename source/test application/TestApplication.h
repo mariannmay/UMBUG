@@ -19,7 +19,7 @@ void test_application_main(void);
 		
 	#if DebugMode
 		
-		#if SD_CONNECTED
+		//#if SD_CONNECTED
 		
 			//////////////////////////////////
 			
@@ -54,7 +54,7 @@ void test_application_main(void);
 			
 			//////////////////////////////////
 		
-		#endif
+		//#endif
 	
 	#endif
 
