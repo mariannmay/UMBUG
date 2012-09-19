@@ -18,9 +18,11 @@
 #include "../COM/PacketGrabber.h"
 
 void COM_timerA_ISR(void);
+void COM_timerA2_ISR(void);
 
 void COM_application_main(void);
 void COMMainScheduleLoop(void);
 void runRadio(void);
+void listen(void);
 
 #endif

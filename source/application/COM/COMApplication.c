@@ -37,6 +37,7 @@ bool listeningSynced = false;
 int bitCountWhileSynced = 0;
 int bitPositionInMasterBuffer = 0x80;
 
+int testCount = 3;
 ///////////////////////////////////////////////////////////////////
 
 UI16 nextSDCardAddress;
@@ -52,6 +53,11 @@ const UI8 outOfDataMessage[] = { 0x97, 0x90, 0x51, 0x70, 0x30, 0xbe, 0x76, 0x0a,
 void COM_timerA_ISR(void)
 {
 	runRadio();
+}
+
+void COM_timerA2_ISR(void)
+{
+	listen();
 }
 
 ///////////////////////////////////////////////////////////////////
@@ -148,9 +154,7 @@ void COMMainScheduleLoop(void)
 void runRadio(void)
 {
 	if(transmitting)
-	{
-		
-		
+	{	
 		if (timeToChangePhase == true)
 		{
 			UI8 currentPhaseChangeOutOf32 = phaseShifts[currentPhaseShiftIndex];
@@ -177,57 +181,54 @@ void runRadio(void)
 		//devices.radio.microphone->value = getToneValueAt(currentToneIndex);
 		startNewDigitalToAnalogConversion(devices.radio.microphone->value);
 		
-	}else //listening
+	}
+}
+
+void listen(void)
+{
+	if(testCount==3)
 	{
-		if(listenTimeDivideCounter == 10)
+		//printf("flip it\n");
+		if (devices.craigsTest->state == high)
 		{
-			//catch bits
-			
-			//shuffle and get new data
-			radioReadingOldest = radioReadingMiddle;
-			radioReadingMiddle = radioReadingNewest;
-			//radioReadingNewest = ((PxIN & 0x ) == 0x);
-			
-			if(listeningSynced)
+			clearDigitalOutput(devices.craigsTest);
+		}
+		else
+		{
+			setDigitalOutput(devices.craigsTest);
+		}
+		testCount=1;
+	}else
+	{
+		testCount++;
+	}
+		
+	if(!transmitting)
+	{	
+		//catch bits
+		
+		//shuffle and get new data
+		radioReadingOldest = radioReadingMiddle;
+		radioReadingMiddle = radioReadingNewest;
+		readDigitalInput(devices.craigsTest2);
+		radioReadingNewest = devices.craigsTest2->state;
+		
+		if(listeningSynced)
+		{
+			if(bitCountWhileSynced==2)//its the third bit in the sequence
 			{
-				if(bitCountWhileSynced==2)//its the third bit in the sequence
+				//check this bit with its surroundings
+				if((radioReadingMiddle==radioReadingNewest) || (radioReadingMiddle==radioReadingOldest))
 				{
-					//check this bit with its surroundings
-					if((radioReadingMiddle==radioReadingNewest) || (radioReadingMiddle==radioReadingOldest))
+					if(radioReadingMiddle)//add a one to the buffer
 					{
-						if(radioReadingMiddle)//add a one to the buffer
-						{
-							masterInputBuffer[ptrWrite] |= bitPositionInMasterBuffer;
-						}else//add a zero to the buffer
-						{
-							masterInputBuffer[ptrWrite] &= ~bitPositionInMasterBuffer;
-						}
-						
-						if(bitPositionInMasterBuffer==0x01)//increment the bit position
-						{
-							bitPositionInMasterBuffer = 0x80;
-							ptrWrite++;
-						}else
-						{
-							bitPositionInMasterBuffer = bitPositionInMasterBuffer>>1;
-						}						
-					}else
+						masterInputBuffer[ptrWrite] |= bitPositionInMasterBuffer;
+						printf("one\n");
+					}else//add a zero to the buffer
 					{
-						listeningSynced = false;
+						masterInputBuffer[ptrWrite] &= ~bitPositionInMasterBuffer;
+						printf("zero\n");
 					}
-					
-					bitCountWhileSynced =0;
-				}else
-				{
-					bitCountWhileSynced++;
-				}
-			}else
-			{
-				if(radioReadingNewest && radioReadingMiddle)//found the starting of a one
-				{
-					listeningSynced = true; //now synced
-					masterInputBuffer[ptrWrite] |= bitPositionInMasterBuffer;//add a one to the buffer
-					bitCountWhileSynced = 2;
 					
 					if(bitPositionInMasterBuffer==0x01)//increment the bit position
 					{
@@ -236,18 +237,41 @@ void runRadio(void)
 					}else
 					{
 						bitPositionInMasterBuffer = bitPositionInMasterBuffer>>1;
-					}
+					}						
+				}else
+				{
+					listeningSynced = false;
 				}
+				
+				bitCountWhileSynced =0;
+			}else
+			{
+				bitCountWhileSynced++;
 			}
-			
-			listenTimeDivideCounter =0;
 		}else
 		{
-			listenTimeDivideCounter++;
-		}
+			if(radioReadingNewest && radioReadingMiddle)//found the starting of a one
+			{
+				listeningSynced = true; //now synced
+				masterInputBuffer[ptrWrite] |= bitPositionInMasterBuffer;//add a one to the buffer
+				bitCountWhileSynced = 2;
+				printf("synced\n");
+				
+				if(bitPositionInMasterBuffer==0x01)//increment the bit position
+				{
+					bitPositionInMasterBuffer = 0x80;
+					ptrWrite++;
+				}else
+				{
+					bitPositionInMasterBuffer = bitPositionInMasterBuffer>>1;
+				}
+			}
+		}	
 	}
+	
+	printf("bitPositionInMasterBuffer = %x\n", bitPositionInMasterBuffer);
+	
 }
-
 
 
 

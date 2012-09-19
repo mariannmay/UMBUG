@@ -310,7 +310,9 @@ void initializeDigitalOutput(DigitalOutput* output, char portNum, char pin)
 }
 
 void setDigitalOutput(DigitalOutput* output)
-{	
+{
+	output->state = high;
+	
 	switch(output->portNum)
 	{
 		case 1	:	
@@ -479,7 +481,8 @@ void setDigitalOutput(DigitalOutput* output)
 
 void clearDigitalOutput(DigitalOutput* output)
 {
-
+	output->state = low;
+	
 	switch(output->portNum)
 	{
 		case 1	:	

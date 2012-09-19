@@ -51,6 +51,8 @@ typedef struct
 	AnalogInput*	test_AtoD;
 	AnalogOutput*	testPSK;
 	SPI_Device		test_SPI_device;
+	DigitalOutput*	craigsTest;
+	DigitalInput*	craigsTest2;
 }
 AllDevices;
 #endif

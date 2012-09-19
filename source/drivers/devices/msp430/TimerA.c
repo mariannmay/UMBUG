@@ -42,6 +42,7 @@ void initTimerA(){
 		 * interrupt call for basic task switching.
 		 */
 		//timerAInt_taccr1 = &performCurrentTask;
+		
 	#elif CDH_PROCESSOR_COMPILE
 		/*Timer A control register.
 		 * TASSEL_2 = use SMCLK for clock source
@@ -70,6 +71,7 @@ void initTimerA(){
 		 * interrupt call for basic task switching.
 		 */
 		//timerAInt_taccr1 = &performCurrentTask;
+		
 	#endif
 	
 }
@@ -101,8 +103,8 @@ __interrupt void timerA0int()
 	if (TAIV && TAIV_TACCR2) //if capture compare reg 2 interrupt
 	{
 		#if COM_PROCESSOR_COMPILE
-			//COM_timerA2_ISR();
-			printf("timerA interrupt 2");
+			COM_timerA2_ISR();
+			//printf("timerA interrupt 2");
 		#endif		
 	}
 	return;
