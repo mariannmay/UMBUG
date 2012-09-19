@@ -24,6 +24,15 @@
 #define COM_PROCESSOR_COMPILE 1
 
 #if CDH_PROCESSOR_COMPILE
+	#if COM_PROCESSOR_COMPILE
+		#error Cannot compile for both processors - userConfig.h
+	#endif
+#else
+	#undef COM_PROCESSOR_COMPILE
+	#define COM_PROCESSOR_COMPILE 1
+#endif
+
+#if CDH_PROCESSOR_COMPILE
 
 	//SUBSYSTEMS CONNECTED TO CDH
 	#define COM_CONNECTED 0
@@ -38,7 +47,7 @@
 
 // devices connected
 #define RTC_CONNECTED 1
-#define SD_CONNECTED 1
+#define SD_CONNECTED 0
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
