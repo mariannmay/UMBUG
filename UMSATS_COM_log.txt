@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_a01996
 
 
 testing real time clock
@@ -16,3 +17,2859 @@ Testing conversion of binary coded decimal (BCD) numbers
 
 Testing the SD card
 
+=======
+== DEBUG MODE ==
+
+found at 0
+found at 1
+found at 2
+found at 3
+found at 4
+found at 5
+found at 6
+found at 7
+byte0 = 55 
+byte1 = 3e 
+byte2 = 34 
+55 3e 68 
+0xe4, 0x55, 0x55, 0x55, 0x66, 0x96, 0x4c, 0x55, 0xf8, 0x74, 0x0, 0x0, 0xf8, 0x74, 0x0, 0x0, 0xbc, 0x6e, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x8c, 0x1b, 0x88, 0x1a, 0x0, 0x4, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x30, bitPositionInMasterBuffer = 80
+synced
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+zero
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+bitPositionInMasterBuffer = 1
+one
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+bitPositionInMasterBuffer = 80
+zero
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+bitPositionInMasterBuffer = 40
+one
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+bitPositionInMasterBuffer = 20
+zero
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+bitPositionInMasterBuffer = 10
+one
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+bitPositionInMasterBuffer = 8
+zero
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+bitPositionInMasterBuffer = 4
+one
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+bitPositionInMasterBuffer = 2
+z
+>>>>>>> .merge_file_a03668

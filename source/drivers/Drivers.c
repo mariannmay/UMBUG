@@ -179,6 +179,8 @@ void drivers_initialize(void)
 //		devices.radio.microphone				= &msp430.PORT_6.analogOutput; // TODO: merge commented out
 //		devices.test_AtoD						= &msp430.PORT_5.analogInput; // TODO: merge commented out
 		//devices.testPSK							= &msp430.PORT_6.analogOutput;
+		devices.craigsTest						= &msp430.PORT_10.digitalOutput[0];
+		devices.craigsTest2						= &msp430.PORT_5.digitalInput[5];
 		
 	#endif
 	

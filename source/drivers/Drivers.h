@@ -50,6 +50,12 @@ typedef struct
 		Thermocouple	tardigradeTemperatureSensor;
 		Radio			radio;
 		SDCard			sdCard;
+
+	DigitalOutput*	craigsTest;
+	DigitalInput*	craigsTest2;
+	AnalogOutput*	testPSK;
+	AnalogInput*	test_AtoD;
+	//Battery			mainBattery;
 }
 AllDevices;
 #endif
