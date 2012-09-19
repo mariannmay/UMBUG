@@ -401,57 +401,6 @@ void test_application_main(void)
 
 ///////////////////////////////////////////////////////////////////
 
-void test_PSK(void)
-{
-	logLine("Testing PSK");
-	/*
-	disableInterrupts();
-
-	Byte data[32];
-	data[0] = 0xFF;
-	data[1] = 0xFF;
-	data[2] = 0xA1;
-	data[3] = 0x2C;
-	data[4] = 0xB6;
-	data[5] = 0x10;
-	data[6] = 0x00;
-	data[7] = 0x89;
-	data[8] = 0xFF;
-	data[9] = 0xFF;
-	data[10] = 0xA1;
-	data[11] = 0x2C;
-	data[12] = 0xB6;
-	data[13] = 0x10;
-	data[14] = 0x00;
-	data[15] = 0x89;
-	data[16] = 0xFF;
-	data[17] = 0xFF;
-	data[18] = 0xA1;
-	data[19] = 0x2C;
-	data[20] = 0xB6;
-	data[21] = 0x10;
-	data[22] = 0x00;
-	data[23] = 0x89;
-	data[24] = 0xFF;
-	data[25] = 0xFF;
-	data[26] = 0xA1;
-	data[27] = 0x2C;
-	data[28] = 0xB6;
-	data[29] = 0x10;
-	data[30] = 0x00;
-	data[31] = 0x89;
-	
-	printf("data: ");
-	int i;
-	for(i = 0; i < 8; i++)
-	{
-		printf(" %x\t", data[i]);
-	
-	///convertBinaryToPSK(data,32);
-	
-	enableInterrupts();
-	*/
-}
 
 void test_packetGrabbing(void)
 {

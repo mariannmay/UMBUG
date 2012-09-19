@@ -45,7 +45,7 @@
  ************************************************************/
 
 
-void sd_cmd(Byte cmd, long args, UI8 responseSize);
+void sd_cmd(char cmd, long args, char resp, char* response);
 
 /**
  * Initializes the SD card for use

@@ -9,7 +9,7 @@
 //******************************************************************************* 	
 
 
-#include <msp430fg4619.h> 
+#include <msp430fg4618.h> 
 #include <stdio.h>
 //#include "main.h"
 #include "UART.h"

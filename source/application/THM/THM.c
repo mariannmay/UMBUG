@@ -1,5 +1,7 @@
 #include "THM.h"
 
+#if CDH_PROCESSOR_COMPILE
+
 #define THMBytes 2
 
 bool currentlyApplyingHeat = false;
@@ -66,3 +68,6 @@ void thm_routine(void){
   }
 }
 
+
+
+#endif

@@ -25,7 +25,7 @@
  *     poly - the polynomial to be used to generate the CRC
  * OUT: char - the CRC byte for data
  **/
-char make_crc8(char *data, char numBytes, char poly)
+char make_crc8(Byte *data, char numBytes, char poly)
 {
 	char crc = 0x00;
 	char carry = 0x00;
@@ -63,7 +63,7 @@ char make_crc8(char *data, char numBytes, char poly)
  *     poly - the polynomial to be used to generate the CRC
  * OUT: char - the CRC byte for data
  **/
-char make_crc7(char *data, char numBytes, char poly)
+char make_crc7(Byte *data, char numBytes, char poly)
 {
 	char crc = 0x00;
 	char curr;
@@ -105,7 +105,7 @@ char make_crc7(char *data, char numBytes, char poly)
  *     poly - the polynomial to be used to generate the CRC
  * OUT: int - the CRC bytes for data
  **/
-int make_crc16(char *data, int numBytes, int poly)
+int make_crc16(Byte *data, int numBytes, int poly)
 {
 	int crc = 0x0000;
 	char curr;
@@ -147,7 +147,7 @@ int make_crc16(char *data, int numBytes, int poly)
  *     poly - the polynomial to be used to generate the CRC
  * OUT: int - the CRC bytes for data
  **/
-int make_crc16_sd(char *data, int numBytes, int poly)
+int make_crc16_sd(Byte *data, int numBytes, int poly)
 {
 	int crc = 0x0000;
 	char curr;
