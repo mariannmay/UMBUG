@@ -52,6 +52,10 @@ void setUARTState(UART_RESERVE_STATE res)
 	currentUARTUser = res;
 }
 
+UART_RESERVE_STATE getUARTState(){
+	return currentUARTUser;
+}
+
 
 void InitUART(void){ 
 /* --COPYRIGHT--,BSD_EX

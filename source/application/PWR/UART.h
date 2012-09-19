@@ -43,6 +43,7 @@ typedef enum{
 //Global Functions
 void InitUART(void);
 void setUARTState(UART_RESERVE_STATE res);
+UART_RESERVE_STATE getUARTState();
  
 
 

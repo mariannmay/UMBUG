@@ -50,6 +50,8 @@ void adcs_routine(void){
   //This is the routine which will run during normal operations
   //  to keep the satellite pointing correctly.
   
+  UART_RESERVE_STATE curState;
+  
   //TODO:
   if (0 /*we are NOT in the middle-of-something*/){
 	if (0 /*enough time has passed since the last time we ran*/){
@@ -59,7 +61,8 @@ void adcs_routine(void){
   }else{
 	// continue doing what we were doing:
 	if (0 /*we have received all of what we expect OR we have timed out*/){
-	  if (0 /*we are not over the groundstation AND no one is using the UART*/){
+	  curState = getUARTState();
+	  if (0 /*we are not over the groundstation*/ && curState == UART_NOT_RESERVED){
 		sendADCSToPacketizer(0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00); // send the data to the packetizer to be timestamped and sent to COM processor
 	  }
 	  setUARTState(UART_NOT_RESERVED); // unset the flag to say we are done with the UART
