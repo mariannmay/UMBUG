@@ -79,7 +79,7 @@ void initialize_msp430_IO_ports(void)
 	initializeAnalogInput  (	&msp430.PORT_6.analogInput[0],		6,	0	);	//  analogMUXIn0	/
 	initializeAnalogInput  (	&msp430.PORT_6.analogInput[1],		6,	1	);	//  analogMUXIn1	/
 	initializeAnalogInput  (	&msp430.PORT_6.analogInput[2],		6,	2	);	//  analogMUXIn2	/
-	initializeAnalogInput  (	&msp430.PORT_6.analogInput[3],		6,	3	);	//  				/
+	initializeAnalogInput  (	&msp430.PORT_6.analogInput[3],		6,	3	);	//  read Thermistor	/
 	initializeAnalogInput  (	&msp430.PORT_6.analogInput[4],		6,	4	);	//  				/
 	initializeAnalogInput  (	&msp430.PORT_6.analogInput[5],		6,	5	);	//  				/
 	initializeAnalogOutput (	&msp430.PORT_6.analogOutput,		6,	6	);	//  unused			/ out to radio
