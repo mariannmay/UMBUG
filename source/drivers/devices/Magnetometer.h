@@ -9,7 +9,7 @@
 #ifndef MAGNETOMETER_H
 #define MAGNETOMETER_H
 
-#include <msp430fg4619.h>
+#include <msp430fg4618.h>
 #include "../DriversConfig.h"
 #include "./msp430/SPIDevice.h"
 

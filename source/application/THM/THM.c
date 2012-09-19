@@ -11,6 +11,14 @@ UI16 getThermalSensorReading(void){
 	
 	readAnalogInput(devices.thermister);
 	sensorValue = devices.thermister->value;
+  
+
+
+
+	//thermocouple_read(&devices.tardigradeTemperatureSensor); // TODO: This is the way Kane was doing it (might be better?) 
+
+
+
 	
 	return(sensorValue);
 }

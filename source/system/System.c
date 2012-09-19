@@ -6,7 +6,7 @@
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include "System.h"
+#include "../system/System.h"
 #include "../drivers/devices/msp430/TimerA.h"
 #include <stdio.h>
 
@@ -16,6 +16,10 @@ Time systemTime;
 
 void system_initialize(void)
 {
+	disableInterrupts();
+	StopMSP430WatchdogTimer;
+	drivers_initialize();
+	initTimerA();
 	
 	systemTime.seconds	= 0;
 	systemTime.minutes	= 0;
@@ -24,19 +28,12 @@ void system_initialize(void)
 	systemTime.month	= 0;
 	systemTime.year		= 0;
 	
-	drivers_initialize();
-	
-	StopMSP430WatchdogTimer;
-	initTimerA();
-	//enableInterrupts();
 	
 	#if DebugMode
 		test_application_initialize();
-		initializeLogFile();
 	#else
 		application_initialize();
 	#endif
-	
 	
 }
 
@@ -47,7 +44,6 @@ void system_main(void)
 {	
 	// run the program
 	#if DebugMode
-		logLine("== DEBUG MODE ==\r\n");
 		test_application_main();
 	#else
 		application_main();

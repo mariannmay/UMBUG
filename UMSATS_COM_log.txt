@@ -1,0 +1,18 @@
+
+
+testing real time clock
+
+    real time clock test write was successful
+
+    real time clock successfully set to 8:37 August 3, 2012
+
+
+
+Testing conversion of binary coded decimal (BCD) numbers
+
+    BCD is OK
+
+
+
+Testing the SD card
+

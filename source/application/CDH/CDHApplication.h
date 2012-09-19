@@ -9,9 +9,12 @@
 #ifndef CDHAPPLICATION_H
 #define CDHAPPLICATION_H
 
+//////////////////////////////////////////////////////////////////
+
 #include "../ApplicationConfig.h"
 #include "../../system/System.h"
 #include "../../system/Log.h"
+#include "../THM/THM.h"
 
 typedef enum
 {

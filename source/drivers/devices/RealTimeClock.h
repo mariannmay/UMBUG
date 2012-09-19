@@ -10,6 +10,7 @@
 #define REALTIMECLOCK_H
 
 #include "../DriversConfig.h"
+#include "../../system/BinaryCodedDecimal.h"
 
 // address space (for DS1306) /////////////////
 
@@ -87,5 +88,6 @@ RealTimeClock;
 void realTimeClock_initialize(RealTimeClock* clock);
 void realTimeClock_update(RealTimeClock* clock);
 void realTimeClock_reset(RealTimeClock* clock);
+bool realTimeClock_set(RealTimeClock* clock, Time* t);
 
 #endif

@@ -8,7 +8,7 @@
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#include <msp430fg4619.h>
+#include <msp430fg4618.h>
 #include "application/PWR/UART.h"
 #include "application/COM/COMApplication.h"
 
@@ -23,15 +23,15 @@ void main(void)
 	 
 	
 	system_initialize();
-	InitUART();
+	// InitUART(); // TODO: removed from merge. use for testing uart
+	//for(;;) // TODO: removed from merge. use for testing uart
+	//{ // TODO: removed from merge. use for testing uart
+	//	while (!(IFG2 & UTXIFG1));                // USART1 TX buffer ready? // TODO: removed from merge. use for testing uart
+	//		TXBUF1 = 0xAB;           // TODO: removed from merge. use for testing uart
+	//} // TODO: removed from merge. use for testing uart
 	for(;;)
 	{
-		while (!(IFG2 & UTXIFG1));                // USART1 TX buffer ready?
-  		TXBUF1 = 0xAB;          
+		system_main();
 	}
-	//for(;;)
-	//{
-	//	system_main();
-	//}
 	
 }

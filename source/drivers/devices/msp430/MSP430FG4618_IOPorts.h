@@ -9,12 +9,12 @@
 //                                                              //
 //////////////////////////////////////////////////////////////////
 
-#ifndef MSP430FG4619PINS_H
-#define MSP430FG4619PINS_H
+#ifndef MSP430FG4618PINS_H
+#define MSP430FG4618PINS_H
 
 //////////////////////////////////////////////////////////////////
 
-#include <msp430fg4619.h>
+#include <msp430fg4618.h>
 #include "../../../application/ApplicationConfig.h"
 #include "../../IOTypes.h"
 #include "./AnalogToDigitalConverter.h"
@@ -44,11 +44,16 @@ typedef struct
 
 	struct { AnalogInput		analogInput[7]	;
 			 AnalogOutput		analogOutput	;	} PORT_6;
-		
-	struct { DigitalOutput		digitalOutput[4];
-			 SerialInput		serialInput[2]	;
-			 SerialOutput		serialOutput[2]	;	} PORT_7;
-			 
+	
+	#if CDH_PROCESSOR_COMPILE
+		struct { DigitalOutput		digitalOutput[7];
+				 DigitalInput		digitalInput	;	} PORT_7;
+	#else
+		struct { DigitalOutput		digitalOutput[4];
+				 SerialInput		serialInput[2]	;
+				 SerialOutput		serialOutput[2]	;	} PORT_7;
+	#endif
+	
 	struct { DigitalOutput		digitalOutput[8];	} PORT_8;
 	
 	struct { DigitalOutput		digitalOutput[8];	} PORT_9;
@@ -61,11 +66,11 @@ typedef struct
 	SerialInput										  TDO;
 	
 }
-MSP430FG4619;
+MSP430FG4618;
 
 //////////////////////////////////////////////////////////////
 
-extern MSP430FG4619 msp430;
+extern MSP430FG4618 msp430;
 
 //////////////////////////////////////////////////////////////
 

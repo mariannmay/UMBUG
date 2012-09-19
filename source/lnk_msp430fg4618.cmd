@@ -23,10 +23,10 @@ MEMORY
     SFR                     : origin = 0x0000, length = 0x0010
     PERIPHERALS_8BIT        : origin = 0x0010, length = 0x00F0
     PERIPHERALS_16BIT       : origin = 0x0100, length = 0x0100
-    RAM                     : origin = 0x1100, length = 0x2000
+    RAM                     : origin = 0x1100, length = 0x1000
     INFOA                   : origin = 0x1080, length = 0x0080
     INFOB                   : origin = 0x1000, length = 0x0080
-    FLASH                   : origin = 0x3100, length = 0xCEC0
+    FLASH                   : origin = 0x2100, length = 0xDEC0
     FLASH2                  : origin = 0x10000,length = 0x10000
     INT00                   : origin = 0xFFC0, length = 0x0002
     INT01                   : origin = 0xFFC2, length = 0x0002

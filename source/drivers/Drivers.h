@@ -33,8 +33,9 @@ typedef struct
 	//Battery			mainBattery;
 	
 	Thermocouple	testThermocouple;
+	Thermocouple	tardigradeTemperatureSensor; //TODO: merge added this; is it better ????
 	AnalogInput*	test_AtoD;
-	SPI_Device		test_SPI_device;
+	SPI_Device		COM_Processor;
 	
 	AnalogInput*	thermister;
 }
@@ -42,21 +43,13 @@ AllDevices;
 #else
 typedef struct
 {
-	Watchdog		systemWatchdog;
-	RealTimeClock	realTimeClock;
-	DigitalOutput*	systemStatusLED;
-	//Battery			mainBattery;
-	Thermocouple	testThermocouple;
-	Radio			radio;
-	SDCard			sdCard;
-	pwrController   pwrControllerCOM;
-	pwrController   pwrControllerPLD1;
-	pwrController   pwrControllerPLD2;
-	
-	
-	AnalogInput*	test_AtoD;
-	AnalogOutput*	testPSK;
-	SPI_Device		test_SPI_device;
+		Watchdog		systemWatchdog;
+		RealTimeClock	realTimeClock;
+		SPI_Device		CDH_Processor;
+		DigitalOutput*	systemStatusLED;
+		Thermocouple	tardigradeTemperatureSensor;
+		Radio			radio;
+		SDCard			sdCard;
 }
 AllDevices;
 #endif
