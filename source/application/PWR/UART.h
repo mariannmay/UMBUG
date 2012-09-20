@@ -18,7 +18,9 @@ typedef enum{
     UART_NOT_RESERVED,
     UART_POWER,
     UART_CAMorSPEC,
-    UART_ADCS
+    UART_ADCS,
+    UART_OVER_GROUNDSTATION // This is the indicator to say that we are over the ground station
+                            // usage: if (getUARTState() == UART_OVER_GROUNDSTATION)
 }UART_RESERVE_STATE;
 
 

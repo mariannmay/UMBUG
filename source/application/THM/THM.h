@@ -6,6 +6,7 @@
 #include "../../system/System.h"
 #include "../../system/Log.h"
 #include "../CDH/CDHApplication.h"
+#include "../PWR/UART.h"
 
 void setupADC(void);
 void getThermalSensor(void);

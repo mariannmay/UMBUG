@@ -42,26 +42,38 @@ void sendTHMToPacketizer(UI16 value){
 	Packetize(PKT_THERMAL_READINGS, bytesToSend, THMBytes);
 }
 
-void thm_routine(void){
+void thm_routine(void)
+{
   UI16 currentTemp = 0x00;
   
-  //TODO:
-  if (1 /*enough time has passed since the last time we ran*/){
+  if (getUARTState() == UART_POWER)
+  {
+  	if (0 /*TODO: we are done sending the data*/)
+  	{
+  		setUARTState(UART_NOT_RESERVED);
+  	}
+  }
+  
+  if (0 /*TODO: enough time has passed since the last time we ran*/)
+  {
     currentTemp = getThermalSensorReading();
-    if (!currentlyApplyingHeat){
-      if (currentTemp <= thmThresholdLOW){
+    if (!currentlyApplyingHeat)
+    {
+      if (currentTemp <= thmThresholdLOW)
+      {
 	    currentlyApplyingHeat = true;
 	    startHeating();
       }
-    }else{
-      //continue doing what we were doing:
-      if (currentTemp >= thmThresholdHIGH){
+    }
+    else
+    {
+      if (currentTemp >= thmThresholdHIGH)
+      {
 	    currentlyApplyingHeat = false;
 	    stopHeating();
-	    if (1 /*we are not over the groundstation*/){
+	    if (getUARTState() == UART_NOT_RESERVED)
+	    {
 	      sendTHMToPacketizer(currentTemp); //send the data to the packetizer to be timestamped
-	    }else{
-	      //make a big pile of things to send later? (probably just do abandon the data instead?
 	    }
       }
     }
