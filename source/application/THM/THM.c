@@ -17,11 +17,11 @@ UI16 getThermalSensorReading(void){
 }
 
 void startHeating(void){
-	//TODO:
+	startHeater(&devices.HeaterForTardigrades);
 }
 
 void stopHeating(void){
-	//TODO:
+	stopHeater(&devices.HeaterForTardigrades);
 }
 
 void sendTHMToPacketizer(UI16 value){

@@ -12,6 +12,7 @@ typedef struct
 }
 Heater;
 
-UI16 setHeater(Heater* heater);
+void startHeater(Heater* heater);
+void stopHeater(Heater* heater);
 
 #endif /*HEATER_H_*/
