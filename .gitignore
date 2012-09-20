@@ -10,6 +10,8 @@
 *.launch
 *.out
 *.cdtbuild
+*.prefs
+
 
 ./UMSATS_CDH_log.txt
 source/application/ApplicationConfig.h

@@ -10,18 +10,18 @@
 #define USERCONFIG_H_
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
-#define DebugMode 0
+#define DebugMode 1
 
 // Delay to give you time for starting a logic analyzer
 // (if you're into that kind of thing)
-#define LogicAnalyzerDelay 0
+#define LogicAnalyzerDelay 1
 
 // choose whether to compile code for the CDH redundant controllers
 // or the COM encoding controller
 // IMPORTANT: only one of these should be defined as 1.
 // NOT BOTH OF THEM
-#define CDH_PROCESSOR_COMPILE 1
-#define COM_PROCESSOR_COMPILE 0
+#define CDH_PROCESSOR_COMPILE 0
+#define COM_PROCESSOR_COMPILE 1
 
 #if CDH_PROCESSOR_COMPILE
 
@@ -37,8 +37,8 @@
 #endif
 
 // devices connected
-#define RTC_CONNECTED 0
-#define SD_CONNECTED 0
+#define RTC_CONNECTED 1
+#define SD_CONNECTED 1
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
