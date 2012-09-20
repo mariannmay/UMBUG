@@ -22,6 +22,7 @@
 #include "../drivers/devices/Watchdog.h"
 #include "../drivers/devices/Radio.h"
 #include "../drivers/devices/Heater.h"
+#include "../drivers/devices/TorqueRods.h"
 
 
 // a struct containing all of the system's devices ///////////////
@@ -37,6 +38,12 @@ typedef struct
 	AnalogInput*	test_AtoD;
 	SPI_Device		COM_Processor;
 	Heater          HeaterForTardigrades;
+	TorqueRod       TorqueRod1;
+	TorqueRod       TorqueRod2;
+	TorqueRod       TorqueRod3;
+	TorqueRod       TorqueRod4;
+	TorqueRod       TorqueRod5;
+	TorqueRod       TorqueRod6;
 }
 AllDevices;
 #else

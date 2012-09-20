@@ -52,17 +52,16 @@ void adcs_routine(void){
   
   UART_RESERVE_STATE curState;
   
-  //TODO:
-  if (0 /*we are NOT in the middle-of-something*/){
-	if (0 /*enough time has passed since the last time we ran*/){
+  if (0 /*TODO: we are NOT in the middle-of-something*/){
+	if (0 /*TODO: enough time has passed since the last time we ran*/){
 	  setUARTState(UART_ADCS); // set the UART flag to say we are in the middle of something
-	  // start UART collecting from the camera
+	  //TODO: start UART collecting from the camera
 	}
   }else{
 	// continue doing what we were doing:
-	if (0 /*we have received all of what we expect OR we have timed out*/){
+	if (0 /*TODO: we have received all of what we expect OR TODO: we have timed out*/){
 	  curState = getUARTState();
-	  if (0 /*we are not over the groundstation*/ && curState == UART_NOT_RESERVED){
+	  if (0 /*TODO: we are not over the groundstation*/ && curState == UART_NOT_RESERVED){
 		sendADCSToPacketizer(0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00); // send the data to the packetizer to be timestamped and sent to COM processor
 	  }
 	  setUARTState(UART_NOT_RESERVED); // unset the flag to say we are done with the UART
