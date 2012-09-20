@@ -121,7 +121,8 @@ void drivers_initialize(void)
 		//devices.test_SPI_device.bitRateRegister0	= 0x04;
 		//devices.test_SPI_device.bitRateRegister1	= 0x00;
 		
-		devices.thermister						= &msp430.PORT_6.analogInput[3];
+		devices.tardigradeTemperatureSensor.voltageInput = &msp430.PORT_6.analogInput[3];
+		devices.HeaterForTardigrades.voltageOutput       = &msp430.PORT_9.digitalOutput[4];
 	#else
 		//devices.test_SPI_device.chipSelect.in		= &msp430.PORT_1.digitalInput[5];
 		//devices.test_SPI_device.channel				= SPI_CHANNEL_1;

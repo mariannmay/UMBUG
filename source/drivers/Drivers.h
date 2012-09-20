@@ -21,6 +21,7 @@
 #include "../drivers/devices/Thermocouple.h"
 #include "../drivers/devices/Watchdog.h"
 #include "../drivers/devices/Radio.h"
+#include "../drivers/devices/Heater.h"
 
 
 // a struct containing all of the system's devices ///////////////
@@ -32,12 +33,10 @@ typedef struct
 	DigitalOutput*	systemStatusLED;
 	//Battery			mainBattery;
 	
-	Thermocouple	testThermocouple;
 	Thermocouple	tardigradeTemperatureSensor; //TODO: merge added this; is it better ????
 	AnalogInput*	test_AtoD;
 	SPI_Device		COM_Processor;
-	
-	AnalogInput*	thermister;
+	Heater          HeaterForTardigrades;
 }
 AllDevices;
 #else

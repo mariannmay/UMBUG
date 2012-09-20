@@ -11,16 +11,7 @@ UI16 thmThresholdHIGH = 0x50; //TODO: set as a proper value
 UI16 getThermalSensorReading(void){
 	UI16 sensorValue = 0x00;
 	
-	readAnalogInput(devices.thermister);
-	sensorValue = devices.thermister->value;
-  
-
-
-
-	//thermocouple_read(&devices.tardigradeTemperatureSensor); // TODO: This is the way Kane was doing it (might be better?) 
-
-
-
+	sensorValue = thermocouple_read(&devices.tardigradeTemperatureSensor); // read the termistor's value
 	
 	return(sensorValue);
 }
