@@ -101,6 +101,7 @@ void initialize_msp430_IO_ports(void)
 	// PORT_7																		Pin#		CDH					COM
 	// YOU ARE HERE
 	#if CDH_PROCESSOR_COMPILE
+	//7.3 should be output?
 		P7DIR = 0xF3; // 1111 0011
 		initializeSerialOutput (	&msp430.PORT_7.serialOutput[0],		7,	0	);	// 	45		|					| 
 		initializeSerialOutput (	&msp430.PORT_7.serialOutput[1],		7,	1	);	// 	44		|					| 
@@ -127,7 +128,7 @@ void initialize_msp430_IO_ports(void)
 	P8DIR = 0xFF; // 1111 1111
 	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[0],	8,	0	);	// 	37		|					| 
 	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[1],	8,	1	);	// 	36		| MUX select 0		| 
-	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[2],	8,	2	);	// 	35		| MUX select 1		| 
+	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[2],	8,	2	);	// 	35		| scheduler eeprom CS		| 
 	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[3],	8,	3	);	// 	34		| MUX select 2		| 
 	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[4],	8,	4	);	// 	33		| digitalMUXOut0	| 
 	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[5],	8,	5	);	// 	32		| digitalMUXOut1	| 

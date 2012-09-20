@@ -9,14 +9,11 @@
  * need to include methods for incrementing - need to handle the rollover of course.
  * 
  * */
-
+#include "../SimpleDefinitions.h"
 #ifndef TIMECOUNTER_H_
 #define TIMECOUNTER_H_
 
-#include "../SimpleDefinitions.h"
-#include <stdlib.h>
 
-#endif /*TIMECOUNTER_H_*/
 
 
 
@@ -35,7 +32,9 @@
 //if youre scheduling something for a year in advance you're a dumbass	(EOL function already available)
 
 
-
+/*
+ * Structure that holds enough space for mS in a year.
+ */
 typedef struct {
 	
 	UL32 LSW;	//Least significant word 
@@ -45,10 +44,20 @@ typedef struct {
 	
 } TimeCounter;
 
+/*
+ * Structure that holds enough space for mS in a minute.
+ * (used for durations of tasks)
+ */
 typedef struct {
-	UL32 MSW;   // THIS WAS MADE JUST SO THAT THE CODE WOULD COMPILE. (Please only commit working code to the master branch :P ) TODO: fix.
+	
 	UL32 LSW;
-} TimeCount;
+	
+} ShortDuration;
+
+//typedef struct {
+//	UL32 MSW;   // THIS WAS MADE JUST SO THAT THE CODE WOULD COMPILE. (Please only commit working code to the master branch :P ) TODO: fix.
+//	UL32 LSW;
+//} TimeCount;
 
 
 /*
@@ -59,7 +68,7 @@ typedef struct {
  * if (a < b) return -1
  * 
  * */
-int compareTimeCounter(TimeCount *a, TimeCount *b);
+int compareTimeCounter(TimeCounter *a, TimeCounter *b);
 
 /*
  * use this to initialize a TimeCounter to 0.
@@ -69,18 +78,20 @@ void initTimeCounter(TimeCounter *a);
 /*
  * Use this to increment the timecounter a by one millisecond.
  */
-void incrementTimeCounter(TimeCount *a);
+void incrementTimeCounter(TimeCounter *a);
 
 /*
  *Use this to add an amount of time to a timecounter structure. 
  * orig = orig + more
  * */
-void addToTimeCount(TimeCount *orig, TimeCount *more);
-
-//use this to free up a timecount properly.
-void destroyTimeCount(TimeCount *a);
+void addToTimeCounter(TimeCounter *orig, TimeCounter *more);
 
 
+/*
+ * addToTimeCount for use with shortdurations.
+ */
+ 
+ void addShortDurationToTimeCounter(TimeCounter *orig, ShortDuration *more);
 /*
  * initDuration - use this to initialize a duration of time.
  * this is necessary because some amounts of time will not fit in a unsigned 32 bit long.
@@ -89,14 +100,17 @@ void destroyTimeCount(TimeCount *a);
 
 void initDuration(TimeCounter *t, int days, int hours, int minutes, int seconds, int milliseconds);
 
+void initShortDuration(ShortDuration *s, int mS);
 //NO DECREMENT TIME COUNT ALLOWED.  UNECESSARY OPERATION LEADS TO BAD DESIGN!!!
 
 
 //DONT DO IT!!!
 
-
-
+/*
+ * copy - used to take a snapshot of a timecounter.  Good for use with the global currentTime
+ */
+TimeCounter copy(TimeCounter* t);
 
 //CALL 918-2687 for more info/tongue lashing
-
+#endif /*TIMECOUNTER_H_*/
 

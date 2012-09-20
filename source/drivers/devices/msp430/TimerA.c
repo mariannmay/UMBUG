@@ -82,11 +82,11 @@ __interrupt void timerA0int()
 	if(TAIV && TAIV_TACCR1)	//if capture compare reg 1 interrupt
 	{
 		#if CDH_PROCESSOR_COMPILE
-			CDH_timerA_ISR();
+			//CDH_timerA_ISR();
 		#endif
 		
 		#if COM_PROCESSOR_COMPILE
-			COM_timerA_ISR();
+			//COM_timerA_ISR();
 		#endif
 		
 	}

@@ -1,84 +1,55 @@
 /*
- * TaskList - a circular buffer of task structures.
+ * TaskList - a list of tasks.
  * 
- * Ground commands get their own task list, as do routine operations.
+ * 
  * 
  * 
  * 
  * */
 
-
+#include "./Task.h"
+#include "../SimpleDefinitions.h"
+#include "../drivers/devices/msp430/SPIDevice.h"
+#include "TimeCounter.h"
+#include "../drivers/devices/Scheduler_EEPROM.h"
 #ifndef TASKLIST_H_
 #define TASKLIST_H_
 
 
 
-
-#define TASKLIST_MAX_NUM_TASKS 128 //this is just a guess right now.
-
 /*
-typedef struct 
-{
-	RoutineTask tasks[TASKLIST_MAX_NUM_TASKS];	//the circular buffer
-	int insert;							//the insert position
-	int current;						//the current task position
-	int num;							//the number of tasks in the system.
-		
-} RoutineTaskList;
-
-typedef struct 
-{
-	GroundCommandTask tasks[TASKLIST_MAX_NUM_TASKS];	//the circular buffer
-	int insert;							//the insert position
-	int current;						//the current task position
-	int num;							//the number of tasks in the system.
-		
-} GroundCommandTaskList;
-*/
-typedef struct
-{
-	GroundCommandTask	gct;
-	BasicTaskNode* next;
-	
-}	BasicTaskNode;
-
-typedef struct	//may not need this
-{
-	int size;
-	BasicTaskNode* head;	//the first node
-}	BasicTaskList;
-
-/*
-typedef struct
-{
-	
-	RoutineTaskNode *next;	
-	RoutineTask task;
-	
-}	RoutineTaskNode;
-
-typedef struct
-{
-	
-	GroundCommandTaskNode *next;	
-	GroundCommandTask task;
-	
-}	GroundCommandTaskNode;
-*/
-
-/*
- * initialize a taskList structure.
+ * If this is changed, the hash fucntion for fudge registers needs to be adjusted.
+ * IE right now the algorithm wont support 128 tasks, without some slight changes./
  */
- /*
-void initGroundCommandTaskList(GroundCommandTaskList *tl);
-void initRoutineTaskList(RoutineTaskList *tl);
-*/
+#define TASKLIST_MAX_NUM_TASKS 8 //this is just a guess right now.
 
-/*
- *	add a task to the list.  Tasks are removed upon completion. 
- */
-/*
-int addRoutineTask(RoutineTaskList *tl, RoutineTask *t); 
-int addGroundCommandTask(GroundCommandTaskList *tl, GroundCommandTask *t);
-*/
+extern UI8 functionIsExecuting;
+extern int __TaskListIDs;
+extern TimeCounter snapshot;
+typedef struct
+{
+	/*
+	 * always allocated TASKLIST_MAX_NUM_TASKS.  whether or not its filled is another matter.
+	 */
+	Task	tasks[TASKLIST_MAX_NUM_TASKS];
+	/*
+	 * numTasks keeps track of the number of _actual_ tasks in the list.
+	 * This is done in case we want to be able to add tasks at runtime basically.
+	 */
+	int		numTasks;
+	/*
+	 * the current task's index into the tasks array
+	 */
+	int		currentTaskIndex;	
+	
+	/*
+	 * the tasklist's ID. This is required for hashing to fudge registers.
+	 * No, I don't expect you to understand the above sentence
+	 */
+	int ID;
+	
+} TaskList;
+void performCurrentTask(TaskList*);
+void initTaskList(TaskList*);
+bool addToTaskList(TaskList*, int (*pt2Func)(), ShortDuration* duration, UI8 maxRetries);
 #endif /*TASKLIST_H_*/
