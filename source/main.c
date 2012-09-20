@@ -19,6 +19,9 @@
 #include "system/TimeCounter.h"
 #include "system/TaskListInit.h"
 
+// TODO remove
+#include <stdio.h>
+
 extern void system_initialize(void);
 extern void system_main(void);
 
@@ -32,18 +35,23 @@ ShortDuration duration_1S;
 extern TimeCounter currentTime;
 void main(void)
 {
-	//disableInterrupts();
-	system_initialize();
 	
+	//disableInterrupts();
+	
+	printf("start of program\r\n");
+	fflush(stdout);
+	
+	system_initialize();
+	/*
 	init_SCHEEPROM();
 	//printf("Start\n");
 	UI8 test;
 	UI16 killtime = 0;
-	while(1)
+	for(;;)
 	{
-		//writeByte_SCHEEPROM(0x0000,0x5A);
+		writeByte_SCHEEPROM(0x0000,0x5A);
 		test = readByte_SCHEEPROM(0x0000);
-		//SPI_WRITE(SPI_CHANNEL_2, 0x5A);
+		SPI_WRITE(SPI_CHANNEL_2, 0x5A);
 		//printf("Read in %d\n",test);
 		for(killtime = 0; killtime < 0xFFFF; killtime++);//kill some time
 	}
@@ -78,5 +86,9 @@ void main(void)
 		
 		//printf("Thunderlizards\n");
 	}
+	*/
+	
+	printf("I am the god of your underpants\r\n");
+	fflush(stdout);
 	
 }

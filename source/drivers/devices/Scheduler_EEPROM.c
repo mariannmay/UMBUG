@@ -81,9 +81,9 @@ void init_SCHEEPROM()
 
 	//devices.realTimeClock.SPI.chipSelect.out	= &msp430.PORT_10.digitalOutput[4];
 	SchedulerEEPROM.chipSelect.out	= &msp430.PORT_8.digitalOutput[2];
-	SchedulerEEPROM.CLK.out			= &msp430.PORT_7.serialOutput[1]; //7.3
-	SchedulerEEPROM.MISO.in			= &msp430.PORT_7.serialInput[0];  //7.2
-	SchedulerEEPROM.MOSI.out		= &msp430.PORT_7.serialOutput[0]; //7.1
+	//SchedulerEEPROM.CLK.out			= &msp430.PORT_7.serialOutput[1]; //7.3
+	//SchedulerEEPROM.MISO.in			= &msp430.PORT_7.serialInput[0];  //7.2
+	//SchedulerEEPROM.MOSI.out		= &msp430.PORT_7.serialOutput[0]; //7.1
 
 		
 	SchedulerEEPROM.activeHigh = false;
