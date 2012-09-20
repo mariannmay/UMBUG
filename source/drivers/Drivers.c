@@ -123,14 +123,14 @@ void drivers_initialize(void)
 		
 		devices.thermister						= &msp430.PORT_6.analogInput[3];
 	#else
-		devices.test_SPI_device.chipSelect.in		= &msp430.PORT_1.digitalInput[5];
-		devices.test_SPI_device.channel				= SPI_CHANNEL_1;
-		devices.test_SPI_device.type				= SPI_TYPE_Slave;
-		devices.test_SPI_device.activeHigh			= true;
-		devices.test_SPI_device.controlRegister0	= 0xA1;
-		devices.test_SPI_device.controlRegister1	= 0x80;
-		devices.test_SPI_device.bitRateRegister0	= 0x04;
-		devices.test_SPI_device.bitRateRegister1	= 0x00;
+		//devices.test_SPI_device.chipSelect.in		= &msp430.PORT_1.digitalInput[5];
+		//devices.test_SPI_device.channel				= SPI_CHANNEL_1;
+		//devices.test_SPI_device.type				= SPI_TYPE_Slave;
+		//devices.test_SPI_device.activeHigh			= true;
+		//devices.test_SPI_device.controlRegister0	= 0xA1;
+		//devices.test_SPI_device.controlRegister1	= 0x80;
+		//devices.test_SPI_device.bitRateRegister0	= 0x04;
+		//devices.test_SPI_device.bitRateRegister1	= 0x00;
 	#endif
 	
 	//initialize_SPI(&devices.test_SPI_device);
