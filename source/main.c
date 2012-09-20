@@ -31,7 +31,8 @@ extern TimeCounter currentTime;
 void main(void)
 {
 	//volatile unsigned int i;
-	 
+	UI16 killtime = 0x00;
+	UI8 test = 0;
 	
 	system_initialize();
 	// InitUART(); // TODO: removed from merge. use for testing uart

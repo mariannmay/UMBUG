@@ -10,7 +10,7 @@
 #define USERCONFIG_H_
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
-#define DebugMode 0
+#define DebugMode 1
 
 // Delay to give you time for starting a logic analyzer
 // (if you're into that kind of thing)
