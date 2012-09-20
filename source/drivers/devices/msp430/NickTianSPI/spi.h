@@ -23,7 +23,7 @@
 	/**
 	 * Include MSP430 pin definitions
 	 **/
-	#include <msp430fg4619.h>
+	#include <msp430fg4618.h>
 
 	/**
 	 * Include commonly used definitions

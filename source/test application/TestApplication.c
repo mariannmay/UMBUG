@@ -8,6 +8,9 @@
 
 #include "TestApplication.h"
 
+
+//////////////////////////////////
+
 void test_application_initialize(void)
 {
 	#if DebugMode
@@ -50,6 +53,32 @@ void test_application_initialize(void)
 
 void test_application_main(void)
 {
+	//test_SPI();
+	//test_analogToDigital();
+
+	//test_SPI_framework();
+	//test_SPI_framework_2();
+	//int i;
+	//for (i = 0;i < 10000;i++)
+	//{
+	//	test_realTimeClock();
+	//}
+	//int i;
+	//for (i = 0;i < 10000;i++)
+	//{
+		//test_sdCard();
+	//}
+	
+
+	//test_COMmain();
+
+	//test_thermocouple();
+	
+	//test_digitalToAnalog();
+	//test_radio();
+	//test_PSK();
+	//test_toneGenerator();
+
 	#if DebugMode
 		
 		#if RTC_CONNECTED
@@ -60,10 +89,8 @@ void test_application_main(void)
 		#if SD_CONNECTED
 			test_sdCard();
 		#endif
-		
-		//test_SPI();
-		//test_analogToDigital();
-	
+	#endif
+
 		//test_SPI_framework();
 		//test_SPI_framework_2();
 		//test_COMmain();
@@ -72,14 +99,19 @@ void test_application_main(void)
 		//test_radio();
 		//test_PSK();
 		//test_toneGenerator();
-		
-		
-		logLine("");
-		logLine("All tests complete! --------------------");
-		system_abort();
-		
-	#endif
+
+		//test_SPI();
+		//test_analogToDigital();
+	
+	test_packetGrabbing();
+	
+	logLine("");
+	logLine("All tests complete! --------------------");
+	system_abort();
 }
+
+//////////////////////////////////////////////////////////////////
+
 
 #if DebugMode
 	
@@ -364,12 +396,82 @@ void test_application_main(void)
 			printf("%d, ", phaseShifts[i]);
 		}
 		printf("\n");
+    //
+	///convertBinaryToPSK(data,32); // TODO: leftover from merge. Should it be here?
 		
 		enableInterrupts();
+}
+
+///////////////////////////////////////////////////////////////////
+
+
+void test_packetGrabbing(void)
+{
+	int i;
+	for(i=0;i<8;i++)
+	{
+		UI16 big = 0x7E55>>i;
+		UI8 one = (UI8)(big>>8);
+		UI8 two = (UI8)(big);
+		unsigned int pos = findAX25Flag(one, two, 0, 8);
 		
+		printf("found at %d\n", pos);
+		fflush(stdout);
+	}
+
+
+	masterInputBuffer[0] = 0x55;
+	masterInputBuffer[1] = 0x3E;
+	masterInputBuffer[2] = 0x34;
+	masterInputBuffer[3] = 0x56;
+	masterInputBuffer[4] = 0x34;
+	masterInputBuffer[5] = 0x34;
+	masterInputBuffer[6] = 0x34;
+	masterInputBuffer[7] = 0x34;
+	masterInputBuffer[8] = 0x56;
+	masterInputBuffer[9] = 0x7E;
+	masterInputBuffer[10] = 0x34;
+	masterInputBuffer[11] = 0x0E;
+	masterInputBuffer[12] = 0x56;
+	masterInputBuffer[13] = 0x34;
+	
+	ptrRead = 0;
+	ptrWrite = 13;
+	
+	printf("byte0 = %x \n", masterInputBuffer[0]);
+	printf("byte1 = %x \n", masterInputBuffer[1]);
+	printf("byte2 = %x \n", masterInputBuffer[2]);	
+	
+	//findPacket(0);
+	
+	UI8 possiblePacket[3];
+	removeBitStuffing(0, 0, 2, 1, possiblePacket);
+
+	for(i=0;i<3;i++)
+	{
+		printf("%x ", possiblePacket[i]);
 	}
 	
-	///////////////////////////////////////////////////////////////////
+	fflush(stdout);
+	
+	const UI8 stageTwoHandShake[] = {0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 52,
+	 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+	 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+	 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF};
+	 printf("\n");
+	convertBinaryToPSK((Byte *)stageTwoHandShake,64);
+	for(i=0;i<40;i++)
+	{
+		
+		printf("0x%x, ", phaseShifts[i]);
+	}
+	
+	enableInterrupts();
+	for(;;){;}
+}
+
+///////////////////////////////////////////////////////////////////
 	
 	// put other tests here
 

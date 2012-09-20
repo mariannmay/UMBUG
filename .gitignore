@@ -11,8 +11,10 @@
 *.out
 *.cdtbuild
 *.prefs
+*.userConfig.h
+*.UMSATS_CDH_log.txt
+*.UMSATS_COM_log.txt
+*.ApplicationConfig.h
 
-
-./UMSATS_CDH_log.txt
-source/application/ApplicationConfig.h
 source/Debug/
+source/userConfig.h

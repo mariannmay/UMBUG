@@ -92,7 +92,7 @@ void initialize_msp430_IO_ports(void)
 	initializeAnalogInput  (	&msp430.PORT_6.analogInput[0],			&P6IN,		0	);	//  95		| analogMUXIn0		|
 	initializeAnalogInput  (	&msp430.PORT_6.analogInput[1],			&P6IN,		1	);	//  96		| analogMUXIn1		|
 	initializeAnalogInput  (	&msp430.PORT_6.analogInput[2],			&P6IN,		2	);	//  97		| analogMUXIn2		|
-	initializeAnalogInput  (	&msp430.PORT_6.analogInput[3],			&P6IN,		3	);	// 	2		|					| 
+	initializeAnalogInput  (	&msp430.PORT_6.analogInput[3],			&P6IN,		3	);	// 	2		| temperature sensor| 
 	initializeAnalogInput  (	&msp430.PORT_6.analogInput[4],			&P6IN,		4	);	// 	3		|					| 
 	initializeAnalogInput  (	&msp430.PORT_6.analogInput[5],			&P6IN,		5	);	// 	4		|					| 
 	initializeAnalogOutput (	&msp430.PORT_6.analogOutput,			&P6OUT,		6	);	//  5		| unused			| out to radio
@@ -139,7 +139,7 @@ void initialize_msp430_IO_ports(void)
 	initializeDigitalOutput(	&msp430.PORT_9.digitalOutput[1],		&P9OUT,		1	);	//  28		|					|
 	initializeDigitalOutput(	&msp430.PORT_9.digitalOutput[2],		&P9OUT,		2	);	//  27		|					|
 	initializeDigitalOutput(	&msp430.PORT_9.digitalOutput[3],		&P9OUT,		3	);	//  26		|					|
-	initializeDigitalOutput(	&msp430.PORT_9.digitalOutput[4],		&P9OUT,		4	);	//  25		|					|
+	initializeDigitalOutput(	&msp430.PORT_9.digitalOutput[4],		&P9OUT,		4	);	//  25		| heater control    |
 	initializeDigitalOutput(	&msp430.PORT_9.digitalOutput[5],		&P9OUT,		5	);	//  24		|					|
 	initializeDigitalOutput(	&msp430.PORT_9.digitalOutput[6],		&P9OUT,		6	);	//  23		|					|
 	initializeDigitalOutput(	&msp430.PORT_9.digitalOutput[7],		&P9OUT,		7	);	//  22		|					|

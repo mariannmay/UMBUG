@@ -1,20 +1,18 @@
-//////////////////////////////////////////////////////////
-//														//	
-//		THM header										//
-//		last edited by: Johnson Vilayvanh				//
-//		date: Feb 24 2012								//
-//														//
-//////////////////////////////////////////////////////////
-
 #ifndef THM_H
 #define THM_H
 
-// includes //////////////////////////////////////////////
-
+#include <stdio.h>
+#include "../ApplicationConfig.h"
 #include "../../system/System.h"
+#include "../../system/Log.h"
+#include "../CDH/CDHApplication.h"
+#include "../PWR/UART.h"
 
-// external interface ////////////////////////////////////
-
-void THM_application_main(void);
+void setupADC(void);
+void getThermalSensor(void);
+void startHeating(void);
+void stopHeating(void);
+void sendTHMToPacketizer(UI16 value);
+void thm_routine(void);
 
 #endif
