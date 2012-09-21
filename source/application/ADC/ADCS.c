@@ -1,9 +1,11 @@
 #include "ADCS.h"
 
 #define ADCSBytes 36
+bool currentlyTorquing = false;
 
 void sendADCSToPacketizer(UI16 TorqX1, UI16 TorqX2, UI16 TorqX3, UI16 TorqX4, UI16 TorqX5, UI16 TorqX6, UI16 TorqY1, UI16 TorqY2, UI16 TorqY3, UI16 TorqY4, UI16 TorqY5, UI16 TorqY6, UI16 TorqZ1, UI16 TorqZ2, UI16 TorqZ3, UI16 TorqZ4, UI16 TorqZ5, UI16 TorqZ6)
 {
+	//TODO: make bigger to collect the actually-necessary information as well (sun sensors (photodiodes), magnetometer value)
 	Byte bytesToSend[ADCSBytes];
 	
 	bytesToSend[0] = (int)((TorqX1 >> 8) & 0xFF);
@@ -47,26 +49,30 @@ void sendADCSToPacketizer(UI16 TorqX1, UI16 TorqX2, UI16 TorqX3, UI16 TorqX4, UI
 }
 
 void adcs_routine(void){
-  //This is the routine which will run during normal operations
-  //  to keep the satellite pointing correctly.
+	//This is the routine which will run during normal operations
+	//  to keep the satellite pointing correctly.
+	
+	if (currentlyTorquing){
+		if(0 /*enough torquing has happened*/){
+			currentlyTorquing = false;
+		}
+	}
   
-  UART_RESERVE_STATE curState;
-  
-  if (0 /*TODO: we are NOT in the middle-of-something*/){
 	if (0 /*TODO: enough time has passed since the last time we ran*/){
-	  setUARTState(UART_ADCS); // set the UART flag to say we are in the middle of something
-	  //TODO: start UART collecting from the camera
+		//TODO: stop all torquers
+		
+		//TODO: collect necessary information from magnetometer and sun-sensors (photodiodes).
+		
+		//TODO: run algorithm to see if we need to torque, and in which manner.
+		
+		//TODO: start torquing necessary torquers
+		
+		//TODO: collect extra data from the system
+		if (getUARTState() == UART_NOT_RESERVED){
+			// TODO: send proper data to COM
+			sendADCSToPacketizer(0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00); // send the data to the packetizer to be timestamped and sent to COM processor
+		}
 	}
-  }else{
-	// continue doing what we were doing:
-	if (0 /*TODO: we have received all of what we expect OR TODO: we have timed out*/){
-	  curState = getUARTState();
-	  if (0 /*TODO: we are not over the groundstation*/ && curState == UART_NOT_RESERVED){
-		sendADCSToPacketizer(0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00); // send the data to the packetizer to be timestamped and sent to COM processor
-	  }
-	  setUARTState(UART_NOT_RESERVED); // unset the flag to say we are done with the UART
-	}
-  }
 }
 
 void adcs_LEOP(void){

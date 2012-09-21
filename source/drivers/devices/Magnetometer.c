@@ -51,3 +51,8 @@ void ReadByteSPI(Magnetometer* addr)
 
 }
 
+
+UI16 ReadMagnetometerValue(){
+	//TODO: rig up to framework however that needs to happen.
+}
+

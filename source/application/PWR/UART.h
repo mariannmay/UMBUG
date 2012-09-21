@@ -17,7 +17,7 @@
 #include "../../SimpleDefinitions.h"
 #include <stdio.h>
 
-typedef enum{
+typedef enum{ // These are now only being used to switch between UART_NOT_RESERVED and UART_OVER_GROUNDSTATION because uart will now be a blocking operation.
     UART_NOT_RESERVED,
     UART_POWER,
     UART_CAMorSPEC,

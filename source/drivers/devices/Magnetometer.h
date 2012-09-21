@@ -50,5 +50,6 @@ typedef struct
 void magnetometerspiInitialize();
 void WriteByteSPI();
 void ReadByteSPI();
+UI16 ReadMagnetometerValue();
 
 #endif /*MAGNETOMETER_H*/

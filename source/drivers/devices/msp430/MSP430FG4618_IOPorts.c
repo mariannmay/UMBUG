@@ -131,7 +131,7 @@ void initialize_msp430_IO_ports(void)
 	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[4],		&P8OUT,		4	);	// 	33		| digitalMUXOut0	| 
 	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[5],		&P8OUT,		5	);	// 	32		| digitalMUXOut1	| 
 	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[6],		&P8OUT,		6	);	// 	31		| digitalMUXOut2	| 
-	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[7],		&P8OUT,		7	);	//  30		|					|
+	initializeDigitalOutput(	&msp430.PORT_8.digitalOutput[7],		&P8OUT,		7	);	//  30		| Torquers X 1&3    |
 	
 	// PORT_9																					Pin#		CDH					COM
 	P9DIR = 0xFF; // 1111 1111

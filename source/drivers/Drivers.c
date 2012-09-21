@@ -123,6 +123,12 @@ void drivers_initialize(void)
 		
 		devices.tardigradeTemperatureSensor.voltageInput = &msp430.PORT_6.analogInput[3];
 		devices.HeaterForTardigrades.voltageOutput       = &msp430.PORT_9.digitalOutput[4];
+		devices.TorqueRod1.voltageOutput				 = &msp430.PORT_8.digitalOutput[7]; // TODO: Do these need enable pins for multiplexing ??
+		devices.TorqueRod2.voltageOutput				 = &msp430.PORT_8.digitalOutput[5]; // TODO: RECHECK ALL OF THESE TORQUER CONNECTIONS
+		devices.TorqueRod3.voltageOutput				 = &msp430.PORT_8.digitalOutput[0];
+		devices.TorqueRod4.voltageOutput				 = &msp430.PORT_7.digitalOutput[3];
+		devices.TorqueRod5.voltageOutput				 = &msp430.PORT_7.digitalOutput[0];
+		devices.TorqueRod6.voltageOutput				 = &msp430.PORT_4.serialOutput[3]; // TODO: wut !? serial ??
 	#else
 		//devices.test_SPI_device.chipSelect.in		= &msp430.PORT_1.digitalInput[5];
 		//devices.test_SPI_device.channel				= SPI_CHANNEL_1;
