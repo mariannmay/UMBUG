@@ -117,15 +117,15 @@ char mmcInit(void)
   MMC_CD_PxDIR &=  ~MMC_CD;
   
   // Init SPI Module
-  halSPISetup(1);
+  halSPISetup();
 
   // Enable secondary function
-#if SPI_SER_INTF != SER_INTF_BITBANG //TODO: does this work? Shouldn't it be if(SPI_SER_INTF ...) because we're in a normal (not pre-compiler) function?
+#if SPI_SER_INTF != SER_INTF_BITBANG
   MMC_PxSEL |= MMC_SIMO + MMC_SOMI + MMC_UCLK;
 #endif  
   
   //initialization sequence on PowerUp
-  SDCARD_CS_HIGH();
+  CS_HIGH();
   for(i=0;i<=9;i++)
     spiSendByte(DUMMY_CHAR);
 
@@ -137,7 +137,7 @@ char mmcInit(void)
 char mmcGoIdle()
 {
   char response=0x01;
-  SDCARD_CS_LOW();
+  CS_LOW();
 
   //Send Command 0 to put MMC in SPI mode
   mmcSendCmd(MMC_GO_IDLE_STATE,0,0x95);
@@ -147,13 +147,13 @@ char mmcGoIdle()
 
   while(response==0x01)
   {
-    SDCARD_CS_HIGH();
+    CS_HIGH();
     spiSendByte(DUMMY_CHAR);
-    SDCARD_CS_LOW();
+    CS_LOW();
     mmcSendCmd(MMC_SEND_OP_COND,0x00,0xff);
     response=mmcGetResponse();
   }
-  SDCARD_CS_HIGH();
+  CS_HIGH();
   spiSendByte(DUMMY_CHAR);
   return (MMC_SUCCESS);
 }
@@ -245,7 +245,7 @@ char mmcReadBlock(const unsigned long address, const unsigned long count, unsign
   if (mmcSetBlockLength (count) == MMC_SUCCESS)   // block length could be set
   {
     // CS = LOW (on)
-    SDCARD_CS_LOW ();
+    CS_LOW ();
     // send read command MMC_READ_SINGLE_BLOCK=CMD17
     mmcSendCmd (MMC_READ_SINGLE_BLOCK,address, 0xFF);
     // Send 8 Clock pulses of delay, check if the MMC acknowledged the read block command
@@ -280,7 +280,7 @@ char mmcReadBlock(const unsigned long address, const unsigned long count, unsign
   {
     rvalue = MMC_BLOCK_SET_ERROR;           // 1
   }
-  SDCARD_CS_HIGH ();
+  CS_HIGH ();
   spiSendByte(DUMMY_CHAR);
   return rvalue;
 }// mmc_read_block
@@ -297,7 +297,7 @@ char mmcWriteBlock (const unsigned long address, const unsigned long count, unsi
   if (mmcSetBlockLength (count) == MMC_SUCCESS)   // block length could be set
   {
     // CS = LOW (on)
-    SDCARD_CS_LOW ();
+    CS_LOW ();
     // send write command
     mmcSendCmd (MMC_WRITE_BLOCK,address, 0xFF);
 
@@ -335,7 +335,7 @@ char mmcWriteBlock (const unsigned long address, const unsigned long count, unsi
   //  for (i = 0; i < 9; ++i)
   //    spiSendByte(0xff);
 
-  SDCARD_CS_HIGH ();
+  CS_HIGH ();
   // Send 8 Clock pulses of delay.
   spiSendByte(DUMMY_CHAR);
   return rvalue;
@@ -362,7 +362,7 @@ void mmcSendCmd (const char cmd, unsigned long data, const char crc)
 char mmcSetBlockLength (const unsigned long blocklength)
 {
   // CS = LOW (on)
-  SDCARD_CS_LOW ();
+  CS_LOW ();
   // Set the block length to read
   mmcSendCmd(MMC_SET_BLOCKLEN, blocklength, 0xFF);
 
@@ -373,7 +373,7 @@ char mmcSetBlockLength (const unsigned long blocklength)
     mmcGetResponse();
   }
 
-  SDCARD_CS_HIGH ();
+  CS_HIGH ();
 
   // Send 8 Clock pulses of delay.
   spiSendByte(DUMMY_CHAR);
@@ -391,7 +391,7 @@ char mmcReadRegister (const char cmd_register, const unsigned char length, unsig
 
   if (mmcSetBlockLength (length) == MMC_SUCCESS)
   {
-    SDCARD_CS_LOW ();
+    CS_LOW ();
     // CRC not used: 0xff as last byte
     mmcSendCmd(cmd_register, 0x000000, 0xff);
 
@@ -410,12 +410,12 @@ char mmcReadRegister (const char cmd_register, const unsigned char length, unsig
     else
       rvalue = MMC_RESPONSE_ERROR;
     // CS = HIGH (off)
-    SDCARD_CS_HIGH ();
+    CS_HIGH ();
 
     // Send 8 Clock pulses of delay.
     spiSendByte(DUMMY_CHAR);
   }
-  SDCARD_CS_HIGH ();
+  CS_HIGH ();
   return rvalue;
 } // mmc_read_register
 
@@ -435,7 +435,7 @@ unsigned long mmcReadCardSize(void)
   unsigned char mmc_READ_BL_LEN,  // Read block length
                 mmc_C_SIZE_MULT;
 
-  SDCARD_CS_LOW ();
+  CS_LOW ();
 
   spiSendByte(MMC_READ_CSD);   // CMD 9
   for(i=4; i>0; i--)      // Send four dummy bytes
@@ -484,7 +484,7 @@ unsigned long mmcReadCardSize(void)
     b = spiSendByte(DUMMY_CHAR);  // least Ncr (max = 4 bytes) cycles after
                                // the card response is received
   b = spiSendByte(DUMMY_CHAR);
-  SDCARD_CS_LOW ();
+  CS_LOW ();
 
   MMC_CardSize = (mmc_C_SIZE + 1);
   // power function with base 2 is better with a loop

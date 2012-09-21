@@ -8,6 +8,35 @@
 
 #include "CDHApplication.h"
 
+
+///////////////////////////////////////////////////////////////////
+
+void CDH_timerA_ISR(void)
+{
+	kickTheDog(&devices.systemWatchdog);
+}
+
+///////////////////////////////////////////////////////////////////
+
+void CDH_InterpretGroundCommand(Byte* dataBytes){
+	//TODO: This will interpret the ground commands and do things thusly. Most of them will probably just change 
+	//      global variables so that different things happen when the applications are run.
+	
+	//This should be run from an interrupt ?????????
+	
+	//List of ground commands to run:
+	//- switch out of LEOP into waiting mode (swap schedules)
+ 	//- switch out of waiting mode into PLD1 (swap schedules)
+ 	//- open/close valve 1 (full command)
+ 	//- open/close valve 2 (full command)
+ 	//- switch out of PLD1 into PLD2 (swap schedules)
+ 	//- Send requested table of values values to ground (full command)
+ 	//- Set values in the table of values (change variable)
+ 	//- Query present ADCS information and collect it. (immediate command) (change varaible)
+ 	//- Switch from burst mode to once-per-day mode for the spectrometer (change variable)
+ 	//- Switch from high resolution once-per-day mode to frequent low resolution mode (change variable)
+}
+
 void CDH_application_main(void)
 {
 	// TODO: This will be where the scheduler is started, and before that, the timer to 
@@ -34,17 +63,42 @@ void CDHMainScheduleLoop(void)
 		
 	for(;;)
 	{
-		kickTheDog(&(devices.systemWatchdog));
+		kickTheDog(&devices.systemWatchdog);
 		
-		// read how much time has passed during the previous loop
-		systemTimer += realTimeClock_timeSinceLastCheck(&(devices.systemClock));
-
-		if (systemTimer >= OneSecond)
+		// read the current time (second precision)
+		realTimeClock_update(&devices.realTimeClock);
+		
+		
+		bool oneSecondHasPassed = (devices.realTimeClock.currentTime.seconds > systemTime.seconds);
+		bool oneMinuteHasPassed = (devices.realTimeClock.currentTime.minutes > systemTime.minutes);
+		bool oneHourHasPassed	= (devices.realTimeClock.currentTime.hours   > systemTime.hours);
+		bool oneDayHasPassed	= (devices.realTimeClock.currentTime.date    > systemTime.date);
+		
+		if (oneSecondHasPassed)
 		{
+			systemTime.seconds	= devices.realTimeClock.currentTime.seconds;
+			
 			toggleStatusLED();
-			systemTimer = 0;
+		}
+		if (oneMinuteHasPassed)
+		{
+			systemTime.minutes	= devices.realTimeClock.currentTime.minutes;
 			
 		}
+		if (oneHourHasPassed)
+		{
+			systemTime.hours	= devices.realTimeClock.currentTime.hours;
+			
+		}
+		if (oneDayHasPassed)
+		{
+			systemTime.date		= devices.realTimeClock.currentTime.date;
+			systemTime.month	= devices.realTimeClock.currentTime.month;
+			systemTime.year		= devices.realTimeClock.currentTime.year;
+			
+		}
+		
+		//THM_application_main();
 	
 		//Freeze, criminal! >:|
 		
@@ -60,3 +114,21 @@ void CDHMainScheduleLoop(void)
 	}
 	
 }
+
+
+void Packetize(PacketType type, Byte* dataBytes, int length)
+{
+	//Packet newPkt;
+	
+	//TODO: set this up properly!
+	
+	//SPI_transmitStream(SPI_Device* device, const Byte* data, UI8 length)
+}
+
+
+
+
+
+
+
+

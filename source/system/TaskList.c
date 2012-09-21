@@ -1,4 +1,4 @@
-void insertTask(BasicTaskList *btl,GroundCommandTask *gct)
+/*void insertTask(BasicTaskList *btl,GroundCommandTask *gct)
 {
 	BasicTaskNode *newTask;
 	newTask = (BasicTaskNode*)malloc(sizeof(BasicTaskNode));
@@ -41,7 +41,7 @@ void initBasicTaskList(BasicTaskList *btl)
 
 
 
-/*void initGroundCommandTaskList(GroundCommandTaskList *tl){
+void initGroundCommandTaskList(GroundCommandTaskList *tl){
 	tl->insert = 0;
 	tl->current = 0;
 	tl->num = 0;

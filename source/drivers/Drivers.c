@@ -15,105 +15,188 @@ AllDevices devices;
 
 void drivers_initialize(void)
 {
-	
-	// this initializes all of our named IO, allowing you to use
-	// things like...
-	// bool foo = msp430.PORT_1.digitalInput[0].state;
-	// msp430.PORT_9.digitalOutput[4].state = true;
 	initialize_msp430_IO_ports();
 	
-	
-	// now go through devices...
 	// refer to the msp430 spreadsheet on google docs for
 	// where to put your pins... when you use up a pin,
 	// comment beside the pin to say what it is used for.
 	
-	// system watchdog
-	devices.systemWatchdog.WDI				= &msp430.PORT_10.digitalOutput[5];
+	// system watchdog ///////////////////////////////////////////
+	
+	devices.systemWatchdog.WDI						= &msp430.PORT_10.digitalOutput[5];
 	watchdog_initialize(&devices.systemWatchdog);
 		
-	// system clock
+	// system clock //////////////////////////////////////////////
+	#if RTC_CONNECTED
+		// RTC
+		devices.realTimeClock.SPI.channel			= SPI_CHANNEL_1;
+		devices.realTimeClock.SPI.chipSelect.out	= &msp430.PORT_10.digitalOutput[4];
+		devices.realTimeClock.SPI.CLK.out			= &msp430.PORT_3.serialOutput[1];
+		devices.realTimeClock.SPI.MISO.in			= &msp430.PORT_3.serialInput[0];
+		devices.realTimeClock.SPI.MOSI.out			= &msp430.PORT_3.serialOutput[0];
+		devices.realTimeClock.SPI.type				= SPI_TYPE_Master;
+		devices.realTimeClock.SPI.activeHigh		= true;
+		devices.realTimeClock.SPI.controlRegister0	= 0x29;	// 0010 1001
+		devices.realTimeClock.SPI.controlRegister1	= 0x80; // 1000 0000
+		devices.realTimeClock.SPI.bitRateRegister0	= 0x20; // 0010 0000
+		devices.realTimeClock.SPI.bitRateRegister1	= 0x00; // 0000 0000
+		realTimeClock_initialize(&devices.realTimeClock);
+	#endif
+
+	#if CDH_PROCESSOR_COMPILE
+		
+		// COM
+		devices.COM_Processor.channel				= SPI_CHANNEL_1;
+		
+		devices.COM_Processor.chipSelect.out		= &msp430.PORT_7.digitalOutput[1];
+		devices.COM_Processor.CLK.out				= &msp430.PORT_3.serialOutput[1];
+		devices.COM_Processor.MISO.in				= &msp430.PORT_3.serialInput[0];
+		devices.COM_Processor.MOSI.out				= &msp430.PORT_3.serialOutput[0];
+		devices.COM_Processor.type					= SPI_TYPE_Master;
+		devices.COM_Processor.activeHigh			= false;
+		devices.COM_Processor.controlRegister0		= 0x29; // 0010 0001
+		devices.COM_Processor.controlRegister1		= 0x80; // 1000 0000
+		devices.COM_Processor.bitRateRegister0		= 0x20; // 0010 0000
+		devices.COM_Processor.bitRateRegister1		= 0x00; // 0000 0000		
+		
+	#endif
+	
+	#if COM_PROCESSOR_COMPILE
+		
+		// CDH
+		devices.CDH_Processor.channel				= SPI_CHANNEL_1;
+		devices.CDH_Processor.chipSelect.in			= &msp430.PORT_1.digitalInput[0];
+		devices.CDH_Processor.CLK.in				= &msp430.PORT_3.serialInput[1];
+		devices.CDH_Processor.MISO.out				= &msp430.PORT_3.serialOutput[1];
+		devices.CDH_Processor.MOSI.in				= &msp430.PORT_3.serialInput[0];
+		devices.CDH_Processor.type					= SPI_TYPE_Slave;
+		devices.CDH_Processor.activeHigh			= false;
+		devices.CDH_Processor.controlRegister0		= 0x21; // 0010 0001
+		devices.CDH_Processor.controlRegister1		= 0x80; // 1000 0000
+		devices.CDH_Processor.bitRateRegister0		= 0x20; // 0010 0000
+		devices.CDH_Processor.bitRateRegister1		= 0x00; // 0000 0000
+		
+		// radio	
+		devices.radio.microphone					= &msp430.PORT_6.analogOutput;
+		
+	#endif
+	
+	#if SD_CONNECTED
+		
+		// SD CARD
+		devices.sdCard.power						= &msp430.PORT_10.digitalOutput[1]; // pin 20
+		devices.sdCard.SPI.channel					= SPI_CHANNEL_2;
+		devices.sdCard.SPI.CLK.out					= 
+		devices.sdCard.SPI.chipSelect.out			= &msp430.PORT_8.digitalOutput[0];
+		devices.sdCard.SPI.type						= SPI_TYPE_Master;
+		devices.sdCard.SPI.activeHigh				= false;
+		devices.sdCard.SPI.controlRegister0			= 0xA9; // 1010 1001
+		devices.sdCard.SPI.controlRegister1			= 0x80; // 1000 0000
+		devices.sdCard.SPI.bitRateRegister0			= 0x20; // 0010 0000
+		devices.sdCard.SPI.bitRateRegister1			= 0x00; // 0000 0000
+		setDigitalOutput(devices.sdCard.SPI.chipSelect.out);
+		clearDigitalOutput(devices.sdCard.power);
+	
+	#endif
+	
+	
+	// TEST SPI FRAMEWORK ONLY ///////////////////////////////////
+	
+	
+	#if CDH_PROCESSOR_COMPILE
+		//devices.pwrControllerCOM.output		    = &msp430.PORT_8.digitalOutput[3];
+		//devices.pwrControllerPLD2.output	    = &msp430.PORT_8.digitalOutput[4];
+		//devices.pwrControllerPLD1.output	    = &msp430.PORT_8.digitalOutput[5];
+		//devices.test_SPI_device.chipSelect.out	= &msp430.PORT_10.digitalOutput[4];
+		//devices.test_SPI_device.channel			= SPI_CHANNEL_1;
+		//devices.test_SPI_device.type			= SPI_TYPE_Master;
+		//devices.test_SPI_device.activeHigh		= true;		devices.test_SPI_device.chipSelect.out		= &msp430.PORT_10.digitalOutput[4];
+
+
+		//devices.test_SPI_device.channel				= SPI_CHANNEL_1;
+		//devices.test_SPI_device.type				= SPI_TYPE_Master;
+		//devices.test_SPI_device.activeHigh			= true;
+		//devices.test_SPI_device.controlRegister0	= 0xA9;
+		//devices.test_SPI_device.controlRegister1	= 0x80;
+		//devices.test_SPI_device.bitRateRegister0	= 0x04;
+		//devices.test_SPI_device.bitRateRegister1	= 0x00;
+		
+		devices.tardigradeTemperatureSensor.voltageInput = &msp430.PORT_6.analogInput[3];
+		devices.HeaterForTardigrades.voltageOutput       = &msp430.PORT_9.digitalOutput[4];
+	#else
+		//devices.test_SPI_device.chipSelect.in		= &msp430.PORT_1.digitalInput[5];
+		//devices.test_SPI_device.channel				= SPI_CHANNEL_1;
+		//devices.test_SPI_device.type				= SPI_TYPE_Slave;
+		//devices.test_SPI_device.activeHigh			= true;
+		//devices.test_SPI_device.controlRegister0	= 0xA1;
+		//devices.test_SPI_device.controlRegister1	= 0x80;
+		//devices.test_SPI_device.bitRateRegister0	= 0x04;
+		//devices.test_SPI_device.bitRateRegister1	= 0x00;
+	#endif
+	
+	//initialize_SPI(&devices.test_SPI_device);
+
+	
+	// system status LED /////////////////////////////////////////
+	
 	devices.systemStatusLED					= &msp430.PORT_5.digitalOutput;
 	
-	//set operating mode to fully active using the status register
-	_bic_SR_register(LPM4_bits);
+	// operating mode to fully active ////////////////////////////
 	
-	//smclk clock setup
+	// correct me if I'm wrong but I think this enters low power mode 4
+	//_bic_SR_register(LPM4_bits);
+	
+	// smclk clock setup /////////////////////////////////////////
+	
 	FLL_CTL0 |= DCOPLUS + XTS_FLL;
-	FLL_CTL1 &= ~(SELS + SELM0 + SELM1 + SMCLKOFF + FLL_DIV0 + FLL_DIV0);
-	FLL_CTL1 |= XT2OFF;
+	FLL_CTL1 &= ~(SELS + SELM0 + SMCLKOFF + FLL_DIV0 + FLL_DIV1);
+	FLL_CTL1 |= XT2OFF + SELM1;
 	
-	/* System Clock Frequency Integrator 0 */
+	// System Clock Frequency Integrator 0 ///////////////////////
+	
+	//SCFI0 &= ~(FLLD0 + FLLD1);
+	
+	#if CDH_PROCESSOR_COMPILE
+		SCFI0 |= FN_8; //FLL_DIV_1 |
+	#endif
+	
+	#if COM_PROCESSOR_COMPILE
+		SCFI0 |= FN_8; //FLL_DIV_1 |
+	#endif
+	
 	SCFI0 &= ~(FLLD0 + FLLD1);
-	SCFI0 |= FN_2; //FLL_DIV_1 | 
-	/* System Clock Frequency Integrator 1 */
-	//SCFI1 is auto set
-	/* System Clock Frequency Control */
-	SCFQCTL = SCFQ_1M;
+	
+	// System Clock Frequency Control ////////////////////////////
+	
+	SCFQCTL = SCFQ_1M; //modulation is enabled, frequency set to 1MHz // TODO: merge had this at SCFQ_2M.
+	_BIC_SR(SCG0);	//enable FLL
+	 
+	//DCOCTL = CALDCO_8MHZ;       // DCO frequency set to 1 MHz
+	//BCSCTL1 = CALBC1_8MHZ;      // DCO range set to 1 MHz
+	 
+	// Digital to analog conversion //////////////////////////////
+	#if COM_PROCESSOR_COMPILE
+		// TODO UNCOMMENT AFTER TEST OUTPUT DONE
+//		devices.radio.microphone				= &msp430.PORT_6.analogOutput; // TODO: merge commented out
+//		devices.test_AtoD						= &msp430.PORT_5.analogInput; // TODO: merge commented out
+		//devices.testPSK							= &msp430.PORT_6.analogOutput;
+		devices.craigsTest						= &msp430.PORT_10.digitalOutput[0];
+		devices.craigsTest2						= &msp430.PORT_5.digitalInput[5];
+		
+	#endif
+	
+	// for debug purposes
+	// TODO REMOVE
+	devices.tardigradeTemperatureSensor.voltageInput		= &msp430.PORT_6.analogInput[5]; // P6.5, pin #4
 	
 	
-	
-	
-	// SPI bus
-	// note: this code is redundant.  The SPI library will take care
-	//       of writing to these pins for us.  They are shown here
-	//		 simply for clarification, and so nobody else uses the pins.
-	// TODO verify and claim the proper pin numbers
-	//devices.spiBus.clock					= &msp430.PORT_3.serialInput[1];	// P3.2
-	//devices.spiBus.slaveInMasterOut			= &msp430.PORT_3.serialOutput[1];	// P3.0
-	//devices.spiBus.slaveOutMasterIn			= &msp430.PORT_3.serialInput[0];	// P3.3
-	//initialize_SPI(1);
-	//initialize_SPI(2); //TODO: fix this ?? Should there be two?
-						//... yes, COM needs 2
-	
-	// SD card
-	//devices.sdCard.SPI.bus					= &devices.spiBus;
-	//devices.sdCard.SPI.enable				= &msp430.PORT_8.digitalOutput[0];
-	//devices.sdCard.SPI.enable->state		= high;
-	//devices.sdCard.cardPresence				= &msp430.PORT_5.digitalInput[3];
-	//devices.sdCard.status					= SDCARD_UNINITIALIZED;
-	//sdCard_initialize(&devices.sdCard);
 	
 	// master multiplexer select lines... used for all multiplexed I/O
 	//devices.multiplexerSelectLines.S0		= &msp430.PORT_8.digitalOutput[1];
 	//devices.multiplexerSelectLines.S1		= &msp430.PORT_8.digitalOutput[2];
 	//devices.multiplexerSelectLines.S2		= &msp430.PORT_8.digitalOutput[3];
 	
-	// digital input multiplexer 0
-	//devices.digitalInputMUX0.selectLines	= &devices.multiplexerSelectLines;
-	//devices.digitalInputMUX0.currentInput	= &msp430.PORT_2.digitalInput[0];
 	
-	// digital input multiplexer 1
-	//devices.digitalInputMUX1.selectLines	= &devices.multiplexerSelectLines;
-	//devices.digitalInputMUX1.currentInput	= &msp430.PORT_2.digitalInput[1];
-	
-	// digital input multiplexer 2
-	//devices.digitalInputMUX2.selectLines	= &devices.multiplexerSelectLines;
-	//devices.digitalInputMUX2.currentInput	= &msp430.PORT_2.digitalInput[2];
-	
-	// analog input multiplexer 0
-	//devices.analogInputMUX0.selectLines		= &devices.multiplexerSelectLines;
-	//devices.analogInputMUX0.currentInput	= &msp430.PORT_6.analogInput[0];
-	
-	// analog input multiplexer 1
-	//devices.analogInputMUX1.selectLines		= &devices.multiplexerSelectLines;
-	//devices.analogInputMUX1.currentInput	= &msp430.PORT_6.analogInput[1];
-	
-	// analog input multiplexer 2
-	//devices.analogInputMUX2.selectLines		= &devices.multiplexerSelectLines;
-	//devices.analogInputMUX2.currentInput	= &msp430.PORT_6.analogInput[2];
-	
-	// digital output multiplexer 0
-	//devices.digitalOutputMUX0.selectLines	= &devices.multiplexerSelectLines;
-	//devices.digitalOutputMUX0.currentOutput	= &msp430.PORT_8.digitalOutput[4];
-	
-	// digital output multiplexer 1
-	//devices.digitalOutputMUX1.selectLines	= &devices.multiplexerSelectLines;
-	//devices.digitalOutputMUX1.currentOutput	= &msp430.PORT_8.digitalOutput[5];
-	
-	// digital output multiplexer 2
-	//devices.digitalOutputMUX2.selectLines	= &devices.multiplexerSelectLines;
-	//devices.digitalOutputMUX2.currentOutput	= &msp430.PORT_8.digitalOutput[6];
 }
 
 //////////////////////////////////////////////////////////////////

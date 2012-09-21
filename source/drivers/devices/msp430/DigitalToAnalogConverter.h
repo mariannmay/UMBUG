@@ -11,16 +11,14 @@
 
 //////////////////////////////////////////////////////////////////
 
-#include <msp430fg4619.h>
+#include <msp430fg4618.h>
 #include "../../../SimpleDefinitions.h"
 
 //////////////////////////////////////////////////////////////////
 
-
-
 //////////////////////////////////////////////////////////////////
 
 void initialize_digitalToAnalogConverter(void);
-void startNewDigitalToAnalogConversion(Word digital_12_bit_value, int outputNumber);
+void startNewDigitalToAnalogConversion(Word digital_12_bit_value);
 
 #endif
