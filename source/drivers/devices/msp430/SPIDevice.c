@@ -225,8 +225,11 @@ void SPI_transmit(SPI_Device* device, const Byte data, bool useChipSelect)
 	if (device->type == SPI_TYPE_Master)
 	{
 
-		if (device->activeHigh) setDigitalOutput(device->chipSelect.out);
-		else clearDigitalOutput(device->chipSelect.out);
+		if (useChipSelect)
+		{
+			if (device->activeHigh) setDigitalOutput(device->chipSelect.out);
+			else clearDigitalOutput(device->chipSelect.out);
+		}
 
 		//SPI_slaveEnable(device->channel);
 		SPI_WRITE(device->channel, device->transmitMessage[0]);
@@ -317,8 +320,11 @@ void SPI_transmitStream(SPI_Device* device, const Byte* data, UI8 length, bool u
 	{
 		int index;
 		
-		if (device->activeHigh == true) setDigitalOutput(device->chipSelect.out);
-		else clearDigitalOutput(device->chipSelect.out);
+		if (useChipSelect)
+		{
+			if (device->activeHigh == true) setDigitalOutput(device->chipSelect.out);
+			else clearDigitalOutput(device->chipSelect.out);
+		}
 		
 		for (index = 0; index < length; index++)
 		{

@@ -90,9 +90,9 @@ void drivers_initialize(void)
 		devices.sdCard.SPI.chipSelect.out			= &msp430.PORT_8.digitalOutput[0];
 		devices.sdCard.SPI.type						= SPI_TYPE_Master;
 		devices.sdCard.SPI.activeHigh				= false;
-		devices.sdCard.SPI.controlRegister0			= 0xA9; // 1010 1001
+		devices.sdCard.SPI.controlRegister0			= 0xE9; // 1010 1001
 		devices.sdCard.SPI.controlRegister1			= 0x80; // 1000 0000
-		devices.sdCard.SPI.bitRateRegister0			= 0x20; // 0010 0000
+		devices.sdCard.SPI.bitRateRegister0			= 0x30; // 0011 0000
 		devices.sdCard.SPI.bitRateRegister1			= 0x00; // 0000 0000
 		setDigitalOutput(devices.sdCard.SPI.chipSelect.out);
 		clearDigitalOutput(devices.sdCard.power);

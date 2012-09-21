@@ -27,8 +27,25 @@
 			logLine("    making sure SPI is initialized");
 		#endif
 		
-		test_sdCard_initialization();
-		test_sdCard_write_and_read();	
+		//test_sdCard_initialization();
+		
+		int i;
+		for (i = 0; i < 0xF; i++)
+		{
+			devices.sdCard.SPI.controlRegister0	+= (i << 8);
+			devices.sdCard.SPI.controlRegister0 += 0x09; 
+			if (!initialize_SPI(&devices.sdCard.SPI))
+			{
+				logLine("    Could not initialize SPI\r\n");
+				return;
+			}
+			test_sdCard_initialization();
+			test_sdCard_write_and_read();
+		}
+		
+		
+		
+		//test_sdCard_write_and_read();	
 
 	}
 
@@ -42,13 +59,13 @@
 		
 		// put MSP SPI settings in place
 		setDigitalOutput(devices.sdCard.SPI.chipSelect.out);
+		/*
 		if (!initialize_SPI(&devices.sdCard.SPI))
 		{
 			logLine("    Could not initialize SPI\r\n");
 			return;
 		}
-		
-		clearSerialOutput(devices.sdCard.SPI.CLK.out);
+		*/
 			
 		int i;
 		
@@ -58,26 +75,15 @@
 			devices.sdCard.RX_blockBuffer[i] = 0;
 			devices.sdCard.TX_blockBuffer[i] = 0;
 		}
-		
-		/*
-		setDigitalOutput(devices.sdCard.power);
-		// short delay... card needs at least 1 ms
-		for (i = 0; i < 10; i++)
-		{
-			
-			setDigitalOutput(devices.sdCard.SPI.chipSelect);
-			
-		}
-		*/
+
 		
 		#if DebugSD2
 			logLine("        sending FF 10 times... card requires 74 clock cycles");
 		#endif
 		
-		// Send 120 clocks, SD card require at least 74 clock cycles
-		for(i = 0; i < 15; i++)
+		// Send 80 clocks, SD card require at least 74 clock cycles
+		for(i = 0; i < 30; i++)
 		{
-			setDigitalOutput(devices.sdCard.power);
 			SPI_WRITE(devices.sdCard.SPI.channel, 0xFF);
 		}
 		
@@ -125,13 +131,13 @@
 		}
 		while( ((devices.sdCard.SPI.receiveMessage[0] & R1_IDLE) == R1_IDLE) && (i < SD_TIMEOUT) );
 		
-		assert(i < SD_TIMEOUT);
+		//assert(i < SD_TIMEOUT);
            
     
 		//CMD58 read OCR, is used to check SD card accepted voltage level and initialization status
 		//use this CMD to verify that the specific SD card is okay to use
 		sdCard_sendCommand(CMD58, 1, CMD58_R, &devices.sdCard);
-    	assert(!(devices.sdCard.SPI.receiveMessage[0] & R1_ERR));
+    	//assert(!(devices.sdCard.SPI.receiveMessage[0] & R1_ERR));
     	
     	setDigitalOutput(devices.sdCard.SPI.chipSelect.out);
     	#if DebugSD2
