@@ -46,6 +46,9 @@ typedef enum{
 void InitUART(void);
 void setUARTState(UART_RESERVE_STATE res);
 UART_RESERVE_STATE getUARTState();
+UI8 UARTDataReady();
+UI8 readUARTData();
+void sendUARTData(UI8 data);
  
 
 

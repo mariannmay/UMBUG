@@ -190,10 +190,45 @@ void InitUART(void){
 #pragma vector=USART1RX_VECTOR
 __interrupt void USART1_rx (void)
 {
-  while (!(IFG2 & UTXIFG1));                // USART1 TX buffer ready?
-  TXBUF1 = RXBUF1;                          // RXBUF1 to TXBUF1
+    if(IFG2 & URXIFG1)
+    {
+        switch(getUARTState())
+        {
+            case UART_NOT_RESERVED:
+                break;
+            case UART_POWER:
+                break;
+            case UART_CAMorSPEC:
+                break;
+            case UART_ADCS:
+                break;
+            case UART_OVER_GROUNDSTATION:
+                break;
+                
+        }
+    }
+  //while (!(IFG2 & UTXIFG1));                // USART1 TX buffer ready?
+  //TXBUF1 = RXBUF1;                          // RXBUF1 to TXBUF1
 }
 
+/*
+ returns > 0 if we have data, else 0 for UART1 register
+ */
+UI8 UARTDataReady()
+{
+    return IFG2 & URXFG1;
+}
+
+UI8 readUARTData()
+{
+    return RXBUF1;
+}
+
+void sendUARTData(UI8 data)
+{
+    while(!(IFG2 & UTXIFG1));
+    TXBUF1 = data;
+}
     
 /* **************End of INITIALIZATION OF THE UART*****************************/
 
