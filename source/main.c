@@ -41,15 +41,19 @@ void main(void)
 	//	while (!(IFG2 & UTXIFG1));                // USART1 TX buffer ready? // TODO: removed from merge. use for testing uart
 	//		TXBUF1 = 0xAB;           // TODO: removed from merge. use for testing uart
 	//} // TODO: removed from merge. use for testing uart
+	
+	
 	init_SCHEEPROM();
-
+	//printf("Fuck you code cumdumpster crude-io you are sharty as ballz!!!!!\n");
 	for(;;)
 	{
-		writeByte_SCHEEPROM(0x0000,0x5A);
-		test = readByte_SCHEEPROM(0x0000);
-		SPI_WRITE(SPI_CHANNEL_2, 0x5A);
+		writeByte_SCHEEPROM(0x0011,0x5A);
+		test = readByte_SCHEEPROM(0x0011);
+		//for(killtime = 0; killtime < 0x0500; killtime++);//kill some time
+		//printf("Holy cocks, its %d",test);
+		//SPI_WRITE(SPI_CHANNEL_2, 0x5A);
 		//printf("Read in %d\n",test);
-		for(killtime = 0; killtime < 0xFFFF; killtime++);//kill some time
+		//for(killtime = 0; killtime < 0xFFFF; killtime++);//kill some time
 	}
 
 	for(;;)

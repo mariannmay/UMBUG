@@ -18,7 +18,7 @@ void system_initialize(void)
 {
 	StopMSP430WatchdogTimer;
 	
-	/*
+	
 	disableInterrupts();
 	drivers_initialize();
 	initTimerA();
@@ -36,9 +36,9 @@ void system_initialize(void)
 	#else
 		application_initialize();
 	#endif
-	*/
 	
-	printf("systemInitialize done\r\n");
+	
+	//printf("systemInitialize done\r\n");
 	fflush(stdout);
 	
 }

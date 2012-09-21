@@ -12,3 +12,4 @@ void writeByte_SCHEEPROM(UI16 address, UI8 data);
 void writeEnable_SCHEEPROM(void);
 void writeStatus_SCHEEPROM(UI8 byte);
 void init_SCHEEPROM();
+UI8 stillWriting_SCHEEPROM();

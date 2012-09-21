@@ -40,8 +40,8 @@ void test_application_initialize(void)
 		
 		// start printing to file
 		#if CDH_PROCESSOR_COMPILE
-			logLine("running test on CDH processor");
-			logLine("please check UMSATS_CDH_log.txt");
+			//logLine("running test on CDH processor");
+			//logLine("please check UMSATS_CDH_log.txt");
 		#else
 			logLine("running test on COM processor");
 			logLine("please check UMSATS_COM_log.txt");
