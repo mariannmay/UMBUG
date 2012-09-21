@@ -52,7 +52,7 @@ void initialize_pwr(void)
     while(!UARTDataReady()); //wait for response
     
     //response code should be 28
-    /*Checking response code ?*/
+    /* TODO: Checking response code ?*/
     /*
     responseCode = readUARTData();
     while(responseCode != 0x28)
@@ -68,7 +68,7 @@ void initialize_pwr(void)
     while(!UARTDataReady());
     
     //response code should be CD or ED
-    /*Checking response code ?*/
+    /* TODO: Checking response code ?*/
     /*
      responseCode = readUARTData();
      while(responseCode != CD && responseCode != ED)
@@ -96,15 +96,13 @@ void initialize_pwr(void)
     int i;
     
     for(i=0 ;i<27 ; i++)
-    // we have 27 vlues to write for the eprom
+    // we have 27 values to write for the eeprom
     {
-
-        
         sendUARTData(EPROM_WRITE_VALUE[i]);//the actual data we write to eprom
         while(!UARTDataReady()); // response code is "as sent"
         
         /*
-         //DO WE NEED THIS?
+         // TODO: DO WE NEED THIS?
          //CRC Checking
          sendUARTData(RECEIVE_CRC16);
          while(!UARTDataReady());
@@ -119,7 +117,7 @@ void initialize_pwr(void)
         while(!UARTDataReady()); //wait for response
         
         //response code should be CD or ED
-        /*Checking response code ?*/
+        /* TODO: Checking response code ?*/
         /*
          responseCode = readUARTData();
          while(responseCode != CD && responseCode != ED)
@@ -132,16 +130,12 @@ void initialize_pwr(void)
          */
         
         /*
-         //DO WE NEED THIS?
+         // TODO: DO WE NEED THIS?
          //read writen Byte
          sendUARTData(RECEIVE_CRC16);
          while(!UARTDataReady());
         */
         sendUARTData(DATA_MODE);//no response for this one
-        
-        
-        
-        
     }//end for
     
     sendUARTData(COMMAND_MODE); // set it to command mode
@@ -151,7 +145,7 @@ void initialize_pwr(void)
     while(!UARTDataReady()); //wait for response
     
     //response code should be CD or ED
-    /*Checking response code ?*/
+    /* TODO: Checking response code ?*/
     /*
      responseCode = readUARTData();
      while(responseCode != CD && responseCode != ED)
@@ -169,7 +163,7 @@ void initialize_pwr(void)
 }
 
 // Runs every time the scheduler allows PWR to act.
-// Check the battary monitor and send it to packetizer
+// Check the battery monitor and send it to packetizer
 void pwr_routine(void)
 {
     Byte byteReadFromUART[PWRBytes];
@@ -183,7 +177,7 @@ void pwr_routine(void)
             sendUARTData(RESET_PULSE);
             while(!UARTDataReady()); //wait for response
             //response code should be CD or ED
-            /*Checking response code ?*/
+            /* TODO: Checking response code ?*/
             /*
              responseCode = readUARTData();
              while(responseCode != CD && responseCode != ED)
@@ -219,7 +213,7 @@ void pwr_routine(void)
             
             sendUARTData(RESET_PULSE);
             while(!UARTDataReady()); //wait for response
-            //verify the reponse ?
+            // TODO: verify the reponse ?
             
             setUARTState(UART_NOT_RESERVED);// Do we need this?
 	      return;
