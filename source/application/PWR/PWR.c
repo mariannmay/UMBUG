@@ -172,7 +172,6 @@ void initialize_pwr(void)
 // Check the battary monitor and send it to packetizer
 void pwr_routine(void)
 {
-    UART_RESERVE_STATE curState;
     Byte byteReadFromUART[PWRBytes];
 	//TODO:
 	if (0 /*we are NOT in the middle-of-something*/){
@@ -234,18 +233,16 @@ void pwr_routine(void)
     {
 	//	//continue doing what we were doing:
 		if (0 /*we have received all of what we expect*/){
-            curState=getUARTState();
-	      if (/*we are not over the groundstation*/){
-	//	    send the data to the packetizer to be timestamped
-              Packetize(PKT_BATTERYSTATE, byteReadFromUART,PWRBytes);
-	    }//end if
-	//	  unset the flag to say we are done with the UART (the middle-of-something flag)
-         setUARTState(UART_NOT_RESERVED); // unset the flag to say we are done with the UART
-		  return;
+	    	if (getUARTState() == UART_NOT_RESERVED){
+				// TODO: send the data to the packetizer to be timestamped
+          		Packetize(PKT_BATTERYSTATE, byteReadFromUART,PWRBytes);	//unset the flag to say we are done with the UART (the middle-of-something flag)
+        		setUARTState(UART_NOT_RESERVED); // unset the flag to say we are done with the UART
+	    	}//end if
+			return;
 		}//end if
         else{
             return;
-	  }
+	    }
 	}//end outter else
 }
 

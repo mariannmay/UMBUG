@@ -9,8 +9,6 @@
 //******************************************************************************* 	
 
 
-#include <msp430fg4618.h> 
-#include <stdio.h>
 //#include "main.h"
 #include "UART.h"
 
@@ -216,7 +214,7 @@ __interrupt void USART1_rx (void)
  */
 UI8 UARTDataReady()
 {
-    return IFG2 & URXFG1;
+    return IFG2 & URXIFG1;
 }
 
 UI8 readUARTData()

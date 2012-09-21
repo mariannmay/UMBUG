@@ -13,6 +13,9 @@
 //		  31/05/2012 	
 //******************************************************************************
 
+#include <msp430fg4618.h> 
+#include "../../SimpleDefinitions.h"
+#include <stdio.h>
 
 typedef enum{
     UART_NOT_RESERVED,
