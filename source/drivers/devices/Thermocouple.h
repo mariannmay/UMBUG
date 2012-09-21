@@ -34,6 +34,6 @@ Thermocouple;
 
 void thermocouple_initialize(Thermocouple* thermocouple);
 Word thermocouple_read(Thermocouple* thermocouple);
-DegreesCelsius rawA2DToDegreesCelsius(Millivolts rawVoltage);
+DegreesCelsius rawA2DToDegreesCelsius(double rawVolts);
 
 #endif

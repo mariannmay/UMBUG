@@ -5,8 +5,8 @@
 #define THMBytes 2
 
 bool currentlyApplyingHeat = false;
-UI16 thmThresholdLOW = 0x23; //TODO: set as a proper value
-UI16 thmThresholdHIGH = 0x50; //TODO: set as a proper value
+UI16 thmThresholdLOW = 0x23; //TODO: set as a proper value //5.000 degrees C // 2.4834 Volts
+UI16 thmThresholdHIGH = 0x50; //TODO: set as a proper value //10.000 degrees C // 2.5223 Volts
 
 UI16 getThermalSensorReading(void){
 	UI16 sensorValue = 0x00;
