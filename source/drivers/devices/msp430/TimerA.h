@@ -5,8 +5,13 @@
 // includes ////////////////////////////////////////////////////
 
 #include "msp430fg4618.h"
-#include "../../../application/COM/COMApplication.h"
-#include "../../../application/CDH/CDHApplication.h"
+#if COM_PROCESSOR_COMPILE
+	#include "../../../application/COM/COMApplication.h"
+#endif
+
+#if CDH_PROCESSOR_COMPILE
+	#include "../../../application/CDH/CDHApplication.h"
+#endif
 
 ////////////////////////////////////////////////////////////////
 

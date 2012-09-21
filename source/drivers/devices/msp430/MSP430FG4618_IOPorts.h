@@ -44,11 +44,16 @@ typedef struct
 
 	struct { AnalogInput		analogInput[7]	;
 			 AnalogOutput		analogOutput	;	} PORT_6;
-		
-	struct { DigitalOutput		digitalOutput[4];
-			 SerialInput		serialInput[2]	;
-			 SerialOutput		serialOutput[2]	;	} PORT_7;
-			 
+	
+	#if CDH_PROCESSOR_COMPILE
+		struct { DigitalOutput		digitalOutput[7];
+				 DigitalInput		digitalInput	;	} PORT_7;
+	#else
+		struct { DigitalOutput		digitalOutput[4];
+				 SerialInput		serialInput[2]	;
+				 SerialOutput		serialOutput[2]	;	} PORT_7;
+	#endif
+	
 	struct { DigitalOutput		digitalOutput[8];	} PORT_8;
 	
 	struct { DigitalOutput		digitalOutput[8];	} PORT_9;
