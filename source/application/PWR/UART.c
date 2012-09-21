@@ -227,6 +227,35 @@ void sendUARTData(UI8 data)
     while(!(IFG2 & UTXIFG1));
     TXBUF1 = data;
 }
+
+void sendUARTDataArray(UI8* data, int length)
+{
+	int i = 0;
+	for (i = 0; i < length; i++){
+		while(!(IFG2 & UTXIFG1));
+    	TXBUF1 = data[i];
+	}
+}
+
+void initializeDataToCOMOverSPI(int length){
+	//TODO:
+	
+	//This will only be used by the spectrometer and the camera
+	
+	//Order of events:
+	//- Tell coms what's about to go down.
+	//- Send it the header, the packet ID, and the timestamp.
+}
+
+void sendUARTDataToCOMOverSPI(int length){
+	//BIG TODO: this is critical and tricky. Best of luck.
+	
+	//This will only be used by the spectrometer and the camera
+	
+	//Order of events:
+	//- Flood the camera data through to COM
+	//- Send it the footer.
+}
     
 /* **************End of INITIALIZATION OF THE UART*****************************/
 

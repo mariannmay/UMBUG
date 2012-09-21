@@ -43,6 +43,8 @@ void initialize_pwr(void)
     /*
         The following sequence is from DS24808 datasheet for WRITE EPROM SEQUENCE
      */
+     
+    //TODO: hit the multiplexer to switch the uart to talk to pwr circuit
     setUARTState(UART_POWER); //set UART flag for PWR
     
     sendUARTData(CONFIG_BAUD_RATE); // config the baud rate at first time it powers up

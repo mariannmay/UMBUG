@@ -52,6 +52,9 @@ UART_RESERVE_STATE getUARTState();
 UI8 UARTDataReady();
 UI8 readUARTData();
 void sendUARTData(UI8 data);
+void sendUARTDataArray(UI8* data, int length);
+void initializeDataToCOMOverSPI(int length);
+void sendUARTDataToCOMOverSPI(int length);
  
 
 

@@ -124,7 +124,7 @@
 <option id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.OUTPUT_FILE.1807452579" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.OUTPUT_FILE" value="&quot;Project-Cheesecake.out&quot;" valueType="string"/>
 <option id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.MAP_FILE.77030817" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.MAP_FILE" value="&quot;Project-Cheesecake.map&quot;" valueType="string"/>
 <option id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.STACK_SIZE.712485033" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.STACK_SIZE" value="80" valueType="string"/>
-<option id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.HEAP_SIZE.678194868" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.HEAP_SIZE" value="80" valueType="string"/>
+<option id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.HEAP_SIZE.678194868" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.HEAP_SIZE" value="0x200" valueType="string"/>
 <option id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.USE_HW_MPY.465487282" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.USE_HW_MPY" value="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.USE_HW_MPY.16" valueType="enumerated"/>
 <option id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.SEARCH_PATH.1432253780" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.linkerID.SEARCH_PATH" valueType="stringList">
 <listOptionValue builtIn="false" value="&quot;${CCS_INSTALL_ROOT}/msp430/include&quot;"/>
@@ -135,7 +135,7 @@
 <listOptionValue builtIn="false" value="&quot;libc.a&quot;"/>
 </option>
 </tool>
-<macros/>
+<macros expandEnvironmentMacros="true"/>
 </toolChain>
 <resourceConfiguration exclude="false" id="com.ti.ccstudio.buildDefinitions.MSP430.Release.1524506253./Project-Cheesecake/lnk_msp430fg4618.cmd" name="lnk_msp430fg4618.cmd" rcbsApplicability="disable" resourcePath="/Project-Cheesecake/lnk_msp430fg4618.cmd" toolsToInvoke="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.linkerRelease.2066879801./Project-Cheesecake/lnk_msp430fg4618.cmd">
 <tool id="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.linkerRelease.2066879801./Project-Cheesecake/lnk_msp430fg4618.cmd" name="MSP430 Linker" superClass="com.ti.ccstudio.buildDefinitions.MSP430_3.3.exe.linkerRelease.2066879801"/>
