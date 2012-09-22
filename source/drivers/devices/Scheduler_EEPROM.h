@@ -1,3 +1,8 @@
+#ifndef SCHEDULER_EEPROM_H
+#define SCHEDULER_EEPROM_H
+
+#include "../../system/TaskListInit.h"
+
 #define SCHEEPROM_READ 0x03		//0000 0011
 #define SCHEEPROM_WRITE 0x02	//0000 0010
 #define SCHEEPROM_WRDI 0x04		//0000 0100
@@ -5,6 +10,8 @@
 #define SCHEEPROM_RDSR 0x05		//0000 0101
 #define SCHEEPROM_WRSR 0x01		//0000 0001
 #define SCHEEPROM_BYTES_PER_PAGE 32
+#define FORMATTED_REGISTER 0x0666 //where in memory the "formatted" flag is
+#define SCHEEPROM_IS_FORMATTED 0xAA //the value of the formatted flag.
 
 extern SPI_Device SchedulerEEPROM;
 UI8 readByte_SCHEEPROM(UI16 address);
@@ -13,3 +20,6 @@ void writeEnable_SCHEEPROM(void);
 void writeStatus_SCHEEPROM(UI8 byte);
 void init_SCHEEPROM();
 UI8 stillWriting_SCHEEPROM();
+void initFudgeRegisters();
+
+#endif

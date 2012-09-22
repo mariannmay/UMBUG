@@ -3,6 +3,24 @@
 #include <stdio.h>
 SPI_Device SchedulerEEPROM;
 
+void initFudgeRegisters()
+{
+/*
+ * First - check if register
+ */	
+ if (readByte_SCHEEPROM(FORMATTED_REGISTER) != SCHEEPROM_IS_FORMATTED)
+ {
+ 	UI16 i;
+ 	for(i = 0x0000; i < TOTAL_NUM_TASKS; i++)
+ 	{
+ 		writeByte_SCHEEPROM(i,0x00);	
+ 	}
+ 	
+ 	writeByte_SCHEEPROM(FORMATTED_REGISTER,SCHEEPROM_IS_FORMATTED);//set the flag	
+ }
+ 
+}
+
 void writeByte_SCHEEPROM(UI16 address, UI8 data)
 {
 	//write enable before every write is mandator
@@ -158,7 +176,7 @@ void init_SCHEEPROM()
 	SPI_transmit(&SchedulerEEPROM,SCHEEPROM_WREN,true);
 	Byte toSCHEEPROM[2] = {SCHEEPROM_WRSR,0x80};
 	SPI_transmitStream(&SchedulerEEPROM, toSCHEEPROM, 2,true);
-	
+	initFudgeRegisters();
 //TODO figure out what pin we can stick here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 	
