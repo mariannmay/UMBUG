@@ -138,7 +138,7 @@ void CheckForTimeTaggedCommands(void){
 	
 	if (newTimeTaggedCommand){
 		realTimeClock_update(&devices.realTimeClock);
-		currentTimeReadFromRTC =  (&devices.realTimeClock.currentTime.seconds * 60) + &devices.realTimeClock.currentTime.minutes;
+		currentTimeReadFromRTC =  ((int)(&devices.realTimeClock.currentTime.seconds) * 60) + (int)(&devices.realTimeClock.currentTime.minutes);
 		if (currentTimeReadFromRTC >= whenWeStarted){
 			// TODO: switch between modes.
 			// switchModes(whichMode);
@@ -154,7 +154,7 @@ void SetModeSwitch(double howFarInTheFutureInSeconds, int whichMode){
 	newTimeTaggedCommand = true;
 	
 	realTimeClock_update(&devices.realTimeClock);
-	whenWeStarted = currentTimeReadFromRTC =  (&devices.realTimeClock.currentTime.seconds * 60) + &devices.realTimeClock.currentTime.minutes;
+	whenWeStarted =  ((int)(&devices.realTimeClock.currentTime.seconds) * 60) + (int)(&devices.realTimeClock.currentTime.minutes);
 }
 
 
