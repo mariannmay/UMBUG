@@ -5,7 +5,7 @@
 
 #if CDH_PROCESSOR_COMPILE
 
-#define PWRBytes 8 //reading from the sensor assume to be 8 byte reading
+#define PWRBytes 8 //TODO: reading from the sensor assume to be 8 byte reading
 
 UI8 COMMAND_MODE = 0xE3; // set the DS24808 to Command mode
 UI8 DATA_MODE = 0xE1; // set the DS24080 to Data mode
@@ -31,21 +31,13 @@ UI8 responseCode; //response code from the 1wire thing
 // Runs on startup.
 void initialize_pwr(void)
 {
-    
-	// TODO
     // TODO: enable the battery charger
-    // TODO: find the pin and enabel it
-    
-    // TODO: set the parameter for the 1-wire chip, which sets the baud rate to 115200
-    //if(0/*we are NOT in the middle-of-something*/)
-    //{
     
     /*
         The following sequence is from DS24808 datasheet for WRITE EPROM SEQUENCE
-     */
-     
+    */
+    
     //TODO: hit the multiplexer to switch the uart to talk to pwr circuit
-    setUARTState(UART_POWER); //set UART flag for PWR
     
     sendUARTData(CONFIG_BAUD_RATE); // config the baud rate at first time it powers up
     while(!UARTDataReady());
@@ -158,10 +150,6 @@ void initialize_pwr(void)
      responseCode = readUARTData();
      }
      */
-    
-    //} end if
-    setUARTState(UART_NOT_RESERVED);
-    
 }
 
 // Runs every time the scheduler allows PWR to act.
@@ -170,76 +158,61 @@ void pwr_routine(void)
 {
     Byte byteReadFromUART[PWRBytes];
 	//TODO:
-	if (0 /*we are NOT in the middle-of-something*/){
-		if (0/*enough time has passed since the last time we ran*/){
-	//		set the UART flag to say we are in the middle of something
-            setUARTState(UART_POWER);
-            
-	//		start UART collecting from the battery monitor thang 1wire thang
-            sendUARTData(RESET_PULSE);
-            while(!UARTDataReady()); //wait for response
-            //response code should be CD or ED
-            /* TODO: Checking response code ?*/
-            /*
-             responseCode = readUARTData();
-             while(responseCode != CD && responseCode != ED)
-             {
-             sendUARTData(RESET_PULSE);
-             while(!UARTDataReady());
-             //response code should be CD or ED
-             responseCode = readUARTData();
-             }
-             */
-            sendUARTData(SKIP_ROM_COMMAND);
-            while(!UARTDataReady()); // response code is "as sent"
-            
-            sendUARTData(READ_MEMORY_COMMAND);
-            while(!UARTDataReady()); // response code is "as sent"
-            
-            sendUARTData(ADDRESS_TA1_READING);//starting address for TA1
-            while(!UARTDataReady()); // response code is "as sent"
-            
-            sendUARTData(ADDRESS_TA2_READING); //TA2 always 0x00
-            while(!UARTDataReady()); // response code is "as sent"
-            
-            int i;
-            for(i=0; i<8; i++)
-            {
-                sendUARTData(0xFF); //use FF here to read the data from memory
-                while(!UARTDataReady()); // response code is the data
-                byteReadFromUART[i]=readUARTData();
-            }
-            
-            sendUARTData(COMMAND_MODE); // set it to command mode
-            while(!UARTDataReady()); // response code is "as sent"
-            
-            sendUARTData(RESET_PULSE);
-            while(!UARTDataReady()); //wait for response
-            // TODO: verify the reponse ?
-            
-            setUARTState(UART_NOT_RESERVED);// Do we need this?
-	      return;
-		}//end  inner if
-        else
+	if (getUARTState() == UART_NOT_RESERVED && 1/* TODO: enough time has passed since the last time we ran*/){
+		//start UART collecting from the battery monitor thang 1wire thang
+        sendUARTData(RESET_PULSE);
+        while(!UARTDataReady()); //wait for response
+        //response code should be CD or ED
+        /* TODO: Checking response code ?*/
+        /*
+         responseCode = readUARTData();
+         while(responseCode != CD && responseCode != ED)
+         {
+         sendUARTData(RESET_PULSE);
+         while(!UARTDataReady());
+         //response code should be CD or ED
+         responseCode = readUARTData();
+         }
+         */
+        sendUARTData(SKIP_ROM_COMMAND);
+        while(!UARTDataReady()); // response code is "as sent"
+        
+        sendUARTData(READ_MEMORY_COMMAND);
+        while(!UARTDataReady()); // response code is "as sent"
+        
+        sendUARTData(ADDRESS_TA1_READING);//starting address for TA1
+        while(!UARTDataReady()); // response code is "as sent"
+        
+        sendUARTData(ADDRESS_TA2_READING); //TA2 always 0x00
+        while(!UARTDataReady()); // response code is "as sent"
+        
+        int i;
+        for(i=0; i<8; i++)
         {
-			return;
-		}//end inner else
-	}// end outter if
+            sendUARTData(0xFF); // TODO: (????)     use FF here to read the data from memory
+            while(!UARTDataReady()); // response code is the data
+            byteReadFromUART[i]=readUARTData();
+        }
+        
+        sendUARTData(COMMAND_MODE); // set it to command mode
+        while(!UARTDataReady()); // response code is "as sent"
+        
+        sendUARTData(RESET_PULSE);
+        while(!UARTDataReady()); //wait for response
+        // TODO: verify the reponse ?
+        
+        // TODO: warn COM about incoming data.
+        //send the data to the COM processor.
+        SPI_transmitStream(&devices.COM_Processor, byteReadFromUART, PWRBytes, true);
+        
+        
+    	return;
+	}//end  inner if
     else
     {
-	//	//continue doing what we were doing:
-		if (0 /*we have received all of what we expect*/){
-	    	if (getUARTState() == UART_NOT_RESERVED){
-				// TODO: send the data to the packetizer to be timestamped
-          		Packetize(PKT_BATTERYSTATE, byteReadFromUART,PWRBytes);	//unset the flag to say we are done with the UART (the middle-of-something flag)
-        		setUARTState(UART_NOT_RESERVED); // unset the flag to say we are done with the UART
-	    	}//end if
-			return;
-		}//end if
-        else{
-            return;
-	    }
-	}//end outter else
+		return;
+	}//end inner else
+	
 }
 
 // Cut or add power to a subsystem to conserve or stop conserving power.

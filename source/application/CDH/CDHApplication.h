@@ -48,5 +48,8 @@ void CDH_timerA_ISR(void);
 void CDH_application_main(void);
 void CDHMainScheduleLoop(void);
 void Packetize(PacketType type, Byte* dataBytes, int length);
+void CheckForTimeTaggedCommands(void);
+void CheckForTimeTaggedCommands(void);
+void SetModeSwitch(double howFarInTheFutureInSeconds, int whichMode);
 
 #endif

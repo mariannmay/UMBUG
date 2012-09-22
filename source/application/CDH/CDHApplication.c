@@ -8,6 +8,11 @@
 
 #include "CDHApplication.h"
 
+bool newTimeTaggedCommand = false;
+int modeToSwitchTo = 0; // the value of this currently affects nothing.
+double howFarInTheFutureToSwitchToNewModeInSeconds = 0;
+double whenWeStarted = 0;
+
 
 ///////////////////////////////////////////////////////////////////
 
@@ -123,6 +128,33 @@ void Packetize(PacketType type, Byte* dataBytes, int length)
 	//TODO: set this up properly!
 	
 	//SPI_transmitStream(SPI_Device* device, const Byte* data, UI8 length)
+}
+
+void CheckForTimeTaggedCommands(void){
+	//Currently, this just looks for the command to switch between modes.
+	//these modes are stored in the eeprom (so that when the processor restarts, we'll be in the right mode still
+	
+	double currentTimeReadFromRTC;
+	
+	if (newTimeTaggedCommand){
+		realTimeClock_update(&devices.realTimeClock);
+		currentTimeReadFromRTC =  (&devices.realTimeClock.currentTime.seconds * 60) + &devices.realTimeClock.currentTime.minutes;
+		if (currentTimeReadFromRTC >= whenWeStarted){
+			// TODO: switch between modes.
+			// switchModes(whichMode);
+			
+			newTimeTaggedCommand = false;
+		}
+	}
+}
+
+void SetModeSwitch(double howFarInTheFutureInSeconds, int whichMode){
+	modeToSwitchTo = whichMode; // the value of this currently affects nothing.
+	howFarInTheFutureToSwitchToNewModeInSeconds = howFarInTheFutureInSeconds;
+	newTimeTaggedCommand = true;
+	
+	realTimeClock_update(&devices.realTimeClock);
+	whenWeStarted = currentTimeReadFromRTC =  (&devices.realTimeClock.currentTime.seconds * 60) + &devices.realTimeClock.currentTime.minutes;
 }
 
 

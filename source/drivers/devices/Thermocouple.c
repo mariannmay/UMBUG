@@ -21,7 +21,7 @@ Word thermocouple_read(Thermocouple* thermocouple)
 	return thermocouple->voltageInput->value;
 }
 
-DegreesCelsius rawA2DToDegreesCelsius(double rawVolts)
+double rawA2DToDegreesCelsius(double rawVolts)
 {
 	double temperature;
 	
@@ -34,5 +34,5 @@ DegreesCelsius rawA2DToDegreesCelsius(double rawVolts)
 	
 	//UI32 denominator_C_x1000000 = 
 	
-	return (DegreesCelsius) 0;
+	return temperature;
 }
