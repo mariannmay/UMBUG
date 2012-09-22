@@ -18,6 +18,10 @@
 
 UART_RESERVE_STATE currentUARTUser = UART_NOT_RESERVED;
 
+int rateCorrect = 0x00;
+int rateCurrent = 0x00;
+bool gotRate = false;
+
 /*#include <stdio.h>
 #define USAxCTL		         U1CTL		// USART Control Register  /	
     #define USAxBR0     	 U1BR0			// USART Baud Rate 0 /
@@ -54,6 +58,34 @@ UART_RESERVE_STATE getUARTState(){
 	return currentUARTUser;
 }
 
+void InitUartToValue(UI8 value){
+	volatile unsigned int i;
+  
+  printf("in Uart_init\n");
+  fflush(stdout);
+
+  WDTCTL = WDTPW + WDTHOLD;                 // Stop WDT
+  //FLL_CTL0 |= XCAP14PF;                     // Configure load caps
+
+  P4SEL |= 0x03;                            // P4.1,0 = USART1 TXD/RXD
+  ME2 |= UTXE1 + URXE1;                     // Enable USART1 TXD/RXD
+  U1CTL |= CHAR;                            // 8-bit character
+  //U1TCTL |= SSEL1;                          // UCLK= ACLK
+  U1TCTL |= SSEL1 + SSEL0;//SMCLK
+  
+//UBR00=0x52; UBR10=0x00; UMCTL0=0xAA; // uart0 9500000Hz 115151bps
+
+
+  U1BR0 = value;//2f;//52;//4E;//0x56;//45                             // 5466.666MHz 115200
+  U1BR1 = 0x00;                             // 1MHz 115200
+  U1MCTL = 0x10;//AA;//08;//0x7B;    //AA                        // 9.5MHz 115200 modulation
+  U1CTL &= ~SWRST;                          // Initialize USART state machine
+  IE2 |= URXIE1;                            // Enable USART1 RX interrupt
+
+//LPM is for hosers
+  _BIS_SR(/*LPM0_bits + */GIE);                 // Enter LPM0 w/ interrupt
+	
+}
 
 void InitUART(void){ 
 /* --COPYRIGHT--,BSD_EX
@@ -172,9 +204,9 @@ void InitUART(void){
 //UBR00=0x52; UBR10=0x00; UMCTL0=0xAA; // uart0 9500000Hz 115151bps
 
 
-  U1BR0 = 0x2f;//52;//4E;//0x56;//45                             // 5466.666MHz 115200
+  U1BR0 = 0x41;//2f;//52;//4E;//0x56;//45                             // 5466.666MHz 115200
   U1BR1 = 0x00;                             // 1MHz 115200
-  U1MCTL = 0xAA;//08;//0x7B;    //AA                        // 9.5MHz 115200 modulation
+  U1MCTL = 0x10;//AA;//08;//0x7B;    //AA                        // 9.5MHz 115200 modulation
   U1CTL &= ~SWRST;                          // Initialize USART state machine
   IE2 |= URXIE1;                            // Enable USART1 RX interrupt
 
@@ -184,11 +216,17 @@ void InitUART(void){
   
 }
 
+bool gotRateYet(){
+	return gotRate;
+}
 
 #pragma vector=USART1RX_VECTOR
 __interrupt void USART1_rx (void)
 {
-    if(IFG2 & URXIFG1)
+	if (RXBUF1 == 0x41){ //'A' is for 'ACK'
+		gotRate = true;
+	}
+    /*if(IFG2 & URXIFG1)
     {
         switch(getUARTState())
         {
@@ -204,7 +242,7 @@ __interrupt void USART1_rx (void)
                 break;
                 
         }
-    }
+    }*/
   //while (!(IFG2 & UTXIFG1));                // USART1 TX buffer ready?
   //TXBUF1 = RXBUF1;                          // RXBUF1 to TXBUF1
 }

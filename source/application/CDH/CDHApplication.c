@@ -123,9 +123,8 @@ void CDHMainScheduleLoop(void)
 
 void Packetize(PacketType type, Byte* dataBytes, int length)
 {
-	//Packet newPkt;
-	
 	//TODO: set this up properly!
+	Byte bytesToSend[16 /*2 flags*/ + 16 /*CRC*/ + 0 /* TODO: */];
 	
 	//SPI_transmitStream(SPI_Device* device, const Byte* data, UI8 length)
 }

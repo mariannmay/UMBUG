@@ -26,7 +26,6 @@ typedef enum{ // These are now only being used to switch between UART_NOT_RESERV
                             // usage: if (getUARTState() == UART_OVER_GROUNDSTATION)
 }UART_RESERVE_STATE;
 
-
 /*#define USART_A_MODULE  1     // Select which USCI_A module to use [0-1]
 #define UART_BAUDRATE  9600 //Specify baudrate
 #define UART_BAUDRATE_REG  (unsigned short)(MCLK_FREQ/UART_BAUDRATE)
@@ -51,8 +50,11 @@ void setUARTState(UART_RESERVE_STATE res);
 UART_RESERVE_STATE getUARTState();
 UI8 UARTDataReady();
 UI8 readUARTData();
+bool gotRateYet();
+void InitUartToValue(UI8 value);
 void sendUARTData(UI8 data);
 void sendUARTDataArray(UI8* data, int length);
+void InitUartToValue(UI8 value);
 void initializeDataToCOMOverSPI(int length);
 void sendUARTDataToCOMOverSPI(int length);
  
