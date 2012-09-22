@@ -29,7 +29,7 @@ void pld1_routine(void)
 		//sendUARTData(0x00); //'\r'
 		
 		//Get ready to flood the data on through to COM
-		sendUARTDataToCOMOverSPI(lengthOfCameraData);
+		sendUARTDataToCOMOverSPI(lengthOfCameraData); // TODO: put this after the next block ???
 		
 		// take a picture
 		sendUARTData(0x53); //'S'
